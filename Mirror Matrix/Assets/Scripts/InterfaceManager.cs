@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Globalization;
 
 public class InterfaceManager : MonoBehaviour
 {
@@ -12,9 +13,26 @@ public class InterfaceManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject dropdownMenu;
     private TMPro.TMP_Dropdown dropdown;
+    [SerializeField] private TextMeshProUGUI buttonText;
+
+    private Maths _maths;
+    private float[] startV;
+    private float[] addV;
+    private float[] matrix;
 
     [Space]
-    [SerializeField] private TextMeshProUGUI buttonText;
+    [Header("Addition:")]
+    [SerializeField] private TextMeshProUGUI vectorAStartx;
+    [SerializeField] private TextMeshProUGUI vectorAStarty;
+    [SerializeField] private TextMeshProUGUI vectorAddx;
+    [SerializeField] private TextMeshProUGUI vectorAddy;
+    [Header("Multiplication:")]
+    [SerializeField] private TextMeshProUGUI vectorMx;
+    [SerializeField] private TextMeshProUGUI vectorMy;
+    [SerializeField] private TextMeshProUGUI matrixX1;
+    [SerializeField] private TextMeshProUGUI matrixX2;
+    [SerializeField] private TextMeshProUGUI matrixY1;
+    [SerializeField] private TextMeshProUGUI matrixY2;
 
     void Start()
     {
@@ -27,6 +45,11 @@ public class InterfaceManager : MonoBehaviour
             Debug.Log(gameObject + "can't find dropdown");
         }
 
+        _maths = FindObjectOfType<Maths>();
+        if (_maths == null)
+        {
+            Debug.LogWarning(gameObject + " can't find maths script");
+        }
     }
 
     public void DropDownMenu()
@@ -66,6 +89,42 @@ public class InterfaceManager : MonoBehaviour
             buttonText.text = "+";
 
             // update calculation
+        }
+    }
+
+    public void Calculate()
+    {
+        Debug.Log("start calculation");
+
+        if (dropdown.value == 0) // Addition
+        {
+            // get values
+
+            // startV --> vectorAStartx und y
+            // addv --> vectorAddx
+            /*
+            string testx = vectorAStartx.text;
+            float testingx = float.Parse(testx, CultureInfo.InvariantCulture.NumberFormat);
+            Debug.Log("test x = " + testingx);*/
+
+            /*
+            if (buttonText.text == "+")
+            {
+                _maths.Addition(startV, addV, true);
+            }
+            else
+            {
+                _maths.Addition(startV, addV, false);
+            } */
+        }
+        else if (dropdown.value == 1) // multiplication
+        {
+            // get values
+
+        }
+        else
+        {
+            Debug.Log("error calculation");
         }
     }
 }
