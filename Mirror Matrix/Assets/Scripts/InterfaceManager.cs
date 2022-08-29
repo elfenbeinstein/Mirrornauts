@@ -16,6 +16,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI buttonText;
 
     private Maths _maths;
+    private Display _display;
     private float[] startV;
     private float[] addV;
     private float[] matrix;
@@ -35,7 +36,6 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TMPro.TMP_InputField matrixX2;
     [SerializeField] private TMPro.TMP_InputField matrixY1;
     [SerializeField] private TMPro.TMP_InputField matrixY2;
-
     [Space]
     [Header("Result:")]
     [SerializeField] private TextMeshProUGUI resultX;
@@ -59,6 +59,11 @@ public class InterfaceManager : MonoBehaviour
         if (_maths == null)
         {
             Debug.LogWarning(gameObject + " can't find maths script");
+        }
+        _display = FindObjectOfType<Display>();
+        if (_display == null)
+        {
+            Debug.LogWarning(gameObject + " can't find display script");
         }
     }
 
@@ -217,5 +222,7 @@ public class InterfaceManager : MonoBehaviour
 
         resultX.text = resultV[0].ToString();
         resultY.text = resultV[1].ToString();
+
+        _display.UpdateDisplay(startV, resultV);
     }
 }
