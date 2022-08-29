@@ -32,7 +32,7 @@ public class Maths : MonoBehaviour
         Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
     }
 
-    public void Multiplication(float[]vectorM, float[]matrixM)
+    public void Multiplication(float[]vectorM, float[]matrixM) // needs alotta work
     {
         float x = 0;
         float y = 0;

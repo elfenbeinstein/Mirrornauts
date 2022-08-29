@@ -18,21 +18,21 @@ public class InterfaceManager : MonoBehaviour
     private Maths _maths;
     private float[] startV;
     private float[] addV;
-    private float[] matrix;
+    //private float[] matrix;
 
     [Space]
     [Header("Addition:")]
-    [SerializeField] private TextMeshProUGUI vectorAStartx;
-    [SerializeField] private TextMeshProUGUI vectorAStarty;
-    [SerializeField] private TextMeshProUGUI vectorAddx;
-    [SerializeField] private TextMeshProUGUI vectorAddy;
+    [SerializeField] private TMPro.TMP_InputField vectorAStartx;
+    [SerializeField] private TMPro.TMP_InputField vectorAStarty;
+    [SerializeField] private TMPro.TMP_InputField vectorAddx;
+    [SerializeField] private TMPro.TMP_InputField vectorAddy;
     [Header("Multiplication:")]
-    [SerializeField] private TextMeshProUGUI vectorMx;
-    [SerializeField] private TextMeshProUGUI vectorMy;
-    [SerializeField] private TextMeshProUGUI matrixX1;
-    [SerializeField] private TextMeshProUGUI matrixX2;
-    [SerializeField] private TextMeshProUGUI matrixY1;
-    [SerializeField] private TextMeshProUGUI matrixY2;
+    [SerializeField] private TMPro.TMP_InputField vectorMx;
+    [SerializeField] private TMPro.TMP_InputField vectorMy;
+    [SerializeField] private TMPro.TMP_InputField matrixX1;
+    [SerializeField] private TMPro.TMP_InputField matrixX2;
+    [SerializeField] private TMPro.TMP_InputField matrixY1;
+    [SerializeField] private TMPro.TMP_InputField matrixY2;
 
     void Start()
     {
@@ -96,18 +96,42 @@ public class InterfaceManager : MonoBehaviour
     {
         Debug.Log("start calculation");
 
-        if (dropdown.value == 0) // Addition
+        // ADDITION
+        if (dropdown.value == 0)
         {
-            // get values
-
-            // startV --> vectorAStartx und y
-            // addv --> vectorAddx
-            /*
-            string testx = vectorAStartx.text;
-            float testingx = float.Parse(testx, CultureInfo.InvariantCulture.NumberFormat);
-            Debug.Log("test x = " + testingx);*/
-
-            /*
+            // check all boxes are filled or default to zero
+            if (vectorAStartx.text == "" || vectorAStarty.text == "" || vectorAddx.text == "" || vectorAddy.text == "")
+            {
+                Debug.LogWarning("please fill in all boxes, defaulting to zero");
+                float x = 0;
+                float y = 0;
+                if (vectorAStartx.text != "")
+                {
+                    x = float.Parse(vectorAStartx.text);
+                }
+                if (vectorAStarty.text != "")
+                {
+                    y = float.Parse(vectorAStartx.text);
+                }
+                startV = new float[] { x, y };
+                x = 0;
+                y = 0;
+                if (vectorAddx.text != "")
+                {
+                    x = float.Parse(vectorAddx.text);
+                }
+                if (vectorAddy.text != "")
+                {
+                    y = float.Parse(vectorAddy.text);
+                }
+                addV = new float[] { x, y };
+            }
+            else
+            {
+                startV = new float[] { float.Parse(vectorAStartx.text), float.Parse(vectorAStarty.text) };
+                addV = new float[] { float.Parse(vectorAddx.text), float.Parse(vectorAddy.text) };
+            }
+            
             if (buttonText.text == "+")
             {
                 _maths.Addition(startV, addV, true);
@@ -115,9 +139,10 @@ public class InterfaceManager : MonoBehaviour
             else
             {
                 _maths.Addition(startV, addV, false);
-            } */
+            } 
         }
-        else if (dropdown.value == 1) // multiplication
+        // MULTIPLICATION
+        else if (dropdown.value == 1)
         {
             // get values
 
