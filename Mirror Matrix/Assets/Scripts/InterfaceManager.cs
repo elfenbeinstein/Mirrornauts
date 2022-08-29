@@ -18,7 +18,7 @@ public class InterfaceManager : MonoBehaviour
     private Maths _maths;
     private float[] startV;
     private float[] addV;
-    //private float[] matrix;
+    private float[] matrix;
 
     [Space]
     [Header("Addition:")]
@@ -96,6 +96,9 @@ public class InterfaceManager : MonoBehaviour
     {
         Debug.Log("start calculation");
 
+        float x = 0;
+        float y = 0;
+
         // ADDITION
         if (dropdown.value == 0)
         {
@@ -103,8 +106,9 @@ public class InterfaceManager : MonoBehaviour
             if (vectorAStartx.text == "" || vectorAStarty.text == "" || vectorAddx.text == "" || vectorAddy.text == "")
             {
                 Debug.LogWarning("please fill in all boxes, defaulting to zero");
-                float x = 0;
-                float y = 0;
+                x = 0;
+                y = 0;
+
                 if (vectorAStartx.text != "")
                 {
                     x = float.Parse(vectorAStartx.text);
@@ -114,6 +118,7 @@ public class InterfaceManager : MonoBehaviour
                     y = float.Parse(vectorAStartx.text);
                 }
                 startV = new float[] { x, y };
+
                 x = 0;
                 y = 0;
                 if (vectorAddx.text != "")
@@ -144,12 +149,56 @@ public class InterfaceManager : MonoBehaviour
         // MULTIPLICATION
         else if (dropdown.value == 1)
         {
-            // get values
+            // Check all boxes are filled or default to zero
+            if (vectorMx.text == "" || vectorMy.text == "" || matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
+            {
+                Debug.LogWarning(" missing values in boxes, defaulting to zero");
+                x = 0;
+                y = 0;
+                if (vectorMx.text != "")
+                {
+                    x = float.Parse(vectorMx.text);
+                }
+                if (vectorMy.text != "")
+                {
+                    y = float.Parse(vectorMy.text);
+                }
+                startV = new float[] { x, y };
 
+                x = 0;
+                y = 0;
+                float x2 = 0;
+                float y2 = 0;
+                if (matrixX1.text != "")
+                {
+                    x = float.Parse(matrixX1.text);
+                }
+                if (matrixX2.text != "")
+                {
+                    x2 = float.Parse(matrixX2.text);
+                }
+                if (matrixY1.text != "")
+                {
+                    y = float.Parse(matrixY1.text);
+                }
+                if (matrixY2.text != "")
+                {
+                    y2 = float.Parse(matrixY2.text);
+                }
+
+                matrix = new float[] { x, x2, y, y2 };
+            }
+            else
+            {
+                startV = new float[] { float.Parse(vectorMx.text), float.Parse(vectorMy.text) };
+                matrix = new float[] { float.Parse(matrixX1.text), float.Parse(matrixX2.text), float.Parse(matrixY1.text), float.Parse(matrixY2.text) };
+            }
+
+            _maths.Multiplication(startV, matrix);
         }
         else
         {
-            Debug.Log("error calculation");
+            Debug.Log("error calculation dropwdown menu option out of bounds");
         }
     }
 }
