@@ -19,6 +19,8 @@ public class InterfaceManager : MonoBehaviour
     private float[] startV;
     private float[] addV;
     private float[] matrix;
+    private float[] resultV;
+    private bool additionValue;
 
     [Space]
     [Header("Addition:")]
@@ -34,10 +36,18 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TMPro.TMP_InputField matrixY1;
     [SerializeField] private TMPro.TMP_InputField matrixY2;
 
+    [Space]
+    [Header("Result:")]
+    [SerializeField] private TextMeshProUGUI resultX;
+    [SerializeField] private TextMeshProUGUI resultY;
+
     void Start()
     {
         addition.SetActive(true);
         multiplication.SetActive(false);
+        resultX.text = "";
+        resultY.text = "";
+        additionValue = true;
 
         dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
         if (dropdown == null)
@@ -82,19 +92,19 @@ public class InterfaceManager : MonoBehaviour
         {
             buttonText.text = "-";
 
-            // update calculation
+            additionValue = false;
         }
         else
         {
             buttonText.text = "+";
 
-            // update calculation
+            additionValue = true;
         }
     }
 
     public void Calculate()
     {
-        Debug.Log("start calculation");
+        //Debug.Log("start calculation");
 
         float x = 0;
         float y = 0;
@@ -136,15 +146,11 @@ public class InterfaceManager : MonoBehaviour
                 startV = new float[] { float.Parse(vectorAStartx.text), float.Parse(vectorAStarty.text) };
                 addV = new float[] { float.Parse(vectorAddx.text), float.Parse(vectorAddy.text) };
             }
-            
-            if (buttonText.text == "+")
-            {
-                _maths.Addition(startV, addV, true);
-            }
-            else
-            {
-                _maths.Addition(startV, addV, false);
-            } 
+
+            //_maths.Addition(startV, addV, additionValue); --> from when it was a public void not public float []
+            resultV = _maths.Addition(startV, addV, additionValue);
+
+            DisplayVector();
         }
         // MULTIPLICATION
         else if (dropdown.value == 1)
@@ -194,11 +200,22 @@ public class InterfaceManager : MonoBehaviour
                 matrix = new float[] { float.Parse(matrixX1.text), float.Parse(matrixX2.text), float.Parse(matrixY1.text), float.Parse(matrixY2.text) };
             }
 
-            _maths.Multiplication(startV, matrix);
+            //_maths.Multiplication(startV, matrix); --> from when it was a public void not public float []
+            resultV = _maths.Multiplication(startV, matrix);
+
+            DisplayVector();
         }
         else
         {
             Debug.Log("error calculation dropwdown menu option out of bounds");
         }
+    }
+
+    private void DisplayVector()
+    {
+        //Debug.Log("displaying vector " + resultV[0] + " / " + resultV[1]);
+
+        resultX.text = resultV[0].ToString();
+        resultY.text = resultV[1].ToString();
     }
 }

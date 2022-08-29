@@ -6,7 +6,7 @@ public class Maths : MonoBehaviour
 {
     private float[] vectorResult;
 
-    public void Addition(float[]startV, float[]addV, bool addition)
+    public float[] Addition(float[]startV, float[]addV, bool addition)
     {
         if (addition)
         {
@@ -17,10 +17,11 @@ public class Maths : MonoBehaviour
             vectorResult = new float[] { (startV[0] - addV[0]), (startV[1] - addV[1]) };
         }
 
-        Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
+        //Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
+        return vectorResult;
     }
 
-    public void Multiplication(float[]vectorM, float[]matrixM) 
+    public float[] Multiplication(float[]vectorM, float[]matrixM) 
     {
         float x, y;
         // Matrix set up: x1, x2, y1, y2
@@ -29,6 +30,7 @@ public class Maths : MonoBehaviour
 
         vectorResult = new float[] { x, y };
 
-        Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
+        //Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
+        return vectorResult;
     }
 }
