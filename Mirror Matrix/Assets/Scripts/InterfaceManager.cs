@@ -25,7 +25,12 @@ public class InterfaceManager : MonoBehaviour
     private float[] resultV;
     private float scalar;
 
+    private float[] spaceshipTop;
+    private float[] spaceshipTopResult;
+
     private bool additionValue;
+    private bool calculationSuccessful;
+    private bool calcSpaceship;
 
     [Space]
     [Header("Starting Vector")]
@@ -77,6 +82,41 @@ public class InterfaceManager : MonoBehaviour
         }
     }
 
+    public void StartFreeFlow()
+    {
+        calcSpaceship = false;
+        Calculate();
+        if (calculationSuccessful)
+        {
+            resultX.text = resultV[0].ToString();
+            resultY.text = resultV[1].ToString();
+
+            _display.UpdateDisplayFreeFlow(startV, resultV);
+        }
+        else
+        {
+            Debug.LogWarning("something went wrong with the calculation");
+        }
+    }
+
+    public void GoCalculation()
+    {
+        calcSpaceship = true;
+        spaceshipTop = _display.ShipTopCoordinates();
+
+        Calculate();
+        if (calculationSuccessful)
+        {
+            resultX.text = resultV[0].ToString();
+            resultY.text = resultV[1].ToString();
+            _display.UpdateDisplay(startV, resultV, spaceshipTopResult);
+        }
+        else
+        {
+            Debug.LogWarning("something went wrong with the calculation");
+        }
+    }
+
     public void DropDownMenu()
     {
         if (dropdown.value == 0)
@@ -124,6 +164,7 @@ public class InterfaceManager : MonoBehaviour
 
     public void Calculate()
     {
+        calculationSuccessful = false;
         //Debug.Log("start calculation");
 
         float x = 0;
@@ -209,8 +250,11 @@ public class InterfaceManager : MonoBehaviour
             addV = new float[] { x, y };
 
             resultV = _maths.Addition(startV, addV, additionValue);
-
-            DisplayVector();
+            if (calcSpaceship)
+            {
+                spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
+            }
+            calculationSuccessful = true;
         }
         // MULTIPLICATION
         else if (dropdown.value == 1)
@@ -259,7 +303,11 @@ public class InterfaceManager : MonoBehaviour
             matrix = new float[] { x, x2, y, y2 };
 
             resultV = _maths.Multiplication(startV, matrix);
-            DisplayVector();
+            if (calcSpaceship)
+            {
+                spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
+            }
+            calculationSuccessful = true;
         }
         // SCALAR MULTIPLICATION
         else if (dropdown.value == 2)
@@ -282,39 +330,50 @@ public class InterfaceManager : MonoBehaviour
             }
 
             resultV = _maths.ScalarMultiplication(startV, scalar);
-            DisplayVector();
+            if (calcSpaceship)
+            {
+                spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
+            }
+            calculationSuccessful = true;
         }
         else
         {
             Debug.Log("error calculation dropwdown menu option out of bounds");
+            calculationSuccessful = false;
         }
-    }
-
-    private void DisplayVector()
-    {
-        //Debug.Log("displaying vector " + resultV[0] + " / " + resultV[1]);
-
-        resultX.text = resultV[0].ToString();
-        resultY.text = resultV[1].ToString();
-
-        _display.UpdateDisplay(startV, resultV);
     }
 
     public void StartVectorValueChange()
     {
         float x = 0;
         float y = 0;
-
-        if (vectorx.text != "")
+        if (dropdown.value != 0)
         {
-            x = float.Parse(vectorx.text);
+            if (vectorx.text != "")
+            {
+                x = float.Parse(vectorx.text);
+            }
+            if (vectory.text != "")
+            {
+                y = float.Parse(vectory.text);
+            }
         }
-        if (vectory.text != "")
+        else
         {
-            y = float.Parse(vectory.text);
+            if (startVx.text != "")
+            {
+                x = float.Parse(startVx.text);
+            }
+            if (startVy.text != "")
+            {
+                y = float.Parse(startVy.text);
+            }
         }
+        
 
         startV = new float[] { x, y };
+
+        //Debug.Log("x is " + x + " and y is " + y);
 
         _display.UpdateSpaceshipStartV(startV);
     }
