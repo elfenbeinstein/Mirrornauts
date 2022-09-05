@@ -10,6 +10,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject addition;
     [SerializeField] private GameObject multiplication;
     [SerializeField] private GameObject scalarObject;
+    [SerializeField] private GameObject vectorObject;
 
     [Space]
     [SerializeField] private GameObject dropdownMenu;
@@ -17,7 +18,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI buttonText;
 
     private Maths _maths;
-    private Display _display;
+    private DisplayResults _display;
     private float[] startV;
     private float[] addV;
     private float[] matrix;
@@ -27,22 +28,22 @@ public class InterfaceManager : MonoBehaviour
     private bool additionValue;
 
     [Space]
+    [Header("Starting Vector")]
+    [SerializeField] private TMPro.TMP_InputField vectorx;
+    [SerializeField] private TMPro.TMP_InputField vectory;
+
     [Header("Addition:")]
-    [SerializeField] private TMPro.TMP_InputField vectorAStartx;
-    [SerializeField] private TMPro.TMP_InputField vectorAStarty;
     [SerializeField] private TMPro.TMP_InputField vectorAddx;
     [SerializeField] private TMPro.TMP_InputField vectorAddy;
+    [SerializeField] private TMPro.TMP_InputField startVx;
+    [SerializeField] private TMPro.TMP_InputField startVy;
     [Header("Multiplication:")]
-    [SerializeField] private TMPro.TMP_InputField vectorMx;
-    [SerializeField] private TMPro.TMP_InputField vectorMy;
     [SerializeField] private TMPro.TMP_InputField matrixX1;
     [SerializeField] private TMPro.TMP_InputField matrixX2;
     [SerializeField] private TMPro.TMP_InputField matrixY1;
     [SerializeField] private TMPro.TMP_InputField matrixY2;
     [Header("Scalar:")]
     [SerializeField] private TMPro.TMP_InputField scalarInput;
-    [SerializeField] private TMPro.TMP_InputField vectorx;
-    [SerializeField] private TMPro.TMP_InputField vectory;
     [Space]
     [Header("Result:")]
     [SerializeField] private TextMeshProUGUI resultX;
@@ -51,27 +52,28 @@ public class InterfaceManager : MonoBehaviour
     void Start()
     {
         addition.SetActive(true);
+        vectorObject.SetActive(false);
         multiplication.SetActive(false);
         scalarObject.SetActive(false);
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
 
-        dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
-        if (dropdown == null)
-        {
-            Debug.Log(gameObject + "can't find dropdown");
-        }
-
         _maths = FindObjectOfType<Maths>();
         if (_maths == null)
         {
             Debug.LogWarning(gameObject + " can't find maths script");
         }
-        _display = FindObjectOfType<Display>();
+        _display = FindObjectOfType<DisplayResults>();
         if (_display == null)
         {
             Debug.LogWarning(gameObject + " can't find display script");
+        }
+
+        dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
+        if (dropdown == null)
+        {
+            Debug.Log(gameObject + "can't find dropdown");
         }
     }
 
@@ -80,18 +82,21 @@ public class InterfaceManager : MonoBehaviour
         if (dropdown.value == 0)
         {
             addition.SetActive(true);
+            vectorObject.SetActive(false);
             multiplication.SetActive(false);
             scalarObject.SetActive(false);
         }
         else if (dropdown.value == 1)
         {
             multiplication.SetActive(true);
+            vectorObject.SetActive(true);
             scalarObject.SetActive(false);
             addition.SetActive(false);
         }
         else if (dropdown.value == 2)
         {
             scalarObject.SetActive(true);
+            vectorObject.SetActive(true);
             multiplication.SetActive(false);
             addition.SetActive(false);
         }
@@ -124,39 +129,65 @@ public class InterfaceManager : MonoBehaviour
         float x = 0;
         float y = 0;
 
+        // START VECTOR
+        if (dropdown.value != 0)
+        {
+            x = 0;
+            y = 0;
+            if (vectorx.text == "" || vectory.text == "")
+            {
+                Debug.LogWarning("starting vector values missing, defaulting to zero");
+            }
+
+            if (vectorx.text != "")
+            {
+                x = float.Parse(vectorx.text);
+            }
+            else
+            {
+                vectorx.text = "0";
+            }
+            if (vectory.text != "")
+            {
+                y = float.Parse(vectory.text);
+            }
+            else
+            {
+                vectory.text = "0";
+            }
+            startV = new float[] { x, y };
+        }
+
         // ADDITION
         if (dropdown.value == 0)
         {
+            x = 0;
+            y = 0;
             // check all boxes are filled or default to zero
-            if (vectorAStartx.text == "" || vectorAStarty.text == "" || vectorAddx.text == "" || vectorAddy.text == "")
+            if (startVx.text == "" || startVy.text == "" || vectorAddx.text == "" || vectorAddy.text == "")
             {
-                Debug.LogWarning("please fill in all boxes, defaulting to zero");
+                Debug.LogWarning("missing values, defaulting to zero");
                 
             }
 
-            #region start vector
-            x = 0;
-            y = 0;
-            if (vectorAStartx.text != "")
+            if (startVx.text != "")
             {
-                x = float.Parse(vectorAStartx.text);
+                x = float.Parse(startVx.text);
             }
             else
             {
-                vectorAStartx.text = "0";
+                startVx.text = "0";
             }
-            if (vectorAStarty.text != "")
+            if (startVy.text != "")
             {
-                y = float.Parse(vectorAStartx.text);
+                y = float.Parse(startVy.text);
             }
             else
             {
-                vectorAStarty.text = "0";
+                startVy.text = "0";
             }
             startV = new float[] { x, y };
-            #endregion
 
-            #region add vector
             x = 0;
             y = 0;
             if (vectorAddx.text != "")
@@ -176,7 +207,6 @@ public class InterfaceManager : MonoBehaviour
                 vectorAddy.text = "0";
             }
             addV = new float[] { x, y };
-            #endregion
 
             resultV = _maths.Addition(startV, addV, additionValue);
 
@@ -185,34 +215,11 @@ public class InterfaceManager : MonoBehaviour
         // MULTIPLICATION
         else if (dropdown.value == 1)
         {
-            if (vectorMx.text == "" || vectorMy.text == "" || matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
+            if (matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
             {
-                Debug.LogWarning(" missing values in boxes, defaulting to zero");
+                Debug.LogWarning("missing matrix values, defaulting to zero");
             }
 
-            #region start vector
-            x = 0;
-            y = 0;
-            if (vectorMx.text != "")
-            {
-                x = float.Parse(vectorMx.text);
-            }
-            else
-            {
-                vectorMx.text = "0";
-            }
-            if (vectorMy.text != "")
-            {
-                y = float.Parse(vectorMy.text);
-            }
-            else
-            {
-                vectorMy.text = "0";
-            }
-            startV = new float[] { x, y };
-            #endregion
-
-            #region matrix
             x = 0;
             y = 0;
             float x2 = 0;
@@ -249,9 +256,7 @@ public class InterfaceManager : MonoBehaviour
             {
                 matrixY2.text = "0";
             }
-
             matrix = new float[] { x, x2, y, y2 };
-            #endregion
 
             resultV = _maths.Multiplication(startV, matrix);
             DisplayVector();
@@ -262,28 +267,10 @@ public class InterfaceManager : MonoBehaviour
             x = 0;
             y = 0;
 
-            if (scalarInput.text == "" || vectorx.text == "" || vectory.text == "")
+            if (scalarInput.text == "")
             {
                 Debug.LogWarning(" missing values in boxes, defaulting to zero");
             }
-
-            if (vectorx.text != "")
-            {
-                x = float.Parse(vectorx.text);
-            }
-            else
-            {
-                vectorx.text = "0";
-            }
-            if (vectory.text != "")
-            {
-                y = float.Parse(vectory.text);
-            }
-            else
-            {
-                vectory.text = "0";
-            }
-            startV = new float[] { x, y };
 
             if (scalarInput.text != "")
             {
@@ -311,5 +298,24 @@ public class InterfaceManager : MonoBehaviour
         resultY.text = resultV[1].ToString();
 
         _display.UpdateDisplay(startV, resultV);
+    }
+
+    public void StartVectorValueChange()
+    {
+        float x = 0;
+        float y = 0;
+
+        if (vectorx.text != "")
+        {
+            x = float.Parse(vectorx.text);
+        }
+        if (vectory.text != "")
+        {
+            y = float.Parse(vectory.text);
+        }
+
+        startV = new float[] { x, y };
+
+        _display.UpdateSpaceshipStartV(startV);
     }
 }

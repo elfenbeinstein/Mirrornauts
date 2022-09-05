@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Display : MonoBehaviour
+public class DisplayResults : MonoBehaviour
 {
     [SerializeField] private GameObject startVObject;
     [SerializeField] private LineRenderer startV;
     [SerializeField] private GameObject endVObject;
     [SerializeField] private LineRenderer endV;
+
+    [SerializeField] private GameObject spaceship;
 
     // get arrowhead as well?
 
@@ -18,7 +20,7 @@ public class Display : MonoBehaviour
     }
     public void UpdateDisplay(float[] startVector, float[] endVector)
     {
-        //Debug.Log("updating display");
+        // using line renderer:
         startVObject.SetActive(true);
         endVObject.SetActive(true);
 
@@ -27,5 +29,10 @@ public class Display : MonoBehaviour
 
         position = new Vector3(endVector[0], endVector[1], 0);
         endV.SetPosition(1, position);
+    }
+
+    public void UpdateSpaceshipStartV(float[] vector)
+    {
+        spaceship.transform.position = new Vector3(vector[0], vector[1], 0);
     }
 }
