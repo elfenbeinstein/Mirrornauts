@@ -9,6 +9,7 @@ public class InterfaceManager : MonoBehaviour
 {
     [SerializeField] private GameObject addition;
     [SerializeField] private GameObject multiplication;
+    [SerializeField] private GameObject scalarObject;
 
     [Space]
     [SerializeField] private GameObject dropdownMenu;
@@ -21,6 +22,8 @@ public class InterfaceManager : MonoBehaviour
     private float[] addV;
     private float[] matrix;
     private float[] resultV;
+    private float scalar;
+
     private bool additionValue;
 
     [Space]
@@ -36,6 +39,10 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TMPro.TMP_InputField matrixX2;
     [SerializeField] private TMPro.TMP_InputField matrixY1;
     [SerializeField] private TMPro.TMP_InputField matrixY2;
+    [Header("Scalar:")]
+    [SerializeField] private TMPro.TMP_InputField scalarInput;
+    [SerializeField] private TMPro.TMP_InputField vectorx;
+    [SerializeField] private TMPro.TMP_InputField vectory;
     [Space]
     [Header("Result:")]
     [SerializeField] private TextMeshProUGUI resultX;
@@ -45,6 +52,7 @@ public class InterfaceManager : MonoBehaviour
     {
         addition.SetActive(true);
         multiplication.SetActive(false);
+        scalarObject.SetActive(false);
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
@@ -71,19 +79,21 @@ public class InterfaceManager : MonoBehaviour
     {
         if (dropdown.value == 0)
         {
-            //Debug.Log("should display addition");
             addition.SetActive(true);
             multiplication.SetActive(false);
-
-            // missing: vektor übernehmen
+            scalarObject.SetActive(false);
         }
         else if (dropdown.value == 1)
         {
-            //Debug.Log("should display multiplication");
             multiplication.SetActive(true);
+            scalarObject.SetActive(false);
             addition.SetActive(false);
-
-            // missing: vektor übernehmen
+        }
+        else if (dropdown.value == 2)
+        {
+            scalarObject.SetActive(true);
+            multiplication.SetActive(false);
+            addition.SetActive(false);
         }
         else
         {
@@ -121,38 +131,53 @@ public class InterfaceManager : MonoBehaviour
             if (vectorAStartx.text == "" || vectorAStarty.text == "" || vectorAddx.text == "" || vectorAddy.text == "")
             {
                 Debug.LogWarning("please fill in all boxes, defaulting to zero");
-                x = 0;
-                y = 0;
+                
+            }
 
-                if (vectorAStartx.text != "")
-                {
-                    x = float.Parse(vectorAStartx.text);
-                }
-                if (vectorAStarty.text != "")
-                {
-                    y = float.Parse(vectorAStartx.text);
-                }
-                startV = new float[] { x, y };
-
-                x = 0;
-                y = 0;
-                if (vectorAddx.text != "")
-                {
-                    x = float.Parse(vectorAddx.text);
-                }
-                if (vectorAddy.text != "")
-                {
-                    y = float.Parse(vectorAddy.text);
-                }
-                addV = new float[] { x, y };
+            #region start vector
+            x = 0;
+            y = 0;
+            if (vectorAStartx.text != "")
+            {
+                x = float.Parse(vectorAStartx.text);
             }
             else
             {
-                startV = new float[] { float.Parse(vectorAStartx.text), float.Parse(vectorAStarty.text) };
-                addV = new float[] { float.Parse(vectorAddx.text), float.Parse(vectorAddy.text) };
+                vectorAStartx.text = "0";
             }
+            if (vectorAStarty.text != "")
+            {
+                y = float.Parse(vectorAStartx.text);
+            }
+            else
+            {
+                vectorAStarty.text = "0";
+            }
+            startV = new float[] { x, y };
+            #endregion
 
-            //_maths.Addition(startV, addV, additionValue); --> from when it was a public void not public float []
+            #region add vector
+            x = 0;
+            y = 0;
+            if (vectorAddx.text != "")
+            {
+                x = float.Parse(vectorAddx.text);
+            }
+            else
+            {
+                vectorAddx.text = "0";
+            }
+            if (vectorAddy.text != "")
+            {
+                y = float.Parse(vectorAddy.text);
+            }
+            else
+            {
+                vectorAddy.text = "0";
+            }
+            addV = new float[] { x, y };
+            #endregion
+
             resultV = _maths.Addition(startV, addV, additionValue);
 
             DisplayVector();
@@ -160,54 +185,116 @@ public class InterfaceManager : MonoBehaviour
         // MULTIPLICATION
         else if (dropdown.value == 1)
         {
-            // Check all boxes are filled or default to zero
             if (vectorMx.text == "" || vectorMy.text == "" || matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
             {
                 Debug.LogWarning(" missing values in boxes, defaulting to zero");
-                x = 0;
-                y = 0;
-                if (vectorMx.text != "")
-                {
-                    x = float.Parse(vectorMx.text);
-                }
-                if (vectorMy.text != "")
-                {
-                    y = float.Parse(vectorMy.text);
-                }
-                startV = new float[] { x, y };
+            }
 
-                x = 0;
-                y = 0;
-                float x2 = 0;
-                float y2 = 0;
-                if (matrixX1.text != "")
-                {
-                    x = float.Parse(matrixX1.text);
-                }
-                if (matrixX2.text != "")
-                {
-                    x2 = float.Parse(matrixX2.text);
-                }
-                if (matrixY1.text != "")
-                {
-                    y = float.Parse(matrixY1.text);
-                }
-                if (matrixY2.text != "")
-                {
-                    y2 = float.Parse(matrixY2.text);
-                }
-
-                matrix = new float[] { x, x2, y, y2 };
+            #region start vector
+            x = 0;
+            y = 0;
+            if (vectorMx.text != "")
+            {
+                x = float.Parse(vectorMx.text);
             }
             else
             {
-                startV = new float[] { float.Parse(vectorMx.text), float.Parse(vectorMy.text) };
-                matrix = new float[] { float.Parse(matrixX1.text), float.Parse(matrixX2.text), float.Parse(matrixY1.text), float.Parse(matrixY2.text) };
+                vectorMx.text = "0";
+            }
+            if (vectorMy.text != "")
+            {
+                y = float.Parse(vectorMy.text);
+            }
+            else
+            {
+                vectorMy.text = "0";
+            }
+            startV = new float[] { x, y };
+            #endregion
+
+            #region matrix
+            x = 0;
+            y = 0;
+            float x2 = 0;
+            float y2 = 0;
+            if (matrixX1.text != "")
+            {
+                x = float.Parse(matrixX1.text);
+            }
+            else
+            {
+                matrixX1.text = "0";
+            }
+            if (matrixX2.text != "")
+            {
+                x2 = float.Parse(matrixX2.text);
+            }
+            else
+            {
+                matrixX2.text = "0";
+            }
+            if (matrixY1.text != "")
+            {
+                y = float.Parse(matrixY1.text);
+            }
+            else
+            {
+                matrixY1.text = "0";
+            }
+            if (matrixY2.text != "")
+            {
+                y2 = float.Parse(matrixY2.text);
+            }
+            else
+            {
+                matrixY2.text = "0";
             }
 
-            //_maths.Multiplication(startV, matrix); --> from when it was a public void not public float []
-            resultV = _maths.Multiplication(startV, matrix);
+            matrix = new float[] { x, x2, y, y2 };
+            #endregion
 
+            resultV = _maths.Multiplication(startV, matrix);
+            DisplayVector();
+        }
+        // SCALAR MULTIPLICATION
+        else if (dropdown.value == 2)
+        {
+            x = 0;
+            y = 0;
+
+            if (scalarInput.text == "" || vectorx.text == "" || vectory.text == "")
+            {
+                Debug.LogWarning(" missing values in boxes, defaulting to zero");
+            }
+
+            if (vectorx.text != "")
+            {
+                x = float.Parse(vectorx.text);
+            }
+            else
+            {
+                vectorx.text = "0";
+            }
+            if (vectory.text != "")
+            {
+                y = float.Parse(vectory.text);
+            }
+            else
+            {
+                vectory.text = "0";
+            }
+            startV = new float[] { x, y };
+
+            if (scalarInput.text != "")
+            {
+                scalar = float.Parse(scalarInput.text);
+            }
+            else
+            {
+                scalarInput.text = "0";
+            }
+
+            resultV = _maths.ScalarMultiplication(startV, scalar);
             DisplayVector();
         }
         else

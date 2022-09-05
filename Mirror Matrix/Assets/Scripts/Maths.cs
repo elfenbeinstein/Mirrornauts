@@ -33,4 +33,15 @@ public class Maths : MonoBehaviour
         //Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
         return vectorResult;
     }
+
+    public float[] ScalarMultiplication(float[]vector, float scalar)
+    {
+        float x, y;
+
+        x = scalar * vector[0];
+        y = scalar * vector[1];
+
+        vectorResult = new float[] { x, y };
+        return vectorResult;
+    }
 }
