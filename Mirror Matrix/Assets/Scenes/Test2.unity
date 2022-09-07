@@ -13049,7 +13049,7 @@ MonoBehaviour:
   endV: {fileID: 1409029746}
   spaceship: {fileID: 1930624238}
   spaceshipTop: {fileID: 569453950}
-  scaleMultiplier: 1
+  scaleMultiplier: 0.4
 --- !u!1 &1521639294
 GameObject:
   m_ObjectHideFlags: 0

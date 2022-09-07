@@ -71,7 +71,8 @@ public class DisplayResults : MonoBehaviour
         spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // scale based on calculation
-
+        float scale = _maths.CalculateDistance(topPos, spaceship.transform.position);
+        spaceship.transform.localScale = new Vector3(scale, scale, scale);
 
 
         if (topPos != spaceshipTop.transform.position)

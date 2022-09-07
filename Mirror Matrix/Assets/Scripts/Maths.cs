@@ -59,9 +59,25 @@ public class Maths : MonoBehaviour
         return result;
     }
 
-    public void CalculateDistance()
+    public float CalculateDistance(Vector3 topPos, Vector3 spaceshipPos)
     {
+        Vector3 normPos = topPos - spaceshipPos;
+        float distance;
 
+        if (normPos.x == 0)
+        {
+            distance = normPos.y;
+        }
+        else if (normPos.y == 0)
+        {
+            distance = normPos.x;
+        }
+        else
+        {
+            distance = Mathf.Sqrt(normPos.x * normPos.x + normPos.y * normPos.y);
+        }
+
+        return distance;
     }
 
     public float CalculateRotation(Vector3 topPos, Vector3 spaceshipPos)
