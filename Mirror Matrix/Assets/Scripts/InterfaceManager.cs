@@ -28,6 +28,8 @@ public class InterfaceManager : MonoBehaviour
     private float[] spaceshipTop;
     private float[] spaceshipTopResult;
 
+    private float multiplier;
+
     private bool additionValue;
     private bool calculationSuccessful;
     private bool calcSpaceship;
@@ -80,6 +82,8 @@ public class InterfaceManager : MonoBehaviour
         {
             Debug.Log(gameObject + "can't find dropdown");
         }
+
+        multiplier = _display.Multiplier();
     }
 
     public void StartFreeFlow()
@@ -371,7 +375,7 @@ public class InterfaceManager : MonoBehaviour
         }
         
 
-        startV = new float[] { x, y };
+        startV = new float[] { x * multiplier, y * multiplier };
 
         //Debug.Log("x is " + x + " and y is " + y);
 
