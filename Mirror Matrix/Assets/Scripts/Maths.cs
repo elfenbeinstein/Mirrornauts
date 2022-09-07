@@ -44,4 +44,37 @@ public class Maths : MonoBehaviour
         vectorResult = new float[] { x, y };
         return vectorResult;
     }
+
+    public float ConvertToRadian(float value)
+    {
+        float result = value * Mathf.PI / 180;
+
+        return result;
+    }
+
+    public float ConvertFromRadian(float value)
+    {
+        float result = value * 180 / Mathf.PI;
+
+        return result;
+    }
+
+    public void CalculateDistance()
+    {
+
+    }
+
+    public float CalculateRotation(Vector3 topPos, Vector3 spaceshipPos)
+    {
+        Vector3 normPos = topPos - spaceshipPos;
+
+        float angle = normPos.y / Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
+        angle = Mathf.Asin(angle);
+
+        angle = ConvertFromRadian(angle);
+
+        angle -= 90;
+
+        return angle;
+    }
 }

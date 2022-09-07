@@ -26,13 +26,13 @@ public class InterfaceManager : MonoBehaviour
     private float scalar;
 
     private float[] spaceshipTop;
+    private float[] oldTop;
     private float[] spaceshipTopResult;
-
-    private float multiplier;
 
     private bool additionValue;
     private bool calculationSuccessful;
     private bool calcSpaceship;
+    private bool valueChanged;
 
     [Space]
     [Header("Starting Vector")]
@@ -76,16 +76,16 @@ public class InterfaceManager : MonoBehaviour
         {
             Debug.LogWarning(gameObject + " can't find display script");
         }
+        oldTop = _display.ShipTopCoordinates();
 
         dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
         if (dropdown == null)
         {
             Debug.Log(gameObject + "can't find dropdown");
         }
-
-        multiplier = _display.Multiplier();
     }
 
+    // obsolete
     public void StartFreeFlow()
     {
         calcSpaceship = false;
@@ -106,7 +106,15 @@ public class InterfaceManager : MonoBehaviour
     public void GoCalculation()
     {
         calcSpaceship = true;
-        spaceshipTop = _display.ShipTopCoordinates();
+        if (valueChanged)
+        {
+            spaceshipTop = _display.ShipTopCoordinates();
+            oldTop = spaceshipTop;
+        }
+        else
+        {
+            spaceshipTop = oldTop;
+        }
 
         Calculate();
         if (calculationSuccessful)
@@ -114,11 +122,14 @@ public class InterfaceManager : MonoBehaviour
             resultX.text = resultV[0].ToString();
             resultY.text = resultV[1].ToString();
             _display.UpdateDisplay(startV, resultV, spaceshipTopResult);
+            calcSpaceship = false;
         }
         else
         {
             Debug.LogWarning("something went wrong with the calculation");
         }
+
+        valueChanged = false;
     }
 
     public void DropDownMenu()
@@ -169,72 +180,18 @@ public class InterfaceManager : MonoBehaviour
     public void Calculate()
     {
         calculationSuccessful = false;
-        //Debug.Log("start calculation");
+
+        SetStartVector();
 
         float x = 0;
         float y = 0;
-
-        // START VECTOR
-        if (dropdown.value != 0)
-        {
-            x = 0;
-            y = 0;
-            if (vectorx.text == "" || vectory.text == "")
-            {
-                Debug.LogWarning("starting vector values missing, defaulting to zero");
-            }
-
-            if (vectorx.text != "")
-            {
-                x = float.Parse(vectorx.text);
-            }
-            else
-            {
-                vectorx.text = "0";
-            }
-            if (vectory.text != "")
-            {
-                y = float.Parse(vectory.text);
-            }
-            else
-            {
-                vectory.text = "0";
-            }
-            startV = new float[] { x, y };
-        }
 
         // ADDITION
         if (dropdown.value == 0)
         {
             x = 0;
             y = 0;
-            // check all boxes are filled or default to zero
-            if (startVx.text == "" || startVy.text == "" || vectorAddx.text == "" || vectorAddy.text == "")
-            {
-                Debug.LogWarning("missing values, defaulting to zero");
-                
-            }
 
-            if (startVx.text != "")
-            {
-                x = float.Parse(startVx.text);
-            }
-            else
-            {
-                startVx.text = "0";
-            }
-            if (startVy.text != "")
-            {
-                y = float.Parse(startVy.text);
-            }
-            else
-            {
-                startVy.text = "0";
-            }
-            startV = new float[] { x, y };
-
-            x = 0;
-            y = 0;
             if (vectorAddx.text != "")
             {
                 x = float.Parse(vectorAddx.text);
@@ -349,17 +306,33 @@ public class InterfaceManager : MonoBehaviour
 
     public void StartVectorValueChange()
     {
+        SetStartVector();
+        _display.UpdateSpaceshipStartV(startV);
+        valueChanged = true;
+    }
+
+    private void SetStartVector()
+    {
         float x = 0;
         float y = 0;
+
         if (dropdown.value != 0)
         {
             if (vectorx.text != "")
             {
                 x = float.Parse(vectorx.text);
             }
+            else
+            {
+                vectorx.text = "0";
+            }
             if (vectory.text != "")
             {
                 y = float.Parse(vectory.text);
+            }
+            else
+            {
+                vectory.text = "0";
             }
         }
         else
@@ -368,17 +341,27 @@ public class InterfaceManager : MonoBehaviour
             {
                 x = float.Parse(startVx.text);
             }
+            else
+            {
+                startVx.text = "0";
+            }
             if (startVy.text != "")
             {
                 y = float.Parse(startVy.text);
             }
+            else
+            {
+                startVy.text = "0";
+            }
         }
-        
 
-        startV = new float[] { x * multiplier, y * multiplier };
+        startV = new float[] { x, y };
+        valueChanged = true;
+    }
 
-        //Debug.Log("x is " + x + " and y is " + y);
-
-        _display.UpdateSpaceshipStartV(startV);
+    // called from button
+    public void ResetRotation()
+    {
+        _display.ResetRotation();
     }
 }
