@@ -56,6 +56,10 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resultX;
     [SerializeField] private TextMeshProUGUI resultY;
 
+    [Space]
+    public int turnCounter;
+    [SerializeField] private TextMeshProUGUI turnCounterText;
+
     void Start()
     {
         addition.SetActive(true);
@@ -65,6 +69,8 @@ public class InterfaceManager : MonoBehaviour
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
+        turnCounter = 0; // get from somewhere else maybe
+        turnCounterText.text = turnCounter.ToString();
 
         _maths = FindObjectOfType<Maths>();
         if (_maths == null)
@@ -130,6 +136,8 @@ public class InterfaceManager : MonoBehaviour
         }
 
         valueChanged = false;
+        turnCounter += 1;
+        turnCounterText.text = turnCounter.ToString();
     }
 
     public void DropDownMenu()
@@ -363,5 +371,14 @@ public class InterfaceManager : MonoBehaviour
     public void ResetRotation()
     {
         _display.ResetRotation();
+    }
+
+    public void SetStart() // take result and put it into start vector
+    {
+        startVx.text = resultV[0].ToString();
+        startVy.text = resultV[1].ToString();
+
+        vectorx.text = resultV[0].ToString();
+        vectory.text = resultV[1].ToString();
     }
 }
