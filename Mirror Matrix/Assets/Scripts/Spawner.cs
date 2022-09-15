@@ -18,15 +18,14 @@ public class Spawner : MonoBehaviour
 {
     public Spawn[] spawnUnits;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // keep List of active spawns so that I can access them later, maybe in turn amanager?
 
-    // Update is called once per frame
-    void Update()
+    public void Spawn()
     {
-        
+        // check current round
+
+        // check if a new spawn needs to be made
+
+        // turn on new game object + give rotation, position + tell it its stuff
     }
 }

@@ -59,6 +59,7 @@ public class InterfaceManager : MonoBehaviour
     [Space]
     public int turnCounter;
     [SerializeField] private TextMeshProUGUI turnCounterText;
+    [SerializeField] private Stats _stats;
 
     void Start()
     {
@@ -70,6 +71,7 @@ public class InterfaceManager : MonoBehaviour
         resultY.text = "";
         additionValue = true;
         turnCounter = 0; // get from somewhere else maybe
+        _stats.currentTurnCount = 0;
         turnCounterText.text = turnCounter.ToString();
 
         _maths = FindObjectOfType<Maths>();
@@ -137,6 +139,7 @@ public class InterfaceManager : MonoBehaviour
 
         valueChanged = false;
         turnCounter += 1;
+        _stats.currentTurnCount = turnCounter;
         turnCounterText.text = turnCounter.ToString();
     }
 
