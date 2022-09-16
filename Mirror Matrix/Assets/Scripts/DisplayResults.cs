@@ -15,10 +15,7 @@ public class DisplayResults : MonoBehaviour
 
     [SerializeField] private float scaleMultiplier = 1f;
 
-
     private Maths _maths;
-
-    // get arrowhead as well?
 
     private void Start()
     {
@@ -64,7 +61,7 @@ public class DisplayResults : MonoBehaviour
         // move spaceship
         spaceship.transform.position = new Vector3(vectorResult[0] * scaleMultiplier, vectorResult[1] * scaleMultiplier, 0);
 
-        // rotate based on new position -- MISSING
+        // rotate based on new position
         topPos = new Vector3(newTop[0], newTop[1], 0);
         float rotation = _maths.CalculateRotation(topPos, spaceship.transform.position);
 

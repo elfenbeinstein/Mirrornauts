@@ -2370,7 +2370,7 @@ GameObject:
   - component: {fileID: 812844235923286461}
   - component: {fileID: 812844235923286462}
   m_Layer: 5
-  m_Name: FF Input 1
+  m_Name: FF Input 1 -  obs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

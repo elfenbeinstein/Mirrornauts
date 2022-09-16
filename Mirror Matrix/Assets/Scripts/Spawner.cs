@@ -18,14 +18,12 @@ public class Spawner : MonoBehaviour
 {
     public Spawn[] spawnUnits;
 
-    // keep List of active spawns so that I can access them later, maybe in turn amanager?
-
     public void Spawn()
     {
         // check current round
 
         // check if a new spawn needs to be made
 
-        // turn on new game object + give rotation, position + tell it its stuff
+        // turn on new game object + make it set up (send to set up in object behaviour script)
     }
 }

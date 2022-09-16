@@ -60,6 +60,7 @@ public class InterfaceManager : MonoBehaviour
     public int turnCounter;
     [SerializeField] private TextMeshProUGUI turnCounterText;
     [SerializeField] private Stats _stats;
+    [SerializeField] private TurnManager _turnManager;
 
     void Start()
     {
@@ -67,12 +68,14 @@ public class InterfaceManager : MonoBehaviour
         vectorObject.SetActive(false);
         multiplication.SetActive(false);
         scalarObject.SetActive(false);
+
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
+
         turnCounter = 0; // get from somewhere else maybe
-        _stats.currentTurnCount = 0;
-        turnCounterText.text = turnCounter.ToString();
+        _turnManager.turnCounter = turnCounter;
+        UpdateTurnCounterDisplay(turnCounter);
 
         _maths = FindObjectOfType<Maths>();
         if (_maths == null)
@@ -129,7 +132,9 @@ public class InterfaceManager : MonoBehaviour
         {
             resultX.text = resultV[0].ToString();
             resultY.text = resultV[1].ToString();
+
             _display.UpdateDisplay(startV, resultV, spaceshipTopResult);
+
             calcSpaceship = false;
         }
         else
@@ -139,8 +144,8 @@ public class InterfaceManager : MonoBehaviour
 
         valueChanged = false;
         turnCounter += 1;
-        _stats.currentTurnCount = turnCounter;
-        turnCounterText.text = turnCounter.ToString();
+        _turnManager.turnCounter = turnCounter;
+        UpdateTurnCounterDisplay(turnCounter);
     }
 
     public void DropDownMenu()
@@ -200,6 +205,7 @@ public class InterfaceManager : MonoBehaviour
         // ADDITION
         if (dropdown.value == 0)
         {
+            #region Get Values From Interface
             x = 0;
             y = 0;
 
@@ -220,17 +226,21 @@ public class InterfaceManager : MonoBehaviour
                 vectorAddy.text = "0";
             }
             addV = new float[] { x, y };
+            #endregion
 
             resultV = _maths.Addition(startV, addV, additionValue);
+
             if (calcSpaceship)
             {
                 spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
             }
+
             calculationSuccessful = true;
         }
         // MULTIPLICATION
         else if (dropdown.value == 1)
         {
+            #region Get Values From Interface
             if (matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
             {
                 Debug.LogWarning("missing matrix values, defaulting to zero");
@@ -273,17 +283,21 @@ public class InterfaceManager : MonoBehaviour
                 matrixY2.text = "0";
             }
             matrix = new float[] { x, x2, y, y2 };
+            #endregion
 
             resultV = _maths.Multiplication(startV, matrix);
+
             if (calcSpaceship)
             {
                 spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
             }
+
             calculationSuccessful = true;
         }
         // SCALAR MULTIPLICATION
         else if (dropdown.value == 2)
         {
+            #region Get Values From Interface
             x = 0;
             y = 0;
 
@@ -300,12 +314,15 @@ public class InterfaceManager : MonoBehaviour
             {
                 scalarInput.text = "0";
             }
+            #endregion
 
             resultV = _maths.ScalarMultiplication(startV, scalar);
+
             if (calcSpaceship)
             {
                 spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
             }
+
             calculationSuccessful = true;
         }
         else
@@ -383,5 +400,13 @@ public class InterfaceManager : MonoBehaviour
 
         vectorx.text = resultV[0].ToString();
         vectory.text = resultV[1].ToString();
+
+        resultX.text = "";
+        resultY.text = "";
+    }
+
+    public void UpdateTurnCounterDisplay(int value)
+    {
+        turnCounterText.text = value.ToString();
     }
 }

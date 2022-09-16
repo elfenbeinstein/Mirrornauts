@@ -10,7 +10,6 @@ public class ObjectBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject _collider;
     [SerializeField] private SpriteRenderer countdownRenderer;
-    [SerializeField] private SpriteRenderer _bodyRenderer;
 
     private int round;
     private int countdown;
@@ -19,29 +18,95 @@ public class ObjectBehaviour : MonoBehaviour
     private Vector3 spawnPosition;
     private Vector3 spawnRotation;
 
+    private TurnManager _turnManager;
+
+    private bool isCounting;
+    private bool isLifting;
     // --> update countdown/liftoff sprite
     // --> update visuals & collider
 
     // maybe update alpha based on max/min values (100 / turns it waits; min is 20, max is based on other # before it turns to 100)
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // for testing:
+        isCounting = true;
+        round = 4;
+        countdown = 4;
+        liftoff = 4;
+        spawnPosition = new Vector3(1, 1, 1);
+        spawnRotation = new Vector3(0, 0, 0.5f);
+
+        gameObject.transform.position = spawnPosition;
+        gameObject.transform.eulerAngles = spawnRotation;
+        countdownRenderer.sprite = _stats.countdownNumbers[countdown];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void GetVariables(int _round, int _countdown, int _liftoff, Vector3 _position, Vector3 _rotation)
+    
+    public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Vector3 _rotation, TurnManager _script)
     {
         round = _round;
         countdown = _countdown;
         liftoff = _liftoff;
         spawnPosition = _position;
         spawnRotation = _rotation;
+        _turnManager = _script;
+
+        // set up position & rotation
+        gameObject.transform.position = _position;
+        gameObject.transform.eulerAngles = _rotation;
+
+        // set countdown (number in corner)
+        countdownRenderer.sprite = _stats.countdownNumbers[countdown];
+
+        isCounting = true;
+        isLifting = false;
+    }
+
+    public void NextTurn(int currentRound)
+    {
+        if (isCounting)
+        {
+            if (round - currentRound == 0)
+            {
+                // turn on collider
+                // udpate body visuals
+                // now active
+
+                countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
+                isCounting = false;
+                isLifting = true;
+            }
+            else
+            {
+                // update countdown
+                countdownRenderer.sprite = _stats.countdownNumbers[round - currentRound];
+            }
+        }
+        else if (isLifting)
+        {
+            if (currentRound - round - liftoff >= 0)
+            {
+                DeleteSelf();
+            }
+            else
+            {
+                countdownRenderer.sprite = _stats.countdownNumbers[(currentRound - round - liftoff) * -1];
+            }
+        }
+        else
+        {
+            Debug.Log("error in if statement of object behaviour script");
+        }
+    }
+
+    public void DeleteSelf()
+    {
+        // tell turn manager to delete itself from list
+        // work around for testing
+        _turnManager = FindObjectOfType<TurnManager>();
+        //_turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
+
+        gameObject.SetActive(false);
     }
 }
