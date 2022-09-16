@@ -22,10 +22,6 @@ public class ObjectBehaviour : MonoBehaviour
 
     private bool isCounting;
     private bool isLifting;
-    // --> update countdown/liftoff sprite
-    // --> update visuals & collider
-
-    // maybe update alpha based on max/min values (100 / turns it waits; min is 20, max is based on other # before it turns to 100)
 
     void Start()
     {
@@ -40,6 +36,7 @@ public class ObjectBehaviour : MonoBehaviour
         gameObject.transform.position = spawnPosition;
         gameObject.transform.eulerAngles = spawnRotation;
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
+        _collider.SetActive(false);
     }
 
     
@@ -58,6 +55,7 @@ public class ObjectBehaviour : MonoBehaviour
 
         // set countdown (number in corner)
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
+        _collider.SetActive(false);
 
         isCounting = true;
         isLifting = false;
@@ -69,11 +67,11 @@ public class ObjectBehaviour : MonoBehaviour
         {
             if (round - currentRound == 0)
             {
-                // turn on collider
-                // udpate body visuals
-                // now active
-
+                _collider.SetActive(true);
                 countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
+
+                // MISSING: update look of the spawn
+
                 isCounting = false;
                 isLifting = true;
             }
@@ -107,6 +105,6 @@ public class ObjectBehaviour : MonoBehaviour
         _turnManager = FindObjectOfType<TurnManager>();
         //_turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
 
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); // ideally deletes itself
     }
 }
