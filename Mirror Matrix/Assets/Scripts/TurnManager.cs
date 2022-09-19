@@ -10,36 +10,67 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> activeSpawns;
 
     [SerializeField] private InterfaceManager _interfaceManager;
+    [SerializeField] private Spawner _spawner;
+
+    private List<ObjectBehaviour> spawnsToAdd;
+    private List<ObjectBehaviour> spawnsToDelete;
 
     public void Go()
     {
-        // calculate new space ship position
-        //_interfaceManager.GoCalculation();
-        // turn off spaceship collider or gameObject
+        spawnsToAdd = new List<ObjectBehaviour>();
+        spawnsToDelete = new List<ObjectBehaviour>();
+        spawnsToAdd.Clear();
+        spawnsToDelete.Clear();
 
-        // spawn + update hazards + collectibles
+        turnCounter += 1;
+
+        // turn off spaceship collider or gameObject
+        _interfaceManager.SpaceshipCollider(false);
+
+        // move spaceship
+        _interfaceManager.MoveSpaceship();
+
+        // tell spawner to spawn new hazards
+        _spawner.Spawn(turnCounter);
+
+        // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
         {
-            if (spawn.gameObject.activeInHierarchy)
+            if (spawn.gameObject != null)
             {
                 spawn.NextTurn(turnCounter);
             }
         }
+        // add and remove all to list
+        if (spawnsToAdd.Count != 0)
+        {
+            foreach (ObjectBehaviour item in spawnsToAdd)
+            {
+                activeSpawns.Add(item);
+            }
+        }
+        if (spawnsToDelete.Count != 0)
+        {
+            foreach (ObjectBehaviour item in spawnsToDelete)
+            {
+                activeSpawns.Remove(item);
+            }
+        }
 
-        // turn on and move spaceship
+        // turn on spaceship collider
+        _interfaceManager.SpaceshipCollider(true);
 
         // check for collision
 
-        // update turn counter
     }
 
     public void AddSpawn(ObjectBehaviour spawn)
     {
-        activeSpawns.Add(spawn);
+        spawnsToAdd.Add(spawn);
     }
 
     public void RemoveSpawn(ObjectBehaviour spawn)
     {
-        activeSpawns.Remove(spawn);
+        spawnsToDelete.Add(spawn);
     }
 }

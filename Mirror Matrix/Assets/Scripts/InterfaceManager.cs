@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 using TMPro;
-using System.Globalization;
+//using System.Globalization;
 
 public class InterfaceManager : MonoBehaviour
 {
@@ -114,7 +114,7 @@ public class InterfaceManager : MonoBehaviour
         }
     }
 
-    public void GoCalculation()
+    public void MoveSpaceship()
     {
         calcSpaceship = true;
         if (valueChanged)
@@ -128,6 +128,8 @@ public class InterfaceManager : MonoBehaviour
         }
 
         Calculate();
+
+        // move spaceship
         if (calculationSuccessful)
         {
             resultX.text = resultV[0].ToString();
@@ -143,8 +145,7 @@ public class InterfaceManager : MonoBehaviour
         }
 
         valueChanged = false;
-        turnCounter += 1;
-        _turnManager.turnCounter = turnCounter;
+        turnCounter = _turnManager.turnCounter;
         UpdateTurnCounterDisplay(turnCounter);
     }
 
@@ -408,5 +409,10 @@ public class InterfaceManager : MonoBehaviour
     public void UpdateTurnCounterDisplay(int value)
     {
         turnCounterText.text = value.ToString();
+    }
+
+    public void SpaceshipCollider(bool value)
+    {
+        _display._spaceshipCollider.SetActive(value);
     }
 }

@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+//using UnityEngine.UI;
+//using TMPro;
 
 public class ObjectBehaviour : MonoBehaviour
 {
@@ -26,6 +26,7 @@ public class ObjectBehaviour : MonoBehaviour
     void Start()
     {
         // for testing:
+        /*
         isCounting = true;
         round = 4;
         countdown = 4;
@@ -36,7 +37,7 @@ public class ObjectBehaviour : MonoBehaviour
         gameObject.transform.position = spawnPosition;
         gameObject.transform.eulerAngles = spawnRotation;
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
-        _collider.SetActive(false);
+        _collider.SetActive(false);*/
     }
 
     
@@ -85,7 +86,7 @@ public class ObjectBehaviour : MonoBehaviour
         {
             if (currentRound - round - liftoff >= 0)
             {
-                DeleteSelf();
+                RemoveSelfFromList();
             }
             else
             {
@@ -98,13 +99,15 @@ public class ObjectBehaviour : MonoBehaviour
         }
     }
 
-    public void DeleteSelf()
+    public void RemoveSelfFromList()
     {
-        // tell turn manager to delete itself from list
-        // work around for testing
-        _turnManager = FindObjectOfType<TurnManager>();
-        //_turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
+        if (_turnManager == null)
+        {
+            _turnManager = FindObjectOfType<TurnManager>();
+        }
 
-        gameObject.SetActive(false); // ideally deletes itself
+        _turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
+        //gameObject.SetActive(false); -- obsolete, for testing
+        Destroy(this.gameObject);
     }
 }

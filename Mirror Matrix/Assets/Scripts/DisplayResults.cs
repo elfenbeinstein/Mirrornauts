@@ -11,6 +11,7 @@ public class DisplayResults : MonoBehaviour
 
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
+    public GameObject _spaceshipCollider;
     private Vector3 topPos;
 
     [SerializeField] private float scaleMultiplier = 1f;
