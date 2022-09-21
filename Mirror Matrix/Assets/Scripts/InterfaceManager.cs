@@ -117,6 +117,7 @@ public class InterfaceManager : MonoBehaviour
     public void MoveSpaceship()
     {
         calcSpaceship = true;
+        
         if (valueChanged)
         {
             spaceshipTop = _display.ShipTopCoordinates();
@@ -414,5 +415,17 @@ public class InterfaceManager : MonoBehaviour
     public void SpaceshipCollider(bool value)
     {
         _display._spaceshipCollider.SetActive(value);
+    }
+
+    public bool AdditionCalc()
+    {
+        if (dropdown.value == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

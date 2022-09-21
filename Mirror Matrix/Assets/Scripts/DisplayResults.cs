@@ -17,6 +17,7 @@ public class DisplayResults : MonoBehaviour
     [SerializeField] private float scaleMultiplier = 1f;
 
     private Maths _maths;
+    private InterfaceManager _interfaceManager;
 
     private void Start()
     {
@@ -32,6 +33,8 @@ public class DisplayResults : MonoBehaviour
         {
             Debug.LogWarning(gameObject + " can't find maths script");
         }
+
+        _interfaceManager = FindObjectOfType<InterfaceManager>();
 
         /*
         float value = 1 / Mathf.Sqrt(2);
@@ -62,16 +65,19 @@ public class DisplayResults : MonoBehaviour
         // move spaceship
         spaceship.transform.position = new Vector3(vectorResult[0] * scaleMultiplier, vectorResult[1] * scaleMultiplier, 0);
 
-        // rotate based on new position
-        topPos = new Vector3(newTop[0], newTop[1], 0);
-        float rotation = _maths.CalculateRotation(topPos, spaceship.transform.position);
+        bool addition = _interfaceManager.AdditionCalc();
+        if (!addition)
+        {
+            // rotate based on new position
+            topPos = new Vector3(newTop[0], newTop[1], 0);
+            float rotation = _maths.CalculateRotation(topPos, spaceship.transform.position);
 
-        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+            spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
-        // scale based on calculation
-        float scale = _maths.CalculateDistance(topPos, spaceship.transform.position);
-        spaceship.transform.localScale = new Vector3(scale, scale, scale);
-
+            // scale based on calculation
+            float scale = _maths.CalculateDistance(topPos, spaceship.transform.position);
+            spaceship.transform.localScale = new Vector3(scale, scale, scale);
+        }
 
         if (topPos != spaceshipTop.transform.position)
         {

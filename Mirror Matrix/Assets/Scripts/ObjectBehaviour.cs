@@ -11,6 +11,9 @@ public class ObjectBehaviour : MonoBehaviour
     [SerializeField] private GameObject _collider;
     [SerializeField] private SpriteRenderer countdownRenderer;
 
+    [SerializeField] private GameObject _filling;
+    [SerializeField] private GameObject _frame;
+
     private int round;
     private int countdown;
     private int liftoff;
@@ -58,6 +61,10 @@ public class ObjectBehaviour : MonoBehaviour
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
         _collider.SetActive(false);
 
+        // set up visuals
+        _frame.SetActive(true);
+        _filling.SetActive(false);
+
         isCounting = true;
         isLifting = false;
     }
@@ -71,7 +78,7 @@ public class ObjectBehaviour : MonoBehaviour
                 _collider.SetActive(true);
                 countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
 
-                // MISSING: update look of the spawn
+                _filling.SetActive(true);
 
                 isCounting = false;
                 isLifting = true;
