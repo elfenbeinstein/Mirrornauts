@@ -73,13 +73,13 @@ public class SpaceshipBehaviour : MonoBehaviour
         Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
         float rotation = _maths.CalculateRotation(topPos, shipPos);
 
-        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+        //spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // scale based on calculation
         float scale = _maths.CalculateDistance(topPos, shipPos);
-        spaceship.transform.localScale = new Vector3(scale, scale, scale); 
+        //spaceship.transform.localScale = new Vector3(scale, scale, scale); 
 
-        if (topPos != spaceshipTop.transform.position)
+        if (topPos != spaceshipTop.transform.position * scaleMultiplier)
         {
             Debug.LogWarning("incorrect rotation/scaling");
             Debug.Log("new top pos should be: " + newTop[0] + ", " + newTop[1]);

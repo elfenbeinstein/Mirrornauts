@@ -84,14 +84,29 @@ public class Maths : MonoBehaviour
     public float CalculateRotation(Vector3 topPos, Vector3 spaceshipPos)
     {
         Vector3 normPos = topPos - spaceshipPos;
+        float angle;
 
-        float angle = normPos.y / Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
-        angle = Mathf.Asin(angle);
+        if (normPos.x == 0)
+        {
+            if (normPos.y < 0)
+            {
+                angle = 180;
+            }
+            else
+            {
+                angle = 0;
+            }
+        }
+        else
+        {
+            angle = normPos.y / Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
+            angle = Mathf.Asin(angle);
 
-        angle = ConvertFromRadian(angle);
+            angle = ConvertFromRadian(angle);
 
-        angle -= 90;
-
+            angle -= 90;
+        }
+        
         return angle;
     }
 }
