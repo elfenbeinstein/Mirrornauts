@@ -11,33 +11,17 @@ public class InputFreeFlow : MonoBehaviour
     [SerializeField] private GameObject scalarObject;
     [SerializeField] private GameObject vectorObject;
 
+    // elements that adjust the input system 
     [Space]
     [SerializeField] private GameObject dropdownMenu;
     private TMPro.TMP_Dropdown dropdown;
-    [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private TextMeshProUGUI additionButtonText; // + or -
 
-    private Maths _maths;
-    private DisplayResults _display;
-    private float[] startV;
-    private float[] addV;
-    private float[] matrix;
-    private float[] resultV;
-    private float scalar;
-
-    private bool additionValue;
-
-    [SerializeField]
-    private float[] spaceshipTop;
-    [SerializeField]
-    private float[] oldTop;
-    [SerializeField]
-    private float[] spaceshipTopResult;
-
+    // input fields:
     [Space]
     [Header("Starting Vector")]
     [SerializeField] private TMPro.TMP_InputField vectorx;
     [SerializeField] private TMPro.TMP_InputField vectory;
-
     [Header("Addition:")]
     [SerializeField] private TMPro.TMP_InputField vectorAddx;
     [SerializeField] private TMPro.TMP_InputField vectorAddy;
@@ -54,7 +38,11 @@ public class InputFreeFlow : MonoBehaviour
     [Header("Result:")]
     [SerializeField] private TextMeshProUGUI resultX;
     [SerializeField] private TextMeshProUGUI resultY;
+
+    private SpaceshipBehaviour _spaceshipBehaviour;
     
+    private bool additionValue;
+
     void Start()
     {
         addition.SetActive(true);
@@ -66,25 +54,19 @@ public class InputFreeFlow : MonoBehaviour
         resultY.text = "";
         additionValue = true;
 
-        _maths = FindObjectOfType<Maths>();
-        if (_maths == null)
-        {
-            Debug.LogWarning(gameObject + " can't find maths script");
-        }
-        _display = FindObjectOfType<DisplayResults>();
-        if (_display == null)
-        {
-            Debug.LogWarning(gameObject + " can't find display script");
-        }
-        oldTop = _display.ShipTopCoordinates();
-
         dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
         if (dropdown == null)
         {
             Debug.Log(gameObject + "can't find dropdown");
         }
+        _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
+        if (_spaceshipBehaviour == null)
+        {
+            Debug.LogWarning(gameObject + " can't find display script");
+        }
     }
 
+    // called from menu
     public void DropDownMenu()
     {
         if (dropdown.value == 0)
@@ -114,18 +96,207 @@ public class InputFreeFlow : MonoBehaviour
         }
     }
 
-    public void GetStartVector()
+    // called from button
+    public void AdditionButton()
     {
+        if (additionButtonText.text == "+")
+        {
+            additionButtonText.text = "-";
 
+            additionValue = false;
+        }
+        else
+        {
+            additionButtonText.text = "+";
+
+            additionValue = true;
+        }
     }
 
-    public void GetAddVector()
+    //called from start vector fields
+    public void StartVectorValueChange()
     {
-
+        float[] vectorValue = GetStartVector();
+        _spaceshipBehaviour.MoveSpaceship(vectorValue);
+        /*
+        vectorValue = _spaceshipBehaviour.ShipTopCoordinates();
+        Debug.Log("current ship top pos = " + vectorValue[0] + ", " + vectorValue[1]);
+        */
     }
 
-    public void GetMatrixValues()
+    // called from button
+    public void ResetRotation()
     {
+        _spaceshipBehaviour.ResetRotation();
+    }
 
+    // called from button
+    public void ResetStart() 
+    {
+        float[] value = _spaceshipBehaviour.SpaceshipCoordinates();
+        
+        startVx.text = value[0].ToString();
+        startVy.text = value[1].ToString();
+
+        vectorx.text = value[0].ToString();
+        vectory.text = value[1].ToString();
+
+        resultX.text = "";
+        resultY.text = "";
+    }
+
+    public void WriteResultVector(float[] result)
+    {
+        resultX.text = result[0].ToString();
+        resultY.text = result[1].ToString();
+    }
+
+    public float[] GetStartVector()
+    {
+        float x = 0;
+        float y = 0;
+
+        if (dropdown.value != 0)
+        {
+            if (vectorx.text != "")
+            {
+                x = float.Parse(vectorx.text);
+            }
+            else
+            {
+                vectorx.text = "0";
+            }
+            if (vectory.text != "")
+            {
+                y = float.Parse(vectory.text);
+            }
+            else
+            {
+                vectory.text = "0";
+            }
+        }
+        else
+        {
+            if (startVx.text != "")
+            {
+                x = float.Parse(startVx.text);
+            }
+            else
+            {
+                startVx.text = "0";
+            }
+            if (startVy.text != "")
+            {
+                y = float.Parse(startVy.text);
+            }
+            else
+            {
+                startVy.text = "0";
+            }
+        }
+        float[] startVectorValue = new float[] { x, y };
+        return startVectorValue;
+    }
+
+    public float[] GetAddVector()
+    {
+        float x = 0;
+        float y = 0;
+
+        if (vectorAddx.text != "")
+        {
+            x = float.Parse(vectorAddx.text);
+        }
+        else
+        {
+            vectorAddx.text = "0";
+        }
+        if (vectorAddy.text != "")
+        {
+            y = float.Parse(vectorAddy.text);
+        }
+        else
+        {
+            vectorAddy.text = "0";
+        }
+
+        float[] addVectorValue = new float[] { x, y };
+        return addVectorValue;
+    }
+
+    public float[] GetMatrixValues()
+    {
+        if (matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
+        {
+            Debug.LogWarning("missing matrix values, defaulting to zero");
+        }
+
+        float x = 0;
+        float y = 0;
+        float x2 = 0;
+        float y2 = 0;
+
+        if (matrixX1.text != "")
+        {
+            x = float.Parse(matrixX1.text);
+        }
+        else
+        {
+            matrixX1.text = "0";
+        }
+        if (matrixX2.text != "")
+        {
+            x2 = float.Parse(matrixX2.text);
+        }
+        else
+        {
+            matrixX2.text = "0";
+        }
+        if (matrixY1.text != "")
+        {
+            y = float.Parse(matrixY1.text);
+        }
+        else
+        {
+            matrixY1.text = "0";
+        }
+        if (matrixY2.text != "")
+        {
+            y2 = float.Parse(matrixY2.text);
+        }
+        else
+        {
+            matrixY2.text = "0";
+        }
+        float[] matrix = new float[] { x, x2, y, y2 };
+
+        return matrix;
+    }
+
+    public float GetScalarMultiplier()
+    {
+        float x = 0;
+
+        if (scalarInput.text == "")
+        {
+            Debug.LogWarning(" missing scalar value in boxes, defaulting to zero");
+            scalarInput.text = "0";
+        }
+        else
+        {
+            x = float.Parse(scalarInput.text);
+        }
+
+        return x;
+    }
+
+    public int GetCalculationType()
+    {
+        return dropdown.value;
+    }
+
+    public bool AdditionValue()
+    {
+        return additionValue;
     }
 }

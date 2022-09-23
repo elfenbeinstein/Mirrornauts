@@ -20347,6 +20347,10 @@ PrefabInstance:
       propertyPath: activeSpawns.Array.data[0]
       value: 
       objectReference: {fileID: 358138846}
+    - target: {fileID: 2879288960516700639, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
+      propertyPath: m_Name
+      value: ResetStart
+      objectReference: {fileID: 0}
     - target: {fileID: 4914896936603827568, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
       propertyPath: m_fontSizeBase
       value: 36
@@ -20458,6 +20462,10 @@ PrefabInstance:
     - target: {fileID: 4914896937624719559, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396128779116126558, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
+      propertyPath: m_Name
+      value: Rotation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}

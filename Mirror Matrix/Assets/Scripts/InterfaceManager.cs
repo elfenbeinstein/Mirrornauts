@@ -7,210 +7,109 @@ using TMPro;
 
 public class InterfaceManager : MonoBehaviour
 {
-    // rewrite script:
+    [SerializeField] private TextMeshProUGUI turnCounterText;
+    [SerializeField] private GameObject turnCounterObject;
 
-    // methods: GoFreeFlow, GoGameMode for buttons pressed
-
-    // get values from InputFreeFlow or InputDragDrop
-
-    [SerializeField] private InputFreeFlow _inputFreeFlow;
-
-
-
-
-
-
-
-
-
-    [SerializeField] private GameObject addition;
-    [SerializeField] private GameObject multiplication;
-    [SerializeField] private GameObject scalarObject;
-    [SerializeField] private GameObject vectorObject;
-
+    // Scripts
     [Space]
-    [SerializeField] private GameObject dropdownMenu;
-    private TMPro.TMP_Dropdown dropdown;
-    [SerializeField] private TextMeshProUGUI buttonText;
-
+    [SerializeField] private InputFreeFlow _inputFreeFlow;
+    [SerializeField] private Stats _stats;
+    [SerializeField] private TurnManager _turnManager;
     private Maths _maths;
-    private DisplayResults _display;
+    private SpaceshipBehaviour _spaceshipBehaviour;
+
     private float[] startV;
     private float[] addV;
     private float[] matrix;
     private float[] resultV;
     private float scalar;
 
-    [SerializeField]
     private float[] spaceshipTop;
-    [SerializeField]
-    private float[] oldTop;
-    [SerializeField]
     private float[] spaceshipTopResult;
 
+    public bool freeFlowMode;
     private bool additionValue;
     private bool calculationSuccessful;
-    private bool calcSpaceship;
-    private bool valueChanged;
+    private int calculationType;
+    
 
-    [Space]
-    [Header("Starting Vector")]
-    [SerializeField] private TMPro.TMP_InputField vectorx;
-    [SerializeField] private TMPro.TMP_InputField vectory;
-
-    [Header("Addition:")]
-    [SerializeField] private TMPro.TMP_InputField vectorAddx;
-    [SerializeField] private TMPro.TMP_InputField vectorAddy;
-    [SerializeField] private TMPro.TMP_InputField startVx;
-    [SerializeField] private TMPro.TMP_InputField startVy;
-    [Header("Multiplication:")]
-    [SerializeField] private TMPro.TMP_InputField matrixX1;
-    [SerializeField] private TMPro.TMP_InputField matrixX2;
-    [SerializeField] private TMPro.TMP_InputField matrixY1;
-    [SerializeField] private TMPro.TMP_InputField matrixY2;
-    [Header("Scalar:")]
-    [SerializeField] private TMPro.TMP_InputField scalarInput;
-    [Space]
-    [Header("Result:")]
-    [SerializeField] private TextMeshProUGUI resultX;
-    [SerializeField] private TextMeshProUGUI resultY;
-
-    [Space]
-    public int turnCounter;
-    [SerializeField] private TextMeshProUGUI turnCounterText;
-    [SerializeField] private Stats _stats;
-    [SerializeField] private TurnManager _turnManager;
 
     void Start()
     {
-        addition.SetActive(true);
-        vectorObject.SetActive(false);
-        multiplication.SetActive(false);
-        scalarObject.SetActive(false);
-
-        resultX.text = "";
-        resultY.text = "";
-        additionValue = true;
-
-        turnCounter = 0; // get from somewhere else maybe
-        _turnManager.turnCounter = turnCounter;
-        UpdateTurnCounterDisplay(turnCounter);
-
         _maths = FindObjectOfType<Maths>();
         if (_maths == null)
         {
             Debug.LogWarning(gameObject + " can't find maths script");
         }
-        _display = FindObjectOfType<DisplayResults>();
-        if (_display == null)
+        _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
+        if (_spaceshipBehaviour == null)
         {
             Debug.LogWarning(gameObject + " can't find display script");
         }
-        oldTop = _display.ShipTopCoordinates();
 
-        dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
-        if (dropdown == null)
+        /* -- turn back on once game mode possible
+        if (freeFlowMode)
         {
-            Debug.Log(gameObject + "can't find dropdown");
-        }
-    }
-
-    // obsolete
-    public void StartFreeFlow()
-    {
-        calcSpaceship = false;
-        Calculate();
-        if (calculationSuccessful)
-        {
-            resultX.text = resultV[0].ToString();
-            resultY.text = resultV[1].ToString();
-
-            _display.UpdateDisplayFreeFlow(startV, resultV);
-        }
-        else
-        {
-            Debug.LogWarning("something went wrong with the calculation");
-        }
-    }
-
-    public void MoveSpaceship()
-    {
-        calcSpaceship = true;
-        
-        if (valueChanged)
-        {
-            spaceshipTop = _display.ShipTopCoordinates();
-            oldTop = spaceshipTop;
-        }
-        else
-        {
-            spaceshipTop = oldTop;
-        }
-
-        Calculate();
-
-        // move spaceship
-        if (calculationSuccessful)
-        {
-            resultX.text = resultV[0].ToString();
-            resultY.text = resultV[1].ToString();
-
-            _display.UpdateDisplay(startV, resultV, spaceshipTopResult);
-
-            calcSpaceship = false;
-        }
-        else
-        {
-            Debug.LogWarning("something went wrong with the calculation");
-        }
-
-        valueChanged = false;
-        turnCounter = _turnManager.turnCounter;
-        UpdateTurnCounterDisplay(turnCounter);
-    }
-
-    public void DropDownMenu()
-    {
-        if (dropdown.value == 0)
-        {
-            addition.SetActive(true);
-            vectorObject.SetActive(false);
-            multiplication.SetActive(false);
-            scalarObject.SetActive(false);
-        }
-        else if (dropdown.value == 1)
-        {
-            multiplication.SetActive(true);
-            vectorObject.SetActive(true);
-            scalarObject.SetActive(false);
-            addition.SetActive(false);
-        }
-        else if (dropdown.value == 2)
-        {
-            scalarObject.SetActive(true);
-            vectorObject.SetActive(true);
-            multiplication.SetActive(false);
-            addition.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("error in dropdown menu");
-        }
-    }
-
-    public void AdditionButton()
-    {
-        if (buttonText.text == "+")
-        {
-            buttonText.text = "-";
-
-            additionValue = false;
-        }
-        else
-        {
-            buttonText.text = "+";
-
+            turnCounterObject.SetActive(false);
             additionValue = true;
+        }
+        else
+        {
+            turnCounterObject.SetActive(true);
+        }*/
+    }
+
+    public void UpdateTurnCounterDisplay(int value)
+    {
+        if (!turnCounterObject.activeInHierarchy)
+        {
+            turnCounterObject.SetActive(true);
+        }
+        turnCounterText.text = value.ToString();
+    }
+
+    public void SpaceshipCollider(bool value)
+    {
+        _spaceshipBehaviour._spaceshipCollider.SetActive(value);
+    }
+
+    public void CollectValues()
+    {
+        if (freeFlowMode)
+        {
+            // get start vector
+            startV = _inputFreeFlow.GetStartVector();
+
+            // move spaceship to start vector
+            _spaceshipBehaviour.MoveSpaceship(startV);
+            // get spaceship top from current position
+            spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
+
+            // get type of calculation and get corresponding values
+            calculationType = _inputFreeFlow.GetCalculationType();
+
+            if (calculationType == 0) // Addition
+            {
+                additionValue = _inputFreeFlow.AdditionValue();
+                addV = _inputFreeFlow.GetAddVector();
+
+            }
+            else if (calculationType == 1) // Multiplication
+            {
+                matrix = _inputFreeFlow.GetMatrixValues();
+            }
+            else if (calculationType == 2) // Scalar Multiplication
+            {
+                scalar = _inputFreeFlow.GetScalarMultiplier();
+            }
+        }
+        else
+        {
+            // get current spaceship position (startV) and spaceship top position
+            startV = _spaceshipBehaviour.SpaceshipCoordinates();
+            spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
+
+            // get type of calculation + values (from different input script)
         }
     }
 
@@ -218,132 +117,22 @@ public class InterfaceManager : MonoBehaviour
     {
         calculationSuccessful = false;
 
-        SetStartVector();
-
-        float x = 0;
-        float y = 0;
-
-        // ADDITION
-        if (dropdown.value == 0)
+        if (calculationType == 0) // Addition
         {
-            #region Get Values From Interface
-            x = 0;
-            y = 0;
-
-            if (vectorAddx.text != "")
-            {
-                x = float.Parse(vectorAddx.text);
-            }
-            else
-            {
-                vectorAddx.text = "0";
-            }
-            if (vectorAddy.text != "")
-            {
-                y = float.Parse(vectorAddy.text);
-            }
-            else
-            {
-                vectorAddy.text = "0";
-            }
-            addV = new float[] { x, y };
-            #endregion
-
             resultV = _maths.Addition(startV, addV, additionValue);
-
-            if (calcSpaceship)
-            {
-                spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
-            }
-
+            spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
             calculationSuccessful = true;
         }
-        // MULTIPLICATION
-        else if (dropdown.value == 1)
+        else if (calculationType == 1) // Multiplication
         {
-            #region Get Values From Interface
-            if (matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
-            {
-                Debug.LogWarning("missing matrix values, defaulting to zero");
-            }
-
-            x = 0;
-            y = 0;
-            float x2 = 0;
-            float y2 = 0;
-            if (matrixX1.text != "")
-            {
-                x = float.Parse(matrixX1.text);
-            }
-            else
-            {
-                matrixX1.text = "0";
-            }
-            if (matrixX2.text != "")
-            {
-                x2 = float.Parse(matrixX2.text);
-            }
-            else
-            {
-                matrixX2.text = "0";
-            }
-            if (matrixY1.text != "")
-            {
-                y = float.Parse(matrixY1.text);
-            }
-            else
-            {
-                matrixY1.text = "0";
-            }
-            if (matrixY2.text != "")
-            {
-                y2 = float.Parse(matrixY2.text);
-            }
-            else
-            {
-                matrixY2.text = "0";
-            }
-            matrix = new float[] { x, x2, y, y2 };
-            #endregion
-
             resultV = _maths.Multiplication(startV, matrix);
-
-            if (calcSpaceship)
-            {
-                spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
-            }
-
+            spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
             calculationSuccessful = true;
         }
-        // SCALAR MULTIPLICATION
-        else if (dropdown.value == 2)
+        else if (calculationType == 2) // Scalar Multiplication
         {
-            #region Get Values From Interface
-            x = 0;
-            y = 0;
-
-            if (scalarInput.text == "")
-            {
-                Debug.LogWarning(" missing values in boxes, defaulting to zero");
-            }
-
-            if (scalarInput.text != "")
-            {
-                scalar = float.Parse(scalarInput.text);
-            }
-            else
-            {
-                scalarInput.text = "0";
-            }
-            #endregion
-
             resultV = _maths.ScalarMultiplication(startV, scalar);
-
-            if (calcSpaceship)
-            {
-                spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
-            }
-
+            spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
             calculationSuccessful = true;
         }
         else
@@ -353,99 +142,50 @@ public class InterfaceManager : MonoBehaviour
         }
     }
 
-    public void StartVectorValueChange()
+    public void CalculateAndMove()
     {
-        SetStartVector();
-        _display.UpdateSpaceshipStartV(startV);
-        valueChanged = true;
-    }
+        Calculate();
 
-    private void SetStartVector()
-    {
-        float x = 0;
-        float y = 0;
-
-        if (dropdown.value != 0)
+        // move spaceship
+        if (calculationSuccessful)
         {
-            if (vectorx.text != "")
+            _inputFreeFlow.WriteResultVector(resultV);
+            _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult);
+
+        }
+        else
+        {
+            Debug.LogWarning("something went wrong with the calculation");
+        }
+
+        /* -- update once game mode is possible
+        if (freeFlowMode)
+        {
+            // move spaceship
+            if (calculationSuccessful)
             {
-                x = float.Parse(vectorx.text);
+                _inputFreeFlow.WriteResultVector(resultV);
+                _spaceshipBehaviour.UpdateDisplay(startV, resultV, spaceshipTopResult);
+
             }
             else
             {
-                vectorx.text = "0";
-            }
-            if (vectory.text != "")
-            {
-                y = float.Parse(vectory.text);
-            }
-            else
-            {
-                vectory.text = "0";
+                Debug.LogWarning("something went wrong with the calculation");
             }
         }
         else
         {
-            if (startVx.text != "")
+            // POSSIBLY ADD DIFFERENT MOVEMENT HERE
+            if (calculationSuccessful)
             {
-                x = float.Parse(startVx.text);
+                _spaceshipBehaviour.UpdateDisplay(startV, resultV, spaceshipTopResult);
+
             }
             else
             {
-                startVx.text = "0";
-            }
-            if (startVy.text != "")
-            {
-                y = float.Parse(startVy.text);
-            }
-            else
-            {
-                startVy.text = "0";
+                Debug.LogWarning("something went wrong with the calculation");
             }
         }
-
-        startV = new float[] { x, y };
-        valueChanged = true;
+        */
     }
-
-    // called from button
-    public void ResetRotation()
-    {
-        _display.ResetRotation();
-    }
-
-    public void SetStart() // take result and put it into start vector
-    {
-        startVx.text = resultV[0].ToString();
-        startVy.text = resultV[1].ToString();
-
-        vectorx.text = resultV[0].ToString();
-        vectory.text = resultV[1].ToString();
-
-        resultX.text = "";
-        resultY.text = "";
-    }
-
-    public void UpdateTurnCounterDisplay(int value)
-    {
-        turnCounterText.text = value.ToString();
-    }
-
-    public void SpaceshipCollider(bool value)
-    {
-        _display._spaceshipCollider.SetActive(value);
-    }
-
-    public bool AdditionCalc()
-    {
-        if (dropdown.value == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
 }

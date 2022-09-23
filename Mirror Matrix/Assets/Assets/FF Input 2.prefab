@@ -641,8 +641,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: StartVectorValueChange
         m_Mode: 1
         m_Arguments:
@@ -1181,9 +1181,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
-        m_MethodName: SetStart
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
+        m_MethodName: ResetStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3167,8 +3167,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: StartVectorValueChange
         m_Mode: 1
         m_Arguments:
@@ -3920,8 +3920,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: DropDownMenu
         m_Mode: 1
         m_Arguments:
@@ -4444,8 +4444,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: AdditionButton
         m_Mode: 1
         m_Arguments:
@@ -10099,6 +10099,7 @@ GameObject:
   - component: {fileID: 4914896937624719555}
   - component: {fileID: 4914896937624719554}
   - component: {fileID: 217313608965066389}
+  - component: {fileID: 3886270371884148110}
   m_Layer: 5
   m_Name: FF Input 2
   m_TagString: Untagged
@@ -10183,29 +10184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb0bb8d294aff0428d996c54c019525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addition: {fileID: 4914896937210846322}
-  multiplication: {fileID: 4914896936846299458}
-  scalarObject: {fileID: 4914896936113474314}
-  vectorObject: {fileID: 4914896936465446975}
-  dropdownMenu: {fileID: 4914896936163731571}
-  buttonText: {fileID: 4914896936518163835}
-  vectorx: {fileID: 4914896935993611968}
-  vectory: {fileID: 4914896937637183151}
-  vectorAddx: {fileID: 4914896936790499556}
-  vectorAddy: {fileID: 4914896936720656766}
-  startVx: {fileID: 8890408141320994170}
-  startVy: {fileID: 6974989340149284050}
-  matrixX1: {fileID: 4914896936525521099}
-  matrixX2: {fileID: 4914896937078747074}
-  matrixY1: {fileID: 4914896936167457236}
-  matrixY2: {fileID: 4914896936141504667}
-  scalarInput: {fileID: 4914896935868421585}
-  resultX: {fileID: 4914896936923542007}
-  resultY: {fileID: 4914896935578155866}
-  turnCounter: 0
   turnCounterText: {fileID: 1749810060655382400}
+  turnCounterObject: {fileID: 3533138722996859305}
+  _inputFreeFlow: {fileID: 3886270371884148110}
   _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
   _turnManager: {fileID: 217313608965066389}
+  freeFlowMode: 1
 --- !u!114 &4914896937624719554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,7 +10215,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnCounter: 0
+  activeSpawns: []
   _interfaceManager: {fileID: 4914896937624719555}
+  _spawner: {fileID: 0}
+--- !u!114 &3886270371884148110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914896937624719558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738758da8c4a72b43a3197d6845151a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addition: {fileID: 4914896937210846322}
+  multiplication: {fileID: 4914896936846299458}
+  scalarObject: {fileID: 4914896936113474314}
+  vectorObject: {fileID: 4914896936465446975}
+  dropdownMenu: {fileID: 4914896936163731571}
+  additionButtonText: {fileID: 4914896936518163835}
+  vectorx: {fileID: 4914896935993611968}
+  vectory: {fileID: 4914896937637183151}
+  vectorAddx: {fileID: 4914896936790499556}
+  vectorAddy: {fileID: 4914896936720656766}
+  startVx: {fileID: 8890408141320994170}
+  startVy: {fileID: 6974989340149284050}
+  matrixX1: {fileID: 4914896936525521099}
+  matrixX2: {fileID: 4914896937078747074}
+  matrixY1: {fileID: 4914896936167457236}
+  matrixY2: {fileID: 4914896936141504667}
+  scalarInput: {fileID: 4914896935868421585}
+  resultX: {fileID: 4914896936923542007}
+  resultY: {fileID: 4914896935578155866}
 --- !u!1 &4914896937636156763
 GameObject:
   m_ObjectHideFlags: 0
@@ -10525,8 +10542,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: StartVectorValueChange
         m_Mode: 1
         m_Arguments:
@@ -10888,8 +10905,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: StartVectorValueChange
         m_Mode: 1
         m_Arguments:
@@ -11040,8 +11057,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4914896937624719555}
-        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+      - m_Target: {fileID: 3886270371884148110}
+        m_TargetAssemblyTypeName: InputFreeFlow, Assembly-CSharp
         m_MethodName: ResetRotation
         m_Mode: 1
         m_Arguments:

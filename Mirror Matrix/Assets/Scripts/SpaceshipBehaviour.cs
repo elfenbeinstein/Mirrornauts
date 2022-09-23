@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayResults : MonoBehaviour
+public class SpaceshipBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject startVObject;
     [SerializeField] private LineRenderer startV;
@@ -12,6 +12,7 @@ public class DisplayResults : MonoBehaviour
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
     public GameObject _spaceshipCollider;
+    
     private Vector3 topPos;
 
     [SerializeField] private float scaleMultiplier = 1f;
@@ -42,6 +43,8 @@ public class DisplayResults : MonoBehaviour
         result = _maths.ConvertFromRadian(result);
         Debug.Log("result is " + result);*/
     }
+
+    /*
     public void UpdateDisplayFreeFlow(float[] startVector, float[] endVector)
     {
         // using line renderer:
@@ -53,43 +56,37 @@ public class DisplayResults : MonoBehaviour
 
         position = new Vector3(endVector[0] * scaleMultiplier, endVector[1] * scaleMultiplier, 0);
         endV.SetPosition(1, position);
-    }
+    }*/
 
-    public void UpdateSpaceshipStartV(float[] vector)
+    public void MoveSpaceship(float[] vector)
     {
         spaceship.transform.position = new Vector3(vector[0] * scaleMultiplier, vector[1] * scaleMultiplier, 0);
     }
 
-    public void UpdateDisplay(float[] startVector, float[] vectorResult, float[] newTop)
+    public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop)
     {
         // move spaceship
-        spaceship.transform.position = new Vector3(vectorResult[0] * scaleMultiplier, vectorResult[1] * scaleMultiplier, 0);
+        MoveSpaceship(vectorResult);
 
-        /*
-        bool addition = _interfaceManager.AdditionCalc();
-        if (!addition)
-        {
-            // rotate based on new position
-            topPos = new Vector3(newTop[0], newTop[1], 0);
-            float rotation = _maths.CalculateRotation(topPos, spaceship.transform.position);
+        // rotate based on new position
+        topPos = new Vector3(newTop[0], newTop[1], 0);
+        Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
+        float rotation = _maths.CalculateRotation(topPos, shipPos);
 
-            spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
-            // scale based on calculation
-            float scale = _maths.CalculateDistance(topPos, spaceship.transform.position);
-            spaceship.transform.localScale = new Vector3(scale, scale, scale);
-        }*/
+        // scale based on calculation
+        float scale = _maths.CalculateDistance(topPos, shipPos);
+        spaceship.transform.localScale = new Vector3(scale, scale, scale); 
 
-        
-        if (topPos != spaceshipTop.transform.position * scaleMultiplier)
+        if (topPos != spaceshipTop.transform.position)
         {
             Debug.LogWarning("incorrect rotation/scaling");
             Debug.Log("new top pos should be: " + newTop[0] + ", " + newTop[1]);
             Debug.Log("new top pos is: " + spaceshipTop.transform.position.x + ", " + spaceshipTop.transform.position.y);
         }
 
-
-        // obsolete?
+        
         startVObject.SetActive(true);
         endVObject.SetActive(true);
         var position = new Vector3(startVector[0] * scaleMultiplier, startVector[1] * scaleMultiplier, 0);
@@ -107,6 +104,17 @@ public class DisplayResults : MonoBehaviour
         float[] positionTop = new float[] { x, y };
 
         return positionTop;
+    }
+
+    public float[] SpaceshipCoordinates()
+    {
+        float x, y;
+        x = spaceship.transform.position.x / scaleMultiplier;
+        y = spaceship.transform.position.y / scaleMultiplier;
+
+        float[] position = new float[] { x, y };
+
+        return position;
     }
 
     public void ResetRotation()

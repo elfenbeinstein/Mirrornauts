@@ -68,6 +68,7 @@ public class Maths : MonoBehaviour
         {
             distance = normPos.y;
         }
+        
         else if (normPos.y == 0)
         {
             distance = normPos.x;

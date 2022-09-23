@@ -15,6 +15,15 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
 
+    private void Start()
+    {
+        if (!_interfaceManager.freeFlowMode)
+        {
+            turnCounter = 0; // get from somewhere maybe
+            _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
+        }
+        
+    }
     public void Go()
     {
         spawnsToAdd = new List<ObjectBehaviour>();
@@ -23,12 +32,18 @@ public class TurnManager : MonoBehaviour
         spawnsToDelete.Clear();
 
         turnCounter += 1;
+        _interfaceManager.UpdateTurnCounterDisplay(turnCounter); // delete once game mode possible 
+        if (!_interfaceManager.freeFlowMode)
+        {
+            _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
+        }
 
         // turn off spaceship collider or gameObject
         _interfaceManager.SpaceshipCollider(false);
 
-        // move spaceship
-        _interfaceManager.MoveSpaceship();
+        // get values + move spaceship
+        _interfaceManager.CollectValues();
+        _interfaceManager.CalculateAndMove();
 
         // tell spawner to spawn new hazards
         _spawner.Spawn(turnCounter);
