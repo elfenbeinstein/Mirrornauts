@@ -65,6 +65,7 @@ public class DisplayResults : MonoBehaviour
         // move spaceship
         spaceship.transform.position = new Vector3(vectorResult[0] * scaleMultiplier, vectorResult[1] * scaleMultiplier, 0);
 
+        /*
         bool addition = _interfaceManager.AdditionCalc();
         if (!addition)
         {
@@ -77,12 +78,13 @@ public class DisplayResults : MonoBehaviour
             // scale based on calculation
             float scale = _maths.CalculateDistance(topPos, spaceship.transform.position);
             spaceship.transform.localScale = new Vector3(scale, scale, scale);
-        }
+        }*/
 
-        if (topPos != spaceshipTop.transform.position)
+        
+        if (topPos != spaceshipTop.transform.position * scaleMultiplier)
         {
             Debug.LogWarning("incorrect rotation/scaling");
-            Debug.Log("new top pos should be: " + newTop[0] * scaleMultiplier + ", " + newTop[1] * scaleMultiplier);
+            Debug.Log("new top pos should be: " + newTop[0] + ", " + newTop[1]);
             Debug.Log("new top pos is: " + spaceshipTop.transform.position.x + ", " + spaceshipTop.transform.position.y);
         }
 

@@ -7,6 +7,22 @@ using TMPro;
 
 public class InterfaceManager : MonoBehaviour
 {
+    // rewrite script:
+
+    // methods: GoFreeFlow, GoGameMode for buttons pressed
+
+    // get values from InputFreeFlow or InputDragDrop
+
+    [SerializeField] private InputFreeFlow _inputFreeFlow;
+
+
+
+
+
+
+
+
+
     [SerializeField] private GameObject addition;
     [SerializeField] private GameObject multiplication;
     [SerializeField] private GameObject scalarObject;
@@ -25,8 +41,11 @@ public class InterfaceManager : MonoBehaviour
     private float[] resultV;
     private float scalar;
 
+    [SerializeField]
     private float[] spaceshipTop;
+    [SerializeField]
     private float[] oldTop;
+    [SerializeField]
     private float[] spaceshipTopResult;
 
     private bool additionValue;
@@ -428,4 +447,5 @@ public class InterfaceManager : MonoBehaviour
             return false;
         }
     }
+    
 }

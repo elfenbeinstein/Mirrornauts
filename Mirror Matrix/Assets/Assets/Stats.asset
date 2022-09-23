@@ -22,3 +22,4 @@ MonoBehaviour:
   deaths: 0
   lastPlayedLevel: 0
   levelsCompleted: 0
+  currentTurnCount: 0
