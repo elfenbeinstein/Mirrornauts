@@ -74,13 +74,13 @@ public class SpaceshipBehaviour : MonoBehaviour
         spaceship.transform.localScale = new Vector3(scale, scale, scale); 
 
         /*
-        if (topPos != spaceshipTop.transform.position * scaleMultiplier)
+        if (topPos != spaceshipTop.transform.position)
         {
             Debug.LogWarning("incorrect rotation/scaling");
-        }*/
-
             Debug.Log("new top pos should be: " + newTop[0] + ", " + newTop[1]);
             Debug.Log("new top pos is: " + spaceshipTop.transform.position.x + ", " + spaceshipTop.transform.position.y);
+        }*/
+
         
         startVObject.SetActive(true);
         endVObject.SetActive(true);
