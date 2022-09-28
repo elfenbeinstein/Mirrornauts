@@ -10,7 +10,9 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> activeSpawns;
 
     [SerializeField] private InterfaceManager _interfaceManager;
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private Spawner _hazardSpawner;
+    [SerializeField] private Spawner _collectiblesSpawner;
+    [SerializeField] private Player _player;
 
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
@@ -25,7 +27,6 @@ public class TurnManager : MonoBehaviour
             turnCounter = 0; // get from somewhere maybe
             _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
         }
-        
     }
     public void Go()
     {
@@ -46,7 +47,8 @@ public class TurnManager : MonoBehaviour
         _interfaceManager.CalculateAndMove();
 
         // tell spawner to spawn new hazards
-        _spawner.Spawn(turnCounter);
+        _hazardSpawner.Spawn(turnCounter);
+        _collectiblesSpawner.Spawn(turnCounter);
 
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
@@ -78,9 +80,16 @@ public class TurnManager : MonoBehaviour
         {
             if (spawn.isTouching == true)
             {
-                _stats.health -= 1;
+                if (spawn.isHazard == true)
+                {
+                    _player.PlayerHit();
+                }
+                else
+                {
+                    // MISSING: collectible stuff
 
-                Debug.Log($"current hp is {_stats.health}");
+                    spawn.RemoveSelfFromList();
+                }
             }
         }
 

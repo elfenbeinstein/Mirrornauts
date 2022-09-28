@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class ObjectBehaviour : MonoBehaviour
 {
+    [Tooltip("if it is a hazard = true; if a collectible = false")]
+    public bool isHazard;
+
     [SerializeField] private Stats _stats;
 
     [SerializeField] private SpriteRenderer countdownRenderer;

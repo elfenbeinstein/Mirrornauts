@@ -7,7 +7,7 @@ public class Stats : ScriptableObject
 {
     public Sprite[] countdownNumbers;
 
-    public int health;
+    public int currentHealth;
 
     public int highscore;
     public int deaths;

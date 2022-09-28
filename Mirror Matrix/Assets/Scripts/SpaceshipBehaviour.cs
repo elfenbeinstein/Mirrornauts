@@ -117,4 +117,10 @@ public class SpaceshipBehaviour : MonoBehaviour
         spaceship.transform.rotation = Quaternion.identity;
         spaceship.transform.localScale = new Vector3(1, 1, 1);
     }
+
+    public void ResetSpaceshipFromBorder()
+    {
+        float[] value = new float[] { 0, 0 };
+        MoveSpaceship(value);
+    }
 }

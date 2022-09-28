@@ -10,6 +10,13 @@ public class Border_Behaviour : MonoBehaviour
         "If it's false it is the playing field the spaceship must not leave.")]
     public bool isBorder;
 
+    private bool cooldown;
+
+    private void Start()
+    {
+        cooldown = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isBorder)
@@ -26,7 +33,11 @@ public class Border_Behaviour : MonoBehaviour
                     return;
                 }
             }
-            _player.PlayerHit();
+            if (!cooldown)
+            {
+                _player.PlayerHit();
+                StartCoroutine(CollisionCooldown());
+            }
         }
     }
 
@@ -46,10 +57,17 @@ public class Border_Behaviour : MonoBehaviour
                     return;
                 }
             }
-            _player.PlayerOutOfBounds();
-
+            if (!cooldown)
+            {
+                _player.PlayerOutOfBounds();
+                StartCoroutine(CollisionCooldown());
+            }
         }
-
-        
+    }
+    IEnumerator CollisionCooldown()
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(0.2f);
+        cooldown = false;
     }
 }
