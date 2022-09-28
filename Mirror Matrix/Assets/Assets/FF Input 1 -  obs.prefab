@@ -2369,6 +2369,8 @@ GameObject:
   - component: {fileID: 812844235923286451}
   - component: {fileID: 812844235923286461}
   - component: {fileID: 812844235923286462}
+  - component: {fileID: 2565920383433199340}
+  - component: {fileID: 3651776827452437513}
   m_Layer: 5
   m_Name: FF Input 1 -  obs
   m_TagString: Untagged
@@ -2450,25 +2452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb0bb8d294aff0428d996c54c019525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addition: {fileID: 2165297328074368993}
-  multiplication: {fileID: 812844237171301710}
-  scalarObject: {fileID: 812844236457028100}
-  vectorObject: {fileID: 812844236401283070}
-  dropdownMenu: {fileID: 812844236440142739}
-  buttonText: {fileID: 812844236108545271}
-  vectorx: {fileID: 812844236235730546}
-  vectory: {fileID: 812844236172273500}
-  vectorAddx: {fileID: 812844237053615749}
-  vectorAddy: {fileID: 812844235335078881}
-  startVx: {fileID: 6947551902116466482}
-  startVy: {fileID: 2585963687528072038}
-  matrixX1: {fileID: 812844235948080222}
-  matrixX2: {fileID: 812844236332304595}
-  matrixY1: {fileID: 812844236901201523}
-  matrixY2: {fileID: 812844236732864655}
-  scalarInput: {fileID: 812844235816787954}
-  resultX: {fileID: 812844236492273317}
-  resultY: {fileID: 812844237449479406}
+  turnCounterText: {fileID: 0}
+  turnCounterObject: {fileID: 0}
+  _inputFreeFlow: {fileID: 0}
+  _stats: {fileID: 0}
+  _turnManager: {fileID: 0}
+  freeFlowMode: 0
 --- !u!114 &812844235923286462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2481,6 +2470,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f892880de4635d4ba7f42623b65a707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2565920383433199340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812844235923286449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9cc448cadfd6fc40b7a972d979a8fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnCounter: 0
+  activeSpawns: []
+  _interfaceManager: {fileID: 0}
+  _spawner: {fileID: 0}
+--- !u!114 &3651776827452437513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812844235923286449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738758da8c4a72b43a3197d6845151a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addition: {fileID: 0}
+  multiplication: {fileID: 0}
+  scalarObject: {fileID: 0}
+  vectorObject: {fileID: 0}
+  dropdownMenu: {fileID: 0}
+  additionButtonText: {fileID: 0}
+  vectorx: {fileID: 0}
+  vectory: {fileID: 0}
+  vectorAddx: {fileID: 0}
+  vectorAddy: {fileID: 0}
+  startVx: {fileID: 0}
+  startVy: {fileID: 0}
+  matrixX1: {fileID: 0}
+  matrixX2: {fileID: 0}
+  matrixY1: {fileID: 0}
+  matrixY2: {fileID: 0}
+  scalarInput: {fileID: 0}
+  resultX: {fileID: 0}
+  resultY: {fileID: 0}
 --- !u!1 &812844235940531017
 GameObject:
   m_ObjectHideFlags: 0

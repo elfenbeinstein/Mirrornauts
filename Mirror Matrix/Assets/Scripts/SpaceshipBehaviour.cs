@@ -11,11 +11,9 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
-    public GameObject _spaceshipCollider;
+    //public GameObject _spaceshipCollider;
     
     private Vector3 topPos;
-
-    [SerializeField] private float scaleMultiplier = 1f;
 
     private Maths _maths;
     private InterfaceManager _interfaceManager;
@@ -24,10 +22,6 @@ public class SpaceshipBehaviour : MonoBehaviour
     {
         startVObject.SetActive(false);
         endVObject.SetActive(false);
-        if (scaleMultiplier == 0)
-        {
-            scaleMultiplier = 1;
-        }
 
         _maths = FindObjectOfType<Maths>();
         if (_maths == null)
@@ -60,7 +54,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     public void MoveSpaceship(float[] vector)
     {
-        spaceship.transform.position = new Vector3(vector[0] * scaleMultiplier, vector[1] * scaleMultiplier, 0);
+        spaceship.transform.position = new Vector3(vector[0], vector[1], 0);
     }
 
     public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop)
@@ -73,25 +67,26 @@ public class SpaceshipBehaviour : MonoBehaviour
         Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
         float rotation = _maths.CalculateRotation(topPos, shipPos);
 
-        //spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // scale based on calculation
         float scale = _maths.CalculateDistance(topPos, shipPos);
-        //spaceship.transform.localScale = new Vector3(scale, scale, scale); 
+        spaceship.transform.localScale = new Vector3(scale, scale, scale); 
 
+        /*
         if (topPos != spaceshipTop.transform.position * scaleMultiplier)
         {
             Debug.LogWarning("incorrect rotation/scaling");
+        }*/
+
             Debug.Log("new top pos should be: " + newTop[0] + ", " + newTop[1]);
             Debug.Log("new top pos is: " + spaceshipTop.transform.position.x + ", " + spaceshipTop.transform.position.y);
-        }
-
         
         startVObject.SetActive(true);
         endVObject.SetActive(true);
-        var position = new Vector3(startVector[0] * scaleMultiplier, startVector[1] * scaleMultiplier, 0);
+        var position = new Vector3(startVector[0], startVector[1], 0);
         startV.SetPosition(1, position);
-        position = new Vector3(vectorResult[0] * scaleMultiplier, vectorResult[1] * scaleMultiplier, 0);
+        position = new Vector3(vectorResult[0], vectorResult[1], 0);
         endV.SetPosition(1, position);
     }
 
@@ -109,8 +104,8 @@ public class SpaceshipBehaviour : MonoBehaviour
     public float[] SpaceshipCoordinates()
     {
         float x, y;
-        x = spaceship.transform.position.x / scaleMultiplier;
-        y = spaceship.transform.position.y / scaleMultiplier;
+        x = spaceship.transform.position.x;
+        y = spaceship.transform.position.y;
 
         float[] position = new float[] { x, y };
 

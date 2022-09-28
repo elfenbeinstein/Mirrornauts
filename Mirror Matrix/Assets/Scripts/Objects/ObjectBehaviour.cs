@@ -8,7 +8,6 @@ public class ObjectBehaviour : MonoBehaviour
 {
     [SerializeField] private Stats _stats;
 
-    [SerializeField] private GameObject _collider;
     [SerializeField] private SpriteRenderer countdownRenderer;
 
     [SerializeField] private GameObject _filling;
@@ -25,6 +24,9 @@ public class ObjectBehaviour : MonoBehaviour
 
     private bool isCounting;
     private bool isLifting;
+
+    [HideInInspector] public bool isTouching;
+    private bool touched;
 
     void Start()
     {
@@ -59,7 +61,6 @@ public class ObjectBehaviour : MonoBehaviour
 
         // set countdown (number in corner)
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
-        _collider.SetActive(false);
 
         // set up visuals
         _frame.SetActive(true);
@@ -75,13 +76,17 @@ public class ObjectBehaviour : MonoBehaviour
         {
             if (round - currentRound == 0)
             {
-                _collider.SetActive(true);
                 countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
 
                 _filling.SetActive(true);
 
                 isCounting = false;
                 isLifting = true;
+
+                if (touched)
+                {
+                    isTouching = true;
+                }
             }
             else
             {
@@ -116,5 +121,24 @@ public class ObjectBehaviour : MonoBehaviour
         _turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
         //gameObject.SetActive(false); -- obsolete, for testing
         Destroy(this.gameObject);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log($"collision with {gameObject} and 2D On Trigger Enter");
+        if (isLifting)
+        {
+            isTouching = true;
+        }
+        else
+        {
+            touched = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTouching = false;
+        touched = false;
     }
 }

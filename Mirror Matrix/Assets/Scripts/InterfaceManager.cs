@@ -68,10 +68,11 @@ public class InterfaceManager : MonoBehaviour
         turnCounterText.text = value.ToString();
     }
 
+    /*
     public void SpaceshipCollider(bool value)
     {
         _spaceshipBehaviour._spaceshipCollider.SetActive(value);
-    }
+    }*/
 
     public void CollectValues()
     {
@@ -82,8 +83,10 @@ public class InterfaceManager : MonoBehaviour
 
             // move spaceship to start vector
             _spaceshipBehaviour.MoveSpaceship(startV);
+
             // get spaceship top from current position
             spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
+            Debug.Log($"top position before calc is {spaceshipTop[0]}, {spaceshipTop[1]}");
 
             // get type of calculation and get corresponding values
             calculationType = _inputFreeFlow.GetCalculationType();

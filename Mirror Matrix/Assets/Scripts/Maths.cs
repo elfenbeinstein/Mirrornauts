@@ -64,19 +64,30 @@ public class Maths : MonoBehaviour
         Vector3 normPos = topPos - spaceshipPos;
         float distance;
 
+        //float x, y;
+
         if (normPos.x == 0)
         {
             distance = normPos.y;
+
+            if (normPos.y < 0)
+            {
+                distance *= -1;
+            }
         }
-        
         else if (normPos.y == 0)
         {
             distance = normPos.x;
+            if (normPos.x < 0)
+            {
+                distance *= -1;
+            }
         }
         else
         {
-            distance = Mathf.Sqrt(normPos.x * normPos.x + normPos.y * normPos.y);
+            distance = Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
         }
+        //Debug.Log($"distance is {distance}");
 
         return distance;
     }
@@ -97,16 +108,55 @@ public class Maths : MonoBehaviour
                 angle = 0;
             }
         }
+        else if (normPos.y == 0)
+        {
+            if (normPos.x < 0)
+            {
+                angle = 90;
+            }
+            else
+            {
+                angle = 270;
+            }
+        }
         else
         {
+            /*
             angle = normPos.y / Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
             angle = Mathf.Asin(angle);
 
             angle = ConvertFromRadian(angle);
 
-            angle -= 90;
+            angle -= 90;*/
+
+            angle = normPos.x / normPos.y;
+            angle = Mathf.Abs(angle);
+
+            angle = Mathf.Atan(angle);
+
+            angle = ConvertFromRadian(angle);
+
+            if (normPos.x > 0)
+            {
+                if (normPos.y > 0)
+                {
+                    angle = 360 - angle;
+                }
+                else
+                {
+                    angle = 180 + angle;
+                }
+            }
+            else
+            {
+                if (normPos.y < 0)
+                {
+                    angle = 180 - angle;
+                }
+            }
         }
-        
+
+        //Debug.Log($"angle is {angle}");
         return angle;
     }
 }

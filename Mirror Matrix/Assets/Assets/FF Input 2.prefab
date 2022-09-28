@@ -10218,6 +10218,7 @@ MonoBehaviour:
   activeSpawns: []
   _interfaceManager: {fileID: 4914896937624719555}
   _spawner: {fileID: 0}
+  _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
 --- !u!114 &3886270371884148110
 MonoBehaviour:
   m_ObjectHideFlags: 0

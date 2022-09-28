@@ -15,6 +15,9 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
 
+    [SerializeField]
+    private Stats _stats;
+
     private void Start()
     {
         if (!_interfaceManager.freeFlowMode)
@@ -38,9 +41,6 @@ public class TurnManager : MonoBehaviour
             _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
         }
 
-        // turn off spaceship collider or gameObject
-        _interfaceManager.SpaceshipCollider(false);
-
         // get values + move spaceship
         _interfaceManager.CollectValues();
         _interfaceManager.CalculateAndMove();
@@ -56,6 +56,7 @@ public class TurnManager : MonoBehaviour
                 spawn.NextTurn(turnCounter);
             }
         }
+
         // add and remove all to list
         if (spawnsToAdd.Count != 0)
         {
@@ -72,10 +73,16 @@ public class TurnManager : MonoBehaviour
             }
         }
 
-        // turn on spaceship collider
-        _interfaceManager.SpaceshipCollider(true);
+        // go through all active spawns and check for Collisions
+        foreach (ObjectBehaviour spawn in activeSpawns)
+        {
+            if (spawn.isTouching == true)
+            {
+                _stats.health -= 1;
 
-        // check for collision
+                Debug.Log($"current hp is {_stats.health}");
+            }
+        }
 
     }
 
