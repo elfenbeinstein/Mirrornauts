@@ -4,6 +4,10 @@ using UnityEngine;
 //using UnityEngine.UI;
 //using TMPro;
 
+/// <summary>
+/// 
+/// </summary>
+
 public class ObjectBehaviour : MonoBehaviour
 {
     [Tooltip("if it is a hazard = true; if a collectible = false")]

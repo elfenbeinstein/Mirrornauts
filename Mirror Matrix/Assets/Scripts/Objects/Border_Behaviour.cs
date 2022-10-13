@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Border Behaviour handles borders and playing field
+/// If player touches border --> damage and reset
+/// If player leaves playing field alltogether --> damage and reset
+/// </summary>
+
 public class Border_Behaviour : MonoBehaviour
 {
     private Player _player;
 
     [Tooltip("If isBorder is true the object is an object the player must not touch. " +
         "If it's false it is the playing field the spaceship must not leave.")]
-    public bool isBorder;
+    [SerializeField] private bool isBorder;
 
     private bool cooldown;
 
@@ -24,6 +30,7 @@ public class Border_Behaviour : MonoBehaviour
             //Debug.Log("spaceship touched border");
 
             // MISSING: what happens if spaceship touches border
+
             if (_player == null)
             {
                 _player = FindObjectOfType<Player>();
@@ -35,7 +42,7 @@ public class Border_Behaviour : MonoBehaviour
             }
             if (!cooldown)
             {
-                _player.PlayerHit();
+                _player.PlayerHitBorder();
                 StartCoroutine(CollisionCooldown());
             }
         }
@@ -64,6 +71,8 @@ public class Border_Behaviour : MonoBehaviour
             }
         }
     }
+
+    // used for testing
     IEnumerator CollisionCooldown()
     {
         cooldown = true;

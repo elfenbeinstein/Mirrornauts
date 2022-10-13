@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Input System for Values in Free Flow Mode
+/// </summary>
+
 public class InputFreeFlow : MonoBehaviour
 {
     // GameObjects that contain all input elements in free flow mode
@@ -41,7 +45,7 @@ public class InputFreeFlow : MonoBehaviour
 
     private SpaceshipBehaviour _spaceshipBehaviour;
     
-    private bool additionValue;
+    private bool additionValue; // if Positive shows + in calc; if negative -
 
     void Start()
     {
@@ -59,6 +63,8 @@ public class InputFreeFlow : MonoBehaviour
         {
             Debug.Log(gameObject + "can't find dropdown");
         }
+
+        // NEEDS CHANGE elfenbeinstein
         _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
         if (_spaceshipBehaviour == null)
         {
