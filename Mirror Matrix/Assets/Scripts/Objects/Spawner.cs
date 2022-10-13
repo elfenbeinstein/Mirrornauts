@@ -14,6 +14,12 @@ public class Spawn
     public Vector3 rotation;
 }
 
+/// <summary>
+/// sits on an empty game object called spawn manager
+/// can spawn different kinds of objects 
+/// (e.g. can have spawn managers for collectibles and hazards in the same script
+/// </summary>
+
 public class Spawner : MonoBehaviour
 {
     public Spawn[] spawnUnits;

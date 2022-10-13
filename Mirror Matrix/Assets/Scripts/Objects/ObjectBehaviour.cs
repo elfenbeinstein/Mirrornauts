@@ -5,7 +5,8 @@ using UnityEngine;
 //using TMPro;
 
 /// <summary>
-/// 
+/// behaviour of every spawned object
+/// can be used for collectible and hazard (check bool isHazard)
 /// </summary>
 
 public class ObjectBehaviour : MonoBehaviour

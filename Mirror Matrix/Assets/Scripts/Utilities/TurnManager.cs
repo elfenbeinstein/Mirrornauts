@@ -20,6 +20,10 @@ public class TurnManager : MonoBehaviour
     [SerializeField]
     private Stats _stats;
 
+    // remove: all references to interface Manager and spawns etc
+    // instead just send an event call --> TURN, nextTurn, int turnCounter
+    // have all objects that need to listen to those events add themselves to event manager addListener
+
     private void Start()
     {
         _interfaceManager = GetComponent<InterfaceManager>();
@@ -31,6 +35,7 @@ public class TurnManager : MonoBehaviour
         }
         spawnsToAdd = new List<ObjectBehaviour>();
         spawnsToDelete = new List<ObjectBehaviour>();
+
     }
     public void Go()
     {

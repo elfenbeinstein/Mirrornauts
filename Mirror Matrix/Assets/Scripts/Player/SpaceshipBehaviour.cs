@@ -15,7 +15,6 @@ public class SpaceshipBehaviour : MonoBehaviour
     
     private Vector3 topPos;
 
-    private Maths _maths;
     private InterfaceManager _interfaceManager;
 
     private void Start()
@@ -23,18 +22,12 @@ public class SpaceshipBehaviour : MonoBehaviour
         startVObject.SetActive(false);
         endVObject.SetActive(false);
 
-        _maths = FindObjectOfType<Maths>();
-        if (_maths == null)
-        {
-            Debug.LogWarning(gameObject + " can't find maths script");
-        }
-
         _interfaceManager = FindObjectOfType<InterfaceManager>();
 
         /*
         float value = 1 / Mathf.Sqrt(2);
         float result = Mathf.Asin(value);
-        result = _maths.ConvertFromRadian(result);
+        result = GameManagement._maths.ConvertFromRadian(result);
         Debug.Log("result is " + result);*/
     }
 
@@ -65,12 +58,12 @@ public class SpaceshipBehaviour : MonoBehaviour
         // rotate based on new position
         topPos = new Vector3(newTop[0], newTop[1], 0);
         Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-        float rotation = _maths.CalculateRotation(topPos, shipPos);
+        float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
 
         spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // scale based on calculation
-        float scale = _maths.CalculateDistance(topPos, shipPos);
+        float scale = GameManagement._maths.CalculateDistance(topPos, shipPos);
         spaceship.transform.localScale = new Vector3(scale, scale, scale); 
 
         /*

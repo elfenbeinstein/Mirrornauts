@@ -43,7 +43,6 @@ public class EventManager
                 eventListener[eventID][i](eventName, param);
         // eg eventID = Dialog; eventName = DialogStarted/DialogEnded....
 
-        System.Diagnostics.Debug.WriteLine(string.Format("Event{0} fired: {1}, {2}",
-            eventID, eventName, param == null ? "" : param.ToString()));
+        //Debug.Log(string.Format("Event{0} fired: {1}, {2}", eventID, eventName, param == null ? "" : param.ToString()));
     }
 }

@@ -15,7 +15,6 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private InputFreeFlow _inputFreeFlow;
     [SerializeField] private Stats _stats;
     [SerializeField] private TurnManager _turnManager;
-    private Maths _maths;
     private SpaceshipBehaviour _spaceshipBehaviour;
 
     private float[] startV;
@@ -36,11 +35,6 @@ public class InterfaceManager : MonoBehaviour
 
     void Start()
     {
-        _maths = FindObjectOfType<Maths>();
-        if (_maths == null)
-        {
-            Debug.LogWarning(gameObject + " can't find maths script");
-        }
         _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
         if (_spaceshipBehaviour == null)
         {
@@ -122,20 +116,20 @@ public class InterfaceManager : MonoBehaviour
 
         if (calculationType == 0) // Addition
         {
-            resultV = _maths.Addition(startV, addV, additionValue);
-            spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
+            resultV = GameManagement._maths.Addition(startV, addV, additionValue);
+            spaceshipTopResult = GameManagement._maths.Addition(spaceshipTop, addV, additionValue);
             calculationSuccessful = true;
         }
         else if (calculationType == 1) // Multiplication
         {
-            resultV = _maths.Multiplication(startV, matrix);
-            spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
+            resultV = GameManagement._maths.Multiplication(startV, matrix);
+            spaceshipTopResult = GameManagement._maths.Multiplication(spaceshipTop, matrix);
             calculationSuccessful = true;
         }
         else if (calculationType == 2) // Scalar Multiplication
         {
-            resultV = _maths.ScalarMultiplication(startV, scalar);
-            spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
+            resultV = GameManagement._maths.ScalarMultiplication(startV, scalar);
+            spaceshipTopResult = GameManagement._maths.ScalarMultiplication(spaceshipTop, scalar);
             calculationSuccessful = true;
         }
         else
