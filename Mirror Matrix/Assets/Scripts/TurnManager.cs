@@ -12,7 +12,6 @@ public class TurnManager : MonoBehaviour
     private InterfaceManager _interfaceManager;
     [SerializeField] private Spawner _hazardSpawner;
     [SerializeField] private Spawner _collectiblesSpawner;
-    [SerializeField] private Player _player;
 
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
@@ -43,19 +42,23 @@ public class TurnManager : MonoBehaviour
         spawnsToDelete.Clear();
 
         turnCounter += 1;
+        // Send Event next Turn:
+        EventManager.Instance.EventGo("TURN", "NextTurn", turnCounter);
+        // Listeners should be: spawner, interface manager 
+        // spawner: adds new spawns to list spawnsToAdd
+        // interface manager collects values, calculates movement, moves spaceship
+
+        /*
         _interfaceManager.UpdateTurnCounterDisplay(turnCounter); // delete once game mode possible 
         if (!_interfaceManager.freeFlowMode)
         {
             _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
-        }
+        }*/
 
         // get values + move spaceship
-        _interfaceManager.CollectValues();
-        _interfaceManager.CalculateAndMove();
-
-        // tell spawner to spawn new hazards
-        _hazardSpawner.Spawn(turnCounter);
-        _collectiblesSpawner.Spawn(turnCounter);
+        //_interfaceManager.CollectValues();
+        //_interfaceManager.Calculate();
+        //_interfaceManager.Move();
 
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
@@ -84,14 +87,7 @@ public class TurnManager : MonoBehaviour
 
         // go through all active spawns and check for Collisions
         for (int i = activeSpawns.Count - 1; i >= 0; i--)
-            if (activeSpawns[i].isTouching) _player.PlayerHitObject(activeSpawns[i]);
-        /* -- old way
-        foreach (ObjectBehaviour spawn in activeSpawns)
-        {
-            if (spawn.isTouching == true)
-                _player.PlayerHitObject(spawn);
-        }*/
-
+            if (activeSpawns[i].isTouching) EventManager.Instance.EventGo("PLAYER", "HitObject", activeSpawns[i]);
     }
 
     public void AddSpawn(ObjectBehaviour spawn)

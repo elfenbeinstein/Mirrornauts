@@ -6,6 +6,9 @@ public class InputGame : MonoBehaviour
 {
     private SpaceshipBehaviour _spaceshipBehaviour;
 
+    private int x, y, x2, y2;
+    private float[] vectorValue;
+
     void Start()
     {
         
@@ -17,20 +20,37 @@ public class InputGame : MonoBehaviour
         _spaceshipBehaviour = script;
     }
 
-    public float[] GetStartVector()
+    public float[] GetAddVector() 
     {
-        float x = 0;
-        float y = 0;
+        x = 0;
+        y = 0;
 
-        // GET VECTOR HERE
+        // elfenbeinstein MISSING get addition vector
 
-        float[] vector = new float[] { x, y };
-        return vector;
+        vectorValue = new float[] { x, y };
+        return vectorValue;
     }
 
-    //public float[] GetAddVector() { }
-    //public float[] GetMatrixValues() { }
-    //public float GetScalarMultiplier() { }
+    public float[] GetMatrixValues() 
+    {
+        x = 0;
+        x2 = 0;
+        y = 0;
+        y2 = 0;
+
+        // elfenbeinstein MISSING matrix values
+
+        vectorValue = new float[] { x, x2, y, y2 };
+        return vectorValue;
+    }
+
+    public float GetScalarMultiplier() 
+    {
+        x = 0;
+        // elfenbeinstein MISSING get scalar Multiplier
+
+        return x;
+    }
 
 
     public int GetCalculationType()

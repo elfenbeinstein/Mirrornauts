@@ -25,17 +25,30 @@ public class Spawner : MonoBehaviour
     public Spawn[] spawnUnits;
 
     //private int arrayCounter;
-    private TurnManager _turnManager;
+    [SerializeField] private TurnManager _turnManager;
 
     private void Start()
     {
         //arrayCounter = 0;
         
-        _turnManager = FindObjectOfType<TurnManager>();
         if (_turnManager == null)
         {
-            Debug.LogWarning("Spawner cannot find turn manager script");
+            _turnManager = FindObjectOfType<TurnManager>();
+            Debug.LogWarning($"{gameObject} is missing reference to the TurnManager script");
         }
+
+        EventManager.Instance.AddEventListener("TURN", TurnListener);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("TURN", TurnListener);
+    }
+
+    private void TurnListener(string eventName, object param)
+    {
+        if (eventName == "NextTurn")
+            Spawn((int)param);
     }
 
     public void Spawn(int currentRound)
