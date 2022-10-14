@@ -10,8 +10,6 @@ using UnityEngine;
 
 public class Border_Behaviour : MonoBehaviour
 {
-    private Player _player;
-
     [Tooltip("If isBorder is true the object is an object the player must not touch. " +
         "If it's false it is the playing field the spaceship must not leave.")]
     [SerializeField] private bool isBorder;
@@ -31,18 +29,9 @@ public class Border_Behaviour : MonoBehaviour
 
             // MISSING: what happens if spaceship touches border
 
-            if (_player == null)
-            {
-                _player = FindObjectOfType<Player>();
-                if (_player == null)
-                {
-                    Debug.LogWarning(gameObject + " can't find player script");
-                    return;
-                }
-            }
             if (!cooldown)
             {
-                _player.PlayerHitBorder();
+                EventManager.Instance.EventGo("PLAYER", "HitBorder");
                 StartCoroutine(CollisionCooldown());
             }
         }
@@ -54,19 +43,9 @@ public class Border_Behaviour : MonoBehaviour
         if (!isBorder)
         {
             //Debug.Log("spaceship out of bounds");
-
-            if (_player == null)
-            {
-                _player = FindObjectOfType<Player>();
-                if (_player == null)
-                {
-                    Debug.LogWarning(gameObject + " can't find player script");
-                    return;
-                }
-            }
             if (!cooldown)
             {
-                _player.PlayerOutOfBounds();
+                EventManager.Instance.EventGo("PLAYER", "LeaveField");
                 StartCoroutine(CollisionCooldown());
             }
         }

@@ -9101,6 +9101,7 @@ MonoBehaviour:
     liftoff: 2
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
+  _turnManager: {fileID: 118931669}
 --- !u!65 &1010128542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16722,6 +16723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnUnits: []
+  _turnManager: {fileID: 118931669}
 --- !u!4 &1781942976
 Transform:
   m_ObjectHideFlags: 0

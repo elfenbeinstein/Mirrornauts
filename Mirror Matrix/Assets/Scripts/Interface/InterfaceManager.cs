@@ -14,7 +14,7 @@ public class InterfaceManager : MonoBehaviour
     [Space]
     private InputFreeFlow _inputFF;
     private InputGame _inputG;
-    private TurnManager _turnManager;
+    //private TurnManager _turnManager;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
     private float[] startV;
@@ -40,7 +40,7 @@ public class InterfaceManager : MonoBehaviour
             _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
         }
 
-        _turnManager = GetComponent<TurnManager>();
+        //_turnManager = GetComponent<TurnManager>();
         if (freeFlowMode)
         {
             _inputFF = GetComponent<InputFreeFlow>();

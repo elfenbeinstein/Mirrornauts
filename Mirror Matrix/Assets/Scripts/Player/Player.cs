@@ -18,11 +18,22 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth;
         _spaceshipBehaviour = GetComponent<SpaceshipBehaviour>();
+        EventManager.Instance.AddEventListener("PLAYER", PlayerListener);
+    }
+
+    void PlayerListener(string eventName, object param)
+    {
+        if (eventName == "HitObject")
+            PlayerHitObject((ObjectBehaviour)param);
+        else if (eventName == "HitBorder")
+            PlayerHitBorder();
+        else if (eventName == "LeaveField")
+            PlayerOutOfBounds();
     }
 
     public void PlayerHitObject(ObjectBehaviour hitObject)
     {
-        //Debug.Log("spaceship touched object");
+        Debug.Log("spaceship touched object");
 
         if (hitObject.isHazard)
             DamageTaken(1);
@@ -31,19 +42,17 @@ public class Player : MonoBehaviour
             // elfenbeinstein MISSING: collectible
             hitObject.RemoveSelfFromList();
         }
-
-        
     }
 
     public void PlayerHitBorder()
     {
-        //Debug.Log("spaceship touched border");
+        Debug.Log("spaceship touched border");
         DamageTaken(1);
     }
 
     public void PlayerOutOfBounds()
     {
-        //Debug.Log("spaceship out of bounds");
+        Debug.Log("spaceship out of bounds");
 
         DamageTaken(1);
 
