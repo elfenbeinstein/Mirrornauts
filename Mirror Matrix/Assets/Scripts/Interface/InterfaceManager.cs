@@ -12,10 +12,10 @@ public class InterfaceManager : MonoBehaviour
 
     // Scripts
     [Space]
-    [SerializeField] private InputFreeFlow _inputFreeFlow;
-    [SerializeField] private Stats _stats;
-    [SerializeField] private TurnManager _turnManager;
-    private SpaceshipBehaviour _spaceshipBehaviour;
+    private InputFreeFlow _inputFF;
+    private InputGame _inputG;
+    private TurnManager _turnManager;
+    public SpaceshipBehaviour _spaceshipBehaviour;
 
     private float[] startV;
     private float[] addV;
@@ -35,10 +35,21 @@ public class InterfaceManager : MonoBehaviour
 
     void Start()
     {
-        _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
         if (_spaceshipBehaviour == null)
         {
-            Debug.LogWarning(gameObject + " can't find display script");
+            _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
+        }
+
+        _turnManager = GetComponent<TurnManager>();
+        if (freeFlowMode)
+        {
+            _inputFF = GetComponent<InputFreeFlow>();
+            _inputFF.SetSpaceshipScript(_spaceshipBehaviour);
+        }
+        else
+        {
+            _inputG = GetComponent<InputGame>();
+            _inputG.SetSpaceshipScript(_spaceshipBehaviour);
         }
 
         /* -- turn back on once game mode possible
@@ -73,7 +84,7 @@ public class InterfaceManager : MonoBehaviour
         if (freeFlowMode)
         {
             // get start vector
-            startV = _inputFreeFlow.GetStartVector();
+            startV = _inputFF.GetStartVector();
 
             // move spaceship to start vector
             _spaceshipBehaviour.MoveSpaceship(startV);
@@ -83,21 +94,21 @@ public class InterfaceManager : MonoBehaviour
             //Debug.Log($"top position before calc is {spaceshipTop[0]}, {spaceshipTop[1]}");
 
             // get type of calculation and get corresponding values
-            calculationType = _inputFreeFlow.GetCalculationType();
+            calculationType = _inputFF.GetCalculationType();
 
             if (calculationType == 0) // Addition
             {
-                additionValue = _inputFreeFlow.AdditionValue();
-                addV = _inputFreeFlow.GetAddVector();
+                additionValue = _inputFF.AdditionValue();
+                addV = _inputFF.GetAddVector();
 
             }
             else if (calculationType == 1) // Multiplication
             {
-                matrix = _inputFreeFlow.GetMatrixValues();
+                matrix = _inputFF.GetMatrixValues();
             }
             else if (calculationType == 2) // Scalar Multiplication
             {
-                scalar = _inputFreeFlow.GetScalarMultiplier();
+                scalar = _inputFF.GetScalarMultiplier();
             }
         }
         else
@@ -146,7 +157,7 @@ public class InterfaceManager : MonoBehaviour
         // move spaceship
         if (calculationSuccessful)
         {
-            _inputFreeFlow.WriteResultVector(resultV);
+            _inputFF.WriteResultVector(resultV);
             _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult);
 
         }

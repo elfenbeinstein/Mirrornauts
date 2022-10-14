@@ -20688,6 +20688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117336797}
+  - component: {fileID: 2117336799}
   - component: {fileID: 2117336798}
   m_Layer: 0
   m_Name: Game Manager
@@ -20722,6 +20723,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f892880de4635d4ba7f42623b65a707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2117336799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117336796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32e385708b5d1940b04617ccdd739b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2134715870
@@ -21042,6 +21055,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1010128541}
     - target: {fileID: 217313608965066389, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 217313608965066389, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
       propertyPath: _hazardSpawner
       value: 
       objectReference: {fileID: 1010128541}
@@ -21077,6 +21094,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TurnManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4914896937624719555, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
+      propertyPath: _spaceshipBehaviour
+      value: 
+      objectReference: {fileID: 1930624241}
     - target: {fileID: 4914896937624719558, guid: 28709a3c92bafd04a904c056ad998f23, type: 3}
       propertyPath: m_Name
       value: 'Input '

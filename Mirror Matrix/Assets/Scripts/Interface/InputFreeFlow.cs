@@ -63,13 +63,11 @@ public class InputFreeFlow : MonoBehaviour
         {
             Debug.Log(gameObject + "can't find dropdown");
         }
+    }
 
-        // NEEDS CHANGE elfenbeinstein
-        _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
-        if (_spaceshipBehaviour == null)
-        {
-            Debug.LogWarning(gameObject + " can't find display script");
-        }
+    public void SetSpaceshipScript(SpaceshipBehaviour script)
+    {
+        _spaceshipBehaviour = script;
     }
 
     // called from menu
