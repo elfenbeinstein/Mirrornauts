@@ -116,4 +116,10 @@ public class SpaceshipBehaviour : MonoBehaviour
         float[] value = new float[] { 0, 0 };
         MoveSpaceship(value);
     }
+
+    public void RemoveLines()
+    {
+        startVObject.SetActive(false);
+        endVObject.SetActive(false);
+    }
 }

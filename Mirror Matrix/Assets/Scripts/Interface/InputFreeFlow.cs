@@ -149,6 +149,27 @@ public class InputFreeFlow : MonoBehaviour
         resultY.text = "";
     }
 
+    // called from button
+    public void ResetSpaceship()
+    {
+        ResetRotation();
+
+        // resert position to 0,0
+
+        startVx.text = "0";
+        startVy.text = "0";
+
+        vectorx.text = "0";
+        vectory.text = "0";
+
+        resultX.text = "";
+        resultY.text = "";
+
+        float[] vector = new float[] { 0, 0 };
+        _spaceshipBehaviour.MoveSpaceship(vector);
+        _spaceshipBehaviour.RemoveLines();
+    }
+
     public void WriteResultVector(float[] result)
     {
         resultX.text = result[0].ToString();
