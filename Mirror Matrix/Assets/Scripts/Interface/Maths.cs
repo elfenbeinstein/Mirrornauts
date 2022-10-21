@@ -159,4 +159,22 @@ public class Maths : MonoBehaviour
         //Debug.Log($"angle is {angle}");
         return angle;
     }
+
+
+    // FOR TESTING:
+    public float SinusCalc(float value)
+    {
+        float result = Mathf.Sin(value * Mathf.PI);
+        if (result < -1) result = 0;
+        if (result > 1) result = 0;
+        return result;
+    }
+
+    public float CosinusCalc(float value)
+    {
+        float result = Mathf.Cos(value * Mathf.PI);
+        if (result < -1) result = 0;
+        if (result > 1) result = 0;
+        return result;
+    }
 }

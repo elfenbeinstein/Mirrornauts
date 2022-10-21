@@ -17,7 +17,7 @@ public class InputFFButtons : MonoBehaviour
     [Space]
     [Header("Matrix Multiplication:")]
     [SerializeField] private GameObject matrixFreeValues;
-    [SerializeField] private GameObject matrixAngleValues;
+    [SerializeField] private GameObject matrixRadianValues;
     [SerializeField] private GameObject x1Minus;
     [SerializeField] private GameObject x2Minus;
     [SerializeField] private GameObject y1Minus;
@@ -30,7 +30,7 @@ public class InputFFButtons : MonoBehaviour
         _inputFFValues = GetComponent<InputFFValues>();
 
         matrixFreeValues.SetActive(false);
-        matrixAngleValues.SetActive(true);
+        matrixRadianValues.SetActive(true);
 
         addition.SetActive(true);
         vectorObject.SetActive(false);
@@ -72,7 +72,7 @@ public class InputFFButtons : MonoBehaviour
             if (matrixFreeValues.activeInHierarchy)
                 _inputFFValues.SetCalcType(CalculationType.MatrixMultiplicationF);
             else
-                _inputFFValues.SetCalcType(CalculationType.MatrixMultiplicationA);
+                _inputFFValues.SetCalcType(CalculationType.MatrixMultiplicationR);
         }
         else if (dropdown.value == 2) // scalar multiplication
         {
@@ -111,14 +111,14 @@ public class InputFFButtons : MonoBehaviour
         if (matrixFreeValues.activeInHierarchy)
         {
             matrixFreeValues.SetActive(false);
-            matrixAngleValues.SetActive(true);
+            matrixRadianValues.SetActive(true);
 
-            _inputFFValues.SetCalcType(CalculationType.MatrixMultiplicationA);
+            _inputFFValues.SetCalcType(CalculationType.MatrixMultiplicationR);
         }
         else
         {
             matrixFreeValues.SetActive(true);
-            matrixAngleValues.SetActive(false);
+            matrixRadianValues.SetActive(false);
 
             _inputFFValues.SetCalcType(CalculationType.MatrixMultiplicationF);
         }

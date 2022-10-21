@@ -10,7 +10,7 @@ public enum CalculationType
 {
     Addition,
     MatrixMultiplicationF,
-    MatrixMultiplicationA,
+    MatrixMultiplicationR,
     ScalarMultiplication,
     MatrixMultiplicationG
 }
@@ -32,11 +32,11 @@ public class InputFFValues : MonoBehaviour
     [SerializeField] private TMPro.TMP_InputField matrixX2F;
     [SerializeField] private TMPro.TMP_InputField matrixY1F;
     [SerializeField] private TMPro.TMP_InputField matrixY2F;
-    [Header("Matrix Angle Values:")]
-    [SerializeField] private TMPro.TMP_InputField matrixX1A;
-    [SerializeField] private TMPro.TMP_InputField matrixX2A;
-    [SerializeField] private TMPro.TMP_InputField matrixY1A;
-    [SerializeField] private TMPro.TMP_InputField matrixY2A;
+    [Header("Matrix Radian Values:")]
+    [SerializeField] private TMPro.TMP_InputField matrixX1R;
+    [SerializeField] private TMPro.TMP_InputField matrixX2R;
+    [SerializeField] private TMPro.TMP_InputField matrixY1R;
+    [SerializeField] private TMPro.TMP_InputField matrixY2R;
     [Header("Scalar:")]
     [SerializeField] private TMPro.TMP_InputField scalarInput;
     [Space]
@@ -219,34 +219,26 @@ public class InputFFValues : MonoBehaviour
         {
             x = float.Parse(matrixX1F.text);
         }
-        else
-        {
-            matrixX1F.text = "0";
-        }
+        else matrixX1F.text = "0";
+
         if (matrixX2F.text != "")
         {
             x2 = float.Parse(matrixX2F.text);
         }
-        else
-        {
-            matrixX2F.text = "0";
-        }
+        else matrixX2F.text = "0";
+
         if (matrixY1F.text != "")
         {
             y = float.Parse(matrixY1F.text);
         }
-        else
-        {
-            matrixY1F.text = "0";
-        }
+        else matrixY1F.text = "0";
+
         if (matrixY2F.text != "")
         {
             y2 = float.Parse(matrixY2F.text);
         }
-        else
-        {
-            matrixY2F.text = "0";
-        }
+        else matrixY2F.text = "0";
+
         float[] matrix = new float[] { x, x2, y, y2 };
 
         return matrix;
@@ -254,7 +246,7 @@ public class InputFFValues : MonoBehaviour
 
     public float[] GetMatrixValuesA()
     {
-        if (matrixX1A.text == "" || matrixX2A.text == "" || matrixY1A.text == "" || matrixY2A.text == "")
+        if (matrixX1R.text == "" || matrixX2R.text == "" || matrixY1R.text == "" || matrixY2R.text == "")
         {
             Debug.LogWarning("missing matrix values, defaulting to zero");
         }
@@ -264,10 +256,41 @@ public class InputFFValues : MonoBehaviour
         float x2 = 0;
         float y2 = 0;
 
-        // MISSING elfenbeinstein -- get actual values
+        if (matrixX1R.text != "")
+        {
+            x = float.Parse(matrixX1R.text) * Mathf.PI;
+            x = Mathf.Cos(x);
+            if (!x1Value) x *= -1;
+        }
+        else matrixX1R.text = "0";
+        
+        if (matrixX2R.text != "")
+        {
+            x2 = float.Parse(matrixX2R.text);
+            x2 = Mathf.Sin(x2 * Mathf.PI);
+            if (!x2Value) x2 *= -1;
+        }
+        else matrixX2R.text = "0";
 
+        if (matrixY1R.text != "")
+        {
+            y = float.Parse(matrixY1R.text);
+            y = Mathf.Sin(y * Mathf.PI);
+            if (!y1Value) y *= -1;
+        }
+        else matrixY1R.text = "0";
+
+        if (matrixY2R.text != "")
+        {
+            y2 = float.Parse(matrixY2R.text);
+            y2 = Mathf.Cos(y2 * Mathf.PI);
+            if (!y2Value) y2 *= -1;
+        }
+        else matrixY2R.text = "0";
+        
         float[] matrix = new float[] { x, x2, y, y2 };
 
+        //Debug.Log($"Matrix values: {x}, {x2}, {y}, {y2}");
         return matrix;
     }
 
@@ -296,5 +319,37 @@ public class InputFFValues : MonoBehaviour
     public bool AdditionValue()
     {
         return additionValue;
+    }
+
+
+
+
+    [ContextMenu("Sin cos tryout")]
+    public void TrySinCos()
+    {
+        float a = 0;
+        float cos = GameManagement._maths.CosinusCalc(a);
+        float sin = GameManagement._maths.SinusCalc(a);
+        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
+
+        a = 0.5f;
+        cos = GameManagement._maths.CosinusCalc(a);
+        sin = GameManagement._maths.SinusCalc(a);
+        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
+
+        a = 1;
+        cos = GameManagement._maths.CosinusCalc(a);
+        sin = GameManagement._maths.SinusCalc(a);
+        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
+
+        a = 1.5f;
+        cos = GameManagement._maths.CosinusCalc(a);
+        sin = GameManagement._maths.SinusCalc(a);
+        Debug.Log($"Sin({a}) = {sin}; Cos({a}) = {cos}");
+
+        a = 2;
+        cos = GameManagement._maths.CosinusCalc(a);
+        sin = GameManagement._maths.SinusCalc(a);
+        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
     }
 }
