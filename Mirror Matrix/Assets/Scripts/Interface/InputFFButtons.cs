@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InputFFButtons : MonoBehaviour
 {
+    [Header("Input Elements - General:")]
+    [SerializeField] private GameObject addition;
+    [SerializeField] private GameObject multiplication;
+    [SerializeField] private GameObject scalarObject;
+    [SerializeField] private GameObject vectorObject;
+    [Space]
+    [SerializeField] private GameObject dropdownMenu;
+    private TMPro.TMP_Dropdown dropdown;
+    [SerializeField] private TextMeshProUGUI additionButtonText;
     [Header("Matrix Multiplication:")]
     [SerializeField] private GameObject matrixFreeValues;
     [SerializeField] private GameObject matrixAngleValues;
