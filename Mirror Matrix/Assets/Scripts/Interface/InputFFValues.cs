@@ -6,21 +6,17 @@ using TMPro;
 /// <summary>
 /// Input System for Values in Free Flow Mode
 /// </summary>
-
-public class InputFreeFlow : MonoBehaviour
+public enum CalculationType
 {
-    // GameObjects that contain all input elements in free flow mode
-    [SerializeField] private GameObject addition; 
-    [SerializeField] private GameObject multiplication;
-    [SerializeField] private GameObject scalarObject;
-    [SerializeField] private GameObject vectorObject;
+    Addition,
+    MatrixMultiplicationF,
+    MatrixMultiplicationA,
+    ScalarMultiplication,
+    MatrixMultiplicationG
+}
 
-    // elements that adjust the input system 
-    [Space]
-    [SerializeField] private GameObject dropdownMenu;
-    private TMPro.TMP_Dropdown dropdown;
-    [SerializeField] private TextMeshProUGUI additionButtonText; // + or -
-
+public class InputFFValues : MonoBehaviour
+{
     // input fields:
     [Space]
     [Header("Starting Vector")]
@@ -31,11 +27,16 @@ public class InputFreeFlow : MonoBehaviour
     [SerializeField] private TMPro.TMP_InputField vectorAddy;
     [SerializeField] private TMPro.TMP_InputField startVx;
     [SerializeField] private TMPro.TMP_InputField startVy;
-    [Header("Multiplication:")]
-    [SerializeField] private TMPro.TMP_InputField matrixX1;
-    [SerializeField] private TMPro.TMP_InputField matrixX2;
-    [SerializeField] private TMPro.TMP_InputField matrixY1;
-    [SerializeField] private TMPro.TMP_InputField matrixY2;
+    [Header("Matrix Free Values:")]
+    [SerializeField] private TMPro.TMP_InputField matrixX1F;
+    [SerializeField] private TMPro.TMP_InputField matrixX2F;
+    [SerializeField] private TMPro.TMP_InputField matrixY1F;
+    [SerializeField] private TMPro.TMP_InputField matrixY2F;
+    [Header("Matrix Angle Values:")]
+    [SerializeField] private TMPro.TMP_InputField matrixX1A;
+    [SerializeField] private TMPro.TMP_InputField matrixX2A;
+    [SerializeField] private TMPro.TMP_InputField matrixY1A;
+    [SerializeField] private TMPro.TMP_InputField matrixY2A;
     [Header("Scalar:")]
     [SerializeField] private TMPro.TMP_InputField scalarInput;
     [Space]
@@ -45,24 +46,19 @@ public class InputFreeFlow : MonoBehaviour
 
     private SpaceshipBehaviour _spaceshipBehaviour;
     
-    private bool additionValue; // if Positive shows + in calc; if negative -
+    // values relevant for calculation:
+    [HideInInspector] public bool additionValue; // if true shows + in calc; if false -
+    [HideInInspector] public bool x1Value; // if true +, if false -
+    [HideInInspector] public bool x2Value;
+    [HideInInspector] public bool y1Value;
+    [HideInInspector] public bool y2Value;
+    private CalculationType calcType;
 
     void Start()
     {
-        addition.SetActive(true);
-        vectorObject.SetActive(false);
-        multiplication.SetActive(false);
-        scalarObject.SetActive(false);
-
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
-
-        dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
-        if (dropdown == null)
-        {
-            Debug.Log(gameObject + "can't find dropdown");
-        }
     }
 
     public void SetSpaceshipScript(SpaceshipBehaviour script)
@@ -70,51 +66,9 @@ public class InputFreeFlow : MonoBehaviour
         _spaceshipBehaviour = script;
     }
 
-    // called from menu
-    public void DropDownMenu()
+    public void SetCalcType(CalculationType type)
     {
-        if (dropdown.value == 0)
-        {
-            addition.SetActive(true);
-            vectorObject.SetActive(false);
-            multiplication.SetActive(false);
-            scalarObject.SetActive(false);
-        }
-        else if (dropdown.value == 1)
-        {
-            multiplication.SetActive(true);
-            vectorObject.SetActive(true);
-            scalarObject.SetActive(false);
-            addition.SetActive(false);
-        }
-        else if (dropdown.value == 2)
-        {
-            scalarObject.SetActive(true);
-            vectorObject.SetActive(true);
-            multiplication.SetActive(false);
-            addition.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("error in dropdown menu");
-        }
-    }
-
-    // called from button
-    public void AdditionButton()
-    {
-        if (additionButtonText.text == "+")
-        {
-            additionButtonText.text = "-";
-
-            additionValue = false;
-        }
-        else
-        {
-            additionButtonText.text = "+";
-
-            additionValue = true;
-        }
+        calcType = type;
     }
 
     //called from start vector fields
@@ -181,7 +135,7 @@ public class InputFreeFlow : MonoBehaviour
         float x = 0;
         float y = 0;
 
-        if (dropdown.value != 0)
+        if (calcType != CalculationType.Addition)
         {
             if (vectorx.text != "")
             {
@@ -249,9 +203,9 @@ public class InputFreeFlow : MonoBehaviour
         return addVectorValue;
     }
 
-    public float[] GetMatrixValues()
+    public float[] GetMatrixValuesF()
     {
-        if (matrixX1.text == "" || matrixX2.text == "" || matrixY1.text == "" || matrixY2.text == "")
+        if (matrixX1F.text == "" || matrixX2F.text == "" || matrixY1F.text == "" || matrixY2F.text == "")
         {
             Debug.LogWarning("missing matrix values, defaulting to zero");
         }
@@ -261,38 +215,57 @@ public class InputFreeFlow : MonoBehaviour
         float x2 = 0;
         float y2 = 0;
 
-        if (matrixX1.text != "")
+        if (matrixX1F.text != "")
         {
-            x = float.Parse(matrixX1.text);
+            x = float.Parse(matrixX1F.text);
         }
         else
         {
-            matrixX1.text = "0";
+            matrixX1F.text = "0";
         }
-        if (matrixX2.text != "")
+        if (matrixX2F.text != "")
         {
-            x2 = float.Parse(matrixX2.text);
+            x2 = float.Parse(matrixX2F.text);
         }
         else
         {
-            matrixX2.text = "0";
+            matrixX2F.text = "0";
         }
-        if (matrixY1.text != "")
+        if (matrixY1F.text != "")
         {
-            y = float.Parse(matrixY1.text);
+            y = float.Parse(matrixY1F.text);
         }
         else
         {
-            matrixY1.text = "0";
+            matrixY1F.text = "0";
         }
-        if (matrixY2.text != "")
+        if (matrixY2F.text != "")
         {
-            y2 = float.Parse(matrixY2.text);
+            y2 = float.Parse(matrixY2F.text);
         }
         else
         {
-            matrixY2.text = "0";
+            matrixY2F.text = "0";
         }
+        float[] matrix = new float[] { x, x2, y, y2 };
+
+        return matrix;
+    } 
+
+    public float[] GetMatrixValuesA()
+    {
+        if (matrixX1A.text == "" || matrixX2A.text == "" || matrixY1A.text == "" || matrixY2A.text == "")
+        {
+            Debug.LogWarning("missing matrix values, defaulting to zero");
+        }
+
+        float x = 0;
+        float y = 0;
+        float x2 = 0;
+        float y2 = 0;
+
+        // MISSING elfenbeinstein -- get actual values
+
         float[] matrix = new float[] { x, x2, y, y2 };
 
         return matrix;
@@ -315,9 +288,9 @@ public class InputFreeFlow : MonoBehaviour
         return x;
     }
 
-    public int GetCalculationType()
+    public CalculationType GetCalculationType()
     {
-        return dropdown.value;
+        return calcType;
     }
 
     public bool AdditionValue()

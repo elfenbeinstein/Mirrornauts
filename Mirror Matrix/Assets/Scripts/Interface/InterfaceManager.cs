@@ -12,9 +12,8 @@ public class InterfaceManager : MonoBehaviour
 
     // Scripts
     [Space]
-    private InputFreeFlow _inputFF;
+    private InputFFValues _inputFF;
     private InputGame _inputG;
-    //private TurnManager _turnManager;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
     private float[] startV;
@@ -29,7 +28,7 @@ public class InterfaceManager : MonoBehaviour
     public bool freeFlowMode;
     private bool additionValue;
     private bool calculationSuccessful;
-    private int calculationType;
+    private CalculationType calcType;
     
 
 
@@ -43,7 +42,7 @@ public class InterfaceManager : MonoBehaviour
         //_turnManager = GetComponent<TurnManager>();
         if (freeFlowMode)
         {
-            _inputFF = GetComponent<InputFreeFlow>();
+            _inputFF = GetComponent<InputFFValues>();
             _inputFF.SetSpaceshipScript(_spaceshipBehaviour);
         }
         else
@@ -92,12 +91,6 @@ public class InterfaceManager : MonoBehaviour
         turnCounterText.text = value.ToString();
     }
 
-    /*
-    public void SpaceshipCollider(bool value)
-    {
-        _spaceshipBehaviour._spaceshipCollider.SetActive(value);
-    }*/
-
     public void CollectValues()
     {
         if (freeFlowMode)
@@ -110,16 +103,18 @@ public class InterfaceManager : MonoBehaviour
             spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
 
             // get type of calculation and get corresponding values
-            calculationType = _inputFF.GetCalculationType();
+            calcType = _inputFF.GetCalculationType();
 
-            if (calculationType == 0) // Addition
+            if (calcType == CalculationType.Addition)
             {
                 additionValue = _inputFF.AdditionValue();
                 addV = _inputFF.GetAddVector();
             }
-            else if (calculationType == 1) // Multiplication
-                matrix = _inputFF.GetMatrixValues();
-            else if (calculationType == 2) // Scalar Multiplication
+            else if (calcType == CalculationType.MatrixMultiplicationF)
+                matrix = _inputFF.GetMatrixValuesF();
+            else if (calcType == CalculationType.MatrixMultiplicationA)
+                matrix = _inputFF.GetMatrixValuesA();
+            else if (calcType == CalculationType.ScalarMultiplication)
                 scalar = _inputFF.GetScalarMultiplier();
         }
         else
@@ -129,15 +124,15 @@ public class InterfaceManager : MonoBehaviour
             spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
 
             // get type of calculation Type + corresponding values
-            calculationType = _inputG.GetCalculationType();
-            if (calculationType == 0) // Addition
+            calcType = _inputG.GetCalculationType();
+            if (calcType == CalculationType.Addition)
             {
                 additionValue = _inputG.AdditionValue();
                 addV = _inputG.GetAddVector();
             }
-            else if (calculationType == 1) // Multiplication
+            else if (calcType == CalculationType.MatrixMultiplicationG)
                 matrix = _inputG.GetMatrixValues();
-            else if (calculationType == 2) // Scalar Multiplication
+            else if (calcType == CalculationType.ScalarMultiplication)
                 scalar = _inputG.GetScalarMultiplier();
         }
     }
@@ -146,19 +141,19 @@ public class InterfaceManager : MonoBehaviour
     {
         calculationSuccessful = false;
 
-        if (calculationType == 0) // Addition
+        if (calcType == CalculationType.Addition)
         {
             resultV = GameManagement._maths.Addition(startV, addV, additionValue);
             spaceshipTopResult = GameManagement._maths.Addition(spaceshipTop, addV, additionValue);
             calculationSuccessful = true;
         }
-        else if (calculationType == 1) // Multiplication
+        else if (calcType == CalculationType.MatrixMultiplicationG || calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationA)
         {
             resultV = GameManagement._maths.Multiplication(startV, matrix);
             spaceshipTopResult = GameManagement._maths.Multiplication(spaceshipTop, matrix);
             calculationSuccessful = true;
         }
-        else if (calculationType == 2) // Scalar Multiplication
+        else if (calcType == CalculationType.ScalarMultiplication)
         {
             resultV = GameManagement._maths.ScalarMultiplication(startV, scalar);
             spaceshipTopResult = GameManagement._maths.ScalarMultiplication(spaceshipTop, scalar);
@@ -178,7 +173,6 @@ public class InterfaceManager : MonoBehaviour
         {
             _inputFF.WriteResultVector(resultV);
             _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult);
-
         }
         else
         {

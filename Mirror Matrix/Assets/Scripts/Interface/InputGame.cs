@@ -53,11 +53,11 @@ public class InputGame : MonoBehaviour
     }
 
 
-    public int GetCalculationType()
+    public CalculationType GetCalculationType()
     {
         // elfenbeinstein MISSING calculation type 
 
-        return 0;
+        return CalculationType.Addition;
     }
 
     public bool AdditionValue()
