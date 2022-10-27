@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Game Manager Script -- Singleton
+/// 
+/// holds reference to maths script for every other script
+/// </summary>
 public class GameManagement : MonoBehaviour
 {
     private int level;

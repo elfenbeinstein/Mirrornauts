@@ -5,6 +5,13 @@ using UnityEngine;
 using TMPro;
 //using System.Globalization;
 
+/// <summary>
+/// central hub for managing all inputs and calculating the next rounds
+/// collects the correct values via the respective input scripts
+/// then sends the values to maths script to get correct results
+/// and tells the spaceship script what the result is
+/// </summary>
+
 public class InterfaceManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI turnCounterText;
@@ -26,6 +33,7 @@ public class InterfaceManager : MonoBehaviour
     private float[] spaceshipTopResult;
 
     public bool freeFlowMode;
+
     private bool additionValue;
     private bool calculationSuccessful;
     private CalculationType calcType;
@@ -179,7 +187,7 @@ public class InterfaceManager : MonoBehaviour
             Debug.LogWarning("something went wrong with the calculation");
         }
 
-        /* -- update once game mode is possible
+        /* -- update once game mode is possible elfenbeinstein CHANGE
         if (freeFlowMode)
         {
             // move spaceship

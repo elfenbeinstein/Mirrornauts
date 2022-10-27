@@ -3,22 +3,34 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// handles button / menu behaviour for the game in free flow mode
+/// exceptions: reset spaceship and everything that's connected to values in input fields --> InputFFValues
+/// 
+/// the dropdown menu decides which Input Elements are active
+/// the addition button changes whether it's an addition or subtraction
+/// 
+/// allows to switch between inputting the matrix values freely as numbers
+/// or as radians e.g. (cos(x*PI))
+/// 
+/// </summary>
+
 public class InputFFButtons : MonoBehaviour
 {
     [Header("Input Elements - General:")]
     [SerializeField] private GameObject addition;
     [SerializeField] private GameObject matrix;
     [SerializeField] private GameObject scalarObject;
-    [SerializeField] private GameObject vectorObject;
+    [SerializeField] private GameObject vectorObject; // for matrix and scalar (addition has its own start vector)
     [Space]
     [SerializeField] private GameObject dropdownMenu;
     private TMPro.TMP_Dropdown dropdown;
     [SerializeField] private TextMeshProUGUI additionButtonText;
     [Space]
     [Header("Matrix Multiplication:")]
-    [SerializeField] private GameObject matrixFreeValues;
-    [SerializeField] private GameObject matrixRadianValues;
-    [SerializeField] private GameObject x1Minus;
+    [SerializeField] private GameObject matrixFreeValues; // Input Fields for all Matrix Values
+    [SerializeField] private GameObject matrixRadianValues; // sin or cos of (InputField * PI)
+    [SerializeField] private GameObject x1Minus; // to change the pos/neg value of the field
     [SerializeField] private GameObject x2Minus;
     [SerializeField] private GameObject y1Minus;
     [SerializeField] private GameObject y2Minus;

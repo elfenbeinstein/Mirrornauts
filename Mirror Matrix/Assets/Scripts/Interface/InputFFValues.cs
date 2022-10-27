@@ -4,13 +4,16 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// Input System for Values in Free Flow Mode
+/// Collects Values in Free Flow Mode
+/// 
+/// adjusts spaceship while changing values in the start vector fields
+/// 
 /// </summary>
 public enum CalculationType
 {
     Addition,
-    MatrixMultiplicationF,
-    MatrixMultiplicationR,
+    MatrixMultiplicationF, // free values
+    MatrixMultiplicationR, // radian values
     ScalarMultiplication,
     MatrixMultiplicationG
 }
@@ -258,8 +261,8 @@ public class InputFFValues : MonoBehaviour
 
         if (matrixX1R.text != "")
         {
-            x = float.Parse(matrixX1R.text) * Mathf.PI;
-            x = Mathf.Cos(x);
+            x = float.Parse(matrixX1R.text);
+            x = Mathf.Cos(x * Mathf.PI);
             if (!x1Value) x *= -1;
         }
         else matrixX1R.text = "0";
@@ -323,7 +326,7 @@ public class InputFFValues : MonoBehaviour
 
 
 
-
+    // FOR TESTING:
     [ContextMenu("Sin cos tryout")]
     public void TrySinCos()
     {

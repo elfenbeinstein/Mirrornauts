@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// does all important calculations for the Spaceship Movement
+/// </summary>
 public class Maths : MonoBehaviour
 {
     private float[] vectorResult;
