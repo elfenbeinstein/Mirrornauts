@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
-//using TMPro;
 
 /// <summary>
-/// behaviour of every spawned object
+/// behaviour of every spawned object (sits on the hazard prefab)
 /// can be used for collectible and hazard (check bool isHazard)
 /// </summary>
 
@@ -35,24 +33,6 @@ public class ObjectBehaviour : MonoBehaviour
 
     [HideInInspector] public bool isTouching;
     private bool touched;
-
-    void Start()
-    {
-        // for testing:
-        /*
-        isCounting = true;
-        round = 4;
-        countdown = 4;
-        liftoff = 4;
-        spawnPosition = new Vector3(1, 1, 1);
-        spawnRotation = new Vector3(0, 0, 0.5f);
-
-        gameObject.transform.position = spawnPosition;
-        gameObject.transform.eulerAngles = spawnRotation;
-        countdownRenderer.sprite = _stats.countdownNumbers[countdown];
-        _collider.SetActive(false);*/
-    }
-
     
     public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Vector3 _rotation, TurnManager _script)
     {
@@ -127,13 +107,11 @@ public class ObjectBehaviour : MonoBehaviour
         }
 
         _turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
-        //gameObject.SetActive(false); -- obsolete, for testing
         Destroy(this.gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log($"collision with {gameObject} and 2D On Trigger Enter");
         if (isLifting)
         {
             isTouching = true;
@@ -141,6 +119,9 @@ public class ObjectBehaviour : MonoBehaviour
         else
         {
             touched = true;
+            // if the object is not yet active - saving if it touched.
+            // if in the same round the active turns active --> switched to isTouching is true
+            // which will be used to send message to spaceship
         }
     }
 

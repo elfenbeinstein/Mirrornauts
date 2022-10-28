@@ -4,46 +4,26 @@ using UnityEngine;
 
 public class SpaceshipBehaviour : MonoBehaviour
 {
+    [Tooltip("Line Renderer Object for start vector / see environment -> line renderer")]
     [SerializeField] private GameObject startVObject;
-    [SerializeField] private LineRenderer startV;
+    private LineRenderer startV;
+    [Tooltip("Line Renderer Object for end vector / see environment -> line renderer")]
     [SerializeField] private GameObject endVObject;
-    [SerializeField] private LineRenderer endV;
+    private LineRenderer endV;
 
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
-    //public GameObject _spaceshipCollider;
     
     private Vector3 topPos;
 
-    private InterfaceManager _interfaceManager;
-
     private void Start()
     {
+        startV = startVObject.GetComponent<LineRenderer>();
+        endV = endVObject.GetComponent<LineRenderer>();
+
         startVObject.SetActive(false);
         endVObject.SetActive(false);
-
-        _interfaceManager = FindObjectOfType<InterfaceManager>();
-
-        /*
-        float value = 1 / Mathf.Sqrt(2);
-        float result = Mathf.Asin(value);
-        result = GameManagement._maths.ConvertFromRadian(result);
-        Debug.Log("result is " + result);*/
     }
-
-    /*
-    public void UpdateDisplayFreeFlow(float[] startVector, float[] endVector)
-    {
-        // using line renderer:
-        startVObject.SetActive(true);
-        endVObject.SetActive(true);
-
-        var position = new Vector3(startVector[0] * scaleMultiplier, startVector[1] * scaleMultiplier, 0);
-        startV.SetPosition(1, position);
-
-        position = new Vector3(endVector[0] * scaleMultiplier, endVector[1] * scaleMultiplier, 0);
-        endV.SetPosition(1, position);
-    }*/
 
     public void MoveSpaceship(float[] vector)
     {
@@ -59,22 +39,13 @@ public class SpaceshipBehaviour : MonoBehaviour
         topPos = new Vector3(newTop[0], newTop[1], 0);
         Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
         float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
-
         spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // scale based on calculation
         float scale = GameManagement._maths.CalculateDistance(topPos, shipPos);
         spaceship.transform.localScale = new Vector3(scale, scale, scale); 
 
-        /*
-        if (topPos != spaceshipTop.transform.position)
-        {
-            Debug.LogWarning("incorrect rotation/scaling");
-            Debug.Log("new top pos should be: " + newTop[0] + ", " + newTop[1]);
-            Debug.Log("new top pos is: " + spaceshipTop.transform.position.x + ", " + spaceshipTop.transform.position.y);
-        }*/
-
-        
+        // line renderer update:
         startVObject.SetActive(true);
         endVObject.SetActive(true);
         var position = new Vector3(startVector[0], startVector[1], 0);
@@ -82,6 +53,8 @@ public class SpaceshipBehaviour : MonoBehaviour
         position = new Vector3(vectorResult[0], vectorResult[1], 0);
         endV.SetPosition(1, position);
     }
+
+    // elfenbeinstein MISSING: Update Spaceship G ?
 
     public float[] ShipTopCoordinates()
     {
@@ -122,4 +95,18 @@ public class SpaceshipBehaviour : MonoBehaviour
         startVObject.SetActive(false);
         endVObject.SetActive(false);
     }
+
+    /* -- obsolete, first version without spaceship object
+public void UpdateDisplayFreeFlow(float[] startVector, float[] endVector)
+{
+    // using line renderer:
+    startVObject.SetActive(true);
+    endVObject.SetActive(true);
+
+    var position = new Vector3(startVector[0] * scaleMultiplier, startVector[1] * scaleMultiplier, 0);
+    startV.SetPosition(1, position);
+
+    position = new Vector3(endVector[0] * scaleMultiplier, endVector[1] * scaleMultiplier, 0);
+    endV.SetPosition(1, position);
+}*/
 }

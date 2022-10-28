@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// central hub for managing each turn so things get done in the right order
+/// 1) send message for new turn (spawner spawns, interfacemanager collects values, calculates and moves spaceship)
+/// 2) holds reference to all active spawns
+/// 3) checks if active spawns are touching player and then sends message if so
+/// </summary>
 public class TurnManager : MonoBehaviour
 {
     public int turnCounter;
@@ -18,10 +24,6 @@ public class TurnManager : MonoBehaviour
 
     [SerializeField]
     private Stats _stats;
-
-    // remove: all references to interface Manager and spawns etc
-    // instead just send an event call --> TURN, nextTurn, int turnCounter
-    // have all objects that need to listen to those events add themselves to event manager addListener
 
     private void Start()
     {
@@ -47,18 +49,6 @@ public class TurnManager : MonoBehaviour
         // Listeners should be: spawner, interface manager 
         // spawner: adds new spawns to list spawnsToAdd
         // interface manager collects values, calculates movement, moves spaceship
-
-        /*
-        _interfaceManager.UpdateTurnCounterDisplay(turnCounter); // delete once game mode possible 
-        if (!_interfaceManager.freeFlowMode)
-        {
-            _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
-        }*/
-
-        // get values + move spaceship
-        //_interfaceManager.CollectValues();
-        //_interfaceManager.Calculate();
-        //_interfaceManager.Move();
 
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
@@ -88,6 +78,7 @@ public class TurnManager : MonoBehaviour
         // go through all active spawns and check for Collisions
         for (int i = activeSpawns.Count - 1; i >= 0; i--)
             if (activeSpawns[i].isTouching) EventManager.Instance.EventGo("PLAYER", "HitObject", activeSpawns[i]);
+        // elfenbeinstein maybe CHANGE this to just send the message once
     }
 
     public void AddSpawn(ObjectBehaviour spawn)

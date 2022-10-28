@@ -41,7 +41,8 @@ public class EventManager
         if (eventListener.ContainsKey(eventID))
             for (int i = eventListener[eventID].Count - 1; i >= 0; i--)
                 eventListener[eventID][i](eventName, param);
-        // eg eventID = Dialog; eventName = DialogStarted/DialogEnded....
+        // eventID: TURN --> NextTurn
+        // eventID: PLAYER --> HitBorder, LeftField, HitObject
 
         //Debug.Log(string.Format("Event{0} fired: {1}, {2}", eventID, eventName, param == null ? "" : param.ToString()));
     }

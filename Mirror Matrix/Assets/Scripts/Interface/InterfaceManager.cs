@@ -57,6 +57,7 @@ public class InterfaceManager : MonoBehaviour
         {
             _inputG = GetComponent<InputGame>();
             _inputG.SetSpaceshipScript(_spaceshipBehaviour);
+            //update turncounter?
         }
 
         /* -- turn back on once game mode possible

@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Handles Player Hit
 /// Handles Player Out of bounds (when spaceship leaves the playing field
+/// Handles Player Health (still needs work)
 /// </summary>
 
 public class Player : MonoBehaviour
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; // elfenbeinstein: check with Leon if this is true or if we take health from scene to scene
         _spaceshipBehaviour = GetComponent<SpaceshipBehaviour>();
         EventManager.Instance.AddEventListener("PLAYER", PlayerListener);
     }
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
             PlayerHitObject((ObjectBehaviour)param);
         else if (eventName == "HitBorder")
             PlayerHitBorder();
-        else if (eventName == "LeaveField")
+        else if (eventName == "LeftField")
             PlayerOutOfBounds();
     }
 

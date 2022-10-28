@@ -25,9 +25,7 @@ public class Border_Behaviour : MonoBehaviour
     {
         if (isBorder)
         {
-            //Debug.Log("spaceship touched border");
-
-            // MISSING: what happens if spaceship touches border
+            // MISSING elfenbeinstein : what happens if spaceship touches border
 
             if (!cooldown)
             {
@@ -42,10 +40,9 @@ public class Border_Behaviour : MonoBehaviour
         // if it leaves the playing field
         if (!isBorder)
         {
-            //Debug.Log("spaceship out of bounds");
             if (!cooldown)
             {
-                EventManager.Instance.EventGo("PLAYER", "LeaveField");
+                EventManager.Instance.EventGo("PLAYER", "LeftField");
                 StartCoroutine(CollisionCooldown());
             }
         }
