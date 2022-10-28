@@ -20,7 +20,7 @@ public class InterfaceManager : MonoBehaviour
     // Scripts
     [Space]
     private InputFFValues _inputFF;
-    private InputGame _inputG;
+    private InputGameValues _inputG;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
     private float[] startV;
@@ -53,7 +53,7 @@ public class InterfaceManager : MonoBehaviour
         }
         else
         {
-            _inputG = GetComponent<InputGame>();
+            _inputG = GetComponent<InputGameValues>();
             _inputG.SetSpaceshipScript(_spaceshipBehaviour);
             //update turncounter?
         }
@@ -132,15 +132,18 @@ public class InterfaceManager : MonoBehaviour
 
             // get type of calculation Type + corresponding values
             calcType = _inputG.GetCalculationType();
-            if (calcType == CalculationType.Addition)
+            
+            if (calcType == CalculationType.MatrixMultiplicationG)
+                matrix = _inputG.GetMatrixValues();
+            /*
+            else if (calcType == CalculationType.Addition)
             {
                 additionValue = _inputG.AdditionValue();
                 addV = _inputG.GetAddVector();
             }
-            else if (calcType == CalculationType.MatrixMultiplicationG)
-                matrix = _inputG.GetMatrixValues();
             else if (calcType == CalculationType.ScalarMultiplication)
                 scalar = _inputG.GetScalarMultiplier();
+            */
         }
     }
 
