@@ -38,8 +38,6 @@ public class InterfaceManager : MonoBehaviour
     private bool calculationSuccessful;
     private CalculationType calcType;
     
-
-
     void Start()
     {
         if (_spaceshipBehaviour == null)

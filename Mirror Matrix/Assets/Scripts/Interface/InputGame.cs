@@ -14,7 +14,6 @@ public class InputGame : MonoBehaviour
         
     }
 
-
     public void SetSpaceshipScript(SpaceshipBehaviour script)
     {
         _spaceshipBehaviour = script;
@@ -57,7 +56,7 @@ public class InputGame : MonoBehaviour
     {
         // elfenbeinstein MISSING calculation type 
 
-        return CalculationType.Addition;
+        return CalculationType.MatrixMultiplicationG;
     }
 
     public bool AdditionValue()

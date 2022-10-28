@@ -795,9 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startVObject: {fileID: 0}
-  startV: {fileID: 0}
   endVObject: {fileID: 0}
-  endV: {fileID: 0}
   spaceship: {fileID: 5182991187733610654}
   spaceshipTop: {fileID: 5182991186884055310}
 --- !u!114 &5182991187733610624
@@ -812,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2727a506659b5243ac7bb3cf892c226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 1
   _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
 --- !u!1 &5182991187822388940
 GameObject:

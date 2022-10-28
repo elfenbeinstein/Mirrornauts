@@ -16,8 +16,6 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> activeSpawns;
 
     private InterfaceManager _interfaceManager;
-    [SerializeField] private Spawner _hazardSpawner;
-    [SerializeField] private Spawner _collectiblesSpawner;
 
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
