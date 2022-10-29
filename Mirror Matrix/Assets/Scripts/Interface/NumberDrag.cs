@@ -23,6 +23,7 @@ public class NumberDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         // make sure field is at the very front 
         canvasGroup.alpha = 0.8f;
         canvasGroup.blocksRaycasts = false;
+        EventManager.Instance.EventGo("DRAG", "Start");
     }
 
     // gets called on every frame while object is being dragged
@@ -36,7 +37,7 @@ public class NumberDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         rectTransform.anchoredPosition = originalPosition;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
-        // if hovering over the matrix --> set values
+        EventManager.Instance.EventGo("DRAG", "Stop");
     }
 
     public void OnPointerDown(PointerEventData eventData)

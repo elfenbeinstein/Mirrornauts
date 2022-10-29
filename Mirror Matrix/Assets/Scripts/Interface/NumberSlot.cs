@@ -3,9 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NumberSlot : MonoBehaviour, IDropHandler
+public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private InputGameValues _inputGameValues;
+    [SerializeField] private GameObject highlight;
+    [SerializeField] private CanvasGroup valuesCanvasGroup;
+
+    private void Start()
+    {
+        highlight.SetActive(false);
+        EventManager.Instance.AddEventListener("DRAG", DragListener);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("DRAG", DragListener);
+    }
+
+    private void DragListener(string eventName, object param)
+    {
+        if (eventName == "Start")
+        {
+            valuesCanvasGroup.blocksRaycasts = false;
+            valuesCanvasGroup.interactable = false;
+        }
+        else if (eventName == "Stop")
+        {
+            valuesCanvasGroup.blocksRaycasts = true;
+            valuesCanvasGroup.interactable = true;
+        }
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -16,6 +43,23 @@ public class NumberSlot : MonoBehaviour, IDropHandler
             // if not --> error message to player - not enough energy left
             // if yes --> set value
             _inputGameValues.SetMatrix(value);
+            highlight.SetActive(false);
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag != null)
+        {
+            highlight.SetActive(true);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag != null)
+        {
+            highlight.SetActive(false);
         }
     }
 }

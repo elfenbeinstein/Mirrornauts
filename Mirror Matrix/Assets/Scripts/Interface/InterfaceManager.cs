@@ -171,7 +171,7 @@ public class InterfaceManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("error calculation dropwdown menu option out of bounds");
+            Debug.Log("error calculation");
             calculationSuccessful = false;
         }
     }
@@ -181,42 +181,20 @@ public class InterfaceManager : MonoBehaviour
         // move spaceship
         if (calculationSuccessful)
         {
-            _inputFF.WriteResultVector(resultV);
-            _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult);
+            if (freeFlowMode)
+            {
+                _inputFF.WriteResultVector(resultV);
+                _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult);
+            }
+            else
+            {
+                _inputG.WriteNewSpaceshipPos(resultV[0], resultV[1]);
+                _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult);
+            }
         }
         else
         {
             Debug.LogWarning("something went wrong with the calculation");
         }
-
-        /* -- update once game mode is possible elfenbeinstein CHANGE
-        if (freeFlowMode)
-        {
-            // move spaceship
-            if (calculationSuccessful)
-            {
-                _inputFreeFlow.WriteResultVector(resultV);
-                _spaceshipBehaviour.UpdateDisplay(startV, resultV, spaceshipTopResult);
-
-            }
-            else
-            {
-                Debug.LogWarning("something went wrong with the calculation");
-            }
-        }
-        else
-        {
-            // POSSIBLY ADD DIFFERENT MOVEMENT HERE
-            if (calculationSuccessful)
-            {
-                _spaceshipBehaviour.UpdateDisplay(startV, resultV, spaceshipTopResult);
-
-            }
-            else
-            {
-                Debug.LogWarning("something went wrong with the calculation");
-            }
-        }
-        */
     }
 }

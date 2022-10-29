@@ -76,12 +76,17 @@ public class InputGameValues : MonoBehaviour
         if (!y1Value) y *= -1;
 
         y2 = Mathf.Cos(numberSlot * Mathf.PI);
-        if (!y1Value) y2 *= -1;
+        if (!y2Value) y2 *= -1;
 
         float[] matrix = new float[] { x, x2, y, y2 };
 
         //Debug.Log($"Matrix values: {x}, {x2}, {y}, {y2}");
         return matrix;
+    }
+
+    public void WriteNewSpaceshipPos(float x, float y)
+    {
+
     }
 
     public CalculationType GetCalculationType()

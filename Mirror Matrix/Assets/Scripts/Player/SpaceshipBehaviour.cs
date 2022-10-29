@@ -54,7 +54,26 @@ public class SpaceshipBehaviour : MonoBehaviour
         endV.SetPosition(1, position);
     }
 
-    // elfenbeinstein MISSING: Update Spaceship G ?
+    public void UpdateSpaceshipG(float[] vectorResult, float[] newTop)
+    {
+        // move spaceship
+        MoveSpaceship(vectorResult);
+
+        // rotate based on new position
+        topPos = new Vector3(newTop[0], newTop[1], 0);
+        Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
+        float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
+        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+
+        // scale based on calculation
+        float scale = GameManagement._maths.CalculateDistance(topPos, shipPos);
+        spaceship.transform.localScale = new Vector3(scale, scale, scale);
+
+        // line renderer update:
+        endVObject.SetActive(true);
+        var position = new Vector3(vectorResult[0], vectorResult[1], 0);
+        endV.SetPosition(1, position);
+    }
 
     public float[] ShipTopCoordinates()
     {

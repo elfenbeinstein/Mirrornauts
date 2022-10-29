@@ -18,9 +18,14 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth; // elfenbeinstein: check with Leon if this is true or if we take health from scene to scene
+        currentHealth = maxHealth;
         _spaceshipBehaviour = GetComponent<SpaceshipBehaviour>();
         EventManager.Instance.AddEventListener("PLAYER", PlayerListener);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("PLAYER", PlayerListener);
     }
 
     void PlayerListener(string eventName, object param)
