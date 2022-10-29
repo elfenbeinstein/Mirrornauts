@@ -86,7 +86,9 @@ public class InputGameValues : MonoBehaviour
 
     public void WriteNewSpaceshipPos(float x, float y)
     {
-
+        //x = System.Math.Round(x, 2);
+        vectorx.text = Mathf.Round(x).ToString();
+        vectory.text = Mathf.Round(y).ToString();
     }
 
     public CalculationType GetCalculationType()
