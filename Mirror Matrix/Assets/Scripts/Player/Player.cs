@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 {
     private int currentHealth;
     [SerializeField] private int maxHealth;
+    [SerializeField] private float maxEnergy;
     [SerializeField] Stats _stats;
     private SpaceshipBehaviour _spaceshipBehaviour;
 

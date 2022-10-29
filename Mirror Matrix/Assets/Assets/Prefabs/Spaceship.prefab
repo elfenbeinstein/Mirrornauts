@@ -756,7 +756,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5182991187733610655}
   - component: {fileID: 5182991187733610625}
-  - component: {fileID: 5182991187733610624}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Player
@@ -798,20 +797,6 @@ MonoBehaviour:
   endVObject: {fileID: 0}
   spaceship: {fileID: 5182991187733610654}
   spaceshipTop: {fileID: 5182991186884055310}
---- !u!114 &5182991187733610624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5182991187733610654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2727a506659b5243ac7bb3cf892c226, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
-  _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
 --- !u!1 &5182991187822388940
 GameObject:
   m_ObjectHideFlags: 0
