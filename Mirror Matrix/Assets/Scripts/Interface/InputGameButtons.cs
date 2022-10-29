@@ -14,6 +14,10 @@ public class InputGameButtons : MonoBehaviour
     private void Start()
     {
         _inputGameValues = GetComponent<InputGameValues>();
+        x1Minus.SetActive(false);
+        x2Minus.SetActive(false);
+        y1Minus.SetActive(false);
+        y2Minus.SetActive(false);
     }
 
     public void ClearAllFields()

@@ -6,8 +6,8 @@ public class InputGameValues : MonoBehaviour
 {
     private SpaceshipBehaviour _spaceshipBehaviour;
 
-    private float x, y, x2, y2;
     private float[] vectorValue;
+    private float numberSlot;
 
     [Header("Vector Values:")]
     [SerializeField] private TMPro.TextMeshProUGUI vectorx;
@@ -24,6 +24,15 @@ public class InputGameValues : MonoBehaviour
     [HideInInspector] public bool y2Value;
     private CalculationType calcType;
 
+    private void Start()
+    {
+        ClearMatrix();
+        x1Value = true;
+        x2Value = true;
+        y1Value = true;
+        y2Value = true;
+    }
+
     public void SetSpaceshipScript(SpaceshipBehaviour script)
     {
         _spaceshipBehaviour = script;
@@ -32,57 +41,42 @@ public class InputGameValues : MonoBehaviour
         vectory.text = vectorValue[1].ToString();
     }
 
+    public void SetMatrix(float value)
+    {
+        matrixX1R.text = value.ToString();
+        matrixX2R.text = value.ToString();
+        matrixY1R.text = value.ToString();
+        matrixY2R.text = value.ToString();
+        numberSlot = value;
+    }
+
     public void ClearMatrix()
     {
         matrixX1R.text = "?";
         matrixX2R.text = "?";
         matrixY1R.text = "?";
         matrixY2R.text = "?";
+        numberSlot = 0;
     }
 
     public float[] GetMatrixValues() 
     {
-        if (matrixX1R.text == "" || matrixX2R.text == "" || matrixY1R.text == "" || matrixY2R.text == "")
-        {
-            Debug.LogWarning("missing matrix values, defaulting to zero");
-        }
-
         float x = 0;
         float y = 0;
         float x2 = 0;
         float y2 = 0;
 
-        if (matrixX1R.text != "")
-        {
-            x = float.Parse(matrixX1R.text);
-            x = Mathf.Cos(x * Mathf.PI);
-            if (!x1Value) x *= -1;
-        }
-        else matrixX1R.text = "0";
+        x = Mathf.Cos(numberSlot * Mathf.PI);
+        if (!x1Value) x *= -1;
 
-        if (matrixX2R.text != "")
-        {
-            x2 = float.Parse(matrixX2R.text);
-            x2 = Mathf.Sin(x2 * Mathf.PI);
-            if (!x2Value) x2 *= -1;
-        }
-        else matrixX2R.text = "0";
+        x2 = Mathf.Sin(numberSlot * Mathf.PI);
+        if (!x2Value) x2 *= -1;
 
-        if (matrixY1R.text != "")
-        {
-            y = float.Parse(matrixY1R.text);
-            y = Mathf.Sin(y * Mathf.PI);
-            if (!y1Value) y *= -1;
-        }
-        else matrixY1R.text = "0";
+        y = Mathf.Sin(numberSlot * Mathf.PI);
+        if (!y1Value) y *= -1;
 
-        if (matrixY2R.text != "")
-        {
-            y2 = float.Parse(matrixY2R.text);
-            y2 = Mathf.Cos(y2 * Mathf.PI);
-            if (!y2Value) y2 *= -1;
-        }
-        else matrixY2R.text = "0";
+        y2 = Mathf.Cos(numberSlot * Mathf.PI);
+        if (!y1Value) y2 *= -1;
 
         float[] matrix = new float[] { x, x2, y, y2 };
 
@@ -96,6 +90,7 @@ public class InputGameValues : MonoBehaviour
 
         return CalculationType.MatrixMultiplicationG;
     }
+
 
     /* -- potentially not necessary
     public float[] GetAddVector()
