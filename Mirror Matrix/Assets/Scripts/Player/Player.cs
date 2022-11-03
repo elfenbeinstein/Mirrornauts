@@ -14,12 +14,11 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private float maxEnergy;
     [SerializeField] Stats _stats;
-    private SpaceshipBehaviour _spaceshipBehaviour;
+    [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
     void Start()
     {
         currentHealth = maxHealth;
-        _spaceshipBehaviour = GetComponent<SpaceshipBehaviour>();
         EventManager.Instance.AddEventListener("PLAYER", PlayerListener);
     }
 

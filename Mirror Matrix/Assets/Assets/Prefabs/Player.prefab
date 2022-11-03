@@ -213,6 +213,7 @@ MonoBehaviour:
   maxHealth: 1
   maxEnergy: 1
   _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
+  _spaceshipBehaviour: {fileID: 1610532318691264209}
 --- !u!1 &7891768324178607007
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,3 +427,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5182991187733610655, guid: 811a2ee04e10f9d47a8651af37c09221, type: 3}
   m_PrefabInstance: {fileID: 5887451121747134032}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1610532318691264209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5182991187733610625, guid: 811a2ee04e10f9d47a8651af37c09221, type: 3}
+  m_PrefabInstance: {fileID: 5887451121747134032}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6fcdb360c9111478c0064d54f28489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

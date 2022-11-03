@@ -53,6 +53,8 @@ public class InterfaceManager : MonoBehaviour
         {
             _inputFF = GetComponent<InputFFValues>();
             _inputFF.SetSpaceshipScript(_spaceshipBehaviour);
+
+            turnCounterObject.SetActive(false);
         }
         else
         {
@@ -84,7 +86,7 @@ public class InterfaceManager : MonoBehaviour
     {
         if (eventName == "NextTurn")
         {
-            //if (!freeFlowMode) // elfenbeinstein CHANGE once game mode possible
+            if (!freeFlowMode)
                 UpdateTurnCounterDisplay((int)param);
             CollectValues();
             Calculate();
