@@ -13,8 +13,10 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
+    [SerializeField] private GameObject spaceshipRight;
     
     private Vector3 topPos;
+    private Vector3 rightPos;
 
     private void Start()
     {
@@ -30,7 +32,7 @@ public class SpaceshipBehaviour : MonoBehaviour
         spaceship.transform.position = new Vector3(vector[0], vector[1], 0);
     }
 
-    public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop)
+    public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop, float[] newRight = null)
     {
         // move spaceship
         MoveSpaceship(vectorResult);
@@ -54,7 +56,7 @@ public class SpaceshipBehaviour : MonoBehaviour
         endV.SetPosition(1, position);
     }
 
-    public void UpdateSpaceshipG(float[] vectorResult, float[] newTop)
+    public void UpdateSpaceshipG(float[] vectorResult, float[] newTop, float[] newRight = null)
     {
         // move spaceship
         MoveSpaceship(vectorResult);
@@ -66,8 +68,10 @@ public class SpaceshipBehaviour : MonoBehaviour
         spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // scale based on calculation
-        float scale = GameManagement._maths.CalculateDistance(topPos, shipPos);
-        spaceship.transform.localScale = new Vector3(scale, scale, scale);
+        rightPos = new Vector3(newRight[0], newRight[1], 0);
+        float scaleY = GameManagement._maths.CalculateDistance(topPos, shipPos);
+        float scaleX = GameManagement._maths.CalculateDistance(rightPos, shipPos);
+        spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
         // line renderer update:
         endVObject.SetActive(true);
