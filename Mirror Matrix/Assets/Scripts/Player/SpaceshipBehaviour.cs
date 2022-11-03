@@ -14,6 +14,8 @@ public class SpaceshipBehaviour : MonoBehaviour
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
     [SerializeField] private GameObject spaceshipRight;
+
+    [SerializeField] private bool scales;
     
     private Vector3 topPos;
     private Vector3 rightPos;
@@ -43,17 +45,20 @@ public class SpaceshipBehaviour : MonoBehaviour
         float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
         spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
-        // scale based on calculation
-        rightPos = new Vector3(newRight[0], newRight[1], 0);
-        float scaleY = Vector3.Distance(topPos, shipPos);
-        float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
-        spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
+        if (scales)
+        {
+            // scale based on calculation
+            rightPos = new Vector3(newRight[0], newRight[1], 0);
+            float scaleY = Vector3.Distance(topPos, shipPos);
+            float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
+            spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
-        /*
-        Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
-        Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
-        Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
-        */
+            /*
+            Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
+            Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
+            Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
+            */
+        }
 
         // line renderer update:
         startVObject.SetActive(true);
@@ -75,17 +80,20 @@ public class SpaceshipBehaviour : MonoBehaviour
         float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
         spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
-        // scale based on calculation
-        rightPos = new Vector3(newRight[0], newRight[1], 0);
-        float scaleY = Vector3.Distance(topPos, shipPos);
-        float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
-        spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
+        if (scales)
+        {
+            // scale based on calculation
+            rightPos = new Vector3(newRight[0], newRight[1], 0);
+            float scaleY = Vector3.Distance(topPos, shipPos);
+            float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
+            spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
-        /*
-        Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
-        Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
-        Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
-        */
+            /*
+            Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
+            Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
+            Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
+            */
+        }
 
         // line renderer update:
         endVObject.SetActive(true);
