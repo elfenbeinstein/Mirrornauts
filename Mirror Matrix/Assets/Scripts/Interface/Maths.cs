@@ -163,6 +163,16 @@ public class Maths : MonoBehaviour
         return angle;
     }
 
+    public float CalculateScaleX(Vector3 rightPos, Vector3 topPos)
+    {
+        float s = 0;
+
+        s = rightPos.x - topPos.x;
+
+        if (s < 0) s *= -1;
+
+        return s;
+    }
 
     // FOR TESTING:
     public float SinusCalc(float value)

@@ -32,6 +32,9 @@ public class InterfaceManager : MonoBehaviour
     private float[] spaceshipTop;
     private float[] spaceshipTopResult;
 
+    private float[] spaceshipRight;
+    private float[] spaceshipRightResult;
+
     public bool freeFlowMode;
 
     private bool additionValue;
@@ -105,9 +108,10 @@ public class InterfaceManager : MonoBehaviour
             // get start vector
             startV = _inputFF.GetStartVector();
 
-            // move spaceship to start vector + get correct spaceship top position
+            // move spaceship to start vector + get correct spaceship top + right position
             _spaceshipBehaviour.MoveSpaceship(startV);
             spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
+            spaceshipRight = _spaceshipBehaviour.ShipRightCoordinates();
 
             // get type of calculation and get corresponding values
             calcType = _inputFF.GetCalculationType();
@@ -126,9 +130,10 @@ public class InterfaceManager : MonoBehaviour
         }
         else
         {
-            // get current spaceship position (startV) and spaceship top position
+            // get current spaceship position (startV) and spaceship top + right position
             startV = _spaceshipBehaviour.SpaceshipCoordinates();
             spaceshipTop = _spaceshipBehaviour.ShipTopCoordinates();
+            spaceshipRight = _spaceshipBehaviour.ShipRightCoordinates();
 
             // get type of calculation Type + corresponding values
             calcType = _inputG.GetCalculationType();
@@ -151,22 +156,31 @@ public class InterfaceManager : MonoBehaviour
     {
         calculationSuccessful = false;
 
+        /*
+        Debug.Log($"spaceship pos = {startV[0]}, {startV[1]}");
+        Debug.Log($"spaceship top pos = {spaceshipTop[0]}, {spaceshipTop[1]}");
+        Debug.Log($"spaceship right pos = {spaceshipRight[0]}, {spaceshipRight[1]}");
+        */
+
         if (calcType == CalculationType.Addition)
         {
             resultV = GameManagement._maths.Addition(startV, addV, additionValue);
             spaceshipTopResult = GameManagement._maths.Addition(spaceshipTop, addV, additionValue);
+            spaceshipRightResult = GameManagement._maths.Addition(spaceshipRight, addV, additionValue);
             calculationSuccessful = true;
         }
         else if (calcType == CalculationType.MatrixMultiplicationG || calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationR)
         {
             resultV = GameManagement._maths.Multiplication(startV, matrix);
             spaceshipTopResult = GameManagement._maths.Multiplication(spaceshipTop, matrix);
+            spaceshipRightResult = GameManagement._maths.Multiplication(spaceshipRight, matrix);
             calculationSuccessful = true;
         }
         else if (calcType == CalculationType.ScalarMultiplication)
         {
             resultV = GameManagement._maths.ScalarMultiplication(startV, scalar);
             spaceshipTopResult = GameManagement._maths.ScalarMultiplication(spaceshipTop, scalar);
+            spaceshipRightResult = GameManagement._maths.ScalarMultiplication(spaceshipRight, scalar);
             calculationSuccessful = true;
         }
         else
@@ -184,12 +198,12 @@ public class InterfaceManager : MonoBehaviour
             if (freeFlowMode)
             {
                 _inputFF.WriteResultVector(resultV);
-                _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult);
+                _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult, spaceshipRightResult);
             }
             else
             {
                 _inputG.WriteNewSpaceshipPos(resultV[0], resultV[1]);
-                _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult);
+                _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult, spaceshipRightResult);
             }
         }
         else

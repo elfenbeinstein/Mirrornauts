@@ -32,31 +32,7 @@ public class SpaceshipBehaviour : MonoBehaviour
         spaceship.transform.position = new Vector3(vector[0], vector[1], 0);
     }
 
-    public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop, float[] newRight = null)
-    {
-        // move spaceship
-        MoveSpaceship(vectorResult);
-
-        // rotate based on new position
-        topPos = new Vector3(newTop[0], newTop[1], 0);
-        Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-        float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
-        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
-
-        // scale based on calculation
-        float scale = GameManagement._maths.CalculateDistance(topPos, shipPos);
-        spaceship.transform.localScale = new Vector3(scale, scale, scale); 
-
-        // line renderer update:
-        startVObject.SetActive(true);
-        endVObject.SetActive(true);
-        var position = new Vector3(startVector[0], startVector[1], 0);
-        startV.SetPosition(1, position);
-        position = new Vector3(vectorResult[0], vectorResult[1], 0);
-        endV.SetPosition(1, position);
-    }
-
-    public void UpdateSpaceshipG(float[] vectorResult, float[] newTop, float[] newRight = null)
+    public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop, float[] newRight)
     {
         // move spaceship
         MoveSpaceship(vectorResult);
@@ -69,14 +45,62 @@ public class SpaceshipBehaviour : MonoBehaviour
 
         // scale based on calculation
         rightPos = new Vector3(newRight[0], newRight[1], 0);
-        float scaleY = GameManagement._maths.CalculateDistance(topPos, shipPos);
-        float scaleX = GameManagement._maths.CalculateDistance(rightPos, shipPos);
+        float scaleY = Vector3.Distance(topPos, shipPos);
+        float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
         spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
+
+        /*
+        Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
+        Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
+        Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
+        */
+
+        // line renderer update:
+        startVObject.SetActive(true);
+        endVObject.SetActive(true);
+        var position = new Vector3(startVector[0], startVector[1], 0);
+        startV.SetPosition(1, position);
+        position = new Vector3(vectorResult[0], vectorResult[1], 0);
+        endV.SetPosition(1, position);
+    }
+
+    public void UpdateSpaceshipG(float[] vectorResult, float[] newTop, float[] newRight)
+    {
+        // move spaceship
+        MoveSpaceship(vectorResult);
+
+        // rotate based on new position
+        topPos = new Vector3(newTop[0], newTop[1], 0);
+        Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
+        float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
+        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+
+        // scale based on calculation
+        rightPos = new Vector3(newRight[0], newRight[1], 0);
+        float scaleY = Vector3.Distance(topPos, shipPos);
+        float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
+        spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
+
+        /*
+        Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
+        Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
+        Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
+        */
 
         // line renderer update:
         endVObject.SetActive(true);
         var position = new Vector3(vectorResult[0], vectorResult[1], 0);
         endV.SetPosition(1, position);
+    }
+
+    [ContextMenu("test position values")]
+    public void TestPositions()
+    {
+        float[] topPos = ShipTopCoordinates();
+        float[] rightPos = ShipRightCoordinates();
+
+        Debug.Log($"top pos = {topPos[0]}, {topPos[1]}");
+        Debug.Log($"right pos = {rightPos[0]}, {rightPos[1]}");
     }
 
     public float[] ShipTopCoordinates()
@@ -88,6 +112,16 @@ public class SpaceshipBehaviour : MonoBehaviour
         float[] positionTop = new float[] { x, y };
 
         return positionTop;
+    }
+
+    public float[] ShipRightCoordinates()
+    {
+        float x, y;
+        x = spaceshipRight.transform.position.x;
+        y = spaceshipRight.transform.position.y;
+
+        float[] position = new float[] { x, y };
+        return position;
     }
 
     public float[] SpaceshipCoordinates()
@@ -132,4 +166,4 @@ public void UpdateDisplayFreeFlow(float[] startVector, float[] endVector)
     position = new Vector3(endVector[0] * scaleMultiplier, endVector[1] * scaleMultiplier, 0);
     endV.SetPosition(1, position);
 }*/
-}
+    }
