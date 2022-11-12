@@ -38,6 +38,8 @@ public class TurnManager : MonoBehaviour
     }
     public void Go()
     {
+        if (!_interfaceManager.GameIsReady()) return;
+
         spawnsToAdd.Clear();
         spawnsToDelete.Clear();
 

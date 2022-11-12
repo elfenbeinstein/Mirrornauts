@@ -162,6 +162,11 @@ public class SpaceshipBehaviour : MonoBehaviour
         endVObject.SetActive(false);
     }
 
+    public void SetScaling(bool value)
+    {
+        scales = value;
+    }
+
     /* -- obsolete, first version without spaceship object
 public void UpdateDisplayFreeFlow(float[] startVector, float[] endVector)
 {

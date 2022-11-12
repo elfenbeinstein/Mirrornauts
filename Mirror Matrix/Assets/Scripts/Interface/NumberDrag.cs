@@ -11,6 +11,8 @@ public class NumberDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     private Vector3 originalPosition;
     private CanvasGroup canvasGroup;
 
+    private int n;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -24,6 +26,7 @@ public class NumberDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         canvasGroup.alpha = 0.8f;
         canvasGroup.blocksRaycasts = false;
         EventManager.Instance.EventGo("DRAG", "Start");
+        gameObject.transform.SetAsLastSibling();
     }
 
     // gets called on every frame while object is being dragged

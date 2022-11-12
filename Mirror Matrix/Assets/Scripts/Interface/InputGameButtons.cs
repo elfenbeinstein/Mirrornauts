@@ -27,12 +27,14 @@ public class InputGameButtons : MonoBehaviour
 
     public void MenuButton()
     {
-        // elfenbeinstein MISSING Open Menu
+        GameManagement.LoadStartMenu();
     }
 
     public void HelpButton()
     {
         // elfenbeinstein MISSING Open Help
+
+        // for now: it's a reset button:
     }
 
     public void MatrixX1()

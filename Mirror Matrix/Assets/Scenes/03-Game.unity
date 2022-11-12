@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &108650838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4504953348367023341, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+  m_PrefabInstance: {fileID: 6016721271409233952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &287124516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1610532318691264209, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
@@ -581,6 +592,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1803101351}
     m_Modifications:
+    - target: {fileID: 6016721270604492502, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016721270604492504, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6016721271409233953}
+    - target: {fileID: 6016721270604492504, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetSpaceshipFromButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016721270604492504, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputGameValues, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6016721271063433436, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -592,6 +619,14 @@ PrefabInstance:
     - target: {fileID: 6016721271063433436, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016721271384736195, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016721271580527336, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_text
+      value: RESET
       objectReference: {fileID: 0}
     - target: {fileID: 6016721271829269581, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_Name
@@ -682,6 +717,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6016721271829269584, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: scalesText
+      value: 
+      objectReference: {fileID: 108650838}
+    - target: {fileID: 6016721271829269584, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: _spaceshipBehaviour
       value: 
       objectReference: {fileID: 287124516}
@@ -699,3 +738,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+--- !u!114 &6016721271409233953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6016721271829269585, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+  m_PrefabInstance: {fileID: 6016721271409233952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c29f450860a97e48bdbe96dc83a0466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

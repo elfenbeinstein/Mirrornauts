@@ -43,7 +43,7 @@ public class GameManagement : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public static void LoadStartScreen()
+    public static void LoadStartMenu()
     {
         SceneManager.LoadScene(0);
     }

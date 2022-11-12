@@ -14,6 +14,7 @@ using TMPro;
 
 public class InterfaceManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI scalesText;
     [SerializeField] private TextMeshProUGUI turnCounterText;
     [SerializeField] private GameObject turnCounterObject;
 
@@ -62,6 +63,9 @@ public class InterfaceManager : MonoBehaviour
             _inputG.SetSpaceshipScript(_spaceshipBehaviour);
             //update turncounter?
         }
+
+        scalesText.text = "yes";
+        _spaceshipBehaviour.SetScaling(true);
 
         /* -- turn back on once game mode possible
         if (freeFlowMode)
@@ -206,11 +210,37 @@ public class InterfaceManager : MonoBehaviour
             {
                 _inputG.WriteNewSpaceshipPos(resultV[0], resultV[1]);
                 _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult, spaceshipRightResult);
+                _inputG.ClearMatrix();
             }
         }
         else
         {
             Debug.LogWarning("something went wrong with the calculation");
+        }
+    }
+
+    public bool GameIsReady()
+    {
+        if (freeFlowMode) return true;
+        else return _inputG.IsGameReady();
+    }
+
+    public void MenuButton()
+    {
+        GameManagement.LoadStartMenu();
+    }
+
+    public void ScalesButton()
+    {
+        if (scalesText.text == "yes")
+        {
+            scalesText.text = "no";
+            _spaceshipBehaviour.SetScaling(false);
+        }
+        else
+        {
+            scalesText.text = "yes";
+            _spaceshipBehaviour.SetScaling(true);
         }
     }
 }

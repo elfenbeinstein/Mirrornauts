@@ -86,9 +86,21 @@ public class InputGameValues : MonoBehaviour
 
     public void WriteNewSpaceshipPos(float x, float y)
     {
-        //x = System.Math.Round(x, 2);
-        vectorx.text = Mathf.Round(x).ToString();
-        vectory.text = Mathf.Round(y).ToString();
+        string xValue = x.ToString();
+        string yValue = y.ToString();
+
+        if (xValue.Contains(","))
+        {
+            double value = System.Math.Round(x, 2);
+            xValue = value.ToString();
+        }
+        if (yValue.Contains(","))
+        {
+            double value = System.Math.Round(y, 2);
+            yValue = value.ToString();
+        }
+        vectorx.text = xValue;
+        vectory.text = yValue;
     }
 
     public CalculationType GetCalculationType()
@@ -98,6 +110,27 @@ public class InputGameValues : MonoBehaviour
         return CalculationType.MatrixMultiplicationG;
     }
 
+    public bool IsGameReady()
+    {
+        if (matrixX1R.text == "?") return false;
+        else if (matrixX2R.text == "?") return false;
+        else if (matrixY1R.text == "?") return false;
+        else if (matrixY2R.text == "?") return false;
+        else return true;
+    }
+
+    [ContextMenu("test rounding")]
+    public void TestRounding()
+    {
+        float x = 3.2385f;
+        float y = 2f;
+        WriteNewSpaceshipPos(x, y);
+    }
+
+    public void ResetSpaceshipFromButton()
+    {
+        _spaceshipBehaviour.ResetRotation();
+    }
 
     /* -- potentially not necessary
     public float[] GetAddVector()
