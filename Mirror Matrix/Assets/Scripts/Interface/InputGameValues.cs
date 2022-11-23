@@ -12,6 +12,9 @@ public class InputGameValues : MonoBehaviour
     [Header("Vector Values:")]
     [SerializeField] private TMPro.TextMeshProUGUI vectorx;
     [SerializeField] private TMPro.TextMeshProUGUI vectory;
+    [SerializeField] private TMPro.TextMeshProUGUI[] vectorXs;
+    [SerializeField] private TMPro.TextMeshProUGUI[] vectorYs;
+
     [Header("Matrix Radian Values:")]
     [SerializeField] private TMPro.TextMeshProUGUI matrixX1R;
     [SerializeField] private TMPro.TextMeshProUGUI matrixX2R;
@@ -37,8 +40,9 @@ public class InputGameValues : MonoBehaviour
     {
         _spaceshipBehaviour = script;
         vectorValue = _spaceshipBehaviour.SpaceshipCoordinates();
-        vectorx.text = vectorValue[0].ToString();
-        vectory.text = vectorValue[1].ToString();
+        //vectorx.text = vectorValue[0].ToString();
+        //vectory.text = vectorValue[1].ToString();
+        WriteNewSpaceshipPos(vectorValue[0], vectorValue[1]);
     }
 
     public void SetMatrix(float value)
@@ -99,8 +103,17 @@ public class InputGameValues : MonoBehaviour
             double value = System.Math.Round(y, 2);
             yValue = value.ToString();
         }
-        vectorx.text = xValue;
-        vectory.text = yValue;
+        //vectorx.text = xValue;
+        //vectory.text = yValue;
+
+        for (int i = 0; i < vectorXs.Length; i++)
+        {
+            if (vectorXs[i] != null) vectorXs[i].text = xValue;
+        }
+        for (int i = 0; i < vectorYs.Length; i++)
+        {
+            if (vectorYs[i] != null) vectorYs[i].text = yValue;
+        }
     }
 
     public CalculationType GetCalculationType()

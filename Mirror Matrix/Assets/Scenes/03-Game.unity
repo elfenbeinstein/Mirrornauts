@@ -716,7 +716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5/4
+  m_text: 2,5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6/4
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0.25
+  value: 0.5
 --- !u!114 &497678888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2002,7 +2002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1.25
+  value: 2.5
 --- !u!114 &549463029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1/4
+  m_text: 0,5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2867,11 +2867,11 @@ RectTransform:
   m_Father: {fileID: 261794124}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -70, y: 0}
   m_SizeDelta: {x: 130, y: 130}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 1, y: 0}
 --- !u!225 &774511162
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2896,7 +2896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1.75
+  value: 3.5
 --- !u!114 &774511164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3169,7 +3169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 7/4
+  m_text: 3,5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3513,7 +3513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &942782859
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4011,7 +4011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0.5
+  value: 1
 --- !u!114 &1193626477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4108,7 +4108,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3/4
+  m_text: 1,5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4243,7 +4243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5040,7 +5040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0.75
+  value: 1.5
 --- !u!114 &1589074993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5137,7 +5137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2/4
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6080,7 +6080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1
+  value: 2
 --- !u!114 &1775055096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6605,7 +6605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 70, y: 0}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0, y: 0}
 --- !u!225 &1846561614
@@ -6632,7 +6632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94e211f5dae50c4796d0e6a26cdc250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1.5
+  value: 3
 --- !u!114 &1846561616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7683,10 +7683,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1803101351}
     m_Modifications:
     - target: {fileID: 2905639090229014993, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4469210843147794482, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
