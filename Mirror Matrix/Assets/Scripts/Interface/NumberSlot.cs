@@ -7,7 +7,7 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 {
     [SerializeField] private InputGameValues _inputGameValues;
     [SerializeField] private GameObject highlight;
-    [SerializeField] private CanvasGroup valuesCanvasGroup;
+    [SerializeField] private CanvasGroup[] valuesCanvasGroup;
 
     private void Start()
     {
@@ -24,13 +24,19 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     {
         if (eventName == "Start")
         {
-            valuesCanvasGroup.blocksRaycasts = false;
-            valuesCanvasGroup.interactable = false;
+            for (int i = 0; i < valuesCanvasGroup.Length; i++)
+            {
+                valuesCanvasGroup[i].blocksRaycasts = false;
+                valuesCanvasGroup[i].interactable = false;
+            }
         }
         else if (eventName == "Stop")
         {
-            valuesCanvasGroup.blocksRaycasts = true;
-            valuesCanvasGroup.interactable = true;
+            for (int i = 0; i < valuesCanvasGroup.Length; i++)
+            {
+                valuesCanvasGroup[i].blocksRaycasts = true;
+                valuesCanvasGroup[i].interactable = true;
+            }
         }
     }
 

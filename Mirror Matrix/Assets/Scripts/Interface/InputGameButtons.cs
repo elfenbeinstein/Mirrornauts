@@ -6,6 +6,12 @@ public class InputGameButtons : MonoBehaviour
 {
     private InputGameValues _inputGameValues;
 
+    [Header("Calculation Modes:")]
+    [SerializeField] private GameObject multiplicationRad;
+    [SerializeField] private GameObject multiplicationFree;
+    [SerializeField] private GameObject addition;
+
+    [Header("Sin/Cos Multiplication +-:")]
     [SerializeField] private GameObject x1Minus; // to change the pos/neg value of the field
     [SerializeField] private GameObject x2Minus;
     [SerializeField] private GameObject y1Minus;

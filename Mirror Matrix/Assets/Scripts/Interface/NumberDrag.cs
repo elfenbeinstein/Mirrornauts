@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NumberDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public float value;
 
@@ -42,12 +42,4 @@ public class NumberDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         canvasGroup.alpha = 1f;
         EventManager.Instance.EventGo("DRAG", "Stop");
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-
-    }
-
-    
-   
 }

@@ -64,8 +64,8 @@ public class InterfaceManager : MonoBehaviour
             //update turncounter?
         }
 
-        scalesText.text = "yes";
-        _spaceshipBehaviour.SetScaling(true);
+        //scalesText.text = "yes";
+        _spaceshipBehaviour.SetScaling(false);
 
         /* -- turn back on once game mode possible
         if (freeFlowMode)

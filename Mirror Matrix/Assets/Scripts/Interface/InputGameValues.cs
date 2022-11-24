@@ -25,7 +25,7 @@ public class InputGameValues : MonoBehaviour
     [HideInInspector] public bool x2Value;
     [HideInInspector] public bool y1Value;
     [HideInInspector] public bool y2Value;
-    private CalculationType calcType;
+    [HideInInspector] public CalculationType calcType;
 
     private void Start()
     {
@@ -40,8 +40,6 @@ public class InputGameValues : MonoBehaviour
     {
         _spaceshipBehaviour = script;
         vectorValue = _spaceshipBehaviour.SpaceshipCoordinates();
-        //vectorx.text = vectorValue[0].ToString();
-        //vectory.text = vectorValue[1].ToString();
         WriteNewSpaceshipPos(vectorValue[0], vectorValue[1]);
     }
 
