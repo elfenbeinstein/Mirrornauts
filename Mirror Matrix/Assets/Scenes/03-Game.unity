@@ -1684,11 +1684,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 840, y: 320}
   m_Pivot: {x: 0.5, y: 0}
---- !u!224 &539080833 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8142169167830941611, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
-  m_PrefabInstance: {fileID: 6016721271409233952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &563571566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,6 +1940,7 @@ MonoBehaviour:
   highlight: {fileID: 508561867}
   valuesCanvasGroup:
   - {fileID: 0}
+  type: 0
 --- !u!114 &603011359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,8 +5383,8 @@ RectTransform:
   m_Children:
   - {fileID: 1249516762}
   - {fileID: 364160180}
-  m_Father: {fileID: 539080833}
-  m_RootOrder: 2
+  m_Father: {fileID: 688512110}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7334,6 +7330,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1803101351}
     m_Modifications:
+    - target: {fileID: 42941309637598237, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 337466391822547444, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_fontSize
       value: 32.6

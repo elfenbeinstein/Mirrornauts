@@ -23,6 +23,7 @@ public class InterfaceManager : MonoBehaviour
     private InputFFValues _inputFF;
     private InputGameValues _inputG;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
+    private InputGameButtons _buttons;
 
     private float[] startV;
     private float[] addV;
@@ -61,6 +62,7 @@ public class InterfaceManager : MonoBehaviour
         {
             _inputG = GetComponent<InputGameValues>();
             _inputG.SetSpaceshipScript(_spaceshipBehaviour);
+            _buttons = GetComponent<InputGameButtons>();
             //update turncounter?
         }
 
@@ -148,8 +150,9 @@ public class InterfaceManager : MonoBehaviour
                 matrix = _inputG.GetMatrixValuesR();
             else if (calcType == CalculationType.Addition)
             {
-                //additionValue = _inputG.AdditionValue();
-                //addV = _inputG.GetAddVector();
+                additionValue = _inputG.AdditionValue();
+                addV = _inputG.GetAddVector();
+                _buttons.DashOver();
             }
             else if (calcType == CalculationType.MatrixMultiplicationF)
                 matrix = _inputG.GetMatrixValuesF();

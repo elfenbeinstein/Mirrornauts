@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public enum SlotType
+{
+    MatrixRadAll,
+    MatrixAX1,
+    MatrixAX2,
+    MatrixAY1,
+    MatrixAY2,
+    AddX,
+    AddY
+}
+
 public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private InputGameValues _inputGameValues;
     [SerializeField] private GameObject highlight;
+    [Tooltip("select all canvas groups that should not be interactable while dragging")]
     [SerializeField] private CanvasGroup[] valuesCanvasGroup;
+    [SerializeField] private SlotType type;
 
     private void Start()
     {
@@ -45,10 +58,13 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         if (eventData.pointerDrag != null)
         {
             float value = eventData.pointerDrag.GetComponent<NumberDrag>().value;
+
             // check if value is possible with remaining energy level
             // if not --> error message to player - not enough energy left
             // if yes --> set value
-            _inputGameValues.SetMatrix(value);
+
+            _inputGameValues.SetSlot(value, type);
+
             highlight.SetActive(false);
         }
     }

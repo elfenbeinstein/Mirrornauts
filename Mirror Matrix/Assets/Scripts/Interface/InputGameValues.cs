@@ -43,6 +43,9 @@ public class InputGameValues : MonoBehaviour
     [HideInInspector] public bool y2FValue;
 
     float x, y, x2, y2;
+    [HideInInspector] public bool addValue;
+    [HideInInspector] public bool addXValue;
+    [HideInInspector] public bool addYValue;
 
     private void Start()
     {
@@ -55,6 +58,9 @@ public class InputGameValues : MonoBehaviour
         x2FValue = true;
         y1FValue = true;
         y2FValue = true;
+        addValue = true;
+        addXValue = true;
+        addYValue = true;
     }
 
     public void SetSpaceshipScript(SpaceshipBehaviour script)
@@ -64,7 +70,38 @@ public class InputGameValues : MonoBehaviour
         WriteNewSpaceshipPos(vectorValue[0], vectorValue[1]);
     }
 
-    public void SetMatrix(float value) // called by number slot in radian mode
+    public void SetSlot(float value, SlotType type)
+    {
+        switch(type)
+        {
+            case SlotType.MatrixRadAll:
+                SetMatrix(value);
+                break;
+            case SlotType.MatrixAX1:
+                mFreeX1R.text = value.ToString();
+                break;
+            case SlotType.MatrixAX2:
+                mFreeX2R.text = value.ToString();
+                break;
+            case SlotType.MatrixAY1:
+                mFreeY1R.text = value.ToString();
+                break;
+            case SlotType.MatrixAY2:
+                mFreeY2R.text = value.ToString();
+                break;
+            case SlotType.AddX:
+                addX.text = value.ToString();
+                break;
+            case SlotType.AddY:
+                addY.text = value.ToString();
+                break;
+            default:
+                Debug.Log("case switch not proper");
+                break;
+        }
+    }
+
+    public void SetMatrix(float value)
     {
         matrixX1R.text = value.ToString();
         matrixX2R.text = value.ToString();
@@ -137,6 +174,25 @@ public class InputGameValues : MonoBehaviour
         return matrix;
     }
 
+    public float[] GetAddVector()
+    {
+        x = 0;
+        y = 0;
+
+        x = float.Parse(addX.text);
+        if (!addXValue) x *= -1;
+        y = float.Parse(addY.text);
+        if (!addYValue) y *= -1;
+
+        vectorValue = new float[] { x, y };
+        return vectorValue;
+    }
+
+    public bool AdditionValue()
+    {
+        return addValue;
+    }
+
     public void WriteNewSpaceshipPos(float x, float y)
     {
         string xValue = x.ToString();
@@ -167,13 +223,13 @@ public class InputGameValues : MonoBehaviour
 
     public CalculationType GetCalculationType()
     {
-        // elfenbeinstein MISSING calculation type (if necessary)
-
-        return CalculationType.MatrixMultiplicationR;
+        return calcType;
     }
 
     public bool IsGameReady()
     {
+        calcType = GetCalculationType();
+
         if (calcType == CalculationType.MatrixMultiplicationR)
         {
             if (matrixX1R.text == "?") return false;
@@ -211,30 +267,4 @@ public class InputGameValues : MonoBehaviour
     {
         _spaceshipBehaviour.ResetRotation();
     }
-
-    /* -- potentially not necessary
-    public float[] GetAddVector()
-    {
-        x = 0;
-        y = 0;
-
-        // elfenbeinstein MISSING get addition vector
-
-        vectorValue = new float[] { x, y };
-        return vectorValue;
-    }
-    public bool AdditionValue()
-    {
-        // elfenbeinstein MISSING addition value
-
-        return true;
-    }
-    public float GetScalarMultiplier()
-    {
-        x = 0;
-        // elfenbeinstein MISSING get scalar Multiplier if necessary
-
-        return x;
-    }
-    */
 }

@@ -23,7 +23,12 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private GameObject y1FMinus;
     [SerializeField] private GameObject y2FMinus;
 
-    private int additionAmount; // move to stats at some point
+    [Header("Addition")]
+    [SerializeField] private TMPro.TextMeshProUGUI additionButtonText;
+    [SerializeField] private GameObject addXMinus;
+    [SerializeField] private GameObject addYMinus;
+
+    private int dashAmount; // move to stats at some point
     private int shieldAmount;
 
     private bool freeMode;
@@ -31,23 +36,40 @@ public class InputGameButtons : MonoBehaviour
     private void Start()
     {
         _inputGameValues = GetComponent<InputGameValues>();
+        
+
+        multiplicationRad.SetActive(true);
         x1Minus.SetActive(false);
         x2Minus.SetActive(false);
         y1Minus.SetActive(false);
         y2Minus.SetActive(false);
-        freeMode = false;
 
-        multiplicationRad.SetActive(true);
+        /*
+        multiplicationFree.SetActive(true);
+        x1FMinus.SetActive(false);
+        x2FMinus.SetActive(false);
+        y1FMinus.SetActive(false);
+        y2FMinus.SetActive(false);
+        */
         multiplicationFree.SetActive(false);
-        addition.SetActive(false);
 
-        additionAmount = 0;
+        addition.SetActive(true);
+        addXMinus.SetActive(false);
+        addYMinus.SetActive(false);
+        addition.SetActive(false);
+        additionButtonText.text = "+";
+        _inputGameValues.addValue = true;
+
+        _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
+        freeMode = false;
+        dashAmount = 0;
+        shieldAmount = 0;
     }
 
     private void Update()
     {
         // elfenbeinstein: DELETE for final build
-        if (Input.GetKeyDown(KeyCode.A)) additionAmount += 1;
+        if (Input.GetKeyDown(KeyCode.A)) dashAmount += 1;
         if (Input.GetKeyDown(KeyCode.S)) shieldAmount *= 1;
     }
 
@@ -73,18 +95,27 @@ public class InputGameButtons : MonoBehaviour
         if(addition.activeInHierarchy)
         {
             addition.SetActive(false);
-            additionAmount += 1;
-            if (!freeMode) multiplicationRad.SetActive(true);
-            else multiplicationFree.SetActive(true);
+            dashAmount += 1;
+            if (!freeMode)
+            {
+                multiplicationRad.SetActive(true);
+                _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
+            }
+            else
+            {
+                multiplicationFree.SetActive(true);
+                _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
+            }
         }
         else
         {
-            if (additionAmount >= 1)
+            if (dashAmount >= 1)
             {
                 addition.SetActive(true);
-                additionAmount -= 1;
+                dashAmount -= 1;
                 multiplicationRad.SetActive(false);
                 multiplicationFree.SetActive(false);
+                _inputGameValues.calcType = CalculationType.Addition;
             }
             else
             {
@@ -92,6 +123,21 @@ public class InputGameButtons : MonoBehaviour
                 // elfenbeinstein MISSING player feedback for missing powerup
             }
 
+        }
+    }
+
+    public void DashOver()
+    {
+        addition.SetActive(false);
+        if (!freeMode)
+        {
+            multiplicationRad.SetActive(true);
+            _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
+        }
+        else
+        {
+            multiplicationFree.SetActive(true);
+            _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
         }
     }
 
@@ -112,6 +158,7 @@ public class InputGameButtons : MonoBehaviour
         y2FMinus.SetActive(false);
 
         freeMode = true;
+        _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
     }
 
     public void MatrixX1()
@@ -167,6 +214,50 @@ public class InputGameButtons : MonoBehaviour
         {
             y2Minus.SetActive(true);
             _inputGameValues.y2Value = false;
+        }
+    }
+
+    public void AddX()
+    {
+        if (addXMinus.activeInHierarchy)
+        {
+            addXMinus.SetActive(false);
+            _inputGameValues.addXValue = true;
+        }
+        else
+        {
+            addXMinus.SetActive(true);
+            _inputGameValues.addXValue = false;
+        }
+    }
+
+    public void AddY()
+    {
+        if (addYMinus.activeInHierarchy)
+        {
+            addYMinus.SetActive(false);
+            _inputGameValues.addYValue = true;
+        }
+        else
+        {
+            addYMinus.SetActive(true);
+            _inputGameValues.addYValue = false;
+        }
+    }
+
+    public void AddButton()
+    {
+        if (additionButtonText.text == "+")
+        {
+            additionButtonText.text = "-";
+
+            _inputGameValues.addValue = false;
+        }
+        else
+        {
+            additionButtonText.text = "+";
+
+            _inputGameValues.addValue = true;
         }
     }
 }
