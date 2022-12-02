@@ -16,6 +16,11 @@ public class GameManagement : MonoBehaviour
 
     public static Maths _maths;
 
+    public static int dashAmount;
+    public static int shieldAmount;
+    public static bool shieldActive;
+    public static int energy;
+
     private void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("GameManager");
@@ -31,6 +36,9 @@ public class GameManagement : MonoBehaviour
         {
             Debug.Log("game manager can't find maths script");
         }
+
+        dashAmount = 0;
+        shieldActive = false;
     }
 
     public static void StartGameMode()

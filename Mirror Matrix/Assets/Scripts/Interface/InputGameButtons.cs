@@ -28,9 +28,6 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private GameObject addXMinus;
     [SerializeField] private GameObject addYMinus;
 
-    private int dashAmount; // move to stats at some point
-    private int shieldAmount;
-
     private bool freeMode;
 
     private void Start()
@@ -62,15 +59,13 @@ public class InputGameButtons : MonoBehaviour
 
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
         freeMode = false;
-        dashAmount = 0;
-        shieldAmount = 0;
     }
 
     private void Update()
     {
         // elfenbeinstein: DELETE for final build
-        if (Input.GetKeyDown(KeyCode.A)) dashAmount += 1;
-        if (Input.GetKeyDown(KeyCode.S)) shieldAmount *= 1;
+        if (Input.GetKeyDown(KeyCode.A)) GameManagement.dashAmount += 1;
+        if (Input.GetKeyDown(KeyCode.S)) GameManagement.shieldAmount *= 1;
     }
 
     public void ClearAllFields()
@@ -94,25 +89,15 @@ public class InputGameButtons : MonoBehaviour
     {
         if(addition.activeInHierarchy)
         {
-            addition.SetActive(false);
-            dashAmount += 1;
-            if (!freeMode)
-            {
-                multiplicationRad.SetActive(true);
-                _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
-            }
-            else
-            {
-                multiplicationFree.SetActive(true);
-                _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
-            }
+            GameManagement.dashAmount += 1;
+            DashOver();
         }
         else
         {
-            if (dashAmount >= 1)
+            if (GameManagement.dashAmount >= 1)
             {
                 addition.SetActive(true);
-                dashAmount -= 1;
+                GameManagement.dashAmount -= 1;
                 multiplicationRad.SetActive(false);
                 multiplicationFree.SetActive(false);
                 _inputGameValues.calcType = CalculationType.Addition;
@@ -143,7 +128,15 @@ public class InputGameButtons : MonoBehaviour
 
     public void Shield()
     {
-        
+        if (GameManagement.shieldActive)
+        {
+            ShieldOver();
+        }
+    }
+
+    public void ShieldOver()
+    {
+        GameManagement.shieldActive = false;
     }
 
     public void SetUpFreeMode()

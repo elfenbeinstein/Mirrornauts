@@ -17,6 +17,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scalesText;
     [SerializeField] private TextMeshProUGUI turnCounterText;
     [SerializeField] private GameObject turnCounterObject;
+    [SerializeField] private int switchToFreeMode = 1;
 
     // Scripts
     [Space]
@@ -97,6 +98,7 @@ public class InterfaceManager : MonoBehaviour
             CollectValues();
             Calculate();
             Move();
+            if ((int)param == switchToFreeMode) _buttons.SetUpFreeMode();
         }
     }
 

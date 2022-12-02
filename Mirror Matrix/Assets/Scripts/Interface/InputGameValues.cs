@@ -136,6 +136,8 @@ public class InputGameValues : MonoBehaviour
             addX.text = "?";
             addY.text = "?";
         }
+
+        // elfenbeinstein MISSING: get energy back
     }
 
     public float[] GetMatrixValuesR() 
