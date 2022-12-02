@@ -18,10 +18,10 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private GameObject y2Minus;
 
     [Header("Free Multiplication +-:")]
-    [SerializeField] private GameObject x1FMinus;
-    [SerializeField] private GameObject x2FMinus;
-    [SerializeField] private GameObject y1FMinus;
-    [SerializeField] private GameObject y2FMinus;
+    [SerializeField] private TMPro.TextMeshProUGUI x1FMinus;
+    [SerializeField] private TMPro.TextMeshProUGUI x2FMinus;
+    [SerializeField] private TMPro.TextMeshProUGUI y1FMinus;
+    [SerializeField] private TMPro.TextMeshProUGUI y2FMinus;
 
     [Header("Addition")]
     [SerializeField] private TMPro.TextMeshProUGUI additionButtonText;
@@ -41,21 +41,8 @@ public class InputGameButtons : MonoBehaviour
         y1Minus.SetActive(false);
         y2Minus.SetActive(false);
 
-        /*
-        multiplicationFree.SetActive(true);
-        x1FMinus.SetActive(false);
-        x2FMinus.SetActive(false);
-        y1FMinus.SetActive(false);
-        y2FMinus.SetActive(false);
-        */
         multiplicationFree.SetActive(false);
-
-        addition.SetActive(true);
-        addXMinus.SetActive(false);
-        addYMinus.SetActive(false);
         addition.SetActive(false);
-        additionButtonText.text = "+";
-        _inputGameValues.addValue = true;
 
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
         freeMode = false;
@@ -96,7 +83,7 @@ public class InputGameButtons : MonoBehaviour
         {
             if (GameManagement.dashAmount >= 1)
             {
-                addition.SetActive(true);
+                SetUpAddition();
                 GameManagement.dashAmount -= 1;
                 multiplicationRad.SetActive(false);
                 multiplicationFree.SetActive(false);
@@ -109,6 +96,20 @@ public class InputGameButtons : MonoBehaviour
             }
 
         }
+    }
+
+    private void SetUpAddition()
+    {
+        addition.SetActive(true);
+
+        addXMinus.SetActive(false);
+        _inputGameValues.addXValue = true;
+
+        addYMinus.SetActive(false);
+        _inputGameValues.addYValue = true;
+
+        additionButtonText.text = "+";
+        _inputGameValues.addValue = true;
     }
 
     public void DashOver()
@@ -131,6 +132,12 @@ public class InputGameButtons : MonoBehaviour
         if (GameManagement.shieldActive)
         {
             ShieldOver();
+            GameManagement.shieldAmount++;
+        }
+        else 
+        {
+            GameManagement.shieldAmount--;
+            GameManagement.shieldActive = true;
         }
     }
 
@@ -145,10 +152,10 @@ public class InputGameButtons : MonoBehaviour
         multiplicationFree.SetActive(true);
         multiplicationRad.SetActive(false);
 
-        x1FMinus.SetActive(false);
-        x2FMinus.SetActive(false);
-        y1FMinus.SetActive(false);
-        y2FMinus.SetActive(false);
+        x1FMinus.text = "+";
+        x2FMinus.text = "+";
+        y1FMinus.text = "+";
+        y2FMinus.text = "+";
 
         freeMode = true;
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
@@ -156,59 +163,124 @@ public class InputGameButtons : MonoBehaviour
 
     public void MatrixX1()
     {
-        if (x1Minus.activeInHierarchy)
+        if (multiplicationRad.activeInHierarchy)
         {
-            x1Minus.SetActive(false);
-            _inputGameValues.x1Value = true;
+            if (x1Minus.activeInHierarchy)
+            {
+                x1Minus.SetActive(false);
+                _inputGameValues.x1Value = true;
+            }
+            else
+            {
+                x1Minus.SetActive(true);
+                _inputGameValues.x1Value = false;
+            }
         }
         else
         {
-            x1Minus.SetActive(true);
-            _inputGameValues.x1Value = false;
+            if (x1FMinus.text == "-")
+            {
+                x1FMinus.text = "+";
+                _inputGameValues.x1FValue = true;
+            }
+            else
+            {
+                x1FMinus.text = "-";
+                _inputGameValues.x1FValue = false;
+            }
         }
     }
 
     public void MatrixX2()
     {
-        if (x2Minus.activeInHierarchy)
+        if (multiplicationRad.activeInHierarchy)
         {
-            x2Minus.SetActive(false);
-            _inputGameValues.x2Value = true;
+            if (x2Minus.activeInHierarchy)
+             {
+                x2Minus.SetActive(false);
+                _inputGameValues.x2Value = true;
+            }
+            else
+            {
+                x2Minus.SetActive(true);
+                _inputGameValues.x2Value = false;
+            }
         }
         else
         {
-            x2Minus.SetActive(true);
-            _inputGameValues.x2Value = false;
+            if (x2FMinus.text == "-")
+            {
+                x2FMinus.text = "+";
+                _inputGameValues.x2FValue = true;
+            }
+            else
+            {
+                x2FMinus.text = "-";
+                _inputGameValues.x2FValue = false;
+            }
         }
     }
 
     public void MatrixY1()
     {
-        if (y1Minus.activeInHierarchy)
+        if (multiplicationRad.activeInHierarchy)
         {
-            y1Minus.SetActive(false);
-            _inputGameValues.y1Value = true;
+            if (y1Minus.activeInHierarchy)
+            {
+                y1Minus.SetActive(false);
+                _inputGameValues.y1Value = true;
+            }
+            else
+            {
+                y1Minus.SetActive(true);
+                _inputGameValues.y1Value = false;
+            }
         }
         else
         {
-            y1Minus.SetActive(true);
-            _inputGameValues.y1Value = false;
+            if (y1FMinus.text == "-")
+            {
+                y1FMinus.text = "+";
+                _inputGameValues.y1FValue = true;
+            }
+            else
+            {
+                y1FMinus.text = "-";
+                _inputGameValues.y1FValue = false;
+            }
         }
     }
 
     public void MatrixY2()
     {
-        if (y2Minus.activeInHierarchy)
+        if (multiplicationRad.activeInHierarchy)
         {
-            y2Minus.SetActive(false);
-            _inputGameValues.y2Value = true;
+            if (y2Minus.activeInHierarchy)
+            {
+                y2Minus.SetActive(false);
+                _inputGameValues.y2Value = true;
+            }
+            else
+            {
+                y2Minus.SetActive(true);
+                _inputGameValues.y2Value = false;
+            }
         }
         else
         {
-            y2Minus.SetActive(true);
-            _inputGameValues.y2Value = false;
+            if (y2FMinus.text == "-")
+            {
+                y2FMinus.text = "+";
+                _inputGameValues.y2FValue = true;
+            }
+            else
+            {
+                y2FMinus.text = "-";
+                _inputGameValues.y2FValue = false;
+            }
         }
     }
+        
 
     public void AddX()
     {

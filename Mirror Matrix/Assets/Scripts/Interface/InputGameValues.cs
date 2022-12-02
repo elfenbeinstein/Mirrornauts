@@ -172,6 +172,15 @@ public class InputGameValues : MonoBehaviour
         x2 = 0;
         y2 = 0;
 
+        x = float.Parse(mFreeX1R.text);
+        if (!x1FValue) x *= -1;
+        x2 = float.Parse(mFreeX2R.text);
+        if (!x2FValue) x2 *= -1;
+        y = float.Parse(mFreeY1R.text);
+        if (!y1FValue) y *= -1;
+        y2 = float.Parse(mFreeY2R.text);
+        if (!y2FValue) y2 *= -1;
+
         float[] matrix = new float[] { x, x2, y, y2 };
         return matrix;
     }

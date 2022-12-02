@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ObjectBehaviour : MonoBehaviour
 {
-    [Tooltip("if it is a hazard = true; if a collectible = false")]
+    [Tooltip("if it is a hazard = true; if a collectible = false + add powerup script to object")]
     public bool isHazard;
 
     [SerializeField] private Stats _stats;
@@ -22,9 +22,6 @@ public class ObjectBehaviour : MonoBehaviour
     private int round;
     private int countdown;
     private int liftoff;
-
-    private Vector3 spawnPosition;
-    private Vector3 spawnRotation;
 
     private TurnManager _turnManager;
 
@@ -39,8 +36,6 @@ public class ObjectBehaviour : MonoBehaviour
         round = _round;
         countdown = _countdown;
         liftoff = _liftoff;
-        spawnPosition = _position;
-        spawnRotation = _rotation;
         _turnManager = _script;
 
         // set up position & rotation
@@ -96,6 +91,21 @@ public class ObjectBehaviour : MonoBehaviour
         else
         {
             Debug.Log("error in if statement of object behaviour script");
+        }
+
+        if (isTouching)
+        {
+            Debug.Log("touched " + gameObject);
+
+            if (isHazard)
+            {
+                if (!GameManagement.shieldActive) Debug.Log("player dead");
+            }
+            else
+            {
+                if (GetComponent<PowerUps>() != null) GetComponent<PowerUps>().AddToPlayer();
+                else Debug.LogWarning("collectible is missing a powerup script");
+            }
         }
     }
 
