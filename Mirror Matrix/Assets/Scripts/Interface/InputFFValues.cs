@@ -14,8 +14,7 @@ public enum CalculationType
     Addition,
     MatrixMultiplicationF, // free values
     MatrixMultiplicationR, // radian values
-    ScalarMultiplication,
-    MatrixMultiplicationG
+    ScalarMultiplication
 }
 
 public class InputFFValues : MonoBehaviour

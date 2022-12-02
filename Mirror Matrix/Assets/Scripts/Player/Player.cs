@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxEnergy;
     [SerializeField] Stats _stats;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
+    private bool shieldActive;
 
     void Start()
     {
@@ -35,6 +36,10 @@ public class Player : MonoBehaviour
             PlayerHitBorder();
         else if (eventName == "LeftField")
             PlayerOutOfBounds();
+        else if (eventName == "ShieldOn")
+            shieldActive = true;
+        else if (eventName == "ShieldOff")
+            shieldActive = false;
     }
 
     public void PlayerHitObject(ObjectBehaviour hitObject)
@@ -42,7 +47,7 @@ public class Player : MonoBehaviour
         Debug.Log("spaceship touched object");
 
         if (hitObject.isHazard)
-            DamageTaken(1);
+            if (!shieldActive) DamageTaken(1);
         else
         {
             // elfenbeinstein MISSING: collectible

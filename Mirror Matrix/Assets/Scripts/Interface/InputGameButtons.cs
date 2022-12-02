@@ -17,6 +17,17 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private GameObject y1Minus;
     [SerializeField] private GameObject y2Minus;
 
+    [Header("Free Multiplication +-:")]
+    [SerializeField] private GameObject x1FMinus;
+    [SerializeField] private GameObject x2FMinus;
+    [SerializeField] private GameObject y1FMinus;
+    [SerializeField] private GameObject y2FMinus;
+
+    private int additionAmount; // move to stats at some point
+    private int shieldAmount;
+
+    private bool freeMode;
+
     private void Start()
     {
         _inputGameValues = GetComponent<InputGameValues>();
@@ -24,6 +35,20 @@ public class InputGameButtons : MonoBehaviour
         x2Minus.SetActive(false);
         y1Minus.SetActive(false);
         y2Minus.SetActive(false);
+        freeMode = false;
+
+        multiplicationRad.SetActive(true);
+        multiplicationFree.SetActive(false);
+        addition.SetActive(false);
+
+        additionAmount = 0;
+    }
+
+    private void Update()
+    {
+        // elfenbeinstein: DELETE for final build
+        if (Input.GetKeyDown(KeyCode.A)) additionAmount += 1;
+        if (Input.GetKeyDown(KeyCode.S)) shieldAmount *= 1;
     }
 
     public void ClearAllFields()
@@ -41,6 +66,52 @@ public class InputGameButtons : MonoBehaviour
         // elfenbeinstein MISSING Open Help
 
         // for now: it's a reset button:
+    }
+
+    public void Dash()
+    {
+        if(addition.activeInHierarchy)
+        {
+            addition.SetActive(false);
+            additionAmount += 1;
+            if (!freeMode) multiplicationRad.SetActive(true);
+            else multiplicationFree.SetActive(true);
+        }
+        else
+        {
+            if (additionAmount >= 1)
+            {
+                addition.SetActive(true);
+                additionAmount -= 1;
+                multiplicationRad.SetActive(false);
+                multiplicationFree.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("can't dash, no powerups");
+                // elfenbeinstein MISSING player feedback for missing powerup
+            }
+
+        }
+    }
+
+    public void Shield()
+    {
+        
+    }
+
+    public void SetUpFreeMode()
+    {
+        addition.SetActive(false);
+        multiplicationFree.SetActive(true);
+        multiplicationRad.SetActive(false);
+
+        x1FMinus.SetActive(false);
+        x2FMinus.SetActive(false);
+        y1FMinus.SetActive(false);
+        y2FMinus.SetActive(false);
+
+        freeMode = true;
     }
 
     public void MatrixX1()

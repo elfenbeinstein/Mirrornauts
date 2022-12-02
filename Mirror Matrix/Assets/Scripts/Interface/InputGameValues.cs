@@ -21,11 +21,28 @@ public class InputGameValues : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI matrixY1R;
     [SerializeField] private TMPro.TextMeshProUGUI matrixY2R;
 
+    [Header("Matrix Free Values:")]
+    [SerializeField] private TMPro.TextMeshProUGUI mFreeX1R;
+    [SerializeField] private TMPro.TextMeshProUGUI mFreeX2R;
+    [SerializeField] private TMPro.TextMeshProUGUI mFreeY1R;
+    [SerializeField] private TMPro.TextMeshProUGUI mFreeY2R;
+
+    [Header("Addition Values:")]
+    [SerializeField] private TMPro.TextMeshProUGUI addX;
+    [SerializeField] private TMPro.TextMeshProUGUI addY;
+
     [HideInInspector] public bool x1Value; // if true +, if false -
     [HideInInspector] public bool x2Value;
     [HideInInspector] public bool y1Value;
     [HideInInspector] public bool y2Value;
     [HideInInspector] public CalculationType calcType;
+
+    [HideInInspector] public bool x1FValue;
+    [HideInInspector] public bool x2FValue;
+    [HideInInspector] public bool y1FValue;
+    [HideInInspector] public bool y2FValue;
+
+    float x, y, x2, y2;
 
     private void Start()
     {
@@ -34,6 +51,10 @@ public class InputGameValues : MonoBehaviour
         x2Value = true;
         y1Value = true;
         y2Value = true;
+        x1FValue = true;
+        x2FValue = true;
+        y1FValue = true;
+        y2FValue = true;
     }
 
     public void SetSpaceshipScript(SpaceshipBehaviour script)
@@ -43,7 +64,7 @@ public class InputGameValues : MonoBehaviour
         WriteNewSpaceshipPos(vectorValue[0], vectorValue[1]);
     }
 
-    public void SetMatrix(float value)
+    public void SetMatrix(float value) // called by number slot in radian mode
     {
         matrixX1R.text = value.ToString();
         matrixX2R.text = value.ToString();
@@ -54,19 +75,38 @@ public class InputGameValues : MonoBehaviour
 
     public void ClearMatrix()
     {
-        matrixX1R.text = "?";
-        matrixX2R.text = "?";
-        matrixY1R.text = "?";
-        matrixY2R.text = "?";
-        numberSlot = 0;
+        if (calcType == CalculationType.MatrixMultiplicationR)
+        {
+            matrixX1R.text = "?";
+            matrixX2R.text = "?";
+            matrixY1R.text = "?";
+            matrixY2R.text = "?";
+            numberSlot = 0;
+        }
+        else if (calcType == CalculationType.MatrixMultiplicationF)
+        {
+            mFreeX1R.text = "?";
+            mFreeX2R.text = "?";
+            mFreeY1R.text = "?";
+            mFreeY2R.text = "?";
+            x = 0;
+            x2 = 0;
+            y = 0;
+            y2 = 0;
+        }
+        else if (calcType == CalculationType.Addition)
+        {
+            addX.text = "?";
+            addY.text = "?";
+        }
     }
 
-    public float[] GetMatrixValues() 
+    public float[] GetMatrixValuesR() 
     {
-        float x = 0;
-        float y = 0;
-        float x2 = 0;
-        float y2 = 0;
+        x = 0;
+        y = 0;
+        x2 = 0;
+        y2 = 0;
 
         x = Mathf.Cos(numberSlot * Mathf.PI);
         if (!x1Value) x *= -1;
@@ -83,6 +123,17 @@ public class InputGameValues : MonoBehaviour
         float[] matrix = new float[] { x, x2, y, y2 };
 
         //Debug.Log($"Matrix values: {x}, {x2}, {y}, {y2}");
+        return matrix;
+    }
+
+    public float[] GetMatrixValuesF()
+    {
+        x = 0;
+        y = 0;
+        x2 = 0;
+        y2 = 0;
+
+        float[] matrix = new float[] { x, x2, y, y2 };
         return matrix;
     }
 
@@ -118,16 +169,34 @@ public class InputGameValues : MonoBehaviour
     {
         // elfenbeinstein MISSING calculation type (if necessary)
 
-        return CalculationType.MatrixMultiplicationG;
+        return CalculationType.MatrixMultiplicationR;
     }
 
     public bool IsGameReady()
     {
-        if (matrixX1R.text == "?") return false;
-        else if (matrixX2R.text == "?") return false;
-        else if (matrixY1R.text == "?") return false;
-        else if (matrixY2R.text == "?") return false;
-        else return true;
+        if (calcType == CalculationType.MatrixMultiplicationR)
+        {
+            if (matrixX1R.text == "?") return false;
+            else if (matrixX2R.text == "?") return false;
+            else if (matrixY1R.text == "?") return false;
+            else if (matrixY2R.text == "?") return false;
+            else return true;
+        }
+        else if (calcType == CalculationType.Addition)
+        {
+            if (addX.text == "?") return false;
+            else if (addY.text == "?") return false;
+            else return true;
+        }
+        else if (calcType == CalculationType.MatrixMultiplicationF)
+        {
+            if (mFreeX1R.text == "?") return false;
+            else if (mFreeX2R.text == "?") return false;
+            else if (mFreeY1R.text == "?") return false;
+            else if (mFreeY2R.text == "?") return false;
+            else return true;
+        }
+        else return false;
     }
 
     [ContextMenu("test rounding")]

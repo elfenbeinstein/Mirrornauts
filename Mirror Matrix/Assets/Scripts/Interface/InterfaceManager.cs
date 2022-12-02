@@ -144,17 +144,15 @@ public class InterfaceManager : MonoBehaviour
             // get type of calculation Type + corresponding values
             calcType = _inputG.GetCalculationType();
             
-            if (calcType == CalculationType.MatrixMultiplicationG)
-                matrix = _inputG.GetMatrixValues();
-            /*
+            if (calcType == CalculationType.MatrixMultiplicationR)
+                matrix = _inputG.GetMatrixValuesR();
             else if (calcType == CalculationType.Addition)
             {
-                additionValue = _inputG.AdditionValue();
-                addV = _inputG.GetAddVector();
+                //additionValue = _inputG.AdditionValue();
+                //addV = _inputG.GetAddVector();
             }
-            else if (calcType == CalculationType.ScalarMultiplication)
-                scalar = _inputG.GetScalarMultiplier();
-            */
+            else if (calcType == CalculationType.MatrixMultiplicationF)
+                matrix = _inputG.GetMatrixValuesF();
         }
     }
 
@@ -175,7 +173,7 @@ public class InterfaceManager : MonoBehaviour
             spaceshipRightResult = GameManagement._maths.Addition(spaceshipRight, addV, additionValue);
             calculationSuccessful = true;
         }
-        else if (calcType == CalculationType.MatrixMultiplicationG || calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationR)
+        else if (calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationR)
         {
             resultV = GameManagement._maths.Multiplication(startV, matrix);
             spaceshipTopResult = GameManagement._maths.Multiplication(spaceshipTop, matrix);
