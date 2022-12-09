@@ -31,6 +31,7 @@ public class PowerUps : MonoBehaviour
             case PowerupType.Energy:
                 GameManagement.energy += amount;
                 if (_stats.maxEnergy < GameManagement.energy) GameManagement.energy = _stats.maxEnergy;
+                EventManager.Instance.EventGo("ENERGY", "AddEnergy");
                 break;
             case PowerupType.Shield:
                 GameManagement.shieldAmount += amount;

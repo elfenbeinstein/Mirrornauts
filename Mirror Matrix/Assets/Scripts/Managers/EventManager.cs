@@ -42,7 +42,8 @@ public class EventManager
             for (int i = eventListener[eventID].Count - 1; i >= 0; i--)
                 eventListener[eventID][i](eventName, param);
         // eventID: TURN --> NextTurn
-        // eventID: PLAYER --> HitBorder, LeftField
+        // eventID: PLAYER --> HitBorder, LeftField, HitObject, HitHazard
+        // eventID: ENERGY --> AddEnergy, RemoveEnergy
 
         //Debug.Log(string.Format("Event{0} fired: {1}, {2}", eventID, eventName, param == null ? "" : param.ToString()));
     }

@@ -689,6 +689,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 705
       objectReference: {fileID: 0}
+    - target: {fileID: 6016721270161974283, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6016721270351566897, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -709,6 +713,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: InputGameValues, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6016721270899450027, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016721271019446150, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6016721271063433435, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6016721271063433436, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -717,9 +733,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6016721271063433436, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
+    - target: {fileID: 6016721271113112405, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6016721271353345200, guid: 56eda2842283f0d4f93ef261b73787c9, type: 3}
       propertyPath: m_RootOrder
