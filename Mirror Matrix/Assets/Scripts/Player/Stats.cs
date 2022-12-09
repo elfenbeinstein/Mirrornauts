@@ -10,7 +10,8 @@ public class Stats : ScriptableObject
 {
     public Sprite[] countdownNumbers;
 
-    public int currentHealth;
+    public int maxHealth;
+    public int maxEnergy;
 
     public int highscore;
     public int deaths;

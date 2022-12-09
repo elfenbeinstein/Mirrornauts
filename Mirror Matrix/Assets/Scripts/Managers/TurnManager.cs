@@ -20,16 +20,13 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
 
-    [SerializeField]
-    private Stats _stats;
-
     private void Start()
     {
         _interfaceManager = GetComponent<InterfaceManager>();
 
         if (!_interfaceManager.freeFlowMode)
         {
-            turnCounter = 0; // get from somewhere maybe
+            turnCounter = 0;
             _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
         }
         spawnsToAdd = new List<ObjectBehaviour>();
@@ -38,12 +35,13 @@ public class TurnManager : MonoBehaviour
     }
     public void Go()
     {
+        // make sure that all fields where set before we start
         if (!_interfaceManager.GameIsReady()) return;
 
         spawnsToAdd.Clear();
         spawnsToDelete.Clear();
-
         turnCounter += 1;
+
         // Send Event next Turn:
         EventManager.Instance.EventGo("TURN", "NextTurn", turnCounter);
         // Listeners should be: spawner, interface manager 
@@ -71,14 +69,23 @@ public class TurnManager : MonoBehaviour
         {
             foreach (ObjectBehaviour item in spawnsToDelete)
             {
-                activeSpawns.Remove(item);
+                if(activeSpawns.Contains(item))
+                    activeSpawns.Remove(item);
             }
         }
 
+        bool sndHzd = false; // send hazard message;
+
         // go through all active spawns and check for Collisions
         for (int i = activeSpawns.Count - 1; i >= 0; i--)
-            if (activeSpawns[i].isTouching) EventManager.Instance.EventGo("PLAYER", "HitObject", activeSpawns[i]);
-        // elfenbeinstein maybe CHANGE this to just send the message once
+        {
+            if (activeSpawns[i].isTouching)
+            {
+                if (activeSpawns[i].isHazard) sndHzd = true;
+                else EventManager.Instance.EventGo("PLAYER", "HitObject", activeSpawns[i]);
+            }
+        }
+        if(sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
     }
 
     public void AddSpawn(ObjectBehaviour spawn)
@@ -88,6 +95,7 @@ public class TurnManager : MonoBehaviour
 
     public void RemoveSpawn(ObjectBehaviour spawn)
     {
-        spawnsToDelete.Add(spawn);
+        if (!spawnsToDelete.Contains(spawn))
+            spawnsToDelete.Add(spawn);
     }
 }

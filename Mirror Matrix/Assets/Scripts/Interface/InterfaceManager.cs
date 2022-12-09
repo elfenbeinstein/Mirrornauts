@@ -70,7 +70,6 @@ public class InterfaceManager : MonoBehaviour
         //scalesText.text = "yes";
         _spaceshipBehaviour.SetScaling(false);
 
-        /* -- turn back on once game mode possible
         if (freeFlowMode)
         {
             turnCounterObject.SetActive(false);
@@ -79,7 +78,7 @@ public class InterfaceManager : MonoBehaviour
         else
         {
             turnCounterObject.SetActive(true);
-        }*/
+        }
 
         EventManager.Instance.AddEventListener("TURN", NextTurn);
     }

@@ -18,8 +18,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ec3ffdc82842a374397756a2d626d0e4, type: 3}
   - {fileID: 21300000, guid: c80ded6d624f8984daa4130b862b2e8e, type: 3}
   - {fileID: 21300000, guid: 862df68a1d06d0c449896d66c7cc2aec, type: 3}
-  currentHealth: 0
   maxHealth: 15
+  maxEnergy: 100
   highscore: 0
   deaths: 0
   lastPlayedLevel: 0

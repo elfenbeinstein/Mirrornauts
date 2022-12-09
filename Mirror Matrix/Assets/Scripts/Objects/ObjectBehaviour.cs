@@ -92,21 +92,6 @@ public class ObjectBehaviour : MonoBehaviour
         {
             Debug.Log("error in if statement of object behaviour script");
         }
-
-        if (isTouching)
-        {
-            Debug.Log("touched " + gameObject);
-
-            if (isHazard)
-            {
-                if (!GameManagement.shieldActive) Debug.Log("player dead");
-            }
-            else
-            {
-                if (GetComponent<PowerUps>() != null) GetComponent<PowerUps>().AddToPlayer();
-                else Debug.LogWarning("collectible is missing a powerup script");
-            }
-        }
     }
 
     public void RemoveSelfFromList()

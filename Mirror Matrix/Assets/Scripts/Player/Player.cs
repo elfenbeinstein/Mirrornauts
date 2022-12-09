@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] Stats _stats;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -33,22 +34,24 @@ public class Player : MonoBehaviour
             PlayerHitBorder();
         else if (eventName == "LeftField")
             PlayerOutOfBounds();
+        else if (eventName == "HitObject")
+            PlayerHitObject((ObjectBehaviour)param);
+        else if (eventName == "HitHazard")
+            PlayerHitHazard((int)param);
     }
-
-    /*
+    
     public void PlayerHitObject(ObjectBehaviour hitObject)
     {
-        Debug.Log("spaceship touched object");
-
-        if (hitObject.isHazard)
-            if (!GameManagement.shieldActive) DamageTaken(1);
-        else
-        {
-            // elfenbeinstein MISSING: collectible
-            hitObject.RemoveSelfFromList();
-        }
+        //Debug.Log("spaceship touched object");
+        if (hitObject.gameObject.GetComponent<PowerUps>() != null) hitObject.gameObject.GetComponent<PowerUps>().AddToPlayer(_stats);
+        else Debug.Log(hitObject + " is missing powerup script");
+        hitObject.RemoveSelfFromList();
     }
-    */
+
+    public void PlayerHitHazard(int damage)
+    {
+        DamageTaken(damage);
+    }
 
     public void PlayerHitBorder()
     {
@@ -67,10 +70,11 @@ public class Player : MonoBehaviour
 
     private void DamageTaken(int amount)
     {
-        currentHealth -= amount;
+        if (!GameManagement.shieldActive)
+            currentHealth -= amount;
         Debug.Log($"current hp is {currentHealth}");
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             PlayerDeath();
         }

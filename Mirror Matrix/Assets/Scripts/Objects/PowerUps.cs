@@ -21,7 +21,7 @@ public class PowerUps : MonoBehaviour
     [Tooltip("How much does this add to the player (amount of powerups or energy added)")]
     [SerializeField] int amount;
 
-    public void AddToPlayer()
+    public void AddToPlayer(Stats _stats)
     {
         switch (type)
         {
@@ -30,7 +30,7 @@ public class PowerUps : MonoBehaviour
                 break;
             case PowerupType.Energy:
                 GameManagement.energy += amount;
-                // elfenbeinstein MISSING: check for max amounts
+                if (_stats.maxEnergy < GameManagement.energy) GameManagement.energy = _stats.maxEnergy;
                 break;
             case PowerupType.Shield:
                 GameManagement.shieldAmount += amount;
