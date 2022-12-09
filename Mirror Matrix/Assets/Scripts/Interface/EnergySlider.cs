@@ -30,10 +30,12 @@ public class EnergySlider : MonoBehaviour
     {
         if (eventName == "AddEnergy")
         {
+            GameManagement.energy += (int)param;
             UpdateSlider();
         }
         else if (eventName == "RemoveEnergy")
         {
+            GameManagement.energy -= (int)param;
             UpdateSlider();
         }
 

@@ -96,6 +96,9 @@ public class InterfaceManager : MonoBehaviour
                 UpdateTurnCounterDisplay((int)param);
             CollectValues();
             Calculate();
+            if (!freeFlowMode)
+                EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", _inputG.energyNeeded);
+            Debug.Log("Energy Needed: " + _inputG.energyNeeded);
             Move();
             if ((int)param == switchToFreeMode) _buttons.SetUpFreeMode();
         }
@@ -225,6 +228,12 @@ public class InterfaceManager : MonoBehaviour
     {
         if (freeFlowMode) return true;
         else return _inputG.IsGameReady();
+    }
+
+    public bool HasEnoughEnergy()
+    {
+        if (freeFlowMode) return true;
+        else return _inputG.HasEnoughEnergy();
     }
 
     public void MenuButton()

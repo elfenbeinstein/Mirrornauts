@@ -47,6 +47,8 @@ public class InputGameValues : MonoBehaviour
     [HideInInspector] public bool addXValue;
     [HideInInspector] public bool addYValue;
 
+    [HideInInspector] public int energyNeeded;
+
     private void Start()
     {
         ClearMatrix();
@@ -264,6 +266,34 @@ public class InputGameValues : MonoBehaviour
             else return true;
         }
         else return false;
+    }
+
+    public bool HasEnoughEnergy()
+    {
+        bool ready = false;
+        EnergyNeeded();
+        // check if this is enough
+        if (energyNeeded <= GameManagement.energy) ready = true;
+
+        return ready;
+    }
+
+    private void EnergyNeeded()
+    {
+        switch(calcType)
+        {
+            case CalculationType.Addition:
+                float[] value = GetAddVector();
+                energyNeeded = (int)Mathf.Round(Mathf.Abs(value[0]) + Mathf.Abs(value[1]));
+                return;
+            case CalculationType.MatrixMultiplicationF:
+                float[] val = GetMatrixValuesF();
+                energyNeeded = (int)Mathf.Round( (Mathf.Abs(val[0]) + Mathf.Abs(val[1]) + Mathf.Abs(val[2]) + Mathf.Abs(val[3])) / 4);
+                return;
+            case CalculationType.MatrixMultiplicationR:
+                energyNeeded = (int)Mathf.Round(Mathf.Abs(numberSlot));
+                return;
+        }
     }
 
     [ContextMenu("test rounding")]
