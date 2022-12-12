@@ -161,6 +161,11 @@ public class InputGameButtons : MonoBehaviour
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
     }
 
+    public void PlusMinusButton()
+    {
+        EventManager.Instance.EventGo("BUTTON", "+-Button");
+    }
+
     public void MatrixX1()
     {
         if (multiplicationRad.activeInHierarchy)
