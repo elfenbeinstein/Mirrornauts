@@ -11646,7 +11646,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6016721271063433436}
   m_HandleRect: {fileID: 0}
@@ -15951,7 +15951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb0bb8d294aff0428d996c54c019525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scalesText: {fileID: 0}
+  scalesText: {fileID: 4504953348367023341}
   turnCounterText: {fileID: 6016721271809433228}
   turnCounterObject: {fileID: 6016721271874873202}
   switchToFreeMode: 1
@@ -16025,6 +16025,7 @@ MonoBehaviour:
   addValue: 0
   addXValue: 0
   addYValue: 0
+  energyNeeded: 0
 --- !u!114 &6016721271829269583
 MonoBehaviour:
   m_ObjectHideFlags: 0
