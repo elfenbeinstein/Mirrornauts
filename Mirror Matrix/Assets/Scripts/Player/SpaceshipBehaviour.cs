@@ -41,14 +41,14 @@ public class SpaceshipBehaviour : MonoBehaviour
         // move spaceship
         MoveSpaceship(vectorResult);
 
-        // rotate based on new position
-        topPos = new Vector3(newTop[0], newTop[1], 0);
-        Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-        float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
-        spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
-
         if (scales)
         {
+            // rotate based on new position
+            topPos = new Vector3(newTop[0], newTop[1], 0);
+            Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
+            float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
+            spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
+
             // scale based on calculation
             rightPos = new Vector3(newRight[0], newRight[1], 0);
             float scaleY = Vector3.Distance(topPos, shipPos);
