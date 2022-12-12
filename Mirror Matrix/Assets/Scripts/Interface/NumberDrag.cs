@@ -15,7 +15,7 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     public float value;
     [Tooltip("set default if not special case")]
     public ValueTypes type;
-    [SerializeField] private TMPro.TextMeshProUGUI text;
+    public TMPro.TextMeshProUGUI text;
     bool hasMinus;
     string origText;
 

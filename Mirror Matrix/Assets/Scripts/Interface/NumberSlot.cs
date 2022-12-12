@@ -58,12 +58,13 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         if (eventData.pointerDrag != null)
         {
             float value = eventData.pointerDrag.GetComponent<NumberDrag>().value;
+            string text = eventData.pointerDrag.GetComponent<NumberDrag>().text.text;
 
             // check if value is possible with remaining energy level
             // if not --> error message to player - not enough energy left
             // if yes --> set value
 
-            _inputGameValues.SetSlot(value, type);
+            _inputGameValues.SetSlot(value, type, text);
 
             highlight.SetActive(false);
         }

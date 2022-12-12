@@ -49,6 +49,8 @@ public class InputGameValues : MonoBehaviour
 
     [HideInInspector] public int energyNeeded;
 
+    float fX, fX2, fY, fY2, aX, aY; // needed since input update with new fields
+
     private void Start()
     {
         ClearMatrix();
@@ -72,30 +74,36 @@ public class InputGameValues : MonoBehaviour
         WriteNewSpaceshipPos(vectorValue[0], vectorValue[1]);
     }
 
-    public void SetSlot(float value, SlotType type)
+    public void SetSlot(float value, SlotType type, string text)
     {
         switch(type)
         {
             case SlotType.MatrixRadAll:
-                SetMatrix(value);
+                SetMatrix(value, text);
                 break;
             case SlotType.MatrixAX1:
-                mFreeX1R.text = value.ToString();
+                mFreeX1R.text = text;
+                fX = value;
                 break;
             case SlotType.MatrixAX2:
-                mFreeX2R.text = value.ToString();
+                mFreeX2R.text = text;
+                fX2 = value;
                 break;
             case SlotType.MatrixAY1:
-                mFreeY1R.text = value.ToString();
+                mFreeY1R.text = text;
+                fY = value;
                 break;
             case SlotType.MatrixAY2:
-                mFreeY2R.text = value.ToString();
+                mFreeY2R.text = text;
+                fY2 = value;
                 break;
             case SlotType.AddX:
-                addX.text = value.ToString();
+                addX.text = text;
+                aX = value;
                 break;
             case SlotType.AddY:
-                addY.text = value.ToString();
+                addY.text = text;
+                aY = value;
                 break;
             default:
                 Debug.Log("case switch not proper");
@@ -103,12 +111,12 @@ public class InputGameValues : MonoBehaviour
         }
     }
 
-    public void SetMatrix(float value)
+    public void SetMatrix(float value, string text)
     {
-        matrixX1R.text = value.ToString();
-        matrixX2R.text = value.ToString();
-        matrixY1R.text = value.ToString();
-        matrixY2R.text = value.ToString();
+        matrixX1R.text = text;
+        matrixX2R.text = text;
+        matrixY1R.text = text;
+        matrixY2R.text = text;
         numberSlot = value;
     }
 
@@ -169,6 +177,7 @@ public class InputGameValues : MonoBehaviour
 
     public float[] GetMatrixValuesF()
     {
+        /*
         x = 0;
         y = 0;
         x2 = 0;
@@ -182,13 +191,16 @@ public class InputGameValues : MonoBehaviour
         if (!y1FValue) y *= -1;
         y2 = float.Parse(mFreeY2R.text);
         if (!y2FValue) y2 *= -1;
+        */
 
-        float[] matrix = new float[] { x, x2, y, y2 };
+        // values are set when number is dragged
+        float[] matrix = new float[] { fX, fX2, fY, fY2 };
         return matrix;
     }
 
     public float[] GetAddVector()
     {
+        /*
         x = 0;
         y = 0;
 
@@ -196,8 +208,10 @@ public class InputGameValues : MonoBehaviour
         if (!addXValue) x *= -1;
         y = float.Parse(addY.text);
         if (!addYValue) y *= -1;
+        */
 
-        vectorValue = new float[] { x, y };
+        // values are set with number drop
+        vectorValue = new float[] { aX, aY };
         return vectorValue;
     }
 
