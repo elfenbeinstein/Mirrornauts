@@ -7,6 +7,7 @@ public class StartScreen : MonoBehaviour
     [SerializeField] private GameObject startO;
     [SerializeField] private GameObject chooseO;
     [SerializeField] private GameObject creditsO;
+    [SerializeField] private GameObject helpO;
 
     private bool startOpen;
 
@@ -16,6 +17,7 @@ public class StartScreen : MonoBehaviour
         startO.SetActive(true);
         chooseO.SetActive(false);
         creditsO.SetActive(false);
+        helpO.SetActive(false);
     }
 
     void Update()
@@ -46,11 +48,17 @@ public class StartScreen : MonoBehaviour
         creditsO.SetActive(true);
         chooseO.SetActive(false);
     }
+    public void HelpButton()
+    {
+        helpO.SetActive(true);
+        chooseO.SetActive(false);
+    }
 
     public void BackButton()
     {
         chooseO.SetActive(true);
         creditsO.SetActive(false);
+        helpO?.SetActive(false);
     }
 
     public void QuitButton()
