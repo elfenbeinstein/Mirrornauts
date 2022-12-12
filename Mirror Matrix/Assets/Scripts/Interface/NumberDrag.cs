@@ -3,9 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public enum ValueTypes
+{
+    Default,
+    Wurzel2,
+    Wurzel3
+}
+
 public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public float value;
+    [Tooltip("set default if not special case")]
+    public ValueTypes type;
+    [SerializeField] private TMPro.TextMeshProUGUI text;
+    bool hasMinus;
+    string origText;
 
     private RectTransform rectTransform;
     private Vector3 originalPosition;
@@ -18,6 +30,45 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         rectTransform = GetComponent<RectTransform>();
         originalPosition = rectTransform.anchoredPosition;
         canvasGroup = GetComponent<CanvasGroup>();
+
+        switch (type)
+        {
+            case ValueTypes.Default:
+                break;
+            case ValueTypes.Wurzel2:
+                value = 1 / 2 * Mathf.Sqrt(2);
+                break;
+            case ValueTypes.Wurzel3:
+                value = 1 / 2 * Mathf.Sqrt(3);
+                break;
+        }
+
+        EventManager.Instance.AddEventListener("BUTTON", ButtonListener);
+        hasMinus = false;
+        origText = text.text;
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("BUTTON", ButtonListener);
+    }
+
+    private void ButtonListener(string eventName, object param)
+    {
+        if (eventName == "+-Button")
+        {
+            if (hasMinus)
+            {
+                text.text = origText;
+                hasMinus = false;
+            }
+            else
+            {
+                text.text = "-" + origText;
+                hasMinus = true;
+            }
+            value *= -1;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
