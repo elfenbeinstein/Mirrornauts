@@ -8,7 +8,6 @@ using UnityEngine;
 
 public enum PowerupType
 {
-    Dash,
     Shield,
     Energy
 }
@@ -25,9 +24,6 @@ public class PowerUps : MonoBehaviour
     {
         switch (type)
         {
-            case PowerupType.Dash:
-                GameManagement.dashAmount += amount;
-                break;
             case PowerupType.Energy:
                 if (_stats.maxEnergy < GameManagement.energy) GameManagement.energy = _stats.maxEnergy;
                 EventManager.Instance.EventGo("ENERGY", "AddEnergy", amount);
