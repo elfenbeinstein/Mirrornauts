@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 262093159351916973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Filling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8974052166046729786}
   - component: {fileID: 508552688689532276}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3808794240043924821}
   - component: {fileID: 5663496708303411295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6083405299970228879}
   - component: {fileID: 6083405299970228878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NumberField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6083405300079589131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6083405300931141212}
   - component: {fileID: 6083405300931141215}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6083405301485824427}
   - component: {fileID: 6083405301485824426}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 6083405301662348683}
   - component: {fileID: 416492705730461526}
   - component: {fileID: 146368326364689982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,6 +539,7 @@ MonoBehaviour:
   countdownRenderer: {fileID: 6083405301485824426}
   _filling: {fileID: 194431929642987870}
   _frame: {fileID: 8963551784792428423}
+  parent: {fileID: 0}
   isTouching: 0
 --- !u!61 &416492705730461526
 BoxCollider2D:
@@ -590,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5000466134844631028}
   - component: {fileID: 3342431077120172690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5569176054389051259}
   - component: {fileID: 4077974807406888624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4896965950038271341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}

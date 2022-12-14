@@ -13,7 +13,7 @@ public class Spawn
     public int countdown;
     public int liftoff;
     public Vector3 position;
-    public Vector3 rotation;
+    public Quaternion rotation;
 }
 
 /// <summary>
@@ -65,16 +65,15 @@ public class Spawner : MonoBehaviour
                     if (spawnUnits[i].isPrefab)
                     {
                         // if it is a prefab --> set up with position and rotation according to what is in the spawnUnits:
-                        clone.GetComponent<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, spawnUnits[i].position, spawnUnits[i].rotation, _turnManager);
+                        clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, spawnUnits[i].position, spawnUnits[i].rotation, _turnManager);
                     }
                     else
                     {
                         // if it is not a prefab --> set up with values that are already in game Object and set active
                         clone.SetActive(true);
-                        Vector3 rot = new Vector3(clone.transform.rotation.x, clone.transform.rotation.y, clone.transform.rotation.z);
-                        clone.GetComponent<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, rot, _turnManager);
+                        clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, clone.transform.rotation, _turnManager);
                     }
-                    _turnManager.AddSpawn(clone.GetComponent<ObjectBehaviour>());
+                    _turnManager.AddSpawn(clone.GetComponentInChildren<ObjectBehaviour>());
                 }
                 else
                 {

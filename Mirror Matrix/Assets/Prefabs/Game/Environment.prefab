@@ -342,6 +342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Borders
       objectReference: {fileID: 0}
+    - target: {fileID: 2647086179470886034, guid: 9961526e2013e7f4ab5d0c1276c9abb4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2647086179470886035, guid: 9961526e2013e7f4ab5d0c1276c9abb4, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -32,7 +32,7 @@ public class ObjectBehaviour : MonoBehaviour
     [HideInInspector] public bool isTouching;
     private bool touched;
     
-    public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Vector3 _rotation, TurnManager _script)
+    public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Quaternion _rotation, TurnManager _script)
     {
         round = _round;
         countdown = _countdown;
@@ -41,7 +41,9 @@ public class ObjectBehaviour : MonoBehaviour
 
         // set up position & rotation
         parent.transform.position = _position;
-        parent.transform.eulerAngles = _rotation;
+        parent.transform.rotation = _rotation;
+
+
 
         // set countdown (number in corner)
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
