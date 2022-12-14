@@ -18,6 +18,7 @@ public class ObjectBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject _filling;
     [SerializeField] private GameObject _frame;
+    [SerializeField] private GameObject parent;
 
     private int round;
     private int countdown;
@@ -39,8 +40,8 @@ public class ObjectBehaviour : MonoBehaviour
         _turnManager = _script;
 
         // set up position & rotation
-        gameObject.transform.position = _position;
-        gameObject.transform.eulerAngles = _rotation;
+        parent.transform.position = _position;
+        parent.transform.eulerAngles = _rotation;
 
         // set countdown (number in corner)
         countdownRenderer.sprite = _stats.countdownNumbers[countdown];
@@ -102,11 +103,12 @@ public class ObjectBehaviour : MonoBehaviour
         }
 
         _turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
-        Destroy(this.gameObject);
+        Destroy(parent);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        //Debug.Log("touched spaceship");
         if (isLifting)
         {
             isTouching = true;

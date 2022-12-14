@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     
     public void PlayerHitObject(ObjectBehaviour hitObject)
     {
-        //Debug.Log("spaceship touched object");
+        Debug.Log("spaceship touched object");
         if (hitObject.gameObject.GetComponent<PowerUps>() != null) hitObject.gameObject.GetComponent<PowerUps>().AddToPlayer(_stats);
         else Debug.Log(hitObject + " is missing powerup script");
         hitObject.RemoveSelfFromList();
