@@ -128,8 +128,8 @@ public class InputFFValues : MonoBehaviour
 
     public void WriteResultVector(float[] result)
     {
-        resultX.text = result[0].ToString();
-        resultY.text = result[1].ToString();
+        resultX.text = result[0].ToString("F2");
+        resultY.text = result[1].ToString("F2");
     }
 
     public float[] GetStartVector()

@@ -222,22 +222,10 @@ public class InputGameValues : MonoBehaviour
 
     public void WriteNewSpaceshipPos(float x, float y)
     {
-        string xValue = x.ToString();
-        string yValue = y.ToString();
+        string xValue = x.ToString("F2");
+        string yValue = y.ToString("F2");
 
-        if (xValue.Contains(","))
-        {
-            double value = System.Math.Round(x, 2);
-            xValue = value.ToString();
-        }
-        if (yValue.Contains(","))
-        {
-            double value = System.Math.Round(y, 2);
-            yValue = value.ToString();
-        }
-        //vectorx.text = xValue;
-        //vectory.text = yValue;
-
+        // in jedem Textfeld für den Spaceship Vektor anzeigen:
         for (int i = 0; i < vectorXs.Length; i++)
         {
             if (vectorXs[i] != null) vectorXs[i].text = xValue;
