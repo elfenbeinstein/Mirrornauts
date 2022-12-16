@@ -21,6 +21,7 @@ public class GameManagement : MonoBehaviour
     public static bool shieldActive;
     public static int energy;
     public static int currentHealth;
+    public static bool gameMode;
 
     private void Awake()
     {

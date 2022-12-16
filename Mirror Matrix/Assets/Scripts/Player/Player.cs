@@ -55,17 +55,25 @@ public class Player : MonoBehaviour
 
     public void PlayerHitBorder()
     {
+        /*
         Debug.Log("spaceship touched border");
         DamageTaken(1);
+        */
     }
 
     public void PlayerOutOfBounds()
     {
         Debug.Log("spaceship out of bounds");
 
-        DamageTaken(1);
+        if (GameManagement.gameMode)
+        {
+            PlayerDeath();
 
-        _spaceshipBehaviour.ResetSpaceshipFromBorder();
+        }
+        else
+        {
+            _spaceshipBehaviour.ResetSpaceshipFromBorder();
+        }
     }
 
     private void DamageTaken(int amount)
@@ -83,5 +91,8 @@ public class Player : MonoBehaviour
     private void PlayerDeath()
     {
         Debug.Log("player out of health");
+
+        // missing player death
+
     }
 }

@@ -23,10 +23,9 @@ public class Border_Behaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // if spaceship touched border
         if (isBorder)
         {
-            // MISSING elfenbeinstein : what happens if spaceship touches border
-
             if (!cooldown)
             {
                 EventManager.Instance.EventGo("PLAYER", "HitBorder");

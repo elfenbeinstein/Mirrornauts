@@ -121,8 +121,6 @@ public class ObjectBehaviour : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(gameObject + "touched spaceship");
-        
         if (isLifting)
         {
             isTouching = true;

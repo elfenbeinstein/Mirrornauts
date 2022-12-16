@@ -46,6 +46,9 @@ public class InterfaceManager : MonoBehaviour
     
     void Start()
     {
+        if (freeFlowMode) GameManagement.gameMode = false;
+        else GameManagement.gameMode = true;
+
         if (_spaceshipBehaviour == null)
         {
             _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();

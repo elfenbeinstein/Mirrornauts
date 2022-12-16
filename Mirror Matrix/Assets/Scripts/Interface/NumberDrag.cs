@@ -57,6 +57,7 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     {
         if (eventName == "+-Button")
         {
+            if (value == 0) return;
             if (hasMinus)
             {
                 text.text = origText;
