@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MatrixType
+{
+    Dreh,
+    Spiegel,
+    Falsch
+}
+
 public class InputGameValues : MonoBehaviour
 {
     private SpaceshipBehaviour _spaceshipBehaviour;
@@ -31,7 +38,7 @@ public class InputGameValues : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI addX;
     [SerializeField] private TMPro.TextMeshProUGUI addY;
 
-    [HideInInspector] public bool x1Value; // if true +, if false -
+    [HideInInspector] public bool x1Value;
     [HideInInspector] public bool x2Value;
     [HideInInspector] public bool y1Value;
     [HideInInspector] public bool y2Value;
@@ -270,6 +277,30 @@ public class InputGameValues : MonoBehaviour
         else return false;
     }
 
+    [ContextMenu("matrix type calc")]
+    public MatrixType GetMatrixType()
+    {
+        MatrixType type;
+
+        float[] matrix;
+        if (calcType == CalculationType.MatrixMultiplicationF) matrix = GetMatrixValuesF();
+        else if (calcType == CalculationType.MatrixMultiplicationR) matrix = GetMatrixValuesR();
+        else matrix = GetMatrixValuesR();
+
+        if (matrix[0] == matrix[3] && matrix[1] == -matrix[2] && matrix[0] * matrix[3] - matrix[1] * matrix[2] >= 0.9999f && matrix[0] * matrix[3] - matrix[1] * matrix[2] <= 1.0009f)
+        {
+            type = MatrixType.Dreh;
+        }
+        else if (matrix[1] == matrix[2] && matrix[0] == -matrix[3] && matrix[0] * matrix[3] - matrix[1] * matrix[2] >= -1.0009f && matrix[0] * matrix[3] - matrix[1] * matrix[2] <= -0.9999f) type = MatrixType.Spiegel;
+        else type = MatrixType.Falsch;
+
+        Debug.Log($"Matrix: {matrix[0]}, {matrix[1]}, {matrix[2]}, {matrix[3]}");
+        Debug.Log("type = " + type);
+
+        return type;
+    }
+
+
     public bool HasEnoughEnergy()
     {
         bool ready = false;
@@ -298,13 +329,6 @@ public class InputGameValues : MonoBehaviour
         }
     }
 
-    [ContextMenu("test rounding")]
-    public void TestRounding()
-    {
-        float x = 3.2385f;
-        float y = 2f;
-        WriteNewSpaceshipPos(x, y);
-    }
 
     public void ResetSpaceshipFromButton()
     {

@@ -37,6 +37,8 @@ public class TurnManager : MonoBehaviour
     {
         // make sure that all fields where set before we start
         if (!_interfaceManager.GameIsReady()) return;
+        // calculate type of matrix
+
         // make sure player has enough energy
         if (!_interfaceManager.HasEnoughEnergy()) return;
 

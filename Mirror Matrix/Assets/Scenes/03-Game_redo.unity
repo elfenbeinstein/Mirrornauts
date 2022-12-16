@@ -579,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3639828532672159678, guid: ad33f8c4e7a60aa49887c54f29a84316, type: 3}
       propertyPath: spawnUnits.Array.data[2].isPrefab
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3639828532672159678, guid: ad33f8c4e7a60aa49887c54f29a84316, type: 3}
       propertyPath: spawnUnits.Array.data[0].countdown
@@ -1307,11 +1307,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 501643220139764103, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5113132501163456528, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7749659573348703717, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: switchToFreeMode
