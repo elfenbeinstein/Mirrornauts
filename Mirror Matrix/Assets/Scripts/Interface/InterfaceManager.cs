@@ -98,7 +98,7 @@ public class InterfaceManager : MonoBehaviour
             Calculate();
             if (!freeFlowMode)
                 EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", _inputG.energyNeeded);
-            Debug.Log("Energy Needed: " + _inputG.energyNeeded);
+            //Debug.Log("Energy Needed: " + _inputG.energyNeeded);
             Move();
             if ((int)param == switchToFreeMode) _buttons.SetUpFreeMode();
         }

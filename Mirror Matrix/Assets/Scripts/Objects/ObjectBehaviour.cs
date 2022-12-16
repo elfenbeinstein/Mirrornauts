@@ -43,17 +43,28 @@ public class ObjectBehaviour : MonoBehaviour
         parent.transform.position = _position;
         parent.transform.rotation = _rotation;
 
+        if (countdown == 0)
+        {
+            _frame.SetActive(true);
+            _filling.SetActive(true);
 
+            countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
 
-        // set countdown (number in corner)
-        countdownRenderer.sprite = _stats.countdownNumbers[countdown];
+            isCounting = false;
+            isLifting = true;
+        }
+        else
+        {
+            // set countdown (number in corner)
+            countdownRenderer.sprite = _stats.countdownNumbers[countdown];
 
-        // set up visuals
-        _frame.SetActive(true);
-        _filling.SetActive(false);
+            // set up visuals
+            _frame.SetActive(true);
+            _filling.SetActive(false);
 
-        isCounting = true;
-        isLifting = false;
+            isCounting = true;
+            isLifting = false;
+        }
     }
 
     public void NextTurn(int currentRound)
@@ -110,7 +121,8 @@ public class ObjectBehaviour : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("touched spaceship");
+        Debug.Log(gameObject + "touched spaceship");
+        
         if (isLifting)
         {
             isTouching = true;
