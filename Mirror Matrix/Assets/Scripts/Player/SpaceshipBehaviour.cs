@@ -19,16 +19,17 @@ public class SpaceshipBehaviour : MonoBehaviour
     
     private Vector3 topPos;
     private Vector3 rightPos;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         startV = startVObject.GetComponent<LineRenderer>();
         endV = endVObject.GetComponent<LineRenderer>();
+        rb = GetComponentInChildren<Rigidbody2D>();
 
         startVObject.SetActive(false);
         endVObject.SetActive(true);
         endV.SetPosition(1, spaceship.transform.position);
-
     }
 
     public void MoveSpaceship(float[] vector)
@@ -74,7 +75,7 @@ public class SpaceshipBehaviour : MonoBehaviour
     public void UpdateSpaceshipG(float[] vectorResult, float[] newTop, float[] newRight)
     {
         // move spaceship
-        MoveSpaceship(vectorResult);
+        rb.MovePosition(new Vector2(vectorResult[0], vectorResult[1]));
 
         if (scales)
         {

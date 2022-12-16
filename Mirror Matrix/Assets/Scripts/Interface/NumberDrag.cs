@@ -36,10 +36,10 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
             case ValueTypes.Default:
                 break;
             case ValueTypes.Wurzel2:
-                value = 1 / 2 * Mathf.Sqrt(2);
+                value = Mathf.Sqrt(2) / 2;
                 break;
             case ValueTypes.Wurzel3:
-                value = 1 / 2 * Mathf.Sqrt(3);
+                value = Mathf.Sqrt(3) / 2;
                 break;
         }
 
@@ -73,6 +73,22 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        /*
+        switch (type)
+        {
+            case ValueTypes.Default:
+                break;
+            case ValueTypes.Wurzel2:
+                value = Mathf.Sqrt(2) / 2;
+                if (hasMinus) value *= -1;
+                break;
+            case ValueTypes.Wurzel3:
+                value = Mathf.Sqrt(3) / 2;
+                if (hasMinus) value *= -1;
+                break;
+        }
+        */
+
         // make sure field is at the very front 
         canvasGroup.alpha = 0.8f;
         canvasGroup.blocksRaycasts = false;

@@ -6,8 +6,6 @@ using UnityEngine;
 public class Spawn
 {
     public string name;
-    [Tooltip("if is prefab --> keine rotation und position eingeben, sondern ist ein objekt in der szene")]
-    public bool isPrefab;
     public GameObject unit;
     public int round;
     public int countdown;
@@ -62,17 +60,10 @@ public class Spawner : MonoBehaviour
                 if (spawnUnits[i].unit != null)
                 {
                     GameObject clone = Instantiate(spawnUnits[i].unit);
-                    if (spawnUnits[i].isPrefab)
-                    {
-                        // if it is a prefab --> set up with position and rotation according to what is in the spawnUnits:
-                        clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, spawnUnits[i].position, spawnUnits[i].rotation, _turnManager);
-                    }
-                    else
-                    {
-                        // if it is not a prefab --> set up with values that are already in game Object and set active
-                        clone.SetActive(true);
-                        clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, clone.transform.rotation, _turnManager);
-                    }
+                    
+                    clone.SetActive(true);
+                    clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, clone.transform.rotation, _turnManager);
+
                     _turnManager.AddSpawn(clone.GetComponentInChildren<ObjectBehaviour>());
                 }
                 else

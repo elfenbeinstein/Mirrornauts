@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MatrixType
+{
+    Dreh,
+    Spiegel,
+    Falsch
+}
+
 public class InputGameValues : MonoBehaviour
 {
     private SpaceshipBehaviour _spaceshipBehaviour;
@@ -269,6 +276,30 @@ public class InputGameValues : MonoBehaviour
         }
         else return false;
     }
+
+    [ContextMenu("matrix type calc")]
+    public MatrixType GetMatrixType()
+    {
+        MatrixType type;
+
+        float[] matrix;
+        if (calcType == CalculationType.MatrixMultiplicationF) matrix = GetMatrixValuesF();
+        else if (calcType == CalculationType.MatrixMultiplicationR) matrix = GetMatrixValuesR();
+        else matrix = GetMatrixValuesR();
+
+        if (matrix[0] == matrix[3] && matrix[1] == -matrix[2] && matrix[0] * matrix[3] - matrix[1] * matrix[2] >= 0.9999f && matrix[0] * matrix[3] - matrix[1] * matrix[2] <= 1.0009f)
+        {
+            type = MatrixType.Dreh;
+        }
+        else if (matrix[1] == matrix[2] && matrix[0] == -matrix[3] && matrix[0] * matrix[3] - matrix[1] * matrix[2] >= -1.0009f && matrix[0] * matrix[3] - matrix[1] * matrix[2] <= -0.9999f) type = MatrixType.Spiegel;
+        else type = MatrixType.Falsch;
+
+        Debug.Log($"Matrix: {matrix[0]}, {matrix[1]}, {matrix[2]}, {matrix[3]}");
+        Debug.Log("type = " + type);
+
+        return type;
+    }
+
 
     public bool HasEnoughEnergy()
     {
