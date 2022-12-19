@@ -8299,6 +8299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4069907909000518081}
   - component: {fileID: 4336960796993772406}
+  - component: {fileID: 6000943963835963667}
   m_Layer: 5
   m_Name: Cooldown
   m_TagString: Untagged
@@ -8379,6 +8380,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &6000943963835963667
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182918771677829981}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &5216964254594173473
 GameObject:
   m_ObjectHideFlags: 0

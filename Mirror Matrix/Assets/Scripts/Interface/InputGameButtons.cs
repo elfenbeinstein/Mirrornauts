@@ -148,7 +148,7 @@ public class InputGameButtons : MonoBehaviour
     void DeactivateDash()
     {
         // setze den Button auf inaktiv
-        dashButton.interactable = false;
+        //dashButton.interactable = false;
         // slider aktivieren
         dashCooldown.gameObject.SetActive(true);
         // stelle slider ein auf int
@@ -158,7 +158,7 @@ public class InputGameButtons : MonoBehaviour
     void ActivateDash()
     {
         // setze Button auf inaktiv
-        dashButton.interactable = true;
+        //dashButton.interactable = true;
         // deactivate den Slider
         dashCooldown.gameObject.SetActive(false);
     }
