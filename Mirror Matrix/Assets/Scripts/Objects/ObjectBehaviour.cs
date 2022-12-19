@@ -138,5 +138,6 @@ public class ObjectBehaviour : MonoBehaviour
     {
         isTouching = false;
         touched = false;
+        //Debug.Log("ship left " + gameObject);
     }
 }

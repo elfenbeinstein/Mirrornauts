@@ -31,12 +31,11 @@ public class PlayerStats : MonoBehaviour
 
     void TurnListener(string eventName, object param)
     {
-        if (eventName == "NextTurn") NextTurn();
         if (eventName == "Addition") Addition();
         if (eventName == "Shield") Shield();
     }
 
-    void NextTurn()
+    public void NextTurn()
     {
         // countdown dash --> if dashCD is zero, turn on dash again
         if (dashCountdown)

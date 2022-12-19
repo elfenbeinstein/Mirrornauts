@@ -51,12 +51,19 @@ public class TurnManager : MonoBehaviour
         spawnsToDelete.Clear();
         turnCounter += 1;
 
-        // Send Event next Turn:
-        EventManager.Instance.EventGo("TURN", "NextTurn", turnCounter);
-        // Listeners should be: spawner, interface manager 
-        // spawner: adds new spawns to list spawnsToAdd
         // interface manager collects values, calculates movement, moves spaceship
+        _interfaceManager.NextTurn(turnCounter);
 
+        // Send Event next Turn to all spawners etc:
+        EventManager.Instance.EventGo("TURN", "NextTurn", turnCounter);
+        // Listeners should be: spawner
+        // spawner: adds new spawns to list spawnsToAdd
+
+        // wait for interface manager to update spawns
+    }
+
+    public void UpdateSpawns()
+    {
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
         {
@@ -78,7 +85,7 @@ public class TurnManager : MonoBehaviour
         {
             foreach (ObjectBehaviour item in spawnsToDelete)
             {
-                if(activeSpawns.Contains(item))
+                if (activeSpawns.Contains(item))
                     activeSpawns.Remove(item);
             }
         }
@@ -94,9 +101,10 @@ public class TurnManager : MonoBehaviour
                 else EventManager.Instance.EventGo("PLAYER", "HitObject", activeSpawns[i]);
             }
         }
-        if(sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
+        if (sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
 
         EventManager.Instance.EventGo("ENERGY", "RemoveCost");
+        GameManagement._playerStats.NextTurn();
     }
 
     public void AddSpawn(ObjectBehaviour spawn)

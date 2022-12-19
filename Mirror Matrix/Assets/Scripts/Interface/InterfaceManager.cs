@@ -25,6 +25,7 @@ public class InterfaceManager : MonoBehaviour
     private InputGameValues _inputG;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
     private InputGameButtons _buttons;
+    private TurnManager _turnManager;
 
     private float[] startV;
     private float[] addV;
@@ -83,27 +84,20 @@ public class InterfaceManager : MonoBehaviour
             turnCounterObject.SetActive(true);
         }
 
-        EventManager.Instance.AddEventListener("TURN", NextTurn);
+        _turnManager = GetComponent<TurnManager>();
     }
 
-    private void OnDestroy()
+    public void NextTurn(int round)
     {
-        EventManager.Instance.RemoveEventListener("TURN", NextTurn);
-    }
-
-    private void NextTurn(string eventName, object param)
-    {
-        if (eventName == "NextTurn")
-        {
-            if (!freeFlowMode)
-                UpdateTurnCounterDisplay((int)param);
-            CollectValues();
-            Calculate();
-            if (!freeFlowMode)
-                EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", GameManagement._playerStats.energyNeeded);
-            Move();
-            if ((int)param == switchToFreeMode) _buttons.SetUpFreeMode();
-        }
+        if (!freeFlowMode)
+            UpdateTurnCounterDisplay(round);
+        CollectValues();
+        Calculate();
+        if (!freeFlowMode)
+            EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", GameManagement._playerStats.energyNeeded);
+        Move();
+        if (round == switchToFreeMode) _buttons.SetUpFreeMode();
+        if (!freeFlowMode) _turnManager.UpdateSpawns();
     }
 
     public void UpdateTurnCounterDisplay(int value)
