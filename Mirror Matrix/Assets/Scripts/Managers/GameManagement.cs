@@ -15,6 +15,7 @@ public class GameManagement : MonoBehaviour
     public static bool gameManagerLoaded;
 
     public static Maths _maths;
+    public static PlayerStats _playerStats;
 
     public static int dashAmount;
     public static int shieldAmount;
@@ -33,11 +34,10 @@ public class GameManagement : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         _maths = GetComponent<Maths>();
+        if (_maths == null) Debug.Log("game manager can't find maths script");
 
-        if (_maths == null)
-        {
-            Debug.Log("game manager can't find maths script");
-        }
+        _playerStats = GetComponentInChildren<PlayerStats>();
+        if (_playerStats == null) Debug.Log("game manager can't find player stats script");
 
         dashAmount = 0;
         shieldActive = false;
