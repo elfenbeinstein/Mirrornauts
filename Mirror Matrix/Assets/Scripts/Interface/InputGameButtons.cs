@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputGameButtons : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class InputGameButtons : MonoBehaviour
 
     [Header("Menu and UI")]
     [SerializeField] private GameObject helpScreen;
+    [SerializeField] private Button dashButton;
+    [Tooltip("all objects that should only be active when cooldown is happening put as children of the slider obj")]
+    [SerializeField] private Slider dashCooldown;
 
     private bool freeMode;
 
@@ -48,6 +52,8 @@ public class InputGameButtons : MonoBehaviour
 
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
         freeMode = false;
+
+        EventManager.Instance.AddEventListener("DASH", DashListener);
     }
 
     private void Update()
@@ -55,6 +61,18 @@ public class InputGameButtons : MonoBehaviour
         // elfenbeinstein: DELETE for final build
         if (Input.GetKeyDown(KeyCode.A)) ActivateDash();
         if (Input.GetKeyDown(KeyCode.S)) EventManager.Instance.EventGo("TURN", "Shield");
+    }
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("DASH", DashListener);
+    }
+
+    void DashListener(string eventName, object param)
+    {
+        if (eventName == "Countdown")
+            DeactivateDash((int)param);
+        if (eventName == "DashActive")
+            ActivateDash();
     }
 
     public void ClearAllFields()
@@ -130,7 +148,6 @@ public class InputGameButtons : MonoBehaviour
         // setze den Button auf inaktiv
         // slider aktivieren
         // stelle slider ein auf int
-        // wenn int amount == 0 --> activate dash
     }
 
     void ActivateDash()

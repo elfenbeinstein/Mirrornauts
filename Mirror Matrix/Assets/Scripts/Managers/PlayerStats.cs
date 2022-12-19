@@ -46,6 +46,9 @@ public class PlayerStats : MonoBehaviour
     {
         // remove addition value
         // start countdown
+
+        // tell buttons:
+        EventManager.Instance.EventGo("DASH", "Countdown");
     }
 
     void Shield()
