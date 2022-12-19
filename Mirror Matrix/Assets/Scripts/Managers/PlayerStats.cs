@@ -9,10 +9,9 @@ public class PlayerStats : MonoBehaviour
     public int energy;
     public int currentHealth;
 
-    private bool shieldCountdown;
     private int shieldCD;
     private bool dashCountdown;
-    private int dashCD;
+    public int dashCD;
 
     void Start()
     {
@@ -37,15 +36,40 @@ public class PlayerStats : MonoBehaviour
 
     void NextTurn()
     {
-        // if dashAmount == 0 --> countdown
+        // countdown dash --> if dashCD is zero, turn on dash again
+        if (dashCountdown)
+        {
+            dashCD--;
+            if (dashCD == 0)
+            {
+                dashCountdown = false;
+                dashAmount = 1;
+
+                EventManager.Instance.EventGo("DASH", "DashActive");
+            }
+            else
+            {
+                EventManager.Instance.EventGo("DASH", "Countdown");
+            }
+        }
 
         // if shieldActive --> countdown
+        if (shieldActive)
+        {
+            shieldCD--;
+            if (shieldCD == 0)
+            {
+                shieldActive = false;
+            }
+        }
     }
 
     void Addition()
     {
-        // remove addition value
-        // start countdown
+        // remove addition value + start countdown at 3
+        dashAmount = 0;
+        dashCountdown = true;
+        dashCD = 3;
 
         // tell buttons:
         EventManager.Instance.EventGo("DASH", "Countdown");
@@ -53,6 +77,7 @@ public class PlayerStats : MonoBehaviour
 
     void Shield()
     {
-
+        shieldActive = true;
+        shieldCD = 3;
     }
 }
