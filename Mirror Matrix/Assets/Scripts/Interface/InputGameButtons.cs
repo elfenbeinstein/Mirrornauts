@@ -211,6 +211,13 @@ public class InputGameButtons : MonoBehaviour
                 _inputGameValues.x1FValue = false;
             }
         }
+
+        if (_inputGameValues.AllValuesSet())
+        {
+            _inputGameValues.EnergyNeeded();
+            EventManager.Instance.EventGo("ENERGY", "EnergyCost");
+        }
+
     }
 
     public void MatrixX2()
@@ -240,6 +247,12 @@ public class InputGameButtons : MonoBehaviour
                 x2FMinus.text = "-";
                 _inputGameValues.x2FValue = false;
             }
+        }
+
+        if (_inputGameValues.AllValuesSet())
+        {
+            _inputGameValues.EnergyNeeded();
+            EventManager.Instance.EventGo("ENERGY", "EnergyCost");
         }
     }
 
@@ -271,6 +284,12 @@ public class InputGameButtons : MonoBehaviour
                 _inputGameValues.y1FValue = false;
             }
         }
+
+        if (_inputGameValues.AllValuesSet())
+        {
+            _inputGameValues.EnergyNeeded();
+            EventManager.Instance.EventGo("ENERGY", "EnergyCost");
+        }
     }
 
     public void MatrixY2()
@@ -301,9 +320,16 @@ public class InputGameButtons : MonoBehaviour
                 _inputGameValues.y2FValue = false;
             }
         }
+
+        if (_inputGameValues.AllValuesSet())
+        {
+            _inputGameValues.EnergyNeeded();
+            EventManager.Instance.EventGo("ENERGY", "EnergyCost");
+        }
     }
         
 
+    /*
     public void AddX()
     {
         if (addXMinus.activeInHierarchy)
@@ -331,6 +357,7 @@ public class InputGameButtons : MonoBehaviour
             _inputGameValues.addYValue = false;
         }
     }
+    */
 
     public void AddButton()
     {
@@ -345,6 +372,12 @@ public class InputGameButtons : MonoBehaviour
             additionButtonText.text = "+";
 
             _inputGameValues.addValue = true;
+        }
+
+        if (_inputGameValues.AllValuesSet())
+        {
+            _inputGameValues.EnergyNeeded();
+            EventManager.Instance.EventGo("ENERGY", "EnergyCost");
         }
     }
 }

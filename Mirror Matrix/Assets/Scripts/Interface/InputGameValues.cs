@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -116,6 +116,12 @@ public class InputGameValues : MonoBehaviour
                 Debug.Log("case switch not proper");
                 break;
         }
+
+        if (AllValuesSet())
+        {
+            EnergyNeeded();
+            EventManager.Instance.EventGo("ENERGY", "EnergyCost");
+        }
     }
 
     public void SetMatrix(float value, string text)
@@ -153,8 +159,7 @@ public class InputGameValues : MonoBehaviour
             addX.text = "?";
             addY.text = "?";
         }
-
-        // elfenbeinstein MISSING: get energy back
+        EventManager.Instance.EventGo("ENERGY", "RemoveCost");
     }
 
     public float[] GetMatrixValuesR() 
@@ -232,7 +237,7 @@ public class InputGameValues : MonoBehaviour
         string xValue = x.ToString("F2");
         string yValue = y.ToString("F2");
 
-        // in jedem Textfeld f�r den Spaceship Vektor anzeigen:
+        // in jedem Textfeld für den Spaceship Vektor anzeigen:
         for (int i = 0; i < vectorXs.Length; i++)
         {
             if (vectorXs[i] != null) vectorXs[i].text = xValue;
@@ -248,10 +253,8 @@ public class InputGameValues : MonoBehaviour
         return calcType;
     }
 
-    public bool IsGameReady()
+    public bool AllValuesSet()
     {
-        calcType = GetCalculationType();
-
         if (calcType == CalculationType.MatrixMultiplicationR)
         {
             if (matrixX1R.text == "?") return false;
@@ -277,6 +280,20 @@ public class InputGameValues : MonoBehaviour
         else return false;
     }
 
+    public bool GameReady()
+    {
+        if (AllValuesSet())
+        {
+            if (calcType == CalculationType.Addition) return true;
+            else
+            {
+                if (GetMatrixType() != MatrixType.Falsch) return true;
+                else return false;
+            }
+        }
+        else return false;
+    }
+
     [ContextMenu("matrix type calc")]
     public MatrixType GetMatrixType()
     {
@@ -294,47 +311,99 @@ public class InputGameValues : MonoBehaviour
         else if (matrix[1] == matrix[2] && matrix[0] == -matrix[3] && matrix[0] * matrix[3] - matrix[1] * matrix[2] >= -1.0009f && matrix[0] * matrix[3] - matrix[1] * matrix[2] <= -0.9999f) type = MatrixType.Spiegel;
         else type = MatrixType.Falsch;
 
-        Debug.Log($"Matrix: {matrix[0]}, {matrix[1]}, {matrix[2]}, {matrix[3]}");
-        Debug.Log("type = " + type);
+        //Debug.Log($"Matrix: {matrix[0]}, {matrix[1]}, {matrix[2]}, {matrix[3]}");
+        //Debug.Log("type = " + type);
 
         return type;
     }
 
-
-    public bool HasEnoughEnergy()
+    public void EnergyNeeded()
     {
-        bool ready = false;
-        EnergyNeeded();
-        // check if this is enough
-        if (energyNeeded <= GameManagement._playerStats.energy) ready = true;
+        int cost = 0;
+        float[] startV = _spaceshipBehaviour.SpaceshipCoordinates();
+        Vector3 startPos = new Vector3(startV[0], startV[1], 0);
 
-        return ready;
-    }
-
-    private void EnergyNeeded()
-    {
-        switch(calcType)
+        if (calcType == CalculationType.Addition)
         {
-            case CalculationType.Addition:
-                float[] value = GetAddVector();
-                energyNeeded = (int)Mathf.Round(Mathf.Abs(value[0]) + Mathf.Abs(value[1]));
-                return;
-            case CalculationType.MatrixMultiplicationF:
-                float[] val = GetMatrixValuesF();
-                energyNeeded = (int)Mathf.Round( (Mathf.Abs(val[0]) + Mathf.Abs(val[1]) + Mathf.Abs(val[2]) + Mathf.Abs(val[3])) / 4);
-                return;
-            case CalculationType.MatrixMultiplicationR:
-                energyNeeded = (int)Mathf.Round(Mathf.Abs(numberSlot));
-                return;
-        }
-    }
+            // get new position of spaceship
+            float[] result = GameManagement._maths.Addition(startV, GetAddVector(), addValue);
+            Vector3 endPos = new Vector3(result[0], result[1], 0);
 
-    [ContextMenu("test rounding")]
-    public void TestRounding()
-    {
-        float x = 3.2385f;
-        float y = 2f;
-        WriteNewSpaceshipPos(x, y);
+            // calculate distance between new and current position
+            float distance = Vector3.Distance(startPos, endPos);
+
+            // transfer to energy cost
+            cost = Mathf.CeilToInt(distance * 2);
+        }
+        else
+        {
+            MatrixType type = GetMatrixType();
+
+            if (type == MatrixType.Dreh)
+            {
+                if (calcType == CalculationType.MatrixMultiplicationR)
+                {
+                    if (matrixX1R.text == "1/6" || matrixX1R.text == "-1/6")
+                        cost = 2;
+                    else if (matrixX1R.text == "1/4" || matrixX1R.text == "-1/4")
+                        cost = 3;
+                    else if (matrixX1R.text == "1/3" || matrixX1R.text == "-1/3")
+                        cost = 4;
+                    else if (matrixX1R.text == "1/2" || matrixX1R.text == "-1/2")
+                        cost = 6;
+                    else if (matrixX1R.text == "2/3" || matrixX1R.text == "-2/3")
+                        cost = 8;
+                    else if (matrixX1R.text == "3/4" || matrixX1R.text == "-3/4")
+                        cost = 9;
+                    else if (matrixX1R.text == "5/6" || matrixX1R.text == "-5/6")
+                        cost = 10;
+                    else if (matrixX1R.text == "1" || matrixX1R.text == "-1")
+                        cost = 12;
+                }
+                else
+                {
+                    if (mFreeX1R.text == "1")
+                        cost = 0;
+                    else if (mFreeX1R.text == "(√3)/2")
+                        cost = 2;
+                    else if (mFreeX1R.text == "(√2)/2")
+                        cost = 3;
+                    else if (mFreeX1R.text == "1/2")
+                        cost = 4;
+                    else if (mFreeX1R.text == "0")
+                        cost = 6;
+                    else if (mFreeX1R.text == "-1/2")
+                        cost = 8;
+                    else if (mFreeX1R.text == "-(√2)/2")
+                        cost = 9;
+                    else if (mFreeX1R.text == "-(√3)/2")
+                        cost = 10;
+                    else if (mFreeX1R.text == "-1")
+                        cost = 12;
+                }
+            }
+            else if (type == MatrixType.Spiegel)
+            {
+                float[] matrix = GetMatrixValuesR();
+                if (calcType == CalculationType.MatrixMultiplicationF) matrix = GetMatrixValuesF();
+
+                // get new position of spaceship
+                float[] result = GameManagement._maths.Multiplication(startV, matrix);
+                Vector3 endPos = new Vector3(result[0], result[1], 0);
+
+                // calculate distance between new and current position
+                float distance = Vector3.Distance(startPos, endPos);
+
+                // transfer to energy cost
+                cost = Mathf.CeilToInt(distance * 2);
+            }
+            else
+            {
+                cost = 1000;
+            }
+        }
+
+        GameManagement._playerStats.energyNeeded = cost;
     }
 
     public void ResetSpaceshipFromButton()

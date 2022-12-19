@@ -35,12 +35,17 @@ public class TurnManager : MonoBehaviour
     }
     public void Go()
     {
-        // make sure that all fields where set before we start
-        if (!_interfaceManager.GameIsReady()) return;
-        // make sure player has enough energy
-        if (!_interfaceManager.HasEnoughEnergy()) return;
+        if(!_interfaceManager.freeFlowMode)
+        {
+            // make sure that all fields where set before we start;
+            if (!_interfaceManager.GameIsReady()) return;
+            // elfenbeinstein MISSING Player Feedback not ready
+            // if energyneeded = 1000 --> wrong type
 
-        // elfenbeinstein MISSING Player Feedback game isn't ready
+            // make sure player has enough energy
+            if (GameManagement._playerStats.energyNeeded > GameManagement._playerStats.energy) return;
+            // elfenbeinstein MISSING Player Feedback game isn't ready
+        }
 
         spawnsToAdd.Clear();
         spawnsToDelete.Clear();
@@ -90,6 +95,8 @@ public class TurnManager : MonoBehaviour
             }
         }
         if(sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
+
+        EventManager.Instance.EventGo("ENERGY", "RemoveCost");
     }
 
     public void AddSpawn(ObjectBehaviour spawn)

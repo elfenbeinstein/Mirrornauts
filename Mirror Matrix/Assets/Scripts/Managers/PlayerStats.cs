@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int dashAmount;
-    public bool shieldActive;
-    public int energy;
-    public int energyNeeded;
-    public int currentHealth;
+    [HideInInspector] public int dashAmount;
+    [HideInInspector] public bool shieldActive;
+    [HideInInspector] public int energy;
+    public int maxEnergy = 200;
+    [HideInInspector] public int energyNeeded;
+    [HideInInspector] public int currentHealth;
 
     private int shieldCD;
     private bool dashCountdown;
-    public int dashCD;
+    [HideInInspector] public int dashCD;
 
     void Start()
     {

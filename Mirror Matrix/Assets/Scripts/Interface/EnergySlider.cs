@@ -18,12 +18,13 @@ public class EnergySlider : MonoBehaviour
 
         EventManager.Instance.AddEventListener("ENERGY", EnergyListener);
 
-        GameManagement._playerStats.energy = _stats.maxEnergy;
-        _slider.maxValue = _stats.maxEnergy;
-        _slider.value = _stats.maxEnergy;
-        text.text = _stats.maxEnergy + "/" + _stats.maxEnergy.ToString();
+        GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
+        _slider.maxValue = GameManagement._playerStats.maxEnergy;
+        _slider.value = GameManagement._playerStats.maxEnergy;
+        text.text = GameManagement._playerStats.maxEnergy + "/" + GameManagement._playerStats.maxEnergy.ToString();
 
         origText = energyCost.text;
+        energyCost.text = "";
     }
 
     private void OnDestroy()
@@ -36,7 +37,7 @@ public class EnergySlider : MonoBehaviour
         if (eventName == "AddEnergy")
         {
             GameManagement._playerStats.energy += (int)param;
-            if (GameManagement._playerStats.energy > _stats.maxEnergy) GameManagement._playerStats.energy = _stats.maxEnergy;
+            if (GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
             UpdateSlider();
         }
         else if (eventName == "RemoveEnergy")
@@ -59,7 +60,7 @@ public class EnergySlider : MonoBehaviour
         // update slider value
         _slider.value = GameManagement._playerStats.energy;
         // update description text
-        text.text = GameManagement._playerStats.energy.ToString() + "/" + _stats.maxEnergy.ToString();
+        text.text = GameManagement._playerStats.energy.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
     }
 
     private void UpdateCost()
@@ -77,7 +78,7 @@ public class EnergySlider : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GameManagement._playerStats.energy++;
-            if (GameManagement._playerStats.energy > _stats.maxEnergy) GameManagement._playerStats.energy = _stats.maxEnergy;
+            if (GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
             UpdateSlider();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
