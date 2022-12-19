@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
     public int dashAmount;
     public bool shieldActive;
     public int energy;
+    public int energyNeeded;
     public int currentHealth;
 
     private int shieldCD;
