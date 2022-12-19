@@ -50,6 +50,8 @@ public class InputGameButtons : MonoBehaviour
         multiplicationFree.SetActive(false);
         addition.SetActive(false);
 
+        dashCooldown.gameObject.SetActive(false);
+
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationR;
         freeMode = false;
 
@@ -70,7 +72,7 @@ public class InputGameButtons : MonoBehaviour
     void DashListener(string eventName, object param)
     {
         if (eventName == "Countdown")
-            DeactivateDash((int)param);
+            DeactivateDash();
         if (eventName == "DashActive")
             ActivateDash();
     }
@@ -143,17 +145,22 @@ public class InputGameButtons : MonoBehaviour
         }
     }
 
-    void DeactivateDash(int amount)
+    void DeactivateDash()
     {
         // setze den Button auf inaktiv
+        dashButton.interactable = false;
         // slider aktivieren
+        dashCooldown.gameObject.SetActive(true);
         // stelle slider ein auf int
+        dashCooldown.value = GameManagement._playerStats.dashCD;
     }
 
     void ActivateDash()
     {
         // setze Button auf inaktiv
+        dashButton.interactable = true;
         // deactivate den Slider
+        dashCooldown.gameObject.SetActive(false);
     }
 
     public void SetUpFreeMode()

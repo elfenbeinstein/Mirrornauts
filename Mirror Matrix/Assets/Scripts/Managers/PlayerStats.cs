@@ -40,6 +40,7 @@ public class PlayerStats : MonoBehaviour
         if (dashCountdown)
         {
             dashCD--;
+
             if (dashCD == 0)
             {
                 dashCountdown = false;
