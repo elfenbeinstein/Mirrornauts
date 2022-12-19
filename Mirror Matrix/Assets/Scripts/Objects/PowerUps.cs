@@ -25,11 +25,11 @@ public class PowerUps : MonoBehaviour
         switch (type)
         {
             case PowerupType.Energy:
-                if (_stats.maxEnergy < GameManagement.energy) GameManagement.energy = _stats.maxEnergy;
+                //if (_stats.maxEnergy < GameManagement._playerStats.energy) GameManagement._playerStats.energy = _stats.maxEnergy;
                 EventManager.Instance.EventGo("ENERGY", "AddEnergy", amount);
                 break;
             case PowerupType.Shield:
-                GameManagement.shieldAmount += amount;
+                EventManager.Instance.EventGo("TURN", "Shield");
                 break;
         }
     }

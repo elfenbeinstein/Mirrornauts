@@ -160,6 +160,7 @@ public class InterfaceManager : MonoBehaviour
                 additionValue = _inputG.AdditionValue();
                 addV = _inputG.GetAddVector();
                 _buttons.DashOver();
+                EventManager.Instance.EventGo("TURN", "Addition");
             }
             else if (calcType == CalculationType.MatrixMultiplicationF)
                 matrix = _inputG.GetMatrixValuesF();

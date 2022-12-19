@@ -10,8 +10,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int currentHealth;
-    [SerializeField] private int maxHealth;
     [SerializeField] private float maxEnergy;
     [SerializeField] Stats _stats;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
@@ -19,7 +17,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
         EventManager.Instance.AddEventListener("PLAYER", PlayerListener);
     }
 
@@ -68,7 +65,6 @@ public class Player : MonoBehaviour
         if (GameManagement.gameMode)
         {
             PlayerDeath();
-
         }
         else
         {
@@ -78,11 +74,11 @@ public class Player : MonoBehaviour
 
     private void DamageTaken(int amount)
     {
-        if (!GameManagement.shieldActive)
-            currentHealth -= amount;
-        Debug.Log($"current hp is {currentHealth}");
+        if (!GameManagement._playerStats.shieldActive)
+            GameManagement._playerStats.currentHealth -= amount;
+        Debug.Log($"current hp is {GameManagement._playerStats.currentHealth}");
 
-        if (currentHealth <= 0)
+        if (GameManagement._playerStats.currentHealth <= 0)
         {
             PlayerDeath();
         }

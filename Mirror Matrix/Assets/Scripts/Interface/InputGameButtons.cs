@@ -28,12 +28,14 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private GameObject addXMinus;
     [SerializeField] private GameObject addYMinus;
 
+    [Header("Menu and UI")]
+    [SerializeField] private GameObject helpScreen;
+
     private bool freeMode;
 
     private void Start()
     {
         _inputGameValues = GetComponent<InputGameValues>();
-        
 
         multiplicationRad.SetActive(true);
         x1Minus.SetActive(false);
@@ -51,8 +53,8 @@ public class InputGameButtons : MonoBehaviour
     private void Update()
     {
         // elfenbeinstein: DELETE for final build
-        if (Input.GetKeyDown(KeyCode.A)) GameManagement.dashAmount += 1;
-        if (Input.GetKeyDown(KeyCode.S)) GameManagement.shieldAmount *= 1;
+        if (Input.GetKeyDown(KeyCode.A)) ActivateDash();
+        if (Input.GetKeyDown(KeyCode.S)) EventManager.Instance.EventGo("TURN", "Shield");
     }
 
     public void ClearAllFields()
@@ -67,24 +69,21 @@ public class InputGameButtons : MonoBehaviour
 
     public void HelpButton()
     {
-        // elfenbeinstein MISSING Open Help
-
-        // for now: it's a reset button:
+        if (helpScreen.activeInHierarchy) helpScreen.SetActive(false);
+        else helpScreen.SetActive(true);
     }
 
     public void Dash()
     {
         if(addition.activeInHierarchy)
         {
-            GameManagement.dashAmount += 1;
             DashOver();
         }
         else
         {
-            if (GameManagement.dashAmount >= 1)
+            if (GameManagement._playerStats.dashAmount >= 1)
             {
                 SetUpAddition();
-                GameManagement.dashAmount -= 1;
                 multiplicationRad.SetActive(false);
                 multiplicationFree.SetActive(false);
                 _inputGameValues.calcType = CalculationType.Addition;
@@ -94,7 +93,6 @@ public class InputGameButtons : MonoBehaviour
                 Debug.Log("can't dash, no powerups");
                 // elfenbeinstein MISSING player feedback for missing powerup
             }
-
         }
     }
 
@@ -127,23 +125,18 @@ public class InputGameButtons : MonoBehaviour
         }
     }
 
-    public void Shield()
+    void DeactivateDash(int amount)
     {
-        if (GameManagement.shieldActive)
-        {
-            ShieldOver();
-            GameManagement.shieldAmount++;
-        }
-        else 
-        {
-            GameManagement.shieldAmount--;
-            GameManagement.shieldActive = true;
-        }
+        // setze den Button auf inaktiv
+        // slider aktivieren
+        // stelle slider ein auf int
+        // wenn int amount == 0 --> activate dash
     }
 
-    public void ShieldOver()
+    void ActivateDash()
     {
-        GameManagement.shieldActive = false;
+        // setze Button auf inaktiv
+        // deactivate den Slider
     }
 
     public void SetUpFreeMode()

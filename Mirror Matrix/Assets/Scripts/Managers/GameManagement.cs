@@ -17,11 +17,6 @@ public class GameManagement : MonoBehaviour
     public static Maths _maths;
     public static PlayerStats _playerStats;
 
-    public static int dashAmount;
-    public static int shieldAmount;
-    public static bool shieldActive;
-    public static int energy;
-    public static int currentHealth;
     public static bool gameMode;
 
     private void Awake()
@@ -38,9 +33,6 @@ public class GameManagement : MonoBehaviour
 
         _playerStats = GetComponentInChildren<PlayerStats>();
         if (_playerStats == null) Debug.Log("game manager can't find player stats script");
-
-        dashAmount = 0;
-        shieldActive = false;
     }
 
     public static void StartGameMode()

@@ -306,7 +306,7 @@ public class InputGameValues : MonoBehaviour
         bool ready = false;
         EnergyNeeded();
         // check if this is enough
-        if (energyNeeded <= GameManagement.energy) ready = true;
+        if (energyNeeded <= GameManagement._playerStats.energy) ready = true;
 
         return ready;
     }
