@@ -9,6 +9,9 @@ public class EnergySlider : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI text;
     [SerializeField] private Stats _stats;
 
+    [SerializeField] private TMPro.TextMeshProUGUI energyCost;
+    string origText;
+
     void Start()
     {
         _slider = GetComponent<Slider>();
@@ -19,6 +22,8 @@ public class EnergySlider : MonoBehaviour
         _slider.maxValue = _stats.maxEnergy;
         _slider.value = _stats.maxEnergy;
         text.text = _stats.maxEnergy + "/" + _stats.maxEnergy.ToString();
+
+        origText = energyCost.text;
     }
 
     private void OnDestroy()
@@ -39,7 +44,14 @@ public class EnergySlider : MonoBehaviour
             GameManagement._playerStats.energy -= (int)param;
             UpdateSlider();
         }
-
+        else if (eventName == "EnergyCost")
+        {
+            UpdateCost();
+        }
+        else if (eventName == "RemoveCost")
+        {
+            RemoveCost();
+        }
     }
 
     private void UpdateSlider()
@@ -48,6 +60,16 @@ public class EnergySlider : MonoBehaviour
         _slider.value = GameManagement._playerStats.energy;
         // update description text
         text.text = GameManagement._playerStats.energy.ToString() + "/" + _stats.maxEnergy.ToString();
+    }
+
+    private void UpdateCost()
+    {
+
+    }
+
+    private void RemoveCost()
+    {
+        energyCost.text = "";
     }
 
     private void Update()
