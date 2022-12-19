@@ -64,7 +64,7 @@ public class EnergySlider : MonoBehaviour
 
     private void UpdateCost()
     {
-
+        energyCost.text = origText + GameManagement._playerStats.energyNeeded.ToString();
     }
 
     private void RemoveCost()
