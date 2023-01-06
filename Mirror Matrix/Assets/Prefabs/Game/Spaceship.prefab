@@ -223,6 +223,7 @@ MonoBehaviour:
   spaceshipTop: {fileID: 5182991186884055310}
   spaceshipRight: {fileID: 4530975862971936274}
   shield: {fileID: 857786927482869592}
+  animShield: {fileID: 7496441899682246901}
   scales: 0
 --- !u!50 &7740587491891828626
 Rigidbody2D:

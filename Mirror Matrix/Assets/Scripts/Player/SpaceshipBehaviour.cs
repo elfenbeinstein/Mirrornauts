@@ -15,6 +15,7 @@ public class SpaceshipBehaviour : MonoBehaviour
     [SerializeField] private GameObject spaceshipTop;
     [SerializeField] private GameObject spaceshipRight;
     [SerializeField] private GameObject shield;
+    [SerializeField] private Animator animShield;
 
     [SerializeField] private bool scales;
     
@@ -44,8 +45,16 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     private void ShieldListener(string eventName, object param)
     {
-        if (eventName == "Start") shield.SetActive(true);
-        else if (eventName == "Stop") shield.SetActive(false);
+        if (eventName == "Start")
+        {
+            shield.SetActive(true);
+            animShield.SetBool("Active", true);
+        }
+        else if (eventName == "Stop")
+        {
+            shield.SetActive(false);
+            animShield.SetBool("Active", false);
+        }
     }
 
     public void MoveSpaceship(float[] vector)
