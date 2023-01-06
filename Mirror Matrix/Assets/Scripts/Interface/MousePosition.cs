@@ -26,6 +26,7 @@ public class MousePosition : MonoBehaviour
         {
             if(mousePos.x >= -maxCoordinats.x && mousePos.y >= -maxCoordinats.y)
             {
+                if (Input.GetKeyDown(KeyCode.LeftControl)) GameManagement._audioManager._sfxSounds.PlayHover();
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
                     mouseCoord.GetComponentInChildren<TextMeshProUGUI>().text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
@@ -35,16 +36,19 @@ public class MousePosition : MonoBehaviour
                 else
                 {
                     mouseCoord.gameObject.SetActive(false);
+                    GameManagement._audioManager._sfxSounds.StopHover();
                 }
             }
             else
             {
                 mouseCoord.gameObject.SetActive(false);
+                GameManagement._audioManager._sfxSounds.StopHover();
             }
         }
         else
         {
             mouseCoord.gameObject.SetActive(false);
+            GameManagement._audioManager._sfxSounds.StopHover();
         }
     }
 }

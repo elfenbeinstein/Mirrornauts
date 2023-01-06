@@ -94,6 +94,10 @@ public class SFXSounds : MonoBehaviour
     {
         hoverLoop.PlayLoop();
     }
+    public void StopHover()
+    {
+        hoverLoop.StopLoop();
+    }
     
     [ContextMenu("Energy")]
     public void PlayEnergy()
