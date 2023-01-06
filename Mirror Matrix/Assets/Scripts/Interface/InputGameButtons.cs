@@ -31,6 +31,7 @@ public class InputGameButtons : MonoBehaviour
 
     [Header("Menu and UI")]
     [SerializeField] private GameObject helpScreen;
+    [SerializeField] private GameObject menuScreen;
     [SerializeField] private Button dashButton;
     [Tooltip("all objects that should only be active when cooldown is happening put as children of the slider obj")]
     [SerializeField] private Slider dashCooldown;
@@ -84,7 +85,8 @@ public class InputGameButtons : MonoBehaviour
 
     public void MenuButton()
     {
-        GameManagement.LoadStartMenu();
+        if (menuScreen.activeInHierarchy) menuScreen.SetActive(false);
+        else menuScreen.SetActive(true);
     }
 
     public void HelpButton()
