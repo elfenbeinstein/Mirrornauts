@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &486182858203754849
 Transform:
   m_ObjectHideFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 857786927482869592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.02, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.27, y: 1.27, z: 1.27}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5182991187733610655}
   m_RootOrder: 3
@@ -222,6 +222,7 @@ MonoBehaviour:
   spaceship: {fileID: 5182991187733610654}
   spaceshipTop: {fileID: 5182991186884055310}
   spaceshipRight: {fileID: 4530975862971936274}
+  shield: {fileID: 857786927482869592}
   scales: 0
 --- !u!50 &7740587491891828626
 Rigidbody2D:

@@ -14,6 +14,7 @@ public class SpaceshipBehaviour : MonoBehaviour
     [SerializeField] private GameObject spaceship;
     [SerializeField] private GameObject spaceshipTop;
     [SerializeField] private GameObject spaceshipRight;
+    [SerializeField] private GameObject shield;
 
     [SerializeField] private bool scales;
     
@@ -30,6 +31,21 @@ public class SpaceshipBehaviour : MonoBehaviour
         startVObject.SetActive(false);
         endVObject.SetActive(true);
         endV.SetPosition(1, spaceship.transform.position);
+
+        shield.SetActive(false);
+
+        EventManager.Instance.AddEventListener("SHIELD", ShieldListener);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("SHIELD", ShieldListener);
+    }
+
+    private void ShieldListener(string eventName, object param)
+    {
+        if (eventName == "Start") shield.SetActive(true);
+        else if (eventName == "Stop") shield.SetActive(false);
     }
 
     public void MoveSpaceship(float[] vector)
