@@ -34,6 +34,8 @@ public class ErrorMsg : MonoBehaviour
     [SerializeField] TextMeshProUGUI description;
 
     [SerializeField] GameObject messageObject;
+    [SerializeField] GameObject deathButton;
+    [SerializeField] GameObject closeButton;
 
     List<string> errors = new List<string>();
     List<string> terrors = new List<string>();
@@ -57,12 +59,9 @@ public class ErrorMsg : MonoBehaviour
         terrors.Add(tenergy);
         terrors.Add(tcalculation);
         terrors.Add(tvalues);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        closeButton.SetActive(true);
+        deathButton.SetActive(false);
     }
 
     public void OpenError(int errorNumber)
@@ -70,6 +69,12 @@ public class ErrorMsg : MonoBehaviour
         title.text = terrors[errorNumber];
         description.text = errors[errorNumber];
         messageObject.SetActive(true);
+
+        if (errorNumber == 3)
+        {
+            deathButton.SetActive(true);
+            closeButton.SetActive(false);
+        }
 
     }
 
