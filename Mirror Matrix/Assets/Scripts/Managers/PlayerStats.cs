@@ -62,6 +62,7 @@ public class PlayerStats : MonoBehaviour
             if (shieldCD == 0)
             {
                 shieldActive = false;
+                EventManager.Instance.EventGo("SHIELD", "Stop");
             }
         }
     }
@@ -81,5 +82,6 @@ public class PlayerStats : MonoBehaviour
     {
         shieldActive = true;
         shieldCD = 3;
+        EventManager.Instance.EventGo("SHIELD", "Start");
     }
 }
