@@ -110,12 +110,12 @@ MonoBehaviour:
   hoverLoop: {fileID: 322731084517602863}
   energy: {fileID: 8300000, guid: cdf404e864af33f4fa1dd52b86bc51d1, type: 3}
   energyVol: 0.6
-  shield: {fileID: 8300000, guid: 2965310777fd45e47bf320c75f7b87ca, type: 3}
+  shield: {fileID: 8300000, guid: 3e4eb59755726334bb5a66e2886368a7, type: 3}
   shieldVol: 0.6
-  error: {fileID: 8300000, guid: b88d533282a1154488019f247fb17794, type: 3}
-  errorVol: 0.65
-  death: {fileID: 8300000, guid: 804b816684c5eca4c98cead8eeea94ea, type: 3}
-  deathVol: 0.6
+  error: {fileID: 8300000, guid: 38daab6e23613df47af0ffbf958d6f9d, type: 3}
+  errorVol: 0.81
+  death: {fileID: 8300000, guid: c0aa8ea9619de6242905cbc32b01bf5b, type: 3}
+  deathVol: 0.5
   win: {fileID: 8300000, guid: 4f1f79d90c3b7b24b811f928266ea03c, type: 3}
   winVol: 0.6
 --- !u!82 &3035606400321564730
