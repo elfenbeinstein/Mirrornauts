@@ -111,6 +111,6 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
         EventManager.Instance.EventGo("DRAG", "Stop");
-        GameManagement._audioManager._sfxSounds.PlayDrop();
+        GameManagement._audioManager._sfxSounds.PlayDrag();
     }
 }

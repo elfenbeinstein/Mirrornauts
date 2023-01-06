@@ -103,7 +103,7 @@ MonoBehaviour:
   clickCoolDown: 0.1
   drag: {fileID: 8300000, guid: bd46730f968f99a46a73e9431553bab9, type: 3}
   dragVol: 0.6
-  drop: {fileID: 8300000, guid: bd46730f968f99a46a73e9431553bab9, type: 3}
+  drop: {fileID: 8300000, guid: b88d533282a1154488019f247fb17794, type: 3}
   dropVol: 0.6
   go: {fileID: 8300000, guid: a8cff57c8791061469978abd101965c8, type: 3}
   goVol: 0.5
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 3911171596218223652}
-  volume: 0.3
+  volume: 0.5
   durationFadeIn: 0.2
   durationFadeOut: 0.2
 --- !u!82 &3911171596218223652
