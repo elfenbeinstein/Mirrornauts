@@ -95,6 +95,8 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         canvasGroup.blocksRaycasts = false;
         EventManager.Instance.EventGo("DRAG", "Start");
         gameObject.transform.SetAsLastSibling();
+
+        //GameManagement.Instance.Audio
     }
 
     // gets called on every frame while object is being dragged

@@ -18,6 +18,7 @@ public class GameManagement : MonoBehaviour
     public static PlayerStats _playerStats;
 
     public static bool gameMode;
+    public static AudioManager _audioManager;
 
     private void Awake()
     {
@@ -33,6 +34,9 @@ public class GameManagement : MonoBehaviour
 
         _playerStats = GetComponentInChildren<PlayerStats>();
         if (_playerStats == null) Debug.Log("game manager can't find player stats script");
+
+        _audioManager = GetComponentInChildren<AudioManager>();
+        if (_audioManager == null) Debug.Log("game manager can't find audio manager script");
     }
 
     public static void StartGameMode()

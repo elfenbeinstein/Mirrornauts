@@ -89,6 +89,6 @@ public class Player : MonoBehaviour
         Debug.Log("player out of health");
 
         // missing player death
-
+        GameManagement._audioManager._sfxSounds.PlayDeath();
     }
 }

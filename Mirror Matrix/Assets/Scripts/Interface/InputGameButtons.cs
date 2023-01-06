@@ -95,6 +95,7 @@ public class InputGameButtons : MonoBehaviour
 
     public void Dash()
     {
+        // if addition is active --> deactivate the addition calc and go back to normal matrix
         if(addition.activeInHierarchy)
         {
             DashOver();
@@ -112,6 +113,7 @@ public class InputGameButtons : MonoBehaviour
             {
                 Debug.Log("can't dash, no powerups");
                 // elfenbeinstein MISSING player feedback for missing powerup
+                GameManagement._audioManager._sfxSounds.PlayError();
             }
         }
     }

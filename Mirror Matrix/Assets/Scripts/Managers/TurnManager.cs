@@ -38,13 +38,23 @@ public class TurnManager : MonoBehaviour
         if(!_interfaceManager.freeFlowMode)
         {
             // make sure that all fields where set before we start;
-            if (!_interfaceManager.GameIsReady()) return;
-            // elfenbeinstein MISSING Player Feedback not ready
-            // if energyneeded = 1000 --> wrong type
+            if (!_interfaceManager.GameIsReady())
+            {
+                // values not set or wrong calculation type
+                // elfenbeinstein MISSING Player Feedback not ready
+                // if energyneeded = 1000 --> wrong type
+                GameManagement._audioManager._sfxSounds.PlayError();
+                return;
+            }
+            
 
             // make sure player has enough energy
-            if (GameManagement._playerStats.energyNeeded > GameManagement._playerStats.energy) return;
-            // elfenbeinstein MISSING Player Feedback game isn't ready
+            if (GameManagement._playerStats.energyNeeded > GameManagement._playerStats.energy)
+            {
+                // elfenbeinstein MISSING Player Feedback game isn't ready --> not enough energy
+                GameManagement._audioManager._sfxSounds.PlayError();
+                return;
+            }
         }
 
         spawnsToAdd.Clear();
@@ -60,6 +70,8 @@ public class TurnManager : MonoBehaviour
         // spawner: adds new spawns to list spawnsToAdd
 
         // wait for interface manager to update spawns
+
+        GameManagement._audioManager._sfxSounds.PlayGo();
     }
 
     public void UpdateSpawns()
