@@ -40,9 +40,12 @@ public class TurnManager : MonoBehaviour
             // make sure that all fields where set before we start;
             if (!_interfaceManager.GameIsReady())
             {
-                // values not set or wrong calculation type
-                // elfenbeinstein MISSING Player Feedback not ready
                 // if energyneeded = 1000 --> wrong type
+                if (GameManagement._playerStats.energyNeeded == 1000)
+                    EventManager.Instance.EventGo("ERROR", "Error", 6);
+                // else values not set
+                else
+                    EventManager.Instance.EventGo("ERROR", "Error", 7);
                 GameManagement._audioManager._sfxSounds.PlayError();
                 return;
             }
@@ -51,7 +54,7 @@ public class TurnManager : MonoBehaviour
             // make sure player has enough energy
             if (GameManagement._playerStats.energyNeeded > GameManagement._playerStats.energy)
             {
-                // elfenbeinstein MISSING Player Feedback game isn't ready --> not enough energy
+                EventManager.Instance.EventGo("ERROR", "Error", 5);
                 GameManagement._audioManager._sfxSounds.PlayError();
                 return;
             }

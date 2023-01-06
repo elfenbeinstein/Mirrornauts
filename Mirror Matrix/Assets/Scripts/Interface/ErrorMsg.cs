@@ -62,6 +62,18 @@ public class ErrorMsg : MonoBehaviour
 
         closeButton.SetActive(true);
         deathButton.SetActive(false);
+
+        EventManager.Instance.AddEventListener("ERROR", ErrorListener);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("ERROR", ErrorListener);
+    }
+
+    void ErrorListener(string eventName, object param)
+    {
+        OpenError((int)param);
     }
 
     public void OpenError(int errorNumber)

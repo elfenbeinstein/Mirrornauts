@@ -90,5 +90,6 @@ public class Player : MonoBehaviour
 
         // missing player death
         GameManagement._audioManager._sfxSounds.PlayDeath();
+        EventManager.Instance.EventGo("ERROR", "Death", 3);
     }
 }
