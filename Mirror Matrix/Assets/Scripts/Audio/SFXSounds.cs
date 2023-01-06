@@ -57,7 +57,7 @@ public class SFXSounds : MonoBehaviour
     [ContextMenu("Click")]
     public void PlayClick()
     {
-        //if (canPlayClick)
+        if (canPlayClick)
         {
             audioSource.PlayOneShot(click, clickVol);
             StartCoroutine(ClickCooldown());

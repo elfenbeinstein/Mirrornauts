@@ -35,6 +35,7 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private Button dashButton;
     [Tooltip("all objects that should only be active when cooldown is happening put as children of the slider obj")]
     [SerializeField] private Slider dashCooldown;
+    [SerializeField] private Animator anim;
 
     private bool freeMode;
 
@@ -62,8 +63,10 @@ public class InputGameButtons : MonoBehaviour
     private void Update()
     {
         // elfenbeinstein: DELETE for final build
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.A)) ActivateDash();
         if (Input.GetKeyDown(KeyCode.S)) EventManager.Instance.EventGo("TURN", "Shield");
+#endif
     }
     private void OnDestroy()
     {
@@ -113,8 +116,7 @@ public class InputGameButtons : MonoBehaviour
             }
             else
             {
-                Debug.Log("can't dash, no powerups");
-                // elfenbeinstein MISSING player feedback for missing powerup
+                anim.SetTrigger("Shake");
                 GameManagement._audioManager._sfxSounds.PlayError();
             }
         }

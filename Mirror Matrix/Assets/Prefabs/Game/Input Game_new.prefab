@@ -2951,6 +2951,7 @@ GameObject:
   - component: {fileID: 4740209136072634661}
   - component: {fileID: 423991552977059418}
   - component: {fileID: 3162636101951704583}
+  - component: {fileID: 4965653863345982331}
   m_Layer: 5
   m_Name: Dash
   m_TagString: Untagged
@@ -3018,6 +3019,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4965653863345982331
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221934602839325623}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50c61965c13f00d4aa0da07366aadaff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2224768006305805959
 GameObject:
   m_ObjectHideFlags: 0
@@ -13725,8 +13746,10 @@ MonoBehaviour:
   addXMinus: {fileID: 7877590467873972875}
   addYMinus: {fileID: 769171887712205052}
   helpScreen: {fileID: 0}
+  menuScreen: {fileID: 0}
   dashButton: {fileID: 6608554997778082870}
   dashCooldown: {fileID: 4336960796993772406}
+  anim: {fileID: 4965653863345982331}
 --- !u!114 &7749659573348703716
 MonoBehaviour:
   m_ObjectHideFlags: 0
