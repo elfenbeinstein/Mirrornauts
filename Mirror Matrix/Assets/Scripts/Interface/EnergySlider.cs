@@ -12,6 +12,8 @@ public class EnergySlider : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI energyCost;
     string origText;
 
+    [SerializeField] private 
+
     void Start()
     {
         _slider = GetComponent<Slider>();
@@ -73,8 +75,15 @@ public class EnergySlider : MonoBehaviour
         energyCost.text = "";
     }
 
+    IEnumerator SliderUpdate(int current, int newE)
+    {
+        yield return new WaitForSeconds(2);
+    }
+
     private void Update()
     {
+        // elfenbeinstein: REMOVE FOR BUILD
+# if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GameManagement._playerStats.energy++;
@@ -87,5 +96,6 @@ public class EnergySlider : MonoBehaviour
             if (GameManagement._playerStats.energy < 0) GameManagement._playerStats.energy = 0;
             UpdateSlider();
         }
+#endif
     }
 }
