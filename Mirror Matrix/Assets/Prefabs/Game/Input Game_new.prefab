@@ -19591,6 +19591,8 @@ MonoBehaviour:
   text: {fileID: 8065363155559341677}
   _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
   energyCost: {fileID: 3219566475521674012}
+  slideDuration: 1
+  anim: {fileID: 598507452289260744}
 --- !u!1 &7749659574585798039
 GameObject:
   m_ObjectHideFlags: 0

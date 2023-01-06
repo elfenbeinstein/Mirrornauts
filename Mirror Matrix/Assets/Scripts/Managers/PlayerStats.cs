@@ -72,7 +72,7 @@ public class PlayerStats : MonoBehaviour
         // remove addition value + start countdown at 3
         dashAmount = 0;
         dashCountdown = true;
-        dashCD = 3;
+        dashCD = 4;
 
         // tell buttons:
         EventManager.Instance.EventGo("DASH", "Countdown");
@@ -81,7 +81,7 @@ public class PlayerStats : MonoBehaviour
     void Shield()
     {
         shieldActive = true;
-        shieldCD = 3;
+        shieldCD = 4;
         EventManager.Instance.EventGo("SHIELD", "Start");
     }
 }

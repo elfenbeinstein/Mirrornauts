@@ -12,7 +12,12 @@ public class EnergySlider : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI energyCost;
     string origText;
 
-    [SerializeField] private 
+    [SerializeField] private float slideDuration = 1.5f;
+    [SerializeField] private Animator anim;
+
+    bool sliding;
+    int amount;
+    float time = 0;
 
     void Start()
     {
@@ -27,6 +32,7 @@ public class EnergySlider : MonoBehaviour
 
         origText = energyCost.text;
         energyCost.text = "";
+        sliding = false;
     }
 
     private void OnDestroy()
@@ -38,14 +44,26 @@ public class EnergySlider : MonoBehaviour
     {
         if (eventName == "AddEnergy")
         {
+            // values for Sliding:
+            amount = (int)param;
+            if (GameManagement._playerStats.energy + amount > GameManagement._playerStats.maxEnergy) amount = GameManagement._playerStats.maxEnergy - GameManagement._playerStats.energy;
+            sliding = true;
+            // set animation to true
+            anim.SetBool("Move", true);
+            time = 0;
+
             GameManagement._playerStats.energy += (int)param;
             if (GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
-            UpdateSlider();
         }
         else if (eventName == "RemoveEnergy")
         {
+            amount = (int)param * -1;
+            sliding = true;
+            // set animation to true
+            anim.SetBool("Move", true);
+            time = 0;
+
             GameManagement._playerStats.energy -= (int)param;
-            UpdateSlider();
         }
         else if (eventName == "EnergyCost")
         {
@@ -57,7 +75,7 @@ public class EnergySlider : MonoBehaviour
         }
     }
 
-    private void UpdateSlider()
+    private void UpdateSliderDirectly()
     {
         // update slider value
         _slider.value = GameManagement._playerStats.energy;
@@ -75,26 +93,75 @@ public class EnergySlider : MonoBehaviour
         energyCost.text = "";
     }
 
-    IEnumerator SliderUpdate(int current, int newE)
+    private bool ReachedTarget()
     {
-        yield return new WaitForSeconds(2);
+        bool result = false;
+        if (_slider.value == GameManagement._playerStats.energy) result = true;
+        else if (_slider.value < GameManagement._playerStats.energy && amount < 0) result = true;
+        else if (_slider.value > GameManagement._playerStats.energy && amount > 0) result = true;
+
+        return result;
     }
 
     private void Update()
     {
+        if (sliding)
+        {
+            time += Time.deltaTime;
+            if (amount != 0)
+            {
+                if (time >= slideDuration / Mathf.Abs(amount))
+                {
+                    if (amount > 0) _slider.value++;
+                    else _slider.value--;
+                    text.text = _slider.value.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+                    time = 0;
+
+                    // check if reached the end:
+                    if (ReachedTarget())
+                    {
+                        _slider.value = GameManagement._playerStats.energy;
+                        text.text = _slider.value.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+                        sliding = false;
+                        anim.SetBool("Move", false);
+                    }
+                }
+            }
+            else
+            {
+                _slider.value = GameManagement._playerStats.energy;
+                text.text = _slider.value.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+                sliding = false;
+                anim.SetBool("Move", false);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            sliding = true;
+            amount = Random.Range(-25, 26);
+            if (amount + GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) amount = GameManagement._playerStats.maxEnergy - GameManagement._playerStats.energy;
+            time = 0;
+            GameManagement._playerStats.energy += amount;
+            anim.SetBool("Move", true);
+        }
+
+
+
+
         // elfenbeinstein: REMOVE FOR BUILD
 # if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GameManagement._playerStats.energy++;
             if (GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
-            UpdateSlider();
+            UpdateSliderDirectly();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             GameManagement._playerStats.energy--;
             if (GameManagement._playerStats.energy < 0) GameManagement._playerStats.energy = 0;
-            UpdateSlider();
+            UpdateSliderDirectly();
         }
 #endif
     }
