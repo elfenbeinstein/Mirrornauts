@@ -5186,7 +5186,7 @@ RectTransform:
   - {fileID: 75727309}
   - {fileID: 1650382784905365994}
   - {fileID: 4533041}
-  - {fileID: 1881772750}
+  - {fileID: 2001952707}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5335,19 +5335,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1803101351}
+    m_TransformParent: {fileID: 2001952707}
     m_Modifications:
     - target: {fileID: 1019593726202372316, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 861915913}
+      objectReference: {fileID: 2001952708}
     - target: {fileID: 1019593726202372316, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HelpButton
+      value: CloseError
       objectReference: {fileID: 0}
     - target: {fileID: 1019593726202372316, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: InputGameButtons, Assembly-CSharp
+      value: ErrorMsg, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1019593726202372316, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5403,7 +5403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3699185530390962310, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3699185530390962310, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5447,15 +5447,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3699185530390962310, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3699185530390962310, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3699185530390962310, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3699185530390962310, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5485,6 +5485,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3799953902845875619, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799953902845875619, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
+      propertyPath: m_Color.g
+      value: 0.52156866
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799953902845875619, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
+      propertyPath: m_Color.r
+      value: 0.49803925
+      objectReference: {fileID: 0}
     - target: {fileID: 5231621929531064183, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_Name
       value: ErrorTemplate
@@ -5551,7 +5563,7 @@ Animator:
   m_GameObject: {fileID: 1881772751}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b076d68ef6af0a644b53f7f2d1ff5928, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6044,6 +6056,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1586516748109109736, guid: e453d9a90fd03974597ae99424c62a18, type: 3}
   m_PrefabInstance: {fileID: 1463496942}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2001952706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001952707}
+  - component: {fileID: 2001952708}
+  m_Layer: 5
+  m_Name: Errors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2001952707
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001952706}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1881772750}
+  m_Father: {fileID: 1803101351}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2001952708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001952706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18def6979c2a5d84ab0fb6a304dacf72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  story1: "Autopilot besch\xE4digt\u2026 manuelle Kursberechnung n\xF6tig.\r\nGefahrenzonen
+    auf dem Sensor erkannt.\r\n\nSiehe [HILFE] f\xFCr mehr Informationen\u2026\nBitte
+    Ausweichman\xF6ver beginnen!\r\n"
+  tstory1: ERROR-05837
+  story2: "Sparsamer Umgang der Energiereserven geraten.\nBisher zur\xFCckgelegte
+    Distanz:\n10%"
+  tstory2: ERROR-9902
+  story3: "Rechenzentrum \xFCberhitzt\u2026 Gradienten k\xF6nnen nicht mehr vorberechnet
+    werden.\r\nDirekte Eingabe freigeschaltet.\r"
+  tstory3: ERROR-177
+  death: "Kritischer Schaden!\nZerst\xF6rung unmittelbar.\n\nMission fehlgeschlagen..."
+  tdeath: ERROR-64207
+  win: "Gefahrenzone verlassen\u2026 Kontakt zu Erde aufgebaut.\r\nBitte folgenden
+    Code an Homebase \xFCbermitteln.\r"
+  twin: ERROR-0
+  energy: "Energiereserven zu niedrig f\xFCr diesen Sprung.\nBitte "
+  tenergy: ERROR-71
+  calculation: Der Bordcomputer kann den Kurs nur in Spiegelmatritzen und Drehmatritzen
+    berechnen.
+  tcalculation: ERROR-2225
+  values: "Werte sind nicht komplett ausgef\xFCllt."
+  tvalues: ERROR-034f
+  title: {fileID: 878703268}
+  description: {fileID: 1807865191}
+  messageObject: {fileID: 1881772751}
 --- !u!1001 &2011114734
 PrefabInstance:
   m_ObjectHideFlags: 0
