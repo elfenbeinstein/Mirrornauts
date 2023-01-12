@@ -38,6 +38,7 @@ public class ObjectBehaviour : MonoBehaviour
         countdown = _countdown;
         liftoff = _liftoff;
         _turnManager = _script;
+        _turnManager.AddSpawn(this);
 
         // set up position & rotation
         parent.transform.position = _position;

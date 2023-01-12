@@ -2677,6 +2677,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1586516748109109737, guid: e453d9a90fd03974597ae99424c62a18, type: 3}
   m_PrefabInstance: {fileID: 559481741}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &587066955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3639828532672159678, guid: ad33f8c4e7a60aa49887c54f29a84316, type: 3}
+  m_PrefabInstance: {fileID: 461461321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fe4b8550333744ca57744159c67206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &592795284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3404,7 +3415,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 857102247, guid: 1e26b1d1e2bf0684aa4acf67fc61d4be, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e26b1d1e2bf0684aa4acf67fc61d4be, type: 3}
 --- !u!114 &765455565 stripped
 MonoBehaviour:
@@ -4074,6 +4086,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Input Game_new
       objectReference: {fileID: 0}
+    - target: {fileID: 7749659573348703738, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 587066955}
+    - target: {fileID: 7749659573348703738, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+      propertyPath: spawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 587066955}
     - target: {fileID: 7749659573348703739, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7520,6 +7540,7 @@ GameObject:
   - component: {fileID: 1803101349}
   - component: {fileID: 1803101348}
   - component: {fileID: 1803101352}
+  - component: {fileID: 1803101353}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7629,6 +7650,21 @@ MonoBehaviour:
   _mixer: {fileID: 24100000, guid: ac4f30f4f563bcc47a7d955cd63faf60, type: 2}
   sliderSFX: {fileID: 392519916}
   sliderMusic: {fileID: 1658784397}
+--- !u!114 &1803101353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803101347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a9b9cdd54d05240a402a87ba68a9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCoordinats: {x: 7.5, y: 7.5}
+  textBoxOffset: {x: 1.4, y: -0.4}
+  mouseCoord: {fileID: 75727310}
 --- !u!1 &1807865189
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> activeSpawns;
 
     private InterfaceManager _interfaceManager;
+    [SerializeField] private Spawner spawner;
 
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
@@ -77,8 +78,15 @@ public class TurnManager : MonoBehaviour
         GameManagement._audioManager._sfxSounds.PlayGo();
     }
 
+    public void Spawn()
+    {
+        if (spawner != null) spawner.Spawn(turnCounter);
+        else Debug.LogWarning("spawner is null");
+    }
+
     public void UpdateSpawns()
     {
+        //int x = 0;
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
         {

@@ -97,7 +97,7 @@ public class InterfaceManager : MonoBehaviour
             EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", GameManagement._playerStats.energyNeeded);
         Move();
         if (round == switchToFreeMode) _buttons.SetUpFreeMode();
-        if (!freeFlowMode) _turnManager.UpdateSpawns();
+        if (!freeFlowMode) _turnManager.Spawn();
     }
 
     public void UpdateTurnCounterDisplay(int value)

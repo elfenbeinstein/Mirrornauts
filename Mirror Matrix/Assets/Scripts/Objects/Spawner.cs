@@ -28,19 +28,22 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        EventManager.Instance.AddEventListener("TURN", TurnListener);
+        //EventManager.Instance.AddEventListener("TURN", TurnListener);
     }
 
     private void OnDestroy()
     {
-        EventManager.Instance.RemoveEventListener("TURN", TurnListener);
+        //EventManager.Instance.RemoveEventListener("TURN", TurnListener);
     }
 
+    /*
     private void TurnListener(string eventName, object param)
     {
         if (eventName == "NextTurn")
             Spawn((int)param);
     }
+    */
+
 
     public void Spawn(int currentRound)
     {
@@ -64,7 +67,7 @@ public class Spawner : MonoBehaviour
                     clone.SetActive(true);
                     clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, clone.transform.rotation, _turnManager);
 
-                    _turnManager.AddSpawn(clone.GetComponentInChildren<ObjectBehaviour>());
+                    //_turnManager.AddSpawn(clone.GetComponentInChildren<ObjectBehaviour>());
                 }
                 else
                 {
@@ -73,5 +76,6 @@ public class Spawner : MonoBehaviour
             }
         }
 
+        _turnManager.UpdateSpawns();
     }
 }

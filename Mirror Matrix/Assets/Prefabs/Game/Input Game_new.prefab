@@ -13807,6 +13807,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnCounter: 0
   activeSpawns: []
+  spawners:
+  - {fileID: 0}
 --- !u!1 &7749659573356158231
 GameObject:
   m_ObjectHideFlags: 0
