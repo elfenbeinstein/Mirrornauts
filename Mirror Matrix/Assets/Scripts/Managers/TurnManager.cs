@@ -47,7 +47,8 @@ public class TurnManager : MonoBehaviour
                 // else values not set
                 else
                     EventManager.Instance.EventGo("ERROR", "Error", 7);
-                GameManagement._audioManager._sfxSounds.PlayError();
+                EventManager.Instance.EventGo("AUDIO", "PlayError");
+                //GameManagement._audioManager._sfxSounds.PlayError();
                 return;
             }
             
@@ -56,7 +57,8 @@ public class TurnManager : MonoBehaviour
             if (GameManagement._playerStats.energyNeeded > GameManagement._playerStats.energy)
             {
                 EventManager.Instance.EventGo("ERROR", "Error", 5);
-                GameManagement._audioManager._sfxSounds.PlayError();
+                EventManager.Instance.EventGo("AUDIO", "PlayError");
+                //GameManagement._audioManager._sfxSounds.PlayError();
                 return;
             }
         }
@@ -75,7 +77,8 @@ public class TurnManager : MonoBehaviour
 
         // wait for interface manager to update spawns
 
-        GameManagement._audioManager._sfxSounds.PlayGo();
+        EventManager.Instance.EventGo("AUDIO", "PlayGo");
+        //GameManagement._audioManager._sfxSounds.PlayGo();
     }
 
     public void Spawn()
@@ -126,6 +129,7 @@ public class TurnManager : MonoBehaviour
         }
         if (sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
 
+        // removes the énergy cost text underneath the slider
         EventManager.Instance.EventGo("ENERGY", "RemoveCost");
         GameManagement._playerStats.NextTurn();
     }

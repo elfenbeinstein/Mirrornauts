@@ -68,7 +68,8 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
             highlight.SetActive(false);
 
-            GameManagement._audioManager._sfxSounds.PlayDrop();
+            EventManager.Instance.EventGo("AUDIO", "PlayDrop");
+            //GameManagement._audioManager._sfxSounds.PlayDrop();
         }
     }
 

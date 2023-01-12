@@ -84,4 +84,11 @@ public class PlayerStats : MonoBehaviour
         shieldCD = 4;
         EventManager.Instance.EventGo("SHIELD", "Start");
     }
+
+    public void ResetFromManager()
+    {
+        shieldActive = false;
+        dashAmount = 1;
+        currentHealth = 1;
+    }
 }

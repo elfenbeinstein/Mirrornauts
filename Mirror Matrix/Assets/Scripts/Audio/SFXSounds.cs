@@ -44,6 +44,12 @@ public class SFXSounds : MonoBehaviour
     void Start()
     {
         canPlayClick = true;
+        EventManager.Instance.AddEventListener("AUDIO", AudioListener);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.Instance.RemoveEventListener("AUDIO", AudioListener);
     }
 
     private void Update()
@@ -52,6 +58,30 @@ public class SFXSounds : MonoBehaviour
             PlayClick();
         else if (Input.GetMouseButtonUp(0))
             PlayClick();
+    }
+
+    void AudioListener(string eventName, object param)
+    {
+        if (eventName == "PlayDrag")
+            PlayDrag();
+        else if (eventName == "PlayDrop")
+            PlayDrop();
+        else if (eventName == "PlayGo")
+            PlayGo();
+        else if (eventName == "PlayHover")
+            PlayHover();
+        else if (eventName == "StopHover")
+            StopHover();
+        else if (eventName == "PlayEnergy")
+            PlayEnergy();
+        else if (eventName == "PlayShield")
+            PlayShield();
+        else if (eventName == "PlayError")
+            PlayError();
+        else if (eventName == "PlayDeath")
+            PlayDeath();
+        else if (eventName == "PlayWin")
+            PlayWin();
     }
 
     [ContextMenu("Click")]
@@ -74,58 +104,70 @@ public class SFXSounds : MonoBehaviour
     [ContextMenu("Drag")]
     public void PlayDrag()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(drag, dragVol);
     }
 
     [ContextMenu("Drop")]
     public void PlayDrop()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(drop, dropVol);
     }
     
     [ContextMenu("Go")]
     public void PlayGo()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(go, goVol);
     }
     
     [ContextMenu("Hover")]
     public void PlayHover()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (hoverLoop == null) hoverLoop = GetComponentInChildren<AudioLoop>();
         hoverLoop.PlayLoop();
     }
     public void StopHover()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (hoverLoop == null) hoverLoop = GetComponentInChildren<AudioLoop>();
         hoverLoop.StopLoop();
     }
     
     [ContextMenu("Energy")]
     public void PlayEnergy()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(energy, energyVol);
     }
     
     [ContextMenu("Shield")]
     public void PlayShield()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(shield, shieldVol);
     }
     
     [ContextMenu("Error")]
     public void PlayError()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(error, errorVol);
     }
     
     [ContextMenu("Death")]
     public void PlayDeath()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(death, deathVol);
     }
     
     [ContextMenu("Win")]
     public void PlayWin()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(win, winVol);
     }
 }

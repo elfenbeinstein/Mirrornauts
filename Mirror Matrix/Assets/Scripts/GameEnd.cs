@@ -6,7 +6,8 @@ public class GameEnd : MonoBehaviour
 {
     public void PlayerWins()
     {
-        GameManagement._audioManager._sfxSounds.PlayWin();
+        EventManager.Instance.EventGo("AUDIO", "PlayWin");
+        //GameManagement._audioManager._sfxSounds.PlayWin();
 
         //set up certificate
 

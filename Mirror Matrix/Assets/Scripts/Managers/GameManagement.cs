@@ -10,15 +10,12 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManagement : MonoBehaviour
 {
-    private int level;
-
-    public static bool gameManagerLoaded;
-
     public static Maths _maths;
     public static PlayerStats _playerStats;
 
     public static bool gameMode;
     public static AudioManager _audioManager;
+    public static SFXSounds _SFXSounds;
 
     private void Awake()
     {
@@ -27,21 +24,25 @@ public class GameManagement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else DontDestroyOnLoad(this.gameObject);
+
 
         _maths = GetComponent<Maths>();
         if (_maths == null) Debug.Log("game manager can't find maths script");
 
-        _playerStats = GetComponentInChildren<PlayerStats>();
+        _playerStats = GetComponent<PlayerStats>();
         if (_playerStats == null) Debug.Log("game manager can't find player stats script");
 
         _audioManager = GetComponentInChildren<AudioManager>();
         if (_audioManager == null) Debug.Log("game manager can't find audio manager script");
+
+        _SFXSounds = GetComponentInChildren<SFXSounds>();
     }
 
     public static void StartGameMode()
     {
         SceneManager.LoadScene(2);
+        _playerStats.ResetFromManager();
     }
 
     public static void StartTrainingMode()

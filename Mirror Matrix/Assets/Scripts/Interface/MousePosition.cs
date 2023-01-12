@@ -86,8 +86,8 @@ public class MousePosition : MonoBehaviour
     {
         active = value;
         mouseCoord.gameObject.SetActive(value);
-        if (value) GameManagement._audioManager._sfxSounds.PlayHover();
-        else GameManagement._audioManager._sfxSounds.StopHover();
+        if (value) EventManager.Instance.EventGo("AUDIO", "PlayHover"); //GameManagement._audioManager._sfxSounds.PlayHover();
+        else EventManager.Instance.EventGo("AUDIO", "StopHover"); //GameManagement._audioManager._sfxSounds.StopHover();
     }
 
     private bool MouseOverCoordinateSystem()

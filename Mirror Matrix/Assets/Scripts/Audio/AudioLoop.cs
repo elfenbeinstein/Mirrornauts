@@ -24,12 +24,14 @@ public class AudioLoop : MonoBehaviour
 
     public void StartLoop()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (!audioSource.isPlaying) audioSource.Play();
         audioSource.volume = volume;
     }
 
     public void StopLoop()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         if (audioSource.isPlaying)
         {
             StopAllCoroutines();

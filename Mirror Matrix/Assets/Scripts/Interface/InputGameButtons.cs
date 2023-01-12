@@ -117,7 +117,8 @@ public class InputGameButtons : MonoBehaviour
             else
             {
                 anim.SetTrigger("Shake");
-                GameManagement._audioManager._sfxSounds.PlayError();
+                EventManager.Instance.EventGo("AUDIO", "PlayError");
+                //GameManagement._audioManager._sfxSounds.PlayError();
             }
         }
     }
