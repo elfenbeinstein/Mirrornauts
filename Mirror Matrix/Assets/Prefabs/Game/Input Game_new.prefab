@@ -13836,6 +13836,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c91b465529aa84dacff568c2dc4e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomiseSpawns: 0
+  spawnParent: {fileID: 0}
+  randomiseSpaceship: 0
+  spaceshipStartPositions:
+  - {x: 3, y: 3, z: 0}
+  - {x: 3, y: -3, z: 0}
+  - {x: -3, y: 3, z: 0}
+  - {x: -3, y: -3, z: 0}
+  _spaceshipBehaviour: {fileID: 0}
 --- !u!1 &7749659573356158231
 GameObject:
   m_ObjectHideFlags: 0
