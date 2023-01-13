@@ -13667,6 +13667,7 @@ GameObject:
   - component: {fileID: 7749659573348703719}
   - component: {fileID: 7749659573348703716}
   - component: {fileID: 7749659573348703738}
+  - component: {fileID: 3013306281474929743}
   m_Layer: 5
   m_Name: Input Game_new
   m_TagString: Untagged
@@ -13823,6 +13824,18 @@ MonoBehaviour:
   activeSpawns: []
   spawner: {fileID: 0}
   randomAngle: 0
+--- !u!114 &3013306281474929743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749659573348703736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c91b465529aa84dacff568c2dc4e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7749659573356158231
 GameObject:
   m_ObjectHideFlags: 0

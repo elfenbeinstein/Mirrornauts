@@ -66,6 +66,21 @@ public class ObjectBehaviour : MonoBehaviour
             isCounting = true;
             isLifting = false;
         }
+
+        if (_turnManager.randomAngle != 0)
+        {
+            SetUpNumberDisplay();
+        }
+    }
+
+    private void SetUpNumberDisplay()
+    {
+        // get top right corner of spawn
+
+        // set number to top right corner
+
+        // rotate number by turn manager random angle (is already set to - value in randomisation)
+        countdownRenderer.gameObject.transform.Rotate(0, 0, _turnManager.randomAngle);
     }
 
     public void NextTurn(int currentRound)

@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
     public Spawn[] spawnUnits;
 
     [SerializeField] private TurnManager _turnManager;
+    [SerializeField] private Transform parentClone;
 
     private void Start()
     {
@@ -62,7 +63,7 @@ public class Spawner : MonoBehaviour
                 // turn on new game object + make it set up (send to set up in object behaviour script)
                 if (spawnUnits[i].unit != null)
                 {
-                    GameObject clone = Instantiate(spawnUnits[i].unit);
+                    GameObject clone = Instantiate(spawnUnits[i].unit, parentClone);
                     
                     clone.SetActive(true);
                     clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, clone.transform.rotation, _turnManager);
