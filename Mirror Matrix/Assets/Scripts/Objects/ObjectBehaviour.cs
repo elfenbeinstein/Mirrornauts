@@ -15,6 +15,9 @@ public class ObjectBehaviour : MonoBehaviour
     [SerializeField] private Numbers _numbers;
 
     [SerializeField] private SpriteRenderer countdownRenderer;
+    [Tooltip("offset from corner of the number field")]
+    [SerializeField] private float offset;
+    [SerializeField] private Transform parentNumber;
 
     [SerializeField] private GameObject _filling;
     [SerializeField] private GameObject _frame;
@@ -75,9 +78,49 @@ public class ObjectBehaviour : MonoBehaviour
 
     private void SetUpNumberDisplay()
     {
-        // get top right corner of spawn
+        float xPosition;
+        float yPosition;
+        #region Get Top Right Corner of Spawn
+        // if the object is flipped to the side the x and y values of scale are flipped
+        /*
+        if (Mathf.Abs(_turnManager.randomAngle) == 90 || Mathf.Abs(_turnManager.randomAngle) == 270)
+        {
+            xPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+            yPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
+        }
+        else
+        {
+            xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
+            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+        }
+        */
+
+        if (Mathf.Abs(_turnManager.randomAngle) == 90)
+        {
+            xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
+            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+        }
+        else if (Mathf.Abs(_turnManager.randomAngle) == 180)
+        {
+            xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
+            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+        }
+        else if (Mathf.Abs(_turnManager.randomAngle) == 270)
+        {
+            xPosition = (transform.localPosition.x + transform.localScale.x / 2 - offset) * -1;
+            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+        }
+        else
+        {
+            xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
+            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+        }
+
+        #endregion
 
         // set number to top right corner
+        //countdownRenderer.gameObject.transform.localPosition = new Vector3(xPosition, yPosition, 0);
+        parentNumber.localPosition = new Vector3(xPosition, yPosition, 0);
 
         // rotate number by turn manager random angle (is already set to - value in randomisation)
         countdownRenderer.gameObject.transform.Rotate(0, 0, _turnManager.randomAngle);

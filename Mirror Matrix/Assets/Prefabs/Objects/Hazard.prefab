@@ -251,6 +251,8 @@ MonoBehaviour:
   isHazard: 1
   _numbers: {fileID: 11400000, guid: f3b04def9358ee945b7bf8f184c4a347, type: 2}
   countdownRenderer: {fileID: 1586516748302403018}
+  offset: 0.4
+  parentNumber: {fileID: 1586516748733771503}
   _filling: {fileID: 4673094563384171838}
   _frame: {fileID: 4470955862207276007}
   parent: {fileID: 1586516748109109737}
