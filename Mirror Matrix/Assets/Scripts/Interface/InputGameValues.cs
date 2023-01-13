@@ -12,6 +12,7 @@ public enum MatrixType
 public class InputGameValues : MonoBehaviour
 {
     private SpaceshipBehaviour _spaceshipBehaviour;
+    private PlayerStats _playerStats;
 
     private float[] vectorValue;
     private float numberSlot;
@@ -72,6 +73,8 @@ public class InputGameValues : MonoBehaviour
         addValue = true;
         addXValue = true;
         addYValue = true;
+
+        _playerStats = GetComponent<InterfaceManager>()._playerStats;
     }
 
     public void SetSpaceshipScript(SpaceshipBehaviour script)
@@ -326,7 +329,7 @@ public class InputGameValues : MonoBehaviour
         if (calcType == CalculationType.Addition)
         {
             // get new position of spaceship
-            float[] result = GameManagement._maths.Addition(startV, GetAddVector(), addValue);
+            float[] result = Maths.Instance.Addition(startV, GetAddVector(), addValue);
             Vector3 endPos = new Vector3(result[0], result[1], 0);
 
             // calculate distance between new and current position
@@ -388,7 +391,7 @@ public class InputGameValues : MonoBehaviour
                 if (calcType == CalculationType.MatrixMultiplicationF) matrix = GetMatrixValuesF();
 
                 // get new position of spaceship
-                float[] result = GameManagement._maths.Multiplication(startV, matrix);
+                float[] result = Maths.Instance.Multiplication(startV, matrix);
                 Vector3 endPos = new Vector3(result[0], result[1], 0);
 
                 // calculate distance between new and current position
@@ -403,7 +406,7 @@ public class InputGameValues : MonoBehaviour
             }
         }
 
-        GameManagement._playerStats.energyNeeded = cost;
+        _playerStats.energyNeeded = cost;
     }
 
     public void ResetSpaceshipFromButton()

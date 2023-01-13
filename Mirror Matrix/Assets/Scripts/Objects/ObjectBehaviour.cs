@@ -12,7 +12,7 @@ public class ObjectBehaviour : MonoBehaviour
     [Tooltip("if it is a hazard = true; if a collectible = false + add powerup script to object")]
     public bool isHazard;
 
-    [SerializeField] private Stats _stats;
+    [SerializeField] private Numbers _numbers;
 
     [SerializeField] private SpriteRenderer countdownRenderer;
 
@@ -49,7 +49,7 @@ public class ObjectBehaviour : MonoBehaviour
             _frame.SetActive(true);
             _filling.SetActive(true);
 
-            countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
+            countdownRenderer.sprite = _numbers.countdownNumbers[liftoff];
 
             isCounting = false;
             isLifting = true;
@@ -57,7 +57,7 @@ public class ObjectBehaviour : MonoBehaviour
         else
         {
             // set countdown (number in corner)
-            countdownRenderer.sprite = _stats.countdownNumbers[countdown];
+            countdownRenderer.sprite = _numbers.countdownNumbers[countdown];
 
             // set up visuals
             _frame.SetActive(true);
@@ -74,7 +74,7 @@ public class ObjectBehaviour : MonoBehaviour
         {
             if (round - currentRound == 0)
             {
-                countdownRenderer.sprite = _stats.countdownNumbers[liftoff];
+                countdownRenderer.sprite = _numbers.countdownNumbers[liftoff];
 
                 _filling.SetActive(true);
 
@@ -89,7 +89,7 @@ public class ObjectBehaviour : MonoBehaviour
             else
             {
                 // update countdown
-                countdownRenderer.sprite = _stats.countdownNumbers[round - currentRound];
+                countdownRenderer.sprite = _numbers.countdownNumbers[round - currentRound];
             }
         }
         else if (isLifting)
@@ -100,7 +100,7 @@ public class ObjectBehaviour : MonoBehaviour
             }
             else
             {
-                countdownRenderer.sprite = _stats.countdownNumbers[(currentRound - round - liftoff) * -1];
+                countdownRenderer.sprite = _numbers.countdownNumbers[(currentRound - round - liftoff) * -1];
             }
         }
         else

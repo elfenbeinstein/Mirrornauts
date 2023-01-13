@@ -66,8 +66,6 @@ public class Spawner : MonoBehaviour
                     
                     clone.SetActive(true);
                     clone.GetComponentInChildren<ObjectBehaviour>().SetUpNewSpawn(spawnUnits[i].round, spawnUnits[i].countdown, spawnUnits[i].liftoff, clone.transform.position, clone.transform.rotation, _turnManager);
-
-                    //_turnManager.AddSpawn(clone.GetComponentInChildren<ObjectBehaviour>());
                 }
                 else
                 {

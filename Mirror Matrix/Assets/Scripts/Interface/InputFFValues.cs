@@ -330,28 +330,28 @@ public class InputFFValues : MonoBehaviour
     public void TrySinCos()
     {
         float a = 0;
-        float cos = GameManagement._maths.CosinusCalc(a);
-        float sin = GameManagement._maths.SinusCalc(a);
+        float cos = Maths.Instance.CosinusCalc(a);
+        float sin = Maths.Instance.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
 
         a = 0.5f;
-        cos = GameManagement._maths.CosinusCalc(a);
-        sin = GameManagement._maths.SinusCalc(a);
+        cos = Maths.Instance.CosinusCalc(a);
+        sin = Maths.Instance.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
 
         a = 1;
-        cos = GameManagement._maths.CosinusCalc(a);
-        sin = GameManagement._maths.SinusCalc(a);
+        cos = Maths.Instance.CosinusCalc(a);
+        sin = Maths.Instance.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
 
         a = 1.5f;
-        cos = GameManagement._maths.CosinusCalc(a);
-        sin = GameManagement._maths.SinusCalc(a);
+        cos = Maths.Instance.CosinusCalc(a);
+        sin = Maths.Instance.SinusCalc(a);
         Debug.Log($"Sin({a}) = {sin}; Cos({a}) = {cos}");
 
         a = 2;
-        cos = GameManagement._maths.CosinusCalc(a);
-        sin = GameManagement._maths.SinusCalc(a);
+        cos = Maths.Instance.CosinusCalc(a);
+        sin = Maths.Instance.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
     }
 }

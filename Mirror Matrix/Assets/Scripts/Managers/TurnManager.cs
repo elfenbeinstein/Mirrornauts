@@ -21,14 +21,18 @@ public class TurnManager : MonoBehaviour
     private List<ObjectBehaviour> spawnsToAdd;
     private List<ObjectBehaviour> spawnsToDelete;
 
+    private PlayerStats _playerStats;
+
     private void Start()
     {
         _interfaceManager = GetComponent<InterfaceManager>();
+        _playerStats = _interfaceManager._playerStats;
 
         if (!_interfaceManager.freeFlowMode)
         {
             turnCounter = 0;
             _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
+            _playerStats = _interfaceManager._playerStats;
         }
         spawnsToAdd = new List<ObjectBehaviour>();
         spawnsToDelete = new List<ObjectBehaviour>();
@@ -42,7 +46,7 @@ public class TurnManager : MonoBehaviour
             if (!_interfaceManager.GameIsReady())
             {
                 // if energyneeded = 1000 --> wrong type
-                if (GameManagement._playerStats.energyNeeded == 1000)
+                if (_playerStats.energyNeeded == 1000)
                     EventManager.Instance.EventGo("ERROR", "Error", 6);
                 // else values not set
                 else
@@ -54,7 +58,7 @@ public class TurnManager : MonoBehaviour
             
 
             // make sure player has enough energy
-            if (GameManagement._playerStats.energyNeeded > GameManagement._playerStats.energy)
+            if (_playerStats.energyNeeded > _playerStats.energy)
             {
                 EventManager.Instance.EventGo("ERROR", "Error", 5);
                 EventManager.Instance.EventGo("AUDIO", "PlayError");
@@ -131,7 +135,7 @@ public class TurnManager : MonoBehaviour
 
         // removes the énergy cost text underneath the slider
         EventManager.Instance.EventGo("ENERGY", "RemoveCost");
-        GameManagement._playerStats.NextTurn();
+        _playerStats.NextTurn();
     }
 
     public void AddSpawn(ObjectBehaviour spawn)

@@ -16,12 +16,16 @@ public class SpaceshipBehaviour : MonoBehaviour
     [SerializeField] private GameObject spaceshipRight;
     [SerializeField] private GameObject shield;
     [SerializeField] private Animator animShield;
+    [SerializeField] private InterfaceManager _interface;
 
     [SerializeField] private bool scales;
     
     private Vector3 topPos;
     private Vector3 rightPos;
     private Rigidbody2D rb;
+
+    private bool watchForEnd;
+    private Vector3 endPosition;
 
     private void Start()
     {
@@ -41,6 +45,18 @@ public class SpaceshipBehaviour : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.Instance.RemoveEventListener("SHIELD", ShieldListener);
+    }
+
+    private void Update()
+    {
+        if (watchForEnd)
+        {
+            if (gameObject.transform.position == endPosition)
+            {
+                watchForEnd = false;
+                _interface.ContinueAfterMove();
+            }
+        }
     }
 
     private void ShieldListener(string eventName, object param)
@@ -72,13 +88,13 @@ public class SpaceshipBehaviour : MonoBehaviour
             // rotate based on new position
             topPos = new Vector3(newTop[0], newTop[1], 0);
             Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-            float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
+            float rotation = Maths.Instance.CalculateRotation(topPos, shipPos);
             spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
             // scale based on calculation
             rightPos = new Vector3(newRight[0], newRight[1], 0);
             float scaleY = Vector3.Distance(topPos, shipPos);
-            float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
+            float scaleX = Maths.Instance.CalculateScaleX(rightPos, topPos);
             spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
             /*
@@ -101,19 +117,21 @@ public class SpaceshipBehaviour : MonoBehaviour
     {
         // move spaceship
         rb.MovePosition(new Vector2(vectorResult[0], vectorResult[1]));
+        endPosition = new Vector3(vectorResult[0], vectorResult[1], 0);
+        watchForEnd = true;
 
         if (scales)
         {
             // rotate based on new position
             topPos = new Vector3(newTop[0], newTop[1], 0);
             Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-            float rotation = GameManagement._maths.CalculateRotation(topPos, shipPos);
+            float rotation = Maths.Instance.CalculateRotation(topPos, shipPos);
             spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
             // scale based on calculation
             rightPos = new Vector3(newRight[0], newRight[1], 0);
             float scaleY = Vector3.Distance(topPos, shipPos);
-            float scaleX = GameManagement._maths.CalculateScaleX(rightPos, topPos);
+            float scaleX = Maths.Instance.CalculateScaleX(rightPos, topPos);
             spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
             /*

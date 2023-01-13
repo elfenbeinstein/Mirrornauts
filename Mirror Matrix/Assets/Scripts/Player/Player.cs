@@ -11,13 +11,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float maxEnergy;
-    [SerializeField] Stats _stats;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
+    private PlayerStats _playerStats;
 
 
     void Start()
     {
         EventManager.Instance.AddEventListener("PLAYER", PlayerListener);
+        _playerStats = GetComponent<PlayerStats>();
     }
 
     private void OnDestroy()
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     public void PlayerHitObject(ObjectBehaviour hitObject)
     {
         Debug.Log("spaceship touched object");
-        if (hitObject.gameObject.GetComponent<PowerUps>() != null) hitObject.gameObject.GetComponent<PowerUps>().AddToPlayer(_stats);
+        if (hitObject.gameObject.GetComponent<PowerUps>() != null) hitObject.gameObject.GetComponent<PowerUps>().AddToPlayer();
         else Debug.Log(hitObject + " is missing powerup script");
         hitObject.RemoveSelfFromList();
     }
@@ -74,11 +75,11 @@ public class Player : MonoBehaviour
 
     private void DamageTaken(int amount)
     {
-        if (!GameManagement._playerStats.shieldActive)
-            GameManagement._playerStats.currentHealth -= amount;
-        Debug.Log($"current hp is {GameManagement._playerStats.currentHealth}");
+        if (!_playerStats.shieldActive)
+            _playerStats.currentHealth -= amount;
+        Debug.Log($"current hp is {_playerStats.currentHealth}");
 
-        if (GameManagement._playerStats.currentHealth <= 0)
+        if (_playerStats.currentHealth <= 0)
         {
             PlayerDeath();
         }

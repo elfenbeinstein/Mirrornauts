@@ -511,8 +511,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8777612550966031363}
   - component: {fileID: 8777612550966031361}
-  - component: {fileID: 8777612550966031360}
-  - component: {fileID: 6880269266362190637}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -548,34 +546,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32e385708b5d1940b04617ccdd739b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8777612550966031360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8777612550966031362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f892880de4635d4ba7f42623b65a707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6880269266362190637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8777612550966031362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719f2cd7d71c75141b0f455a1fde9272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashAmount: 0
-  shieldActive: 0
-  energy: 0
-  maxEnergy: 200
-  energyNeeded: 0
-  currentHealth: 0
-  dashCD: 0

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InputGameButtons : MonoBehaviour
 {
     private InputGameValues _inputGameValues;
+    private PlayerStats _playerStats;
 
     [Header("Calculation Modes:")]
     [SerializeField] private GameObject multiplicationRad;
@@ -42,6 +43,7 @@ public class InputGameButtons : MonoBehaviour
     private void Start()
     {
         _inputGameValues = GetComponent<InputGameValues>();
+        _playerStats = GetComponent<InterfaceManager>()._playerStats;
 
         multiplicationRad.SetActive(true);
         x1Minus.SetActive(false);
@@ -107,7 +109,7 @@ public class InputGameButtons : MonoBehaviour
         }
         else
         {
-            if (GameManagement._playerStats.dashAmount >= 1)
+            if (_playerStats.dashAmount >= 1)
             {
                 SetUpAddition();
                 multiplicationRad.SetActive(false);
@@ -159,7 +161,7 @@ public class InputGameButtons : MonoBehaviour
         // slider aktivieren
         dashCooldown.gameObject.SetActive(true);
         // stelle slider ein auf int
-        dashCooldown.value = GameManagement._playerStats.dashCD;
+        dashCooldown.value = _playerStats.dashCD;
     }
 
     void ActivateDash()

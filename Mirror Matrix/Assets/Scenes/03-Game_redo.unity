@@ -1535,7 +1535,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8486913544798139641, guid: 1e26b1d1e2bf0684aa4acf67fc61d4be, type: 3}
+    - {fileID: 8777612550966031360, guid: 1e26b1d1e2bf0684aa4acf67fc61d4be, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e26b1d1e2bf0684aa4acf67fc61d4be, type: 3}
 --- !u!1 &392519915
 GameObject:
@@ -3398,30 +3398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639944459}
   m_CullTransparentMesh: 1
---- !u!1 &714348013 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8777612550966031362, guid: 1e26b1d1e2bf0684aa4acf67fc61d4be, type: 3}
-  m_PrefabInstance: {fileID: 346825014}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &714348017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714348013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719f2cd7d71c75141b0f455a1fde9272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashAmount: 0
-  shieldActive: 0
-  energy: 0
-  maxEnergy: 200
-  energyNeeded: 0
-  currentHealth: 0
-  dashCD: 0
 --- !u!1001 &775032678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4060,6 +4036,10 @@ PrefabInstance:
       value: HelpButton
       objectReference: {fileID: 0}
     - target: {fileID: 7749659573348703717, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+      propertyPath: _playerStats
+      value: 
+      objectReference: {fileID: 5887451122031635060}
+    - target: {fileID: 7749659573348703717, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: switchToFreeMode
       value: 25
       objectReference: {fileID: 0}
@@ -4231,6 +4211,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8721708912704171131, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+      propertyPath: _playerStats
+      value: 
+      objectReference: {fileID: 5887451122031635060}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
 --- !u!224 &861915912 stripped
@@ -8755,6 +8739,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1586516748109109736, guid: e453d9a90fd03974597ae99424c62a18, type: 3}
   m_PrefabInstance: {fileID: 1463496942}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1990215248 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7749659573348703717, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+  m_PrefabInstance: {fileID: 861915911}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb0bb8d294aff0428d996c54c019525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2001952706
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,6 +9756,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1610532318691264209, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: _interface
+      value: 
+      objectReference: {fileID: 1990215248}
     - target: {fileID: 2450319015124833453, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9869,6 +9868,17 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+--- !u!114 &5887451122031635060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1842644516965951218, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+  m_PrefabInstance: {fileID: 5887451122031635059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719f2cd7d71c75141b0f455a1fde9272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7682075982801246805
 PrefabInstance:
   m_ObjectHideFlags: 0

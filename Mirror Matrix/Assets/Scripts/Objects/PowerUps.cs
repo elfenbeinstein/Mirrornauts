@@ -20,7 +20,7 @@ public class PowerUps : MonoBehaviour
     [Tooltip("How much does this add to the player (amount of powerups or energy added)")]
     [SerializeField] int amount;
 
-    public void AddToPlayer(Stats _stats)
+    public void AddToPlayer()
     {
         switch (type)
         {

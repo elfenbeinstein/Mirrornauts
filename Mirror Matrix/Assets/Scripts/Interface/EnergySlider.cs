@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class EnergySlider : MonoBehaviour
 {
     private Slider _slider;
+    [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private TMPro.TextMeshProUGUI text;
-    [SerializeField] private Stats _stats;
-
     [SerializeField] private TMPro.TextMeshProUGUI energyCost;
     string origText;
 
@@ -25,10 +24,10 @@ public class EnergySlider : MonoBehaviour
 
         EventManager.Instance.AddEventListener("ENERGY", EnergyListener);
 
-        GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
-        _slider.maxValue = GameManagement._playerStats.maxEnergy;
-        _slider.value = GameManagement._playerStats.maxEnergy;
-        text.text = GameManagement._playerStats.maxEnergy + "/" + GameManagement._playerStats.maxEnergy.ToString();
+        _playerStats.energy = _playerStats.maxEnergy;
+        _slider.maxValue = _playerStats.maxEnergy;
+        _slider.value = _playerStats.maxEnergy;
+        text.text = _playerStats.maxEnergy + "/" + _playerStats.maxEnergy.ToString();
 
         origText = energyCost.text;
         energyCost.text = "";
@@ -46,14 +45,14 @@ public class EnergySlider : MonoBehaviour
         {
             // values for Sliding:
             amount = (int)param;
-            if (GameManagement._playerStats.energy + amount > GameManagement._playerStats.maxEnergy) amount = GameManagement._playerStats.maxEnergy - GameManagement._playerStats.energy;
+            if (_playerStats.energy + amount > _playerStats.maxEnergy) amount = _playerStats.maxEnergy - _playerStats.energy;
             sliding = true;
             // set animation to true
             anim.SetBool("Move", true);
             time = 0;
 
-            GameManagement._playerStats.energy += (int)param;
-            if (GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
+            _playerStats.energy += (int)param;
+            if (_playerStats.energy > _playerStats.maxEnergy) _playerStats.energy = _playerStats.maxEnergy;
         }
         else if (eventName == "RemoveEnergy")
         {
@@ -63,7 +62,7 @@ public class EnergySlider : MonoBehaviour
             anim.SetBool("Move", true);
             time = 0;
 
-            GameManagement._playerStats.energy -= (int)param;
+            _playerStats.energy -= (int)param;
         }
         else if (eventName == "EnergyCost")
         {
@@ -78,14 +77,14 @@ public class EnergySlider : MonoBehaviour
     private void UpdateSliderDirectly()
     {
         // update slider value
-        _slider.value = GameManagement._playerStats.energy;
+        _slider.value = _playerStats.energy;
         // update description text
-        text.text = GameManagement._playerStats.energy.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+        text.text = _playerStats.energy.ToString() + "/" + _playerStats.maxEnergy.ToString();
     }
 
     private void UpdateCost()
     {
-        energyCost.text = origText + GameManagement._playerStats.energyNeeded.ToString();
+        energyCost.text = origText + _playerStats.energyNeeded.ToString();
     }
 
     private void RemoveCost()
@@ -96,9 +95,9 @@ public class EnergySlider : MonoBehaviour
     private bool ReachedTarget()
     {
         bool result = false;
-        if (_slider.value == GameManagement._playerStats.energy) result = true;
-        else if (_slider.value < GameManagement._playerStats.energy && amount < 0) result = true;
-        else if (_slider.value > GameManagement._playerStats.energy && amount > 0) result = true;
+        if (_slider.value == _playerStats.energy) result = true;
+        else if (_slider.value < _playerStats.energy && amount < 0) result = true;
+        else if (_slider.value > _playerStats.energy && amount > 0) result = true;
 
         return result;
     }
@@ -114,14 +113,14 @@ public class EnergySlider : MonoBehaviour
                 {
                     if (amount > 0) _slider.value++;
                     else _slider.value--;
-                    text.text = _slider.value.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+                    text.text = _slider.value.ToString() + "/" + _playerStats.maxEnergy.ToString();
                     time = 0;
 
                     // check if reached the end:
                     if (ReachedTarget())
                     {
-                        _slider.value = GameManagement._playerStats.energy;
-                        text.text = _slider.value.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+                        _slider.value = _playerStats.energy;
+                        text.text = _slider.value.ToString() + "/" + _playerStats.maxEnergy.ToString();
                         sliding = false;
                         anim.SetBool("Move", false);
                     }
@@ -129,8 +128,8 @@ public class EnergySlider : MonoBehaviour
             }
             else
             {
-                _slider.value = GameManagement._playerStats.energy;
-                text.text = _slider.value.ToString() + "/" + GameManagement._playerStats.maxEnergy.ToString();
+                _slider.value = _playerStats.energy;
+                text.text = _slider.value.ToString() + "/" + _playerStats.maxEnergy.ToString();
                 sliding = false;
                 anim.SetBool("Move", false);
             }
@@ -140,9 +139,9 @@ public class EnergySlider : MonoBehaviour
         {
             sliding = true;
             amount = Random.Range(-25, 26);
-            if (amount + GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) amount = GameManagement._playerStats.maxEnergy - GameManagement._playerStats.energy;
+            if (amount + _playerStats.energy > _playerStats.maxEnergy) amount = _playerStats.maxEnergy - _playerStats.energy;
             time = 0;
-            GameManagement._playerStats.energy += amount;
+            _playerStats.energy += amount;
             anim.SetBool("Move", true);
         }
 
@@ -153,14 +152,14 @@ public class EnergySlider : MonoBehaviour
 # if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            GameManagement._playerStats.energy++;
-            if (GameManagement._playerStats.energy > GameManagement._playerStats.maxEnergy) GameManagement._playerStats.energy = GameManagement._playerStats.maxEnergy;
+            _playerStats.energy++;
+            if (_playerStats.energy > _playerStats.maxEnergy) _playerStats.energy = _playerStats.maxEnergy;
             UpdateSliderDirectly();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            GameManagement._playerStats.energy--;
-            if (GameManagement._playerStats.energy < 0) GameManagement._playerStats.energy = 0;
+            _playerStats.energy--;
+            if (_playerStats.energy < 0) _playerStats.energy = 0;
             UpdateSliderDirectly();
         }
 #endif

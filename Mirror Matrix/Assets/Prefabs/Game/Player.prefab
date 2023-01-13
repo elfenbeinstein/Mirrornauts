@@ -174,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2450319015124833453}
   - component: {fileID: 2408256095781233295}
+  - component: {fileID: 1842644516965951218}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -210,10 +211,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2727a506659b5243ac7bb3cf892c226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
   maxEnergy: 1
   _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
   _spaceshipBehaviour: {fileID: 1610532318691264209}
+--- !u!114 &1842644516965951218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7330596538842300100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719f2cd7d71c75141b0f455a1fde9272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashAmount: 0
+  shieldActive: 0
+  energy: 0
+  maxEnergy: 200
+  energyNeeded: 0
+  currentHealth: 0
+  dashCD: 0
 --- !u!1 &7891768324178607007
 GameObject:
   m_ObjectHideFlags: 0

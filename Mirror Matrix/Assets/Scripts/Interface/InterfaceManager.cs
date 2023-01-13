@@ -26,6 +26,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
     private InputGameButtons _buttons;
     private TurnManager _turnManager;
+    public PlayerStats _playerStats;
 
     private float[] startV;
     private float[] addV;
@@ -94,9 +95,33 @@ public class InterfaceManager : MonoBehaviour
         CollectValues();
         Calculate();
         if (!freeFlowMode)
-            EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", GameManagement._playerStats.energyNeeded);
-        Move();
-        if (round == switchToFreeMode) _buttons.SetUpFreeMode();
+            EventManager.Instance.EventGo("ENERGY", "RemoveEnergy", _playerStats.energyNeeded);
+
+        // move spaceship
+        if (calculationSuccessful)
+        {
+            if (freeFlowMode)
+            {
+                _inputFF.WriteResultVector(resultV);
+                _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult, spaceshipRightResult);
+            }
+            else
+            {
+                _inputG.WriteNewSpaceshipPos(resultV[0], resultV[1]);
+                _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult, spaceshipRightResult);
+                _inputG.ClearMatrix();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("something went wrong with the calculation");
+        }
+
+        if (!freeFlowMode && round == switchToFreeMode) _buttons.SetUpFreeMode();
+    }
+
+    public void ContinueAfterMove()
+    {
         if (!freeFlowMode) _turnManager.Spawn();
     }
 
@@ -172,52 +197,29 @@ public class InterfaceManager : MonoBehaviour
 
         if (calcType == CalculationType.Addition)
         {
-            resultV = GameManagement._maths.Addition(startV, addV, additionValue);
-            spaceshipTopResult = GameManagement._maths.Addition(spaceshipTop, addV, additionValue);
-            spaceshipRightResult = GameManagement._maths.Addition(spaceshipRight, addV, additionValue);
+            resultV = Maths.Instance.Addition(startV, addV, additionValue);
+            spaceshipTopResult = Maths.Instance.Addition(spaceshipTop, addV, additionValue);
+            spaceshipRightResult = Maths.Instance.Addition(spaceshipRight, addV, additionValue);
             calculationSuccessful = true;
         }
         else if (calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationR)
         {
-            resultV = GameManagement._maths.Multiplication(startV, matrix);
-            spaceshipTopResult = GameManagement._maths.Multiplication(spaceshipTop, matrix);
-            spaceshipRightResult = GameManagement._maths.Multiplication(spaceshipRight, matrix);
+            resultV = Maths.Instance.Multiplication(startV, matrix);
+            spaceshipTopResult = Maths.Instance.Multiplication(spaceshipTop, matrix);
+            spaceshipRightResult = Maths.Instance.Multiplication(spaceshipRight, matrix);
             calculationSuccessful = true;
         }
         else if (calcType == CalculationType.ScalarMultiplication)
         {
-            resultV = GameManagement._maths.ScalarMultiplication(startV, scalar);
-            spaceshipTopResult = GameManagement._maths.ScalarMultiplication(spaceshipTop, scalar);
-            spaceshipRightResult = GameManagement._maths.ScalarMultiplication(spaceshipRight, scalar);
+            resultV = Maths.Instance.ScalarMultiplication(startV, scalar);
+            spaceshipTopResult = Maths.Instance.ScalarMultiplication(spaceshipTop, scalar);
+            spaceshipRightResult = Maths.Instance.ScalarMultiplication(spaceshipRight, scalar);
             calculationSuccessful = true;
         }
         else
         {
             Debug.Log("error calculation");
             calculationSuccessful = false;
-        }
-    }
-
-    public void Move()
-    {
-        // move spaceship
-        if (calculationSuccessful)
-        {
-            if (freeFlowMode)
-            {
-                _inputFF.WriteResultVector(resultV);
-                _spaceshipBehaviour.UpdateSpaceshipFF(startV, resultV, spaceshipTopResult, spaceshipRightResult);
-            }
-            else
-            {
-                _inputG.WriteNewSpaceshipPos(resultV[0], resultV[1]);
-                _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult, spaceshipRightResult);
-                _inputG.ClearMatrix();
-            }
-        }
-        else
-        {
-            Debug.LogWarning("something went wrong with the calculation");
         }
     }
 

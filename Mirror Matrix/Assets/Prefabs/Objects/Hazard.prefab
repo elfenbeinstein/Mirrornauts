@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHazard: 1
-  _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
+  _numbers: {fileID: 11400000, guid: f3b04def9358ee945b7bf8f184c4a347, type: 2}
   countdownRenderer: {fileID: 1586516748302403018}
   _filling: {fileID: 4673094563384171838}
   _frame: {fileID: 4470955862207276007}
