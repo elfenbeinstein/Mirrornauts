@@ -47,6 +47,7 @@ public class InputFFValues : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resultY;
 
     private SpaceshipBehaviour _spaceshipBehaviour;
+    private Maths _maths;
     
     // values relevant for calculation:
     [HideInInspector] public bool additionValue; // if true shows + in calc; if false -
@@ -61,6 +62,7 @@ public class InputFFValues : MonoBehaviour
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
+        _maths = GetComponent<Maths>();
     }
 
     public void SetSpaceshipScript(SpaceshipBehaviour script)
@@ -330,28 +332,28 @@ public class InputFFValues : MonoBehaviour
     public void TrySinCos()
     {
         float a = 0;
-        float cos = Maths.Instance.CosinusCalc(a);
-        float sin = Maths.Instance.SinusCalc(a);
+        float cos = _maths.CosinusCalc(a);
+        float sin = _maths.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
 
         a = 0.5f;
-        cos = Maths.Instance.CosinusCalc(a);
-        sin = Maths.Instance.SinusCalc(a);
+        cos = _maths.CosinusCalc(a);
+        sin = _maths.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
 
         a = 1;
-        cos = Maths.Instance.CosinusCalc(a);
-        sin = Maths.Instance.SinusCalc(a);
+        cos = _maths.CosinusCalc(a);
+        sin = _maths.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
 
         a = 1.5f;
-        cos = Maths.Instance.CosinusCalc(a);
-        sin = Maths.Instance.SinusCalc(a);
+        cos = _maths.CosinusCalc(a);
+        sin = _maths.SinusCalc(a);
         Debug.Log($"Sin({a}) = {sin}; Cos({a}) = {cos}");
 
         a = 2;
-        cos = Maths.Instance.CosinusCalc(a);
-        sin = Maths.Instance.SinusCalc(a);
+        cos = _maths.CosinusCalc(a);
+        sin = _maths.SinusCalc(a);
         Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
     }
 }

@@ -23,6 +23,8 @@ public class TurnManager : MonoBehaviour
 
     private PlayerStats _playerStats;
 
+    public float randomAngle;
+
     private void Start()
     {
         _interfaceManager = GetComponent<InterfaceManager>();

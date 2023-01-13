@@ -5,18 +5,8 @@ using UnityEngine;
 /// <summary>
 /// does all important calculations for the Spaceship Movement
 /// </summary>
-public class Maths
+public class Maths: MonoBehaviour
 {
-    private static Maths instance;
-
-    public static Maths Instance
-    {
-        get
-        {
-            if (instance == null) instance = new Maths();
-            return instance;
-        }
-    }
 
     private float[] vectorResult;
 

@@ -27,6 +27,8 @@ public class SpaceshipBehaviour : MonoBehaviour
     private bool watchForEnd;
     private Vector3 endPosition;
 
+    private Maths _maths;
+
     private void Start()
     {
         startV = startVObject.GetComponent<LineRenderer>();
@@ -40,6 +42,8 @@ public class SpaceshipBehaviour : MonoBehaviour
         shield.SetActive(false);
 
         EventManager.Instance.AddEventListener("SHIELD", ShieldListener);
+
+        _maths = _interface.GetComponent<Maths>();
     }
 
     private void OnDestroy()
@@ -88,13 +92,13 @@ public class SpaceshipBehaviour : MonoBehaviour
             // rotate based on new position
             topPos = new Vector3(newTop[0], newTop[1], 0);
             Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-            float rotation = Maths.Instance.CalculateRotation(topPos, shipPos);
+            float rotation = _maths.CalculateRotation(topPos, shipPos);
             spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
             // scale based on calculation
             rightPos = new Vector3(newRight[0], newRight[1], 0);
             float scaleY = Vector3.Distance(topPos, shipPos);
-            float scaleX = Maths.Instance.CalculateScaleX(rightPos, topPos);
+            float scaleX = _maths.CalculateScaleX(rightPos, topPos);
             spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
             /*
@@ -125,13 +129,13 @@ public class SpaceshipBehaviour : MonoBehaviour
             // rotate based on new position
             topPos = new Vector3(newTop[0], newTop[1], 0);
             Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-            float rotation = Maths.Instance.CalculateRotation(topPos, shipPos);
+            float rotation = _maths.CalculateRotation(topPos, shipPos);
             spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
 
             // scale based on calculation
             rightPos = new Vector3(newRight[0], newRight[1], 0);
             float scaleY = Vector3.Distance(topPos, shipPos);
-            float scaleX = Maths.Instance.CalculateScaleX(rightPos, topPos);
+            float scaleX = _maths.CalculateScaleX(rightPos, topPos);
             spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
 
             /*

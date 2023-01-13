@@ -13662,6 +13662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7749659573348703739}
+  - component: {fileID: 6128150912149446479}
   - component: {fileID: 7749659573348703717}
   - component: {fileID: 7749659573348703719}
   - component: {fileID: 7749659573348703716}
@@ -13701,6 +13702,18 @@ RectTransform:
   m_AnchoredPosition: {x: -540, y: 0}
   m_SizeDelta: {x: 840, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6128150912149446479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749659573348703736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f892880de4635d4ba7f42623b65a707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7749659573348703717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13718,6 +13731,7 @@ MonoBehaviour:
   turnCounterObject: {fileID: 7749659573135308487}
   switchToFreeMode: 15
   _spaceshipBehaviour: {fileID: 0}
+  _playerStats: {fileID: 0}
   freeFlowMode: 0
 --- !u!114 &7749659573348703719
 MonoBehaviour:
@@ -13807,8 +13821,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnCounter: 0
   activeSpawns: []
-  spawners:
-  - {fileID: 0}
+  spawner: {fileID: 0}
+  randomAngle: 0
 --- !u!1 &7749659573356158231
 GameObject:
   m_ObjectHideFlags: 0
@@ -19613,8 +19627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134a6873eb74a2b4395a194001b97f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerStats: {fileID: 0}
   text: {fileID: 8065363155559341677}
-  _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
   energyCost: {fileID: 3219566475521674012}
   slideDuration: 1
   anim: {fileID: 598507452289260744}

@@ -14426,6 +14426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5154588133139647343}
+  - component: {fileID: 296831447869426771}
   - component: {fileID: 5154588133139647338}
   - component: {fileID: 5154588133139647341}
   - component: {fileID: 5154588133139647340}
@@ -14465,6 +14466,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 840, y: 1080}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &296831447869426771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154588133139647342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f892880de4635d4ba7f42623b65a707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5154588133139647338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14477,9 +14490,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb0bb8d294aff0428d996c54c019525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scalesText: {fileID: 0}
   turnCounterText: {fileID: 5154588133343607597}
   turnCounterObject: {fileID: 5154588133343607599}
+  switchToFreeMode: 1
   _spaceshipBehaviour: {fileID: 0}
+  _playerStats: {fileID: 0}
   freeFlowMode: 1
 --- !u!114 &5154588133139647341
 MonoBehaviour:
@@ -14529,7 +14545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnCounter: 0
   activeSpawns: []
-  _stats: {fileID: 0}
+  spawner: {fileID: 0}
+  randomAngle: 0
 --- !u!114 &5154588133139647339
 MonoBehaviour:
   m_ObjectHideFlags: 0

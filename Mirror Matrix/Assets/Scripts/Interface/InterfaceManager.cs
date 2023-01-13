@@ -18,6 +18,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI turnCounterText;
     [SerializeField] private GameObject turnCounterObject;
     [SerializeField] private int switchToFreeMode = 1;
+    private Maths _maths;
 
     // Scripts
     [Space]
@@ -55,6 +56,8 @@ public class InterfaceManager : MonoBehaviour
         {
             _spaceshipBehaviour = FindObjectOfType<SpaceshipBehaviour>();
         }
+
+        _maths = GetComponent<Maths>();
 
         //_turnManager = GetComponent<TurnManager>();
         if (freeFlowMode)
@@ -197,23 +200,23 @@ public class InterfaceManager : MonoBehaviour
 
         if (calcType == CalculationType.Addition)
         {
-            resultV = Maths.Instance.Addition(startV, addV, additionValue);
-            spaceshipTopResult = Maths.Instance.Addition(spaceshipTop, addV, additionValue);
-            spaceshipRightResult = Maths.Instance.Addition(spaceshipRight, addV, additionValue);
+            resultV = _maths.Addition(startV, addV, additionValue);
+            spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
+            spaceshipRightResult = _maths.Addition(spaceshipRight, addV, additionValue);
             calculationSuccessful = true;
         }
         else if (calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationR)
         {
-            resultV = Maths.Instance.Multiplication(startV, matrix);
-            spaceshipTopResult = Maths.Instance.Multiplication(spaceshipTop, matrix);
-            spaceshipRightResult = Maths.Instance.Multiplication(spaceshipRight, matrix);
+            resultV = _maths.Multiplication(startV, matrix);
+            spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
+            spaceshipRightResult = _maths.Multiplication(spaceshipRight, matrix);
             calculationSuccessful = true;
         }
         else if (calcType == CalculationType.ScalarMultiplication)
         {
-            resultV = Maths.Instance.ScalarMultiplication(startV, scalar);
-            spaceshipTopResult = Maths.Instance.ScalarMultiplication(spaceshipTop, scalar);
-            spaceshipRightResult = Maths.Instance.ScalarMultiplication(spaceshipRight, scalar);
+            resultV = _maths.ScalarMultiplication(startV, scalar);
+            spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
+            spaceshipRightResult = _maths.ScalarMultiplication(spaceshipRight, scalar);
             calculationSuccessful = true;
         }
         else
