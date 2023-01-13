@@ -4000,6 +4000,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3013306281474929743, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+      propertyPath: randomDispersion
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013306281474929743, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: randomiseSpaceship
       value: 1
       objectReference: {fileID: 0}

@@ -12,6 +12,8 @@ public class Randomisation : MonoBehaviour
 
     [SerializeField] private bool randomiseSpaceship;
     [SerializeField] private List<Vector3> spaceshipStartPositions;
+    [Tooltip("amount of variance from start positions: so if x in a start position is 3 and dispersion is 1, spaceship is spawned between 2 and 4")]
+    [SerializeField] private float randomDispersion = 0.4f;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
 
@@ -43,7 +45,7 @@ public class Randomisation : MonoBehaviour
         {
             int random = Random.Range(0, spaceshipStartPositions.Count);
 
-            float[] vector = new float[] { spaceshipStartPositions[random].x, spaceshipStartPositions[random].y };
+            float[] vector = new float[] { spaceshipStartPositions[random].x + Random.Range(-randomDispersion, randomDispersion), spaceshipStartPositions[random].y + Random.Range(-randomDispersion, randomDispersion) };
             _spaceshipBehaviour.MoveSpaceship(vector);
         }
     }
