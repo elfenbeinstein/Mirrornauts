@@ -98,12 +98,12 @@ public class ObjectBehaviour : MonoBehaviour
         if (Mathf.Abs(_turnManager.randomAngle) == 90)
         {
             xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
-            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+            yPosition = transform.localPosition.y - transform.localScale.y / 2 + offset;
         }
         else if (Mathf.Abs(_turnManager.randomAngle) == 180)
         {
-            xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
-            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
+            xPosition = transform.localPosition.x - transform.localScale.x / 2 + offset;
+            yPosition = transform.localPosition.y - transform.localScale.y / 2 + offset;
         }
         else if (Mathf.Abs(_turnManager.randomAngle) == 270)
         {

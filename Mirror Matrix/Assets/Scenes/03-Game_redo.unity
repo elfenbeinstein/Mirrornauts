@@ -3977,7 +3977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3013306281474929743, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: testAngle
-      value: 270
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3013306281474929743, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: spawnParent

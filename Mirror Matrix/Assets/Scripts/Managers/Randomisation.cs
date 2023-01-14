@@ -16,7 +16,7 @@ public class Randomisation : MonoBehaviour
     [SerializeField] private float randomDispersion = 0.4f;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
-    [SerializeField] private float testAngle;
+    //[SerializeField] private float testAngle;
 
 
     void Start()
@@ -36,16 +36,14 @@ public class Randomisation : MonoBehaviour
     {
         if (randomiseSpawns)
         {
-            /*
             int random = Random.Range(0, 4);
 
             spawnParent.Rotate(new Vector3(0, 0, angles[random]));
 
             _turnManager.randomAngle = -1 * angles[random];
-            */
 
-            spawnParent.Rotate(new Vector3(0, 0, testAngle));
-            _turnManager.randomAngle = -1 * testAngle;
+            //spawnParent.Rotate(new Vector3(0, 0, testAngle));
+            //_turnManager.randomAngle = -1 * testAngle;
         }
         
         if (randomiseSpaceship && spaceshipStartPositions.Count != 0)
