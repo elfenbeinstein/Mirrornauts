@@ -35,6 +35,7 @@ public class ErrorMsg : MonoBehaviour
 
     [SerializeField] GameObject messageObject;
     [SerializeField] GameObject deathButton;
+    [SerializeField] GameObject certificateButton;
     [SerializeField] GameObject closeButton;
 
     List<string> errors = new List<string>();
@@ -62,6 +63,7 @@ public class ErrorMsg : MonoBehaviour
 
         closeButton.SetActive(true);
         deathButton.SetActive(false);
+        certificateButton.SetActive(false);
 
         EventManager.Instance.AddEventListener("ERROR", ErrorListener);
     }
@@ -86,6 +88,13 @@ public class ErrorMsg : MonoBehaviour
         {
             deathButton.SetActive(true);
             closeButton.SetActive(false);
+        }
+
+        if(errorNumber == 4) 
+        {
+            certificateButton.SetActive(true);
+            closeButton.SetActive(false);
+        
         }
 
     }
