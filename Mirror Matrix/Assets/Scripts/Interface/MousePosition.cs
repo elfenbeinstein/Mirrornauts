@@ -16,44 +16,16 @@ public class MousePosition : MonoBehaviour
     Vector3 mousePos;
 
     private bool active;
+    private bool playerWIN;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        playerWIN = false;
+    }
+
     void Update()
     {
-        /*
-        //Get mouse world position
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        //Check that mouse Pos is in coordinate system
-        if (mousePos.x <= maxCoordinats.x && mousePos.y <= maxCoordinats.y)
-        {
-            if(mousePos.x >= -maxCoordinats.x && mousePos.y >= -maxCoordinats.y)
-            {
-                if (Input.GetKeyDown(KeyCode.LeftControl)) GameManagement._audioManager._sfxSounds.PlayHover();
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    mouseCoord.GetComponentInChildren<TextMeshProUGUI>().text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
-                    mouseCoord.gameObject.SetActive(true);
-                    mouseCoord.gameObject.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2 (mousePos.x + textBoxOffset.x, mousePos.y + textBoxOffset.y));
-                }
-                else
-                {
-                    mouseCoord.gameObject.SetActive(false);
-                    GameManagement._audioManager._sfxSounds.StopHover();
-                }
-            }
-            else
-            {
-                mouseCoord.gameObject.SetActive(false);
-                GameManagement._audioManager._sfxSounds.StopHover();
-            }
-        }
-        else
-        {
-            mouseCoord.gameObject.SetActive(false);
-            GameManagement._audioManager._sfxSounds.StopHover();
-        }
-        */
+        if (playerWIN) return;
 
         //Get mouse world position
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -94,5 +66,11 @@ public class MousePosition : MonoBehaviour
     {
         if (mousePos.x <= maxCoordinats.x && mousePos.y <= maxCoordinats.y && mousePos.x >= -maxCoordinats.x && mousePos.y >= -maxCoordinats.y) return true;
         else return false;
+    }
+
+    public void PlayerWin()
+    {
+        if (active) SetActive(false);
+        playerWIN = true;
     }
 }

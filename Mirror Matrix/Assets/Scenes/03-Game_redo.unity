@@ -1194,9 +1194,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
-        m_MethodName: LoadStartMenu
+      - m_Target: {fileID: 8276682180353085139}
+        m_TargetAssemblyTypeName: Certificate, Assembly-CSharp
+        m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4275,6 +4275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b633613f722d072469ddd04de87c202b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &861915914 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 651985793834219187, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+  m_PrefabInstance: {fileID: 861915911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878703266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4688,9 +4693,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
-        m_MethodName: LoadStartMenu
+      - m_Target: {fileID: 8276682180353085139}
+        m_TargetAssemblyTypeName: Certificate, Assembly-CSharp
+        m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5284,6 +5289,11 @@ MonoBehaviour:
   winRound: 50
   certificateScreen: {fileID: 18949140}
   codeText: {fileID: 1717229129}
+  _errorMsg: {fileID: 2001952708}
+  _turnManager: {fileID: 1456916233}
+  certificate: {fileID: 8276682180353085139}
+  story2: 5
+  story3: 25
 --- !u!4 &1240443746
 Transform:
   m_ObjectHideFlags: 0
@@ -5753,9 +5763,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManagement, Assembly-CSharp
-        m_MethodName: LoadStartMenu
+      - m_Target: {fileID: 1803101353}
+        m_TargetAssemblyTypeName: MousePosition, Assembly-CSharp
+        m_MethodName: PlayerWin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8276682180353085139}
+        m_TargetAssemblyTypeName: Certificate, Assembly-CSharp
+        m_MethodName: ShowCertificate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2001952708}
+        m_TargetAssemblyTypeName: ErrorMsg, Assembly-CSharp
+        m_MethodName: DisableAllErrorButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7330,7 +7364,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9231,6 +9265,7 @@ MonoBehaviour:
   deathButton: {fileID: 242264079}
   certificateButton: {fileID: 1357989924}
   closeButton: {fileID: 796996683}
+  waitForDestroy: 1.5
 --- !u!1001 &2011114734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10360,13 +10395,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1803101351}
     m_Modifications:
+    - target: {fileID: 1262914385974080338, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903405658887410314, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: canvasGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903405658887410314, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: canvasGroups.Array.data[0]
+      value: 
+      objectReference: {fileID: 861915914}
+    - target: {fileID: 4026245629935865606, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276682179011169699, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8276682180372032198, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: m_Name
       value: Certificate
       objectReference: {fileID: 0}
     - target: {fileID: 8276682180372032198, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8276682180372032199, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: m_Pivot.x
@@ -10454,3 +10509,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+--- !u!114 &8276682180353085139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2903405658887410314, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+  m_PrefabInstance: {fileID: 8276682180353085138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18949140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e732d10a6c2727540b72cccb57aa49a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,6 +8,12 @@ public class PlayerWin : MonoBehaviour
     [SerializeField] private int winRound = 100;
     [SerializeField] private GameObject certificateScreen;
     [SerializeField] private TextMeshProUGUI codeText;
+    [SerializeField] private ErrorMsg _errorMsg;
+    [SerializeField] private TurnManager _turnManager;
+    [SerializeField] private Certificate certificate;
+
+    [SerializeField] private int story2;
+    [SerializeField] private int story3;
     
     private void Start()
     {
@@ -27,31 +33,24 @@ public class PlayerWin : MonoBehaviour
             {
                 PlayerWins();
             }
+            else if ((int)param == story2)
+                _errorMsg.OpenError(1);
+            else if ((int)param == story3)
+                _errorMsg.OpenError(2);
         }
     }
 
     public void PlayerWins()
     {
         EventManager.Instance.EventGo("AUDIO", "PlayWin");
-        //GameManagement._audioManager._sfxSounds.PlayWin();
         Debug.Log("PlayerWins");
 
-        //set up certificate
+        // stop turnmanager
+        _turnManager.PlayerWin();
 
         // send message to errormsg script
         EventManager.Instance.EventGo("ERROR", "Win", 4);
 
-        // save certificate
-
-    }
-
-    
-    public void CertificateButton()
-    {
-        //Activates the certificate screen after pressing the button on the win-error popup
-        certificateScreen.SetActive(true);
-
-        //Set code at certificate textbox
-        //codeText.text = "Der Certificate Text"
+        certificate.SetUp();
     }
 }

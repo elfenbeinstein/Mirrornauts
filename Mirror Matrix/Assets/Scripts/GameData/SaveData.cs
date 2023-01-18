@@ -25,11 +25,14 @@ public class SaveData : MonoBehaviour
     [SerializeField] string trainingTimeC;
     [SerializeField] string winTimeC;
 
-    int hasCertificate;
+    [Space]
+    [SerializeField] string hasCertificate;
+    public bool hasCert;
 
     private void Start()
     {
         EventManager.Instance.AddEventListener("DATA", DataListener);
+        GetDataFromPrefs();
     }
 
     private void OnDestroy()
@@ -39,11 +42,52 @@ public class SaveData : MonoBehaviour
 
     void DataListener(string eventName, object param)
     {
-
+        if (eventName == "Name")
+        {
+            certificateData.name = (string)param;
+            SaveDataToPrefs();
+        }
+        else if (eventName == "DeleteAll")
+            ResetCertificateAndGameData();
+        else if (eventName == "ResetInGame")
+            ResetData(inGameData, true);
     }
 
     public void SaveDataToPrefs()
     {
 
+    }
+
+    public void GetDataFromPrefs()
+    {
+
+
+    }
+
+    [ContextMenu("Clear All Save Data")]
+    public void ClearSaveData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void ResetCertificateAndGameData()
+    {
+        ClearSaveData();
+
+        ResetData(inGameData);
+        ResetData(certificateData);
+    }
+
+    public void ResetData(CertificateData dataSet, bool save = false)
+    {
+        dataSet.deathAmount = 0;
+        dataSet.dashsUsed = 0;
+        dataSet.shieldsUsed = 0;
+        dataSet.energyUsed = 0;
+        dataSet.trainingTime = 0;
+        dataSet.winTime = 0;
+        dataSet.hasSaveData = false;
+
+        if (save) SaveDataToPrefs();
     }
 }

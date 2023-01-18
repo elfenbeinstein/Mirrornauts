@@ -25,6 +25,8 @@ public class TurnManager : MonoBehaviour
 
     public float randomAngle;
 
+    private bool playerWin;
+
     private void Start()
     {
         _interfaceManager = GetComponent<InterfaceManager>();
@@ -38,6 +40,8 @@ public class TurnManager : MonoBehaviour
         }
         spawnsToAdd = new List<ObjectBehaviour>();
         spawnsToDelete = new List<ObjectBehaviour>();
+
+        playerWin = false;
 
     }
     public void Go()
@@ -89,6 +93,7 @@ public class TurnManager : MonoBehaviour
 
     public void Spawn()
     {
+        if (playerWin) return;
         if (spawner != null) spawner.Spawn(turnCounter);
         else Debug.LogWarning("spawner is null");
     }
@@ -158,5 +163,10 @@ public class TurnManager : MonoBehaviour
     {
         if (!spawnsToDelete.Contains(spawn))
             spawnsToDelete.Add(spawn);
+    }
+
+    public void PlayerWin()
+    {
+        playerWin = true;
     }
 }

@@ -68,6 +68,10 @@ public class ErrorMsg : MonoBehaviour
         certificateButton.SetActive(false);
 
         EventManager.Instance.AddEventListener("ERROR", ErrorListener);
+
+        title.text = terrors[0];
+        description.text = errors[0];
+        messageObject.SetActive(true);
     }
 
     private void OnDestroy()
@@ -91,14 +95,13 @@ public class ErrorMsg : MonoBehaviour
             title.text = terrors[errorNumber];
             description.text = errors[errorNumber];
             messageObject.SetActive(true);
-        }
 
-        if(errorNumber == 4) 
-        {
-            certificateButton.SetActive(true);
-            closeButton.SetActive(false);
+            if (errorNumber == 4)
+            {
+                certificateButton.SetActive(true);
+                closeButton.SetActive(false);
+            }
         }
-
     }
 
     public void ShowDestroy()
@@ -119,5 +122,12 @@ public class ErrorMsg : MonoBehaviour
     {
         yield return new WaitForSeconds(waitForDestroy);
         ShowDestroy(); 
+    }
+
+    public void DisableAllErrorButtons()
+    {
+        CloseError();
+        deathButton.SetActive(false);
+        certificateButton.SetActive(false);
     }
 }
