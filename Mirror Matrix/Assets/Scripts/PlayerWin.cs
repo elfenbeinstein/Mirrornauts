@@ -51,6 +51,6 @@ public class PlayerWin : MonoBehaviour
         // send message to errormsg script
         EventManager.Instance.EventGo("ERROR", "Win", 4);
 
-        certificate.SetUp();
+        certificate.SetUpValues();
     }
 }

@@ -63,6 +63,7 @@ public class EnergySlider : MonoBehaviour
             time = 0;
 
             _playerStats.energy -= (int)param;
+            EventManager.Instance.EventGo("DATA", "Energy", param);
         }
         else if (eventName == "EnergyCost")
         {

@@ -87,11 +87,13 @@ public class Player : MonoBehaviour
 
     private void PlayerDeath()
     {
-        Debug.Log("player out of health");
+        //Debug.Log("player out of health");
 
-        // missing player death
+        // count death
+        EventManager.Instance.EventGo("DATA", "Death");
+        // play audio
         EventManager.Instance.EventGo("AUDIO", "PlayDeath");
-        //GameManagement._audioManager._sfxSounds.PlayDeath();
+        // get error message
         EventManager.Instance.EventGo("ERROR", "Death", 3);
     }
 }

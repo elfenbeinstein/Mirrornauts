@@ -12,6 +12,7 @@ public class CertificateData : ScriptableObject
 
     public float trainingTime;
     public float winTime;
+    public string code;
 
     public bool hasSaveData;
 }

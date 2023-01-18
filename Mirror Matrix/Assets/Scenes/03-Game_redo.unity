@@ -10400,6 +10400,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2903405658887410314, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: testTime
+      value: 3730
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903405658887410314, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: canvasGroups.Array.size
       value: 1
       objectReference: {fileID: 0}

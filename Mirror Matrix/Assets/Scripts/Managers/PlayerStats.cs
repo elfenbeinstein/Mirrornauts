@@ -74,12 +74,15 @@ public class PlayerStats : MonoBehaviour
         dashCountdown = true;
         dashCD = 4;
 
+        EventManager.Instance.EventGo("DATA", "Dash");
+
         // tell buttons:
         EventManager.Instance.EventGo("DASH", "Countdown");
     }
 
     void Shield()
     {
+        EventManager.Instance.EventGo("DATA", "Shield");
         shieldActive = true;
         shieldCD = 4;
         EventManager.Instance.EventGo("SHIELD", "Start");

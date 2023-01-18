@@ -238,6 +238,7 @@ public class InterfaceManager : MonoBehaviour
 
     public void MenuButton()
     {
+        EventManager.Instance.EventGo("DATA", "Save");
         GameManagement.LoadStartMenu();
     }
 
