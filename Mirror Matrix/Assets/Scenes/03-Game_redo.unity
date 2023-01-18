@@ -9229,7 +9229,7 @@ MonoBehaviour:
   description: {fileID: 1807865191}
   messageObject: {fileID: 1881772751}
   deathButton: {fileID: 242264079}
-  certificateButton: {fileID: 0}
+  certificateButton: {fileID: 1357989924}
   closeButton: {fileID: 796996683}
 --- !u!1001 &2011114734
 PrefabInstance:
@@ -10363,6 +10363,10 @@ PrefabInstance:
     - target: {fileID: 8276682180372032198, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: m_Name
       value: Certificate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276682180372032198, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8276682180372032199, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: m_Pivot.x

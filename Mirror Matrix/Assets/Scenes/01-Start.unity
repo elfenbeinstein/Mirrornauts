@@ -925,7 +925,7 @@ MonoBehaviour:
   chooseO: {fileID: 960859001}
   creditsO: {fileID: 349047937}
   helpO: {fileID: 737142096}
-  certificateO: {fileID: 0}
+  certificateO: {fileID: 1269738667}
 --- !u!1 &548980296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Certificate
       objectReference: {fileID: 0}
+    - target: {fileID: 8276682180372032198, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8276682180372032199, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2217,6 +2221,11 @@ PrefabInstance:
 --- !u!224 &1269738666 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8276682180372032199, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
+  m_PrefabInstance: {fileID: 1269738665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1269738667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8276682180372032198, guid: d13c46cb08c6df847bf2f60d16dc1650, type: 3}
   m_PrefabInstance: {fileID: 1269738665}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1303561513
