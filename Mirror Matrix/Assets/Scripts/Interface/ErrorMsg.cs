@@ -38,6 +38,8 @@ public class ErrorMsg : MonoBehaviour
     [SerializeField] GameObject certificateButton;
     [SerializeField] GameObject closeButton;
 
+    [SerializeField] private float waitForDestroy = 1.5f;
+
     List<string> errors = new List<string>();
     List<string> terrors = new List<string>();
     // Start is called before the first frame update
@@ -80,27 +82,42 @@ public class ErrorMsg : MonoBehaviour
 
     public void OpenError(int errorNumber)
     {
-        title.text = terrors[errorNumber];
-        description.text = errors[errorNumber];
-        messageObject.SetActive(true);
-
         if (errorNumber == 3)
         {
-            deathButton.SetActive(true);
-            closeButton.SetActive(false);
+            StartCoroutine(WaitForDestroy());
+        }
+        else
+        {
+            title.text = terrors[errorNumber];
+            description.text = errors[errorNumber];
+            messageObject.SetActive(true);
         }
 
         if(errorNumber == 4) 
         {
             certificateButton.SetActive(true);
             closeButton.SetActive(false);
-        
         }
 
+    }
+
+    public void ShowDestroy()
+    {
+        title.text = terrors[3];
+        description.text = errors[3];
+        messageObject.SetActive(true);
+        deathButton.SetActive(true);
+        closeButton.SetActive(false);
     }
 
     public void CloseError()
     {
         messageObject.SetActive(false);
+    }
+
+    IEnumerator WaitForDestroy()
+    {
+        yield return new WaitForSeconds(waitForDestroy);
+        ShowDestroy(); 
     }
 }

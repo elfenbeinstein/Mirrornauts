@@ -25,6 +25,8 @@ public class SaveData : MonoBehaviour
     [SerializeField] string trainingTimeC;
     [SerializeField] string winTimeC;
 
+    int hasCertificate;
+
     private void Start()
     {
         EventManager.Instance.AddEventListener("DATA", DataListener);
