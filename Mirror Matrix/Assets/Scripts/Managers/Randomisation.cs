@@ -52,6 +52,7 @@ public class Randomisation : MonoBehaviour
 
             float[] vector = new float[] { spaceshipStartPositions[random].x + Random.Range(-randomDispersion, randomDispersion), spaceshipStartPositions[random].y + Random.Range(-randomDispersion, randomDispersion) };
             _spaceshipBehaviour.MoveSpaceship(vector);
+            _spaceshipBehaviour.DrawStartLine();
         }
     }
 }

@@ -31,6 +31,15 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     private void Start()
     {
+        shield.SetActive(false);
+
+        EventManager.Instance.AddEventListener("SHIELD", ShieldListener);
+
+        _maths = _interface.GetComponent<Maths>();
+    }
+
+    public void DrawStartLine()
+    {
         startV = startVObject.GetComponent<LineRenderer>();
         endV = endVObject.GetComponent<LineRenderer>();
         rb = GetComponentInChildren<Rigidbody2D>();
@@ -38,12 +47,6 @@ public class SpaceshipBehaviour : MonoBehaviour
         startVObject.SetActive(false);
         endVObject.SetActive(true);
         endV.SetPosition(1, spaceship.transform.position);
-
-        shield.SetActive(false);
-
-        EventManager.Instance.AddEventListener("SHIELD", ShieldListener);
-
-        _maths = _interface.GetComponent<Maths>();
     }
 
     private void OnDestroy()
