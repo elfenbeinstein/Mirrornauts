@@ -8,6 +8,7 @@ public class StartScreen : MonoBehaviour
     [SerializeField] private GameObject chooseO;
     [SerializeField] private GameObject creditsO;
     [SerializeField] private GameObject helpO;
+    [SerializeField] private GameObject certificateO;
 
     private bool startOpen;
 
@@ -58,7 +59,13 @@ public class StartScreen : MonoBehaviour
     {
         chooseO.SetActive(true);
         creditsO.SetActive(false);
-        helpO?.SetActive(false);
+        helpO.SetActive(false);
+        certificateO.SetActive(false);
+    }
+
+    public void CertificateButton()
+    {
+
     }
 
     public void QuitButton()

@@ -38,12 +38,11 @@ public class PlayerWin : MonoBehaviour
 
         //set up certificate
 
-        // display certificate
-        FindObjectOfType<ErrorMsg>().OpenError(4);
+        // send message to errormsg script
+        EventManager.Instance.EventGo("ERROR", "Win", 4);
 
         // save certificate
 
-        // send message to errormsg script
     }
 
     

@@ -174,7 +174,7 @@ public class ObjectBehaviour : MonoBehaviour
             _turnManager = FindObjectOfType<TurnManager>();
         }
 
-        _turnManager.RemoveSpawn(this.gameObject.GetComponent<ObjectBehaviour>());
+        _turnManager.RemoveSpawn(this);
         Destroy(parent);
     }
 

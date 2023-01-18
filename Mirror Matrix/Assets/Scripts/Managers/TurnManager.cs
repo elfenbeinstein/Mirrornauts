@@ -99,7 +99,7 @@ public class TurnManager : MonoBehaviour
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
         {
-            if (spawn.gameObject != null)
+            if (spawn != null)
             {
                 spawn.NextTurn(turnCounter);
             }
@@ -134,6 +134,15 @@ public class TurnManager : MonoBehaviour
             }
         }
         if (sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
+
+        if (spawnsToDelete.Count != 0)
+        {
+            foreach (ObjectBehaviour item in spawnsToDelete)
+            {
+                if (activeSpawns.Contains(item))
+                    activeSpawns.Remove(item);
+            }
+        }
 
         // removes the énergy cost text underneath the slider
         EventManager.Instance.EventGo("ENERGY", "RemoveCost");
