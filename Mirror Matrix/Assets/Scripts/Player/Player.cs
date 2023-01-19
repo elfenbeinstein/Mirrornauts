@@ -95,5 +95,7 @@ public class Player : MonoBehaviour
         EventManager.Instance.EventGo("AUDIO", "PlayDeath");
         // get error message
         EventManager.Instance.EventGo("ERROR", "Death", 3);
+        //play explosion animation
+        _spaceshipBehaviour.ExplosionAnimation();
     }
 }

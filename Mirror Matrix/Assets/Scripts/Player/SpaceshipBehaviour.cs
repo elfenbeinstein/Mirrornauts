@@ -15,6 +15,7 @@ public class SpaceshipBehaviour : MonoBehaviour
     [SerializeField] private GameObject spaceshipTop;
     [SerializeField] private GameObject spaceshipRight;
     [SerializeField] private GameObject shield;
+    [SerializeField] private GameObject explosion;
     [SerializeField] private Animator animShield;
     [SerializeField] private InterfaceManager _interface;
 
@@ -217,6 +218,12 @@ public class SpaceshipBehaviour : MonoBehaviour
     public void SetScaling(bool value)
     {
         scales = value;
+    }
+
+    public void ExplosionAnimation()
+    {
+        //Plays Explosion on Death
+        explosion.SetActive(true);
     }
 
     /* -- obsolete, first version without spaceship object
