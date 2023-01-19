@@ -38,6 +38,10 @@ public class PlayerStats : MonoBehaviour
     public int costDrehFMinusWurzelDrei = 10;
     public int costDrehFMinusEins = 12;
 
+    [Space]
+    [Header("Energiekosten Multiplikator Spiegelung")]
+    public float energySpiegelMultiplier = 1.5f;
+
 
     void Start()
     {

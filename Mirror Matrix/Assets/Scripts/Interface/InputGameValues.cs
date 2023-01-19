@@ -400,7 +400,7 @@ public class InputGameValues : MonoBehaviour
                 float distance = Vector3.Distance(startPos, endPos);
 
                 // transfer to energy cost
-                cost = Mathf.CeilToInt(distance * 2);
+                cost = Mathf.CeilToInt(Mathf.RoundToInt(distance * _playerStats.energySpiegelMultiplier));
             }
             else
             {
