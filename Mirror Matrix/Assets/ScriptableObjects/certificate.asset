@@ -15,8 +15,9 @@ MonoBehaviour:
   deathAmount: 0
   dashsUsed: 0
   shieldsUsed: 0
-  energyUsed: 11
+  energyUsed: 9
   trainingTime: 0
-  winTime: 0
-  code: 501100400007
+  winTime: 10.204033
+  code: 200900400003
+  _name: 
   hasSaveData: 1

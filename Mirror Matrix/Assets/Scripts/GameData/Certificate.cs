@@ -111,7 +111,7 @@ public class Certificate : MonoBehaviour
         display.SetActive(true);
 
         // set all text fields:
-        nameField.text = certificateData.name;
+        nameField.text = certificateData._name;
         deathEnergyField.text = $"brauchte {certificateData.deathAmount} Versuche, {certificateData.energyUsed} Energie,";
         shieldDashField.text = $"und benutzte {certificateData.dashsUsed} Mal Sprint und {certificateData.shieldsUsed} Mal Schild.";
         codeField.text = certificateData.code;

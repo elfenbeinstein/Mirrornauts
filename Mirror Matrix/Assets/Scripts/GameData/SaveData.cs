@@ -59,7 +59,7 @@ public class SaveData : MonoBehaviour
     {
         if (eventName == "Name")
         {
-            certificateData.name = (string)param;
+            certificateData._name = (string)param;
             SaveDataToPrefs();
         }
         else if (eventName == "DeleteAll")
@@ -75,7 +75,6 @@ public class SaveData : MonoBehaviour
         else if (eventName == "Energy") inGameData.energyUsed += ((int)param);
         else if (eventName == "Death") inGameData.deathAmount++;
         else if (eventName == "Save") SaveDataToPrefs();
-            
     }
 
     public void SaveDataToPrefs()

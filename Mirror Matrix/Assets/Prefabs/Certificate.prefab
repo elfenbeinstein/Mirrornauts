@@ -1404,9 +1404,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2903405658887410314}
-        m_TargetAssemblyTypeName: Certificate, Assembly-CSharp
-        m_MethodName: LoadMenu
+      - m_Target: {fileID: 8401131049865333259}
+        m_TargetAssemblyTypeName: Snapshot, Assembly-CSharp
+        m_MethodName: TakeSnapshot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2542,6 +2542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8276682180372032199}
   - component: {fileID: 2903405658887410314}
+  - component: {fileID: 8401131049865333259}
   m_Layer: 5
   m_Name: Certificate
   m_TagString: Untagged
@@ -2597,6 +2598,19 @@ MonoBehaviour:
   shieldDashField: {fileID: 3673243258250547068}
   gameTimeField: {fileID: 2783346061571632591}
   trainingTimeField: {fileID: 3026571627402355294}
+--- !u!114 &8401131049865333259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276682180372032198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34d6dab7bf9bf46ac5ffa93df68c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FileCounter: 0
 --- !u!1 &8276682180736945340
 GameObject:
   m_ObjectHideFlags: 0
