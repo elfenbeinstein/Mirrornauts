@@ -15,6 +15,34 @@ public class PlayerStats : MonoBehaviour
     private bool dashCountdown;
     [HideInInspector] public int dashCD;
 
+    [Space]
+    [Header("Kosten für Drehmatrix Radianten")]
+    public int costDrehSechstel = 2;
+    public int costDrehViertel = 3;
+    public int costDrehDrittel = 4;
+    public int costDrehHalbe = 6;
+    public int costDrehzweiDrittel = 8;
+    public int costDrehdreiViertel = 9;
+    public int costDrehfünfSechstel = 10;
+    public int costDrehEins = 12;
+
+    [Space]
+    [Header("Kosten für Drehmatrix Zahlenwert")]
+    public int costDrehFEins = 0;
+    public int costDrehFWurzelDrei = 2;
+    public int costDrehFWurzelZwei = 3;
+    public int costDrehFHalbe = 4;
+    public int costDrehFNull = 6;
+    public int costDrehFMinusHalbe = 8;
+    public int costDrehFMinusWurzelZwei = 9;
+    public int costDrehFMinusWurzelDrei = 10;
+    public int costDrehFMinusEins = 12;
+
+    [Space]
+    [Header("Energiekosten Multiplikator Spiegelung")]
+    public float energySpiegelMultiplier = 1.5f;
+
+
     void Start()
     {
         dashAmount = 1;
