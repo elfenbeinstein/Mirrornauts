@@ -26,6 +26,7 @@ public class SaveData : MonoBehaviour
     [SerializeField] string trainingTimeC;
     [SerializeField] string winTimeC;
     [SerializeField] string codeC;
+    [SerializeField] string nameC;
 
     [Space]
     [SerializeField] string hasCertificate;
@@ -38,6 +39,9 @@ public class SaveData : MonoBehaviour
     {
         EventManager.Instance.AddEventListener("DATA", DataListener);
         GetDataFromPrefs();
+
+        if (SceneManager.GetActiveScene().buildIndex == 1) countTrainTime = true;
+        else if (SceneManager.GetActiveScene().buildIndex == 2) countGameTime = true;
     }
 
     private void Update()
@@ -90,6 +94,7 @@ public class SaveData : MonoBehaviour
         PlayerPrefs.SetFloat(trainingTimeC, certificateData.trainingTime);
         PlayerPrefs.SetFloat(winTimeC, certificateData.winTime);
         PlayerPrefs.SetString(codeC, certificateData.code);
+        PlayerPrefs.SetString(nameC, certificateData._name);
         if (certificateData.hasSaveData == true) PlayerPrefs.SetInt(hasCertificate, 1);
         else PlayerPrefs.SetInt(hasCertificate, 0);
     }
@@ -110,6 +115,7 @@ public class SaveData : MonoBehaviour
         if (PlayerPrefs.HasKey(trainingTimeC)) certificateData.trainingTime = PlayerPrefs.GetFloat(trainingTimeC);
         if (PlayerPrefs.HasKey(winTimeC)) certificateData.winTime = PlayerPrefs.GetFloat(winTimeC);
         if (PlayerPrefs.HasKey(codeC)) certificateData.code = PlayerPrefs.GetString(codeC);
+        if (PlayerPrefs.HasKey(nameC)) certificateData._name = PlayerPrefs.GetString(nameC);
         if (PlayerPrefs.HasKey(hasCertificate) && PlayerPrefs.GetInt(hasCertificate) == 1) certificateData.hasSaveData = true;
         else certificateData.hasSaveData = false;
 
@@ -119,6 +125,8 @@ public class SaveData : MonoBehaviour
     public void ClearAllSaveData()
     {
         PlayerPrefs.DeleteAll();
+        ResetData(inGameData);
+        ResetData(certificateData);
     }
 
     public void ClearCertData()
@@ -143,6 +151,7 @@ public class SaveData : MonoBehaviour
 
         PlayerPrefs.DeleteKey(codeC);
         PlayerPrefs.DeleteKey(hasCertificate);
+        PlayerPrefs.DeleteKey(nameC);
     }
 
     public void ResetCertificateAndGameData()
@@ -162,7 +171,7 @@ public class SaveData : MonoBehaviour
         dataSet.trainingTime = 0;
         dataSet.winTime = 0;
         dataSet.code = "";
-        dataSet.name = "";
+        dataSet._name = "";
         dataSet.hasSaveData = false;
 
         if (save) SaveDataToPrefs();

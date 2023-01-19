@@ -2591,6 +2591,7 @@ MonoBehaviour:
   nameInput: {fileID: 2827972407173403891}
   inGameData: {fileID: 11400000, guid: 1dc043352b62cec47b3f2efdb94f84f9, type: 2}
   certificateData: {fileID: 11400000, guid: 5ee4dabb415165f4cb5415b14d6d84d9, type: 2}
+  codeField: {fileID: 8276682179713079451}
   nameField: {fileID: 4952159111039920649}
   deathEnergyField: {fileID: 5038600011496503581}
   shieldDashField: {fileID: 3673243258250547068}

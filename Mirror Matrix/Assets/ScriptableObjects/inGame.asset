@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed4c27cfc122c046ba72dbfd21f412a, type: 3}
-  m_Name: inGame
+  m_Name: 
   m_EditorClassIdentifier: 
   deathAmount: 0
   dashsUsed: 0
@@ -18,3 +18,5 @@ MonoBehaviour:
   energyUsed: 0
   trainingTime: 0
   winTime: 0
+  code: 
+  hasSaveData: 0

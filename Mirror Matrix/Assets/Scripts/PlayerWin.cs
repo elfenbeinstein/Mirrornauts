@@ -42,6 +42,10 @@ public class PlayerWin : MonoBehaviour
 
     public void PlayerWins()
     {
+        // stop counting time:
+        EventManager.Instance.EventGo("DATA", "CountGame", false);
+        EventManager.Instance.EventGo("DATA", "CountTrain", false);
+
         EventManager.Instance.EventGo("AUDIO", "PlayWin");
         Debug.Log("PlayerWins");
 
