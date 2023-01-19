@@ -10965,6 +10965,10 @@ PrefabInstance:
       propertyPath: _interface
       value: 
       objectReference: {fileID: 1990215248}
+    - target: {fileID: 1842644516965951218, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: maxEnergy
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 2450319015124833453, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: m_RootOrder
       value: 2
