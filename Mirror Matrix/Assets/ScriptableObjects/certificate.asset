@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed4c27cfc122c046ba72dbfd21f412a, type: 3}
-  m_Name: Tabea
+  m_Name: certificate
   m_EditorClassIdentifier: 
   deathAmount: 0
   dashsUsed: 0
   shieldsUsed: 0
-  energyUsed: 9
+  energyUsed: 0
   trainingTime: 0
-  winTime: 10.204033
-  code: 200900400003
+  winTime: 0
+  code: 
   _name: 
-  hasSaveData: 1
+  hasSaveData: 0

@@ -9,6 +9,8 @@ public class StartScreen : MonoBehaviour
     [SerializeField] private GameObject creditsO;
     [SerializeField] private GameObject helpO;
     [SerializeField] private GameObject certificateO;
+    [SerializeField] private GameObject certificateButton;
+    private Certificate certificate;
 
     private bool startOpen;
 
@@ -19,6 +21,9 @@ public class StartScreen : MonoBehaviour
         chooseO.SetActive(false);
         creditsO.SetActive(false);
         helpO.SetActive(false);
+
+        certificate = certificateO.GetComponent<Certificate>();
+        certificate.SetInactiveInMenu();
     }
 
     void Update()
@@ -30,6 +35,9 @@ public class StartScreen : MonoBehaviour
                 startOpen = false;
                 startO.SetActive(false);
                 chooseO.SetActive(true);
+
+                // if there is save data for a certificate --> set button to active
+                certificateButton.SetActive(certificate.certificateData.hasSaveData);
             }
         }
     }
@@ -60,21 +68,24 @@ public class StartScreen : MonoBehaviour
         chooseO.SetActive(true);
         creditsO.SetActive(false);
         helpO.SetActive(false);
-        certificateO.SetActive(false);
+        certificate.SetInactiveInMenu();
     }
 
     public void CertificateButton()
     {
+        chooseO.SetActive(false);
+        certificateO.SetActive(true);
+        certificate.SetUpInMenu();
+    }
 
+    public void DeleteData()
+    {
+        EventManager.Instance.EventGo("DATA", "DeleteAll");
+        certificateButton.SetActive(false);
     }
 
     public void QuitButton()
     {
         GameManagement.QuitGame();
-    }
-
-    public void GetCertificate()
-    {
-
     }
 }

@@ -14,7 +14,10 @@ public class Snapshot : MonoBehaviour
 
     public void TakeSnapshot()
     {
-        ScreenCapture.CaptureScreenshot(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/Zertifikat" + FileCounter + ".png");
+        FileCounter = PlayerPrefs.GetInt("FileCounter", 0);
+
+        string name = GetComponent<Certificate>().certificateData._name;
+        ScreenCapture.CaptureScreenshot(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/Zertifikat_" + FileCounter + "_" + name + ".png");
 
         FileCounter++;
         PlayerPrefs.SetInt("FileCounter", FileCounter);

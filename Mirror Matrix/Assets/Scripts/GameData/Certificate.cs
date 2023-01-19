@@ -12,7 +12,7 @@ public class Certificate : MonoBehaviour
 
     [Space]
     [SerializeField] CertificateData inGameData;
-    [SerializeField] CertificateData certificateData;
+    public CertificateData certificateData;
 
     [Space]
     [SerializeField] private TMPro.TextMeshProUGUI codeField;
@@ -23,12 +23,14 @@ public class Certificate : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI trainingTimeField;
 
     //public float testTime;
+    public string defaultText;
 
     void Start()
     {
         bg.SetActive(false);
         enterName.SetActive(false);
         display.SetActive(false);
+        defaultText = nameInput.text;
     }
 
     public void LoadMenu()
@@ -89,6 +91,8 @@ public class Certificate : MonoBehaviour
 
     public void SaveName()
     {
+        if (nameInput.text == "" || nameInput.text == defaultText) return;
+
         EventManager.Instance.EventGo("DATA", "Name", nameInput.text);
 
         display.SetActive(true);
@@ -123,9 +127,29 @@ public class Certificate : MonoBehaviour
         enterName.SetActive(false);
     }
 
-    public void SaveToPC()
+    public void SetUpInMenu()
     {
-        // MISSING: pdf or png erstellen
+        bg.SetActive(true);
+        display.SetActive(true);
+
+        // set all text fields:
+        nameField.text = certificateData._name;
+        deathEnergyField.text = $"brauchte {certificateData.deathAmount} Versuche, {certificateData.energyUsed} Energie,";
+        shieldDashField.text = $"und benutzte {certificateData.dashsUsed} Mal Sprint und {certificateData.shieldsUsed} Mal Schild.";
+        codeField.text = certificateData.code;
+        System.TimeSpan time = System.TimeSpan.FromSeconds(certificateData.winTime);
+        gameTimeField.text = $"Spielzeit: " + time.ToString(@"hh\:mm\:ss");
+        time = System.TimeSpan.FromSeconds(certificateData.trainingTime);
+        trainingTimeField.text = $"Trainingszeit: " + time.ToString(@"hh\:mm\:ss");
+
+        enterName.SetActive(false);
+    }
+
+    public void SetInactiveInMenu()
+    {
+        display.SetActive(false);
+        bg.SetActive(false);
+        enterName.SetActive(false);
     }
 
     /*
