@@ -8113,8 +8113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.9489212, y: -132}
-  m_SizeDelta: {x: 542.4965, y: 178.037}
+  m_AnchoredPosition: {x: -0.9489212, y: -124}
+  m_SizeDelta: {x: 528.785, y: 217.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807865191
 MonoBehaviour:
@@ -8136,7 +8136,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Energy reserves too low!
+  m_text: "Autopilot besch\xE4digt\u2026 manuelle Kursberechnung n\xF6tig.\r\nGefahrenzonen
+    auf dem Sensor erkannt.\r\n\nSiehe [HILFE] f\xFCr mehr Informationen.\nAusweichman\xF6ver
+    beginnen!\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8163,12 +8165,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 29
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 24
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -8482,7 +8484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5231621929531064183, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5515262366409351567, guid: 923dbd20094d8554891e63d6fcc72759, type: 3}
       propertyPath: m_Sprite
