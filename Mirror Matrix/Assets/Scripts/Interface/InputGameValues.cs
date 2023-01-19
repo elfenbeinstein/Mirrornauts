@@ -349,42 +349,42 @@ public class InputGameValues : MonoBehaviour
                 if (calcType == CalculationType.MatrixMultiplicationR)
                 {
                     if (matrixX1R.text == "1/6" || matrixX1R.text == "-1/6")
-                        cost = 2;
+                        cost = _playerStats.costDrehSechstel;
                     else if (matrixX1R.text == "1/4" || matrixX1R.text == "-1/4")
-                        cost = 3;
+                        cost = _playerStats.costDrehViertel;
                     else if (matrixX1R.text == "1/3" || matrixX1R.text == "-1/3")
-                        cost = 4;
+                        cost = _playerStats.costDrehDrittel;
                     else if (matrixX1R.text == "1/2" || matrixX1R.text == "-1/2")
-                        cost = 6;
+                        cost = _playerStats.costDrehHalbe;
                     else if (matrixX1R.text == "2/3" || matrixX1R.text == "-2/3")
-                        cost = 8;
+                        cost = _playerStats.costDrehzweiDrittel;
                     else if (matrixX1R.text == "3/4" || matrixX1R.text == "-3/4")
-                        cost = 9;
+                        cost = _playerStats.costDrehdreiViertel;
                     else if (matrixX1R.text == "5/6" || matrixX1R.text == "-5/6")
-                        cost = 10;
+                        cost = _playerStats.costDrehfünfSechstel;
                     else if (matrixX1R.text == "1" || matrixX1R.text == "-1")
-                        cost = 12;
+                        cost = _playerStats.costDrehEins;
                 }
                 else
                 {
                     if (mFreeX1R.text == "1")
-                        cost = 0;
+                        cost = _playerStats.costDrehFEins;
                     else if (mFreeX1R.text == "(√3)/2")
-                        cost = 2;
+                        cost = _playerStats.costDrehFWurzelDrei;
                     else if (mFreeX1R.text == "(√2)/2")
-                        cost = 3;
+                        cost = _playerStats.costDrehFWurzelZwei;
                     else if (mFreeX1R.text == "1/2")
-                        cost = 4;
+                        cost = _playerStats.costDrehFHalbe;
                     else if (mFreeX1R.text == "0")
-                        cost = 6;
+                        cost = _playerStats.costDrehFNull;
                     else if (mFreeX1R.text == "-1/2")
-                        cost = 8;
+                        cost = _playerStats.costDrehFMinusHalbe;
                     else if (mFreeX1R.text == "-(√2)/2")
-                        cost = 9;
+                        cost = _playerStats.costDrehFMinusWurzelZwei;
                     else if (mFreeX1R.text == "-(√3)/2")
-                        cost = 10;
+                        cost = _playerStats.costDrehFMinusWurzelDrei;
                     else if (mFreeX1R.text == "-1")
-                        cost = 12;
+                        cost = _playerStats.costDrehFMinusEins;
                 }
             }
             else if (type == MatrixType.Spiegel)
