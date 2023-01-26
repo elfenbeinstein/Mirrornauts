@@ -5105,9 +5105,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8276682180353085139}
-        m_TargetAssemblyTypeName: Certificate, Assembly-CSharp
-        m_MethodName: LoadMenu
+      - m_Target: {fileID: 1990215248}
+        m_TargetAssemblyTypeName: InterfaceManager, Assembly-CSharp
+        m_MethodName: MenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
