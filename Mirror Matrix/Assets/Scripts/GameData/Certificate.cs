@@ -53,13 +53,14 @@ public class Certificate : MonoBehaviour
         // generate random code
         int r1 = Random.Range(0, 10);
         int random2 = Random.Range(0, 3);
-        int random3 = Random.Range(0, 2);
-        int r2, r3;
+        int random4 = Random.Range(0, 2);
+        int r3 = Random.Range(0, 10);
+        int r2, r4;
         if (random2 == 0) r2 = 4;
         else if (random2 == 1) r2 = 6;
         else r2 = 8;
-        if (random3 == 0) r3 = 3;
-        else r3 = 7;
+        if (random4 == 0) r4 = 3;
+        else r4 = 7;
 
         string energy = certificateData.energyUsed.ToString("000");
         if (certificateData.energyUsed > 999) energy = "999";
@@ -71,7 +72,7 @@ public class Certificate : MonoBehaviour
         if (certificateData.shieldsUsed > 99) shield = "99";
 
         // code setup: r1 + energy + death + r2 + dash + shield + r3
-        certificateData.code = r1.ToString() + energy + death + r2.ToString() + dash + shield + r3.ToString();
+        certificateData.code = r1.ToString() + energy + death + r2.ToString() + dash + r3.ToString() + shield + r4.ToString();
 
         // reset ingame certificate and save data
         EventManager.Instance.EventGo("DATA", "ResetInGame");
