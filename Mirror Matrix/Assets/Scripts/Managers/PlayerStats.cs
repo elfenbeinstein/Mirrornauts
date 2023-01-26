@@ -41,6 +41,8 @@ public class PlayerStats : MonoBehaviour
     [Space]
     [Header("Energiekosten Multiplikator Spiegelung")]
     public float energySpiegelMultiplier = 1.5f;
+    [Header("Energiekosten Multiplikator Addition")]
+    public float energyAdditionMultiplier = 2f;
 
 
     void Start()
