@@ -19,7 +19,7 @@ public class SpaceshipBehaviour : MonoBehaviour
     [SerializeField] private Animator animShield;
     [SerializeField] private InterfaceManager _interface;
 
-    [SerializeField] private bool scales;
+    private bool scales;
     
     private Vector3 topPos;
     private Vector3 rightPos;
@@ -32,11 +32,13 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     private void Start()
     {
+        scales = false;
         shield.SetActive(false);
 
         EventManager.Instance.AddEventListener("SHIELD", ShieldListener);
 
         _maths = _interface.GetComponent<Maths>();
+        DrawStartLine();
     }
 
     public void DrawStartLine()
