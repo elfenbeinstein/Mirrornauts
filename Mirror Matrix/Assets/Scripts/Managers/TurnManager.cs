@@ -27,6 +27,8 @@ public class TurnManager : MonoBehaviour
 
     private bool playerWin;
 
+    public int startGameAt = 0;
+
     private void Start()
     {
         _interfaceManager = GetComponent<InterfaceManager>();
@@ -34,7 +36,7 @@ public class TurnManager : MonoBehaviour
 
         if (!_interfaceManager.freeFlowMode)
         {
-            turnCounter = 0;
+            turnCounter = startGameAt;
             _interfaceManager.UpdateTurnCounterDisplay(turnCounter);
             _playerStats = _interfaceManager._playerStats;
         }
