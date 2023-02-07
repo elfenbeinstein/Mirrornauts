@@ -25,6 +25,10 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     private int n;
 
+    [SerializeField] private Canvas canvas;
+
+    Vector3 offset;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -97,13 +101,23 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         gameObject.transform.SetAsLastSibling();
 
         EventManager.Instance.EventGo("AUDIO", "PlayDrag");
-        //GameManagement._audioManager._sfxSounds.PlayDrag();
+
+        offset = Input.mousePosition - transform.position;
     }
 
     // gets called on every frame while object is being dragged
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
+        //rectTransform.anchoredPosition += eventData.delta;
+
+        Vector2 position;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            (RectTransform)canvas.transform,
+            Input.mousePosition - offset,
+            canvas.worldCamera,
+            out position);
+
+        transform.position = canvas.transform.TransformPoint(position);
     }
 
     public void OnEndDrag(PointerEventData eventData)

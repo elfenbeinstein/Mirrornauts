@@ -14,6 +14,7 @@ public class MousePosition : MonoBehaviour
     [SerializeField] Vector2 textBoxOffset;
     [SerializeField] GameObject mouseCoord;
     Vector3 mousePos;
+    TMPro.TextMeshProUGUI textField;
 
     private bool active;
     private bool playerWIN;
@@ -21,6 +22,7 @@ public class MousePosition : MonoBehaviour
     private void Start()
     {
         playerWIN = false;
+        textField = mouseCoord.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Update()
@@ -33,13 +35,14 @@ public class MousePosition : MonoBehaviour
         // if left control is first pressed, check if over the coordinate system --> set active
         if (Input.GetKeyDown(KeyCode.LeftControl) && MouseOverCoordinateSystem())
             SetActive(true);
+
         if (active)
         {
             // if still over coordinate system, display coordinate stuff
             if (MouseOverCoordinateSystem())
             {
                 // display coordinate stuff
-                mouseCoord.GetComponentInChildren<TextMeshProUGUI>().text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
+                textField.text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
                 mouseCoord.gameObject.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2(mousePos.x + textBoxOffset.x, mousePos.y + textBoxOffset.y));
             }
             else // stop being active
