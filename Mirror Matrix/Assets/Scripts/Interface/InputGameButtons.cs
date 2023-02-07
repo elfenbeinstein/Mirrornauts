@@ -172,7 +172,7 @@ public class InputGameButtons : MonoBehaviour
         dashCooldown.gameObject.SetActive(false);
     }
 
-    public void SetUpFreeMode()
+    public void SetUpFreeMode(float[] values)
     {
         addition.SetActive(false);
         multiplicationFree.SetActive(true);
@@ -185,6 +185,8 @@ public class InputGameButtons : MonoBehaviour
 
         freeMode = true;
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
+
+        _inputGameValues.WriteNewSpaceshipPos(values[0], values[1]);
     }
 
     public void PlusMinusButton()

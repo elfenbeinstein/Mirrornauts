@@ -120,7 +120,7 @@ public class InterfaceManager : MonoBehaviour
             Debug.LogWarning("something went wrong with the calculation");
         }
 
-        if (!freeFlowMode && round == switchToFreeMode) _buttons.SetUpFreeMode();
+        if (!freeFlowMode && round == switchToFreeMode) _buttons.SetUpFreeMode(_spaceshipBehaviour.SpaceshipCoordinates());
     }
 
     public void ContinueAfterMove()
