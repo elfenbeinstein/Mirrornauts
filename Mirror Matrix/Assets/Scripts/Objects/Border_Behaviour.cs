@@ -14,23 +14,12 @@ public class Border_Behaviour : MonoBehaviour
         "If it's false it is the playing field the spaceship must not leave.")]
     [SerializeField] private bool isBorder;
 
-    private bool cooldown;
-
-    private void Start()
-    {
-        cooldown = false;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // if spaceship touched border
         if (isBorder)
         {
-            if (!cooldown)
-            {
-                EventManager.Instance.EventGo("PLAYER", "HitBorder");
-                StartCoroutine(CollisionCooldown());
-            }
+            EventManager.Instance.EventGo("PLAYER", "HitBorder");
         }
     }
 
@@ -39,19 +28,7 @@ public class Border_Behaviour : MonoBehaviour
         // if it leaves the playing field
         if (!isBorder)
         {
-            if (!cooldown)
-            {
-                EventManager.Instance.EventGo("PLAYER", "LeftField");
-                StartCoroutine(CollisionCooldown());
-            }
+            EventManager.Instance.EventGo("PLAYER", "LeftField");
         }
-    }
-
-    // used for testing
-    IEnumerator CollisionCooldown()
-    {
-        cooldown = true;
-        yield return new WaitForSeconds(0.2f);
-        cooldown = false;
     }
 }

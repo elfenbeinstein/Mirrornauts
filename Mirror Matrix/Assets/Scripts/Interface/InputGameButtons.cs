@@ -66,7 +66,7 @@ public class InputGameButtons : MonoBehaviour
     {
         // elfenbeinstein: DELETE for final build
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.A)) ActivateDash();
+        if (Input.GetKeyDown(KeyCode.A)) ActivateDash(); _playerStats.dashAmount = 1;
         if (Input.GetKeyDown(KeyCode.S)) EventManager.Instance.EventGo("TURN", "Shield");
 #endif
     }
