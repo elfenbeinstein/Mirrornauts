@@ -57,12 +57,16 @@ public class InputFFValues : MonoBehaviour
     [HideInInspector] public bool y2Value;
     private CalculationType calcType;
 
+    [SerializeField] private GameObject warningText;
+
     void Start()
     {
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
         _maths = GetComponent<Maths>();
+
+        if (warningText != null) warningText.SetActive(false);
     }
 
     public void SetSpaceshipScript(SpaceshipBehaviour script)
@@ -78,12 +82,19 @@ public class InputFFValues : MonoBehaviour
     //called from start vector fields
     public void StartVectorValueChange()
     {
+        if (warningText != null) warningText.SetActive(false);
+
         float[] vectorValue = GetStartVector();
         _spaceshipBehaviour.MoveSpaceship(vectorValue);
-        /*
-        vectorValue = _spaceshipBehaviour.ShipTopCoordinates();
-        Debug.Log("current ship top pos = " + vectorValue[0] + ", " + vectorValue[1]);
-        */
+        _spaceshipBehaviour.UpdateLineRenderer(vectorValue);
+
+        ResetResult();
+    }
+
+    public void ResetResult()
+    {
+        resultX.text = "";
+        resultY.text = "";
     }
 
     // called from button
@@ -132,6 +143,11 @@ public class InputFFValues : MonoBehaviour
     {
         resultX.text = result[0].ToString("F2");
         resultY.text = result[1].ToString("F2");
+
+        if (resultX.text.EndsWith("0")) resultX.text = result[0].ToString("F1");
+        if (resultX.text.EndsWith("0")) resultX.text = Mathf.RoundToInt(result[0]).ToString();
+        if (resultY.text.EndsWith("0")) resultY.text = result[1].ToString("F1");
+        if (resultY.text.EndsWith("0")) resultY.text = Mathf.RoundToInt(result[1]).ToString();
     }
 
     public float[] GetStartVector()
@@ -323,37 +339,5 @@ public class InputFFValues : MonoBehaviour
     public bool AdditionValue()
     {
         return additionValue;
-    }
-
-
-
-    // FOR TESTING:
-    [ContextMenu("Sin cos tryout")]
-    public void TrySinCos()
-    {
-        float a = 0;
-        float cos = _maths.CosinusCalc(a);
-        float sin = _maths.SinusCalc(a);
-        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
-
-        a = 0.5f;
-        cos = _maths.CosinusCalc(a);
-        sin = _maths.SinusCalc(a);
-        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
-
-        a = 1;
-        cos = _maths.CosinusCalc(a);
-        sin = _maths.SinusCalc(a);
-        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
-
-        a = 1.5f;
-        cos = _maths.CosinusCalc(a);
-        sin = _maths.SinusCalc(a);
-        Debug.Log($"Sin({a}) = {sin}; Cos({a}) = {cos}");
-
-        a = 2;
-        cos = _maths.CosinusCalc(a);
-        sin = _maths.SinusCalc(a);
-        Debug.Log($"Sin({a}*PI) = {sin}; Cos({a}*PI) = {cos}");
     }
 }

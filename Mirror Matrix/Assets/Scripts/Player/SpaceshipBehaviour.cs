@@ -30,6 +30,8 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     private Maths _maths;
 
+    [SerializeField] private GameObject warningText;
+
     private void Start()
     {
         scales = false;
@@ -86,6 +88,15 @@ public class SpaceshipBehaviour : MonoBehaviour
     public void MoveSpaceship(float[] vector)
     {
         spaceship.transform.position = new Vector3(vector[0], vector[1], 0);
+    }
+
+    public void UpdateLineRenderer(float[] startVector)
+    {
+        startVObject.SetActive(true);
+        endVObject.SetActive(false);
+
+        var position = new Vector3(startVector[0], startVector[1], 0);
+        startV.SetPosition(1, position);
     }
 
     public void UpdateSpaceshipFF(float[] startVector, float[] vectorResult, float[] newTop, float[] newRight)
@@ -207,8 +218,13 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     public void ResetSpaceshipFromBorder()
     {
+        /*
         float[] value = new float[] { 0, 0 };
         MoveSpaceship(value);
+        */
+
+        // activate warning text
+        if (warningText != null) warningText.SetActive(true);
     }
 
     public void RemoveLines()

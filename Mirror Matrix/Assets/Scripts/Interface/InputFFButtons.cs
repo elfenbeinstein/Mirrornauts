@@ -99,6 +99,8 @@ public class InputFFButtons : MonoBehaviour
         {
             Debug.Log("error in dropdown menu");
         }
+
+        _inputFFValues.ResetResult();
     }
 
     // called from button
