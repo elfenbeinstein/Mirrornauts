@@ -43,7 +43,7 @@ public class MousePosition : MonoBehaviour
             {
                 // display coordinate stuff
                 textField.text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
-                mouseCoord.gameObject.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2(mousePos.x + textBoxOffset.x, mousePos.y + textBoxOffset.y));
+                SetTextFieldPosition();
             }
             else // stop being active
                 SetActive(false);
@@ -75,5 +75,15 @@ public class MousePosition : MonoBehaviour
     {
         if (active) SetActive(false);
         playerWIN = true;
+    }
+
+    private void SetTextFieldPosition()
+    {
+        float xValue = mousePos.x + textBoxOffset.x * (mousePos.x / maxCoordinats.x * -1f);
+        float yValue = mousePos.y - textBoxOffset.y - 0.4f;
+        if (mousePos.y < 0) yValue = mousePos.y + textBoxOffset.y;
+
+        mouseCoord.gameObject.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, 
+            new Vector2(xValue, yValue));
     }
 }

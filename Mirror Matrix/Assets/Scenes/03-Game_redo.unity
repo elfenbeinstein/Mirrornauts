@@ -11840,7 +11840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCoordinats: {x: 7.5, y: 7.5}
-  textBoxOffset: {x: 1.4, y: -0.4}
+  textBoxOffset: {x: 1.4, y: 0.5}
   mouseCoord: {fileID: 75727310}
 --- !u!1001 &1805727032
 PrefabInstance:
