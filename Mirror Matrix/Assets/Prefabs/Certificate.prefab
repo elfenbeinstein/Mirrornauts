@@ -166,8 +166,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Spielzeit: 00:00:00'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 39.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -539,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2148389763017093218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -630,10 +630,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Namen speichern
+  m_text: SPEICHERN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -943,8 +943,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Leon Schauer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 39.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1080,8 +1080,8 @@ MonoBehaviour:
     nur lokal auf dem Rechner gespeichert. \nEin neuer Name kann erst nach erneutem
     Spielgewinn eingegeben werden."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9bb8cf7d3b26621449442074f840eb8a, type: 2}
-  m_sharedMaterial: {fileID: -1855762257623570428, guid: 9bb8cf7d3b26621449442074f840eb8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1105,8 +1105,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33
-  m_fontSizeBase: 33
+  m_fontSize: 30.89
+  m_fontSizeBase: 30.89
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1215,8 +1215,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bitte Namen eingeben
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1240,8 +1240,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.6
-  m_fontSizeBase: 70.6
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1484,8 +1484,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Trainingszeit: 00:00:00'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 39.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1619,8 +1619,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: und benutzte 12 Mal Sprint und 10 Mal Schild
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1644,12 +1644,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.35
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 40
+  m_fontSizeMin: 10
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1754,8 +1754,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: brauchte 20 Versuche, 4 Energie,
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1779,12 +1779,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 40
+  m_fontSizeMin: 10
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1972,7 +1972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8276682179011169696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2146,7 +2146,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 4}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8276682179244681078
 CanvasRenderer:
@@ -2252,10 +2252,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hauptmen\xFC"
+  m_text: "HAUPTMEN\xDC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2279,8 +2279,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.1
-  m_fontSizeBase: 20.1
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2463,10 +2463,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 02384757832
+  m_text: 0238471578327
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
-  m_sharedMaterial: {fileID: 3800648704626330278, guid: 1ae148bffcd4f1b429ac8f0c633c96de, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2490,8 +2490,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75.7
-  m_fontSizeBase: 75.7
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2680,8 +2680,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CODE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9bb8cf7d3b26621449442074f840eb8a, type: 2}
-  m_sharedMaterial: {fileID: -1855762257623570428, guid: 9bb8cf7d3b26621449442074f840eb8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2947,10 +2947,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Als Png speichern
+  m_text: PNG SPEICHERN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9bb8cf7d3b26621449442074f840eb8a, type: 2}
-  m_sharedMaterial: {fileID: -1855762257623570428, guid: 9bb8cf7d3b26621449442074f840eb8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2974,8 +2974,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.62
-  m_fontSizeBase: 18.62
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

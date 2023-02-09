@@ -18,6 +18,7 @@ public class ObjectBehaviour : MonoBehaviour
     [Tooltip("offset from corner of the number field")]
     [SerializeField] private float offset;
     [SerializeField] private Transform parentNumber;
+    [SerializeField] private Transform icon;
 
     [SerializeField] private GameObject _filling;
     [SerializeField] private GameObject _frame;
@@ -81,19 +82,6 @@ public class ObjectBehaviour : MonoBehaviour
         float xPosition;
         float yPosition;
         #region Get Top Right Corner of Spawn
-        // if the object is flipped to the side the x and y values of scale are flipped
-        /*
-        if (Mathf.Abs(_turnManager.randomAngle) == 90 || Mathf.Abs(_turnManager.randomAngle) == 270)
-        {
-            xPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
-            yPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
-        }
-        else
-        {
-            xPosition = transform.localPosition.x + transform.localScale.x / 2 - offset;
-            yPosition = transform.localPosition.y + transform.localScale.y / 2 - offset;
-        }
-        */
 
         if (Mathf.Abs(_turnManager.randomAngle) == 90)
         {
@@ -124,6 +112,7 @@ public class ObjectBehaviour : MonoBehaviour
 
         // rotate number by turn manager random angle (is already set to - value in randomisation)
         countdownRenderer.gameObject.transform.Rotate(0, 0, _turnManager.randomAngle);
+        if (icon != null) icon.transform.Rotate(0, 0, _turnManager.randomAngle);
     }
 
     public void NextTurn(int currentRound)
