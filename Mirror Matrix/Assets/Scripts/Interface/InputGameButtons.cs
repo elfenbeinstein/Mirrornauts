@@ -19,16 +19,8 @@ public class InputGameButtons : MonoBehaviour
     [SerializeField] private GameObject y1Minus;
     [SerializeField] private GameObject y2Minus;
 
-    [Header("Free Multiplication +-:")]
-    [SerializeField] private TMPro.TextMeshProUGUI x1FMinus;
-    [SerializeField] private TMPro.TextMeshProUGUI x2FMinus;
-    [SerializeField] private TMPro.TextMeshProUGUI y1FMinus;
-    [SerializeField] private TMPro.TextMeshProUGUI y2FMinus;
-
     [Header("Addition")]
     [SerializeField] private TMPro.TextMeshProUGUI additionButtonText;
-    [SerializeField] private GameObject addXMinus;
-    [SerializeField] private GameObject addYMinus;
 
     [Header("Menu and UI")]
     [SerializeField] private GameObject helpScreen;
@@ -129,12 +121,6 @@ public class InputGameButtons : MonoBehaviour
     {
         addition.SetActive(true);
 
-        addXMinus.SetActive(false);
-        _inputGameValues.addXValue = true;
-
-        addYMinus.SetActive(false);
-        _inputGameValues.addYValue = true;
-
         additionButtonText.text = "+";
         _inputGameValues.addValue = true;
     }
@@ -178,11 +164,6 @@ public class InputGameButtons : MonoBehaviour
         multiplicationFree.SetActive(true);
         multiplicationRad.SetActive(false);
 
-        x1FMinus.text = "+";
-        x2FMinus.text = "+";
-        y1FMinus.text = "+";
-        y2FMinus.text = "+";
-
         freeMode = true;
         _inputGameValues.calcType = CalculationType.MatrixMultiplicationF;
 
@@ -209,19 +190,6 @@ public class InputGameButtons : MonoBehaviour
                 _inputGameValues.x1Value = false;
             }
         }
-        else
-        {
-            if (x1FMinus.text == "-")
-            {
-                x1FMinus.text = "+";
-                _inputGameValues.x1FValue = true;
-            }
-            else
-            {
-                x1FMinus.text = "-";
-                _inputGameValues.x1FValue = false;
-            }
-        }
 
         if (_inputGameValues.AllValuesSet())
         {
@@ -244,19 +212,6 @@ public class InputGameButtons : MonoBehaviour
             {
                 x2Minus.SetActive(true);
                 _inputGameValues.x2Value = false;
-            }
-        }
-        else
-        {
-            if (x2FMinus.text == "-")
-            {
-                x2FMinus.text = "+";
-                _inputGameValues.x2FValue = true;
-            }
-            else
-            {
-                x2FMinus.text = "-";
-                _inputGameValues.x2FValue = false;
             }
         }
 
@@ -282,19 +237,6 @@ public class InputGameButtons : MonoBehaviour
                 _inputGameValues.y1Value = false;
             }
         }
-        else
-        {
-            if (y1FMinus.text == "-")
-            {
-                y1FMinus.text = "+";
-                _inputGameValues.y1FValue = true;
-            }
-            else
-            {
-                y1FMinus.text = "-";
-                _inputGameValues.y1FValue = false;
-            }
-        }
 
         if (_inputGameValues.AllValuesSet())
         {
@@ -316,19 +258,6 @@ public class InputGameButtons : MonoBehaviour
             {
                 y2Minus.SetActive(true);
                 _inputGameValues.y2Value = false;
-            }
-        }
-        else
-        {
-            if (y2FMinus.text == "-")
-            {
-                y2FMinus.text = "+";
-                _inputGameValues.y2FValue = true;
-            }
-            else
-            {
-                y2FMinus.text = "-";
-                _inputGameValues.y2FValue = false;
             }
         }
 

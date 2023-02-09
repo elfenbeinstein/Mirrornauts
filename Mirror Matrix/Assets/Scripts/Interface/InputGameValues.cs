@@ -44,15 +44,8 @@ public class InputGameValues : MonoBehaviour
     [HideInInspector] public bool y2Value;
     [HideInInspector] public CalculationType calcType;
 
-    [HideInInspector] public bool x1FValue;
-    [HideInInspector] public bool x2FValue;
-    [HideInInspector] public bool y1FValue;
-    [HideInInspector] public bool y2FValue;
-
     float x, y, x2, y2;
     [HideInInspector] public bool addValue;
-    [HideInInspector] public bool addXValue;
-    [HideInInspector] public bool addYValue;
 
     [HideInInspector] public int energyNeeded;
 
@@ -65,13 +58,7 @@ public class InputGameValues : MonoBehaviour
         x2Value = true;
         y1Value = true;
         y2Value = true;
-        x1FValue = true;
-        x2FValue = true;
-        y1FValue = true;
-        y2FValue = true;
         addValue = true;
-        addXValue = true;
-        addYValue = true;
 
         _playerStats = GetComponent<InterfaceManager>()._playerStats;
         _maths = GetComponent<Maths>();
@@ -192,22 +179,6 @@ public class InputGameValues : MonoBehaviour
 
     public float[] GetMatrixValuesF()
     {
-        /*
-        x = 0;
-        y = 0;
-        x2 = 0;
-        y2 = 0;
-
-        x = float.Parse(mFreeX1R.text);
-        if (!x1FValue) x *= -1;
-        x2 = float.Parse(mFreeX2R.text);
-        if (!x2FValue) x2 *= -1;
-        y = float.Parse(mFreeY1R.text);
-        if (!y1FValue) y *= -1;
-        y2 = float.Parse(mFreeY2R.text);
-        if (!y2FValue) y2 *= -1;
-        */
-
         // values are set when number is dragged
         float[] matrix = new float[] { fX, fX2, fY, fY2 };
         return matrix;
@@ -215,16 +186,6 @@ public class InputGameValues : MonoBehaviour
 
     public float[] GetAddVector()
     {
-        /*
-        x = 0;
-        y = 0;
-
-        x = float.Parse(addX.text);
-        if (!addXValue) x *= -1;
-        y = float.Parse(addY.text);
-        if (!addYValue) y *= -1;
-        */
-
         // values are set with number drop
         vectorValue = new float[] { aX, aY };
         return vectorValue;
