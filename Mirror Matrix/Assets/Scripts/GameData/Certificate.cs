@@ -27,9 +27,9 @@ public class Certificate : MonoBehaviour
 
     void Start()
     {
-        bg.SetActive(false);
-        enterName.SetActive(false);
-        display.SetActive(false);
+        //bg.SetActive(false);
+        //enterName.SetActive(false);
+        //display.SetActive(false);
         defaultText = nameInput.text;
     }
 
