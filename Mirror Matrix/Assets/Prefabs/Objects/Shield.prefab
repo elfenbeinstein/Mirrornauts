@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7135737194875002658}
   m_Layer: 8
-  m_Name: Picture
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,12 +56,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142835467311786286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -1, z: 0}
-  m_LocalScale: {x: 3.2374, y: 3.2374, z: 1.6187}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6187, y: 1.6187, z: 1.6187}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8299725389061256460}
-  m_Father: {fileID: 6083405299970228879}
+  m_Father: {fileID: 6083405301662348680}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2933774854287580448
@@ -262,9 +262,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6083405301485824427}
-  - {fileID: 7135737194875002658}
   m_Father: {fileID: 6083405301662348680}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6083405299970228878
 SpriteRenderer:
@@ -397,6 +396,7 @@ MonoBehaviour:
   countdownRenderer: {fileID: 6083405301485824426}
   offset: 0.4
   parentNumber: {fileID: 6083405299970228879}
+  icon: {fileID: 7135737194875002658}
   _filling: {fileID: 194431929642987870}
   _frame: {fileID: 8963551784792428423}
   parent: {fileID: 6083405301662348681}
@@ -612,6 +612,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6083405300079589131}
+  - {fileID: 7135737194875002658}
   - {fileID: 6083405299970228879}
   m_Father: {fileID: 0}
   m_RootOrder: 0
