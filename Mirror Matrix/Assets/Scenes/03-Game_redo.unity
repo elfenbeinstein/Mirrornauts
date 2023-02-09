@@ -6093,7 +6093,7 @@ PrefabInstance:
       objectReference: {fileID: 5887451122031635060}
     - target: {fileID: 7749659573348703717, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: switchToFreeMode
-      value: 28
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7749659573348703717, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: _spaceshipBehaviour
@@ -6117,7 +6117,7 @@ PrefabInstance:
       objectReference: {fileID: 587066955}
     - target: {fileID: 7749659573348703738, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: startGameAt
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7749659573348703738, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: spawners.Array.data[0]
@@ -8312,14 +8312,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f5ba62ba077d14c9c43ddff34ff75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winRound: 50
+  winRound: 28
   certificateScreen: {fileID: 18949140}
   codeText: {fileID: 1717229129}
   _errorMsg: {fileID: 2001952708}
   _turnManager: {fileID: 1456916233}
   certificate: {fileID: 8276682180353085139}
   story2: 5
-  story3: 28
+  story3: 21
 --- !u!4 &1240443746
 Transform:
   m_ObjectHideFlags: 0
@@ -15293,7 +15293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eaf19e053999cd446aae93b41dc487ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f0c3fd2cc417404ebcf17bec0b604ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
