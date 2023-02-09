@@ -2521,6 +2521,7 @@ MonoBehaviour:
   value: 0.5
   type: 0
   text: {fileID: 517636465737188036}
+  canvas: {fileID: 0}
 --- !u!225 &8260774536380134846
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2815,6 +2816,7 @@ MonoBehaviour:
   value: 1
   type: 0
   text: {fileID: 2838404325101416019}
+  canvas: {fileID: 0}
 --- !u!225 &585796702604382203
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3680,6 +3682,7 @@ MonoBehaviour:
   value: 2
   type: 0
   text: {fileID: 4002274142470843578}
+  canvas: {fileID: 0}
 --- !u!225 &4676427683313335788
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3922,6 +3925,7 @@ MonoBehaviour:
   value: 0
   type: 0
   text: {fileID: 981072996137725474}
+  canvas: {fileID: 0}
 --- !u!225 &3789504861637900510
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4029,6 +4033,7 @@ MonoBehaviour:
   value: 3
   type: 0
   text: {fileID: 7719023176959766522}
+  canvas: {fileID: 0}
 --- !u!225 &359952125765833266
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4609,6 +4614,7 @@ MonoBehaviour:
   value: 0.5
   type: 0
   text: {fileID: 1639870334276814493}
+  canvas: {fileID: 0}
 --- !u!225 &4301404602893222879
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4851,6 +4857,7 @@ MonoBehaviour:
   value: 0.5
   type: 0
   text: {fileID: 264984039521339874}
+  canvas: {fileID: 0}
 --- !u!225 &8019315078448996019
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4958,6 +4965,7 @@ MonoBehaviour:
   value: 1
   type: 0
   text: {fileID: 4124152424004873315}
+  canvas: {fileID: 0}
 --- !u!225 &1680509493843595371
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5351,7 +5359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &873837102406889173
@@ -5416,7 +5424,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 45
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -7
@@ -5445,7 +5453,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -12.457214, y: 0, z: -15.50708, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6545,6 +6553,7 @@ MonoBehaviour:
   value: 0
   type: 0
   text: {fileID: 7545059759146867750}
+  canvas: {fileID: 0}
 --- !u!225 &6056928426332248157
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7996,6 +8005,7 @@ MonoBehaviour:
   value: -0.5
   type: 1
   text: {fileID: 5101139421794185032}
+  canvas: {fileID: 0}
 --- !u!225 &7638659536986452671
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8286,7 +8296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7281122045876930340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9232,8 +9242,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 70, y: 75}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 99.3313, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2407024593453956110
 CanvasRenderer:
@@ -9297,7 +9307,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 45
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -7
@@ -9427,6 +9437,7 @@ MonoBehaviour:
   value: -0.75
   type: 2
   text: {fileID: 1372927400775094146}
+  canvas: {fileID: 0}
 --- !u!225 &2209135806915262035
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9507,7 +9518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5191852077638184478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12601,6 +12612,7 @@ MonoBehaviour:
   value: 2.5
   type: 0
   text: {fileID: 7811786630643249969}
+  canvas: {fileID: 0}
 --- !u!225 &570473275028092328
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13225,6 +13237,7 @@ MonoBehaviour:
   value: 1
   type: 0
   text: {fileID: 7749659573475005204}
+  canvas: {fileID: 0}
 --- !u!225 &7749659573281338974
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13371,6 +13384,7 @@ MonoBehaviour:
   value: 0.33333334
   type: 0
   text: {fileID: 7749659573590615594}
+  canvas: {fileID: 0}
 --- !u!225 &7749659573326946380
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13783,9 +13797,11 @@ MonoBehaviour:
   vectorXs:
   - {fileID: 7749659573708951670}
   - {fileID: 6620809394405312612}
+  - {fileID: 3383966700334476314}
   vectorYs:
   - {fileID: 7749659573538963616}
   - {fileID: 6415526388779500640}
+  - {fileID: 8957721959637801933}
   matrixX1R: {fileID: 7749659574162932100}
   matrixX2R: {fileID: 7749659574173510763}
   matrixY1R: {fileID: 7749659574049743941}
@@ -13825,6 +13841,7 @@ MonoBehaviour:
   activeSpawns: []
   spawner: {fileID: 0}
   randomAngle: 0
+  startGameAt: 0
 --- !u!114 &3013306281474929743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14792,6 +14809,7 @@ MonoBehaviour:
   value: 0.16666667
   type: 0
   text: {fileID: 7749659573670397263}
+  canvas: {fileID: 0}
 --- !u!225 &7749659573552638838
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15438,6 +15456,7 @@ MonoBehaviour:
   value: 0.6666667
   type: 0
   text: {fileID: 7749659573713825237}
+  canvas: {fileID: 0}
 --- !u!225 &7749659573685949702
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15789,7 +15808,7 @@ MonoBehaviour:
   m_text: LOS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6444526337657483019, guid: 2dc2c9c3a0d5f4940b7a43c63710a55a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16026,6 +16045,7 @@ MonoBehaviour:
   value: 0
   type: 0
   text: {fileID: 7749659574013635226}
+  canvas: {fileID: 0}
 --- !u!225 &7749659573800211118
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -19763,6 +19783,7 @@ MonoBehaviour:
   value: 0.25
   type: 0
   text: {fileID: 7749659574375524585}
+  canvas: {fileID: 0}
 --- !u!225 &7749659574585798035
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -20616,6 +20637,7 @@ MonoBehaviour:
   value: 0.8333333
   type: 0
   text: {fileID: 7749659574783881289}
+  canvas: {fileID: 0}
 --- !u!225 &7749659574824307073
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -20836,6 +20858,7 @@ MonoBehaviour:
   value: 0.75
   type: 0
   text: {fileID: 7749659574786859590}
+  canvas: {fileID: 0}
 --- !u!225 &7749659574918778737
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22725,6 +22748,7 @@ MonoBehaviour:
   value: 1.5
   type: 0
   text: {fileID: 9013125537357196124}
+  canvas: {fileID: 0}
 --- !u!225 &3102937631910756023
 CanvasGroup:
   m_ObjectHideFlags: 0

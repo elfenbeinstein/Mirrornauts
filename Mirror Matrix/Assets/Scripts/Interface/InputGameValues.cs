@@ -19,8 +19,6 @@ public class InputGameValues : MonoBehaviour
     private float numberSlot;
 
     [Header("Vector Values:")]
-    [SerializeField] private TMPro.TextMeshProUGUI vectorx;
-    [SerializeField] private TMPro.TextMeshProUGUI vectory;
     [SerializeField] private TMPro.TextMeshProUGUI[] vectorXs;
     [SerializeField] private TMPro.TextMeshProUGUI[] vectorYs;
 

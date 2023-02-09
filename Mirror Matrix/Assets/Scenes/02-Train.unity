@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCoordinats: {x: 7.5, y: 7.5}
-  textBoxOffset: {x: 1.4, y: -0.4}
+  textBoxOffset: {x: 1.4, y: 0.5}
   mouseCoord: {fileID: 4788304}
 --- !u!1 &1171236926
 GameObject:
@@ -667,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154588132876531795, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5154588133136486351, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
@@ -779,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154588133343607596, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5154588133442149650, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
@@ -799,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5154588133931651441, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5154588133931651441, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8488172247904241301, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}

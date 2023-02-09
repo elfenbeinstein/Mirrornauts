@@ -14,6 +14,7 @@ public class MousePosition : MonoBehaviour
     [SerializeField] Vector2 textBoxOffset;
     [SerializeField] GameObject mouseCoord;
     Vector3 mousePos;
+    TMPro.TextMeshProUGUI textField;
 
     private bool active;
     private bool playerWIN;
@@ -21,6 +22,7 @@ public class MousePosition : MonoBehaviour
     private void Start()
     {
         playerWIN = false;
+        textField = mouseCoord.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Update()
@@ -33,14 +35,15 @@ public class MousePosition : MonoBehaviour
         // if left control is first pressed, check if over the coordinate system --> set active
         if (Input.GetKeyDown(KeyCode.LeftControl) && MouseOverCoordinateSystem())
             SetActive(true);
+
         if (active)
         {
             // if still over coordinate system, display coordinate stuff
             if (MouseOverCoordinateSystem())
             {
                 // display coordinate stuff
-                mouseCoord.GetComponentInChildren<TextMeshProUGUI>().text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
-                mouseCoord.gameObject.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector2(mousePos.x + textBoxOffset.x, mousePos.y + textBoxOffset.y));
+                textField.text = mousePos.x.ToString("F1") + " / " + mousePos.y.ToString("F1");
+                SetTextFieldPosition();
             }
             else // stop being active
                 SetActive(false);
@@ -72,5 +75,15 @@ public class MousePosition : MonoBehaviour
     {
         if (active) SetActive(false);
         playerWIN = true;
+    }
+
+    private void SetTextFieldPosition()
+    {
+        float xValue = mousePos.x + textBoxOffset.x * (mousePos.x / maxCoordinats.x * -1f);
+        float yValue = mousePos.y - textBoxOffset.y - 0.4f;
+        if (mousePos.y < 0) yValue = mousePos.y + textBoxOffset.y;
+
+        mouseCoord.gameObject.transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, 
+            new Vector2(xValue, yValue));
     }
 }
