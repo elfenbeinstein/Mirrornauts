@@ -1416,6 +1416,7 @@ GameObject:
   - component: {fileID: 5363288660175771532}
   - component: {fileID: 1474848028803919556}
   - component: {fileID: 1905596037038056801}
+  - component: {fileID: 6144205669935198486}
   m_Layer: 5
   m_Name: y1_Value
   m_TagString: Untagged
@@ -1540,6 +1541,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &6144205669935198486
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946737134097256337}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1973437811382729902
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,6 +4411,7 @@ GameObject:
   - component: {fileID: 6178101793297812725}
   - component: {fileID: 873837102406889173}
   - component: {fileID: 5353415378317314143}
+  - component: {fileID: 8116180455809018248}
   m_Layer: 5
   m_Name: x_Value
   m_TagString: Untagged
@@ -4522,6 +4536,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &8116180455809018248
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407088272644156310}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3458733900524786635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,6 +5115,7 @@ GameObject:
   - component: {fileID: 9217215949487400251}
   - component: {fileID: 524299979881161694}
   - component: {fileID: 1277443751572647048}
+  - component: {fileID: 5905454089826826873}
   m_Layer: 5
   m_Name: x1_Value
   m_TagString: Untagged
@@ -5213,6 +5240,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &5905454089826826873
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863600864859459559}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3917370052873175485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6590,8 +6629,6 @@ MonoBehaviour:
   _inputGameValues: {fileID: 7749659573348703716}
   highlight: {fileID: 2541571435793652575}
   valuesCanvasGroup:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 5666903957059608737}
   type: 5
 --- !u!222 &856041341517209692
@@ -7438,6 +7475,7 @@ GameObject:
   - component: {fileID: 8163920743369985570}
   - component: {fileID: 2407024593453956110}
   - component: {fileID: 343046037138214658}
+  - component: {fileID: 2522288584957603807}
   m_Layer: 5
   m_Name: y_Value
   m_TagString: Untagged
@@ -7562,6 +7600,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &2522288584957603807
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520894133101837665}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &5577629390980925362
 GameObject:
   m_ObjectHideFlags: 0
@@ -7720,8 +7770,8 @@ CanvasGroup:
   m_GameObject: {fileID: 5581429320913319732}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &5880840069341961001
 GameObject:
@@ -9958,6 +10008,7 @@ GameObject:
   - component: {fileID: 922248913515370520}
   - component: {fileID: 7033108731412486390}
   - component: {fileID: 5347139884972901576}
+  - component: {fileID: 1932008386839039066}
   m_Layer: 5
   m_Name: x2_Value
   m_TagString: Untagged
@@ -10082,6 +10133,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &1932008386839039066
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7524183578852801172}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &7667031726060924800
 GameObject:
   m_ObjectHideFlags: 0

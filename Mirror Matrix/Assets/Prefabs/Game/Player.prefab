@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnergy: 1
-  _stats: {fileID: 11400000, guid: 81fdcad0e1dff204a88a86eb48122acd, type: 2}
   _spaceshipBehaviour: {fileID: 1610532318691264209}
 --- !u!114 &1842644516965951218
 MonoBehaviour:
@@ -233,6 +232,25 @@ MonoBehaviour:
   energyNeeded: 0
   currentHealth: 0
   dashCD: 0
+  costDrehSechstel: 2
+  costDrehViertel: 3
+  costDrehDrittel: 4
+  costDrehHalbe: 6
+  costDrehzweiDrittel: 8
+  costDrehdreiViertel: 9
+  "costDrehf\xFCnfSechstel": 10
+  costDrehEins: 12
+  costDrehFEins: 0
+  costDrehFWurzelDrei: 2
+  costDrehFWurzelZwei: 3
+  costDrehFHalbe: 4
+  costDrehFNull: 6
+  costDrehFMinusHalbe: 8
+  costDrehFMinusWurzelZwei: 9
+  costDrehFMinusWurzelDrei: 10
+  costDrehFMinusEins: 12
+  energySpiegelMultiplier: 1.5
+  energyAdditionMultiplier: 2
 --- !u!1 &7891768324178607007
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +389,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2450319015124833453}
     m_Modifications:
+    - target: {fileID: 2970610817580314278, guid: 811a2ee04e10f9d47a8651af37c09221, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970610817580314278, guid: 811a2ee04e10f9d47a8651af37c09221, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970610817580314278, guid: 811a2ee04e10f9d47a8651af37c09221, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5182991187733610625, guid: 811a2ee04e10f9d47a8651af37c09221, type: 3}
       propertyPath: endV
       value: 

@@ -39,16 +39,16 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         {
             for (int i = 0; i < valuesCanvasGroup.Length; i++)
             {
-                valuesCanvasGroup[i].blocksRaycasts = false;
-                valuesCanvasGroup[i].interactable = false;
+                if (valuesCanvasGroup[i] != null) valuesCanvasGroup[i].blocksRaycasts = false;
+                if (valuesCanvasGroup[i] != null) valuesCanvasGroup[i].interactable = false;
             }
         }
         else if (eventName == "Stop")
         {
             for (int i = 0; i < valuesCanvasGroup.Length; i++)
             {
-                valuesCanvasGroup[i].blocksRaycasts = true;
-                valuesCanvasGroup[i].interactable = true;
+                if (valuesCanvasGroup[i] != null) valuesCanvasGroup[i].blocksRaycasts = true;
+                if (valuesCanvasGroup[i] != null) valuesCanvasGroup[i].interactable = true;
             }
         }
     }
