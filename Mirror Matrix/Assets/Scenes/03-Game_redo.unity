@@ -3980,6 +3980,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.039215688
       objectReference: {fileID: 0}
+    - target: {fileID: 3686573745470311806, guid: a82f769748c3f1f47ba953f23197b113, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9039649515197208718, guid: a82f769748c3f1f47ba953f23197b113, type: 3}
       propertyPath: m_LocalPosition.z
       value: 8
@@ -15127,12 +15131,20 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8948528761357506534, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948528761357506534, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8948528761357506534, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.4094448
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004450580888735800, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
