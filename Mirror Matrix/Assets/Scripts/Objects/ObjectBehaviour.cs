@@ -23,6 +23,7 @@ public class ObjectBehaviour : MonoBehaviour
     [SerializeField] private GameObject _filling;
     [SerializeField] private GameObject _frame;
     [SerializeField] private GameObject parent;
+    [SerializeField] private GameObject numberFrame;
 
     private int round;
     private int countdown;
@@ -38,6 +39,8 @@ public class ObjectBehaviour : MonoBehaviour
     
     public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Quaternion _rotation, TurnManager _script)
     {
+        if (numberFrame != null) numberFrame.SetActive(false);
+
         round = _round;
         countdown = _countdown;
         liftoff = _liftoff;
@@ -52,6 +55,7 @@ public class ObjectBehaviour : MonoBehaviour
         {
             _frame.SetActive(true);
             _filling.SetActive(true);
+            numberFrame.SetActive(true);
 
             countdownRenderer.sprite = _numbers.countdownNumbers[liftoff];
 
@@ -124,6 +128,7 @@ public class ObjectBehaviour : MonoBehaviour
                 countdownRenderer.sprite = _numbers.countdownNumbers[liftoff];
 
                 _filling.SetActive(true);
+                numberFrame.SetActive(true);
 
                 isCounting = false;
                 isLifting = true;
