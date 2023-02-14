@@ -23,7 +23,8 @@ public class ObjectBehaviour : MonoBehaviour
     [SerializeField] private GameObject _filling;
     [SerializeField] private GameObject _frame;
     [SerializeField] private GameObject parent;
-    [SerializeField] private GameObject numberFrame;
+    [SerializeField] private GameObject circleCounting;
+    [SerializeField] private GameObject circleLifting;
 
     private int round;
     private int countdown;
@@ -39,7 +40,8 @@ public class ObjectBehaviour : MonoBehaviour
     
     public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Quaternion _rotation, TurnManager _script)
     {
-        if (numberFrame != null) numberFrame.SetActive(false);
+        if (circleLifting != null) circleLifting.SetActive(false);
+        if (circleCounting != null) circleCounting.SetActive(true);
 
         round = _round;
         countdown = _countdown;
@@ -55,7 +57,8 @@ public class ObjectBehaviour : MonoBehaviour
         {
             _frame.SetActive(true);
             _filling.SetActive(true);
-            numberFrame.SetActive(true);
+            if (circleLifting != null) circleLifting.SetActive(true);
+            if (circleCounting != null) circleCounting.SetActive(false);
 
             countdownRenderer.sprite = _numbers.countdownNumbers[liftoff];
 
@@ -128,7 +131,8 @@ public class ObjectBehaviour : MonoBehaviour
                 countdownRenderer.sprite = _numbers.countdownNumbers[liftoff];
 
                 _filling.SetActive(true);
-                numberFrame.SetActive(true);
+                if (circleLifting != null) circleLifting.SetActive(true);
+                if (circleCounting != null) circleCounting.SetActive(false);
 
                 isCounting = false;
                 isLifting = true;
