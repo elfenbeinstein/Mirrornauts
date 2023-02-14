@@ -19,7 +19,11 @@ public class GameManagement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        else DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Application.targetFrameRate = 60;
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     public static void StartGameMode()

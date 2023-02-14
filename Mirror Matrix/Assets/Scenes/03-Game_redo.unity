@@ -13587,9 +13587,9 @@ MonoBehaviour:
   win: "Gefahrenzone verlassen\u2026 Kontakt zu Erde aufgebaut.\r\nBitte folgenden
     Code an Homebase \xFCbermitteln.\r"
   twin: ERROR-NULL
-  energy: "Energiereserven zu niedrig f\xFCr diesen Sprung.\nBitte "
+  energy: "Energiereserven zu niedrig f\xFCr diesen Sprung."
   tenergy: ERROR-71
-  calculation: Der Bordcomputer kann den Kurs nur in Spiegelmatritzen und Drehmatritzen
+  calculation: Der Bordcomputer kann den Kurs nur in Spiegelmatrizen und Drehmatrizen
     berechnen.
   tcalculation: ERROR-2225
   values: "Werte sind nicht komplett ausgef\xFCllt."
