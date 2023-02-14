@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 1423993106558104129}
   - component: {fileID: 6493570216367203845}
   - component: {fileID: 2127463238099205952}
+  - component: {fileID: 2817304890351678949}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -433,8 +434,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20784315, g: 0.227451, b: 0.2784314, a: 0.2901961}
-  m_RaycastTarget: 0
+  m_Color: {r: 0.20784315, g: 0.227451, b: 0.2784314, a: 1}
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -450,6 +451,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2817304890351678949
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858157282887233627}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2754309928511054753
 GameObject:
   m_ObjectHideFlags: 0

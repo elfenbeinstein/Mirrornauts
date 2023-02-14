@@ -78,21 +78,7 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        /*
-        switch (type)
-        {
-            case ValueTypes.Default:
-                break;
-            case ValueTypes.Wurzel2:
-                value = Mathf.Sqrt(2) / 2;
-                if (hasMinus) value *= -1;
-                break;
-            case ValueTypes.Wurzel3:
-                value = Mathf.Sqrt(3) / 2;
-                if (hasMinus) value *= -1;
-                break;
-        }
-        */
+        if (!canvasGroup.interactable) return;
 
         // make sure field is at the very front 
         canvasGroup.alpha = 0.8f;
@@ -108,7 +94,7 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     // gets called on every frame while object is being dragged
     public void OnDrag(PointerEventData eventData)
     {
-        //rectTransform.anchoredPosition += eventData.delta;
+        if (!canvasGroup.interactable) return;
 
         Vector2 position;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -122,11 +108,11 @@ public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!canvasGroup.interactable) return;
         rectTransform.anchoredPosition = originalPosition;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
         EventManager.Instance.EventGo("DRAG", "Stop");
         EventManager.Instance.EventGo("AUDIO", "PlayDrag");
-        //GameManagement._audioManager._sfxSounds.PlayDrag();
     }
 }

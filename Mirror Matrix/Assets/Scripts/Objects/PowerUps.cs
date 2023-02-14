@@ -37,4 +37,10 @@ public class PowerUps : MonoBehaviour
                 break;
         }
     }
+
+    public bool IsShield()
+    {
+        if (type == PowerupType.Shield) return true;
+        else return false;
+    }
 }

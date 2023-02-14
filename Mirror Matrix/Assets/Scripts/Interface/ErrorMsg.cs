@@ -42,6 +42,9 @@ public class ErrorMsg : MonoBehaviour
 
     List<string> errors = new List<string>();
     List<string> terrors = new List<string>();
+
+    [SerializeField] List<CanvasGroup> canvasGroups;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,6 +105,11 @@ public class ErrorMsg : MonoBehaviour
                 closeButton.SetActive(false);
             }
         }
+
+        foreach (CanvasGroup group in canvasGroups)
+        {
+            group.interactable = false;
+        }
     }
 
     public void ShowDestroy()
@@ -116,6 +124,10 @@ public class ErrorMsg : MonoBehaviour
     public void CloseError()
     {
         messageObject.SetActive(false);
+        foreach (CanvasGroup group in canvasGroups)
+        {
+            group.interactable = true;
+        }
     }
 
     IEnumerator WaitForDestroy()

@@ -131,6 +131,8 @@ public class TurnManager : MonoBehaviour
 
         bool sndHzd = false; // send hazard message;
 
+        bool collectsShield = false;
+
         // go through all active spawns and check for Collisions
         for (int i = activeSpawns.Count - 1; i >= 0; i--)
         {
@@ -138,9 +140,11 @@ public class TurnManager : MonoBehaviour
             {
                 if (activeSpawns[i].isHazard) sndHzd = true;
                 else EventManager.Instance.EventGo("PLAYER", "HitObject", activeSpawns[i]);
+
+                if (!activeSpawns[i].isHazard && activeSpawns[i].gameObject.GetComponent<PowerUps>()!= null && activeSpawns[i].gameObject.GetComponent<PowerUps>().IsShield()) collectsShield = true;
             }
         }
-        if (sndHzd) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
+        if (sndHzd && !collectsShield) EventManager.Instance.EventGo("PLAYER", "HitHazard", 1);
 
         if (spawnsToDelete.Count != 0)
         {

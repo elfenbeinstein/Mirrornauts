@@ -825,6 +825,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5899639478394100238, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8488172247904241301, guid: 972ccdd046c9ab043bf8e8a07fba9665, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1112,6 +1116,18 @@ PrefabInstance:
     - target: {fileID: 7330596538842300100, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686836023251446006, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686836023251446006, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: m_Color.g
+      value: 0.72771275
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686836023251446006, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: m_Color.r
+      value: 0.70952296
       objectReference: {fileID: 0}
     - target: {fileID: 8686836023251446006, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: m_SortingLayer
