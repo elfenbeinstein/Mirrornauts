@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private TMPro.TextMeshProUGUI shieldText;
     [HideInInspector] public int dashAmount;
     [HideInInspector] public bool shieldActive;
     [HideInInspector] public int energy;
@@ -14,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     private int shieldCD;
     private bool dashCountdown;
     [HideInInspector] public int dashCD;
+    private int turnCounter = 0;
 
     [Space]
     [Header("Kosten für Drehmatrix Radianten")]
@@ -50,6 +52,7 @@ public class PlayerStats : MonoBehaviour
         dashAmount = 1;
         shieldActive = false;
         currentHealth = 1;
+        if (shieldText != null) shieldText.gameObject.SetActive(false);
 
         EventManager.Instance.AddEventListener("TURN", TurnListener);
     }
@@ -67,6 +70,8 @@ public class PlayerStats : MonoBehaviour
 
     public void NextTurn()
     {
+        turnCounter++;
+
         // countdown dash --> if dashCD is zero, turn on dash again
         if (dashCountdown)
         {
@@ -92,6 +97,7 @@ public class PlayerStats : MonoBehaviour
             if (shieldCD == 0)
             {
                 shieldActive = false;
+                if (shieldText != null) shieldText.gameObject.SetActive(false);
                 EventManager.Instance.EventGo("SHIELD", "Stop");
             }
         }
@@ -116,6 +122,11 @@ public class PlayerStats : MonoBehaviour
         shieldActive = true;
         shieldCD = 4;
         EventManager.Instance.EventGo("SHIELD", "Start");
+        if (shieldText != null)
+        {
+            shieldText.gameObject.SetActive(true);
+            shieldText.text = "Schild aktiv bis Runde " + (turnCounter + 3).ToString("00");
+        }
     }
 
     public void ResetFromManager()
