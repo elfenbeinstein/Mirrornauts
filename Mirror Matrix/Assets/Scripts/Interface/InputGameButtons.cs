@@ -58,7 +58,12 @@ public class InputGameButtons : MonoBehaviour
     {
         // elfenbeinstein: DELETE for final build
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.A)) ActivateDash(); _playerStats.dashAmount = 1;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            ActivateDash(); 
+            _playerStats.dashAmount = 1;
+        }
+
         if (Input.GetKeyDown(KeyCode.S)) EventManager.Instance.EventGo("TURN", "Shield");
 #endif
     }
@@ -112,7 +117,6 @@ public class InputGameButtons : MonoBehaviour
             {
                 anim.SetTrigger("Shake");
                 EventManager.Instance.EventGo("AUDIO", "PlayError");
-                //GameManagement._audioManager._sfxSounds.PlayError();
             }
         }
     }

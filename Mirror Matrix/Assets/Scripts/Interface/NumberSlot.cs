@@ -21,11 +21,13 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     [Tooltip("select all canvas groups that should not be interactable while dragging")]
     [SerializeField] private CanvasGroup[] valuesCanvasGroup;
     [SerializeField] private SlotType type;
+    private CanvasGroup canvas;
 
     private void Start()
     {
         highlight.SetActive(false);
         EventManager.Instance.AddEventListener("DRAG", DragListener);
+        canvas = GetComponent<CanvasGroup>();
     }
 
     private void OnDestroy()
@@ -35,6 +37,8 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
     private void DragListener(string eventName, object param)
     {
+        if (canvas != null && !canvas.interactable) return;
+
         if (eventName == "Start")
         {
             for (int i = 0; i < valuesCanvasGroup.Length; i++)
@@ -55,6 +59,8 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (canvas != null && !canvas.interactable) return;
+
         if (eventData.pointerDrag != null)
         {
             float value = eventData.pointerDrag.GetComponent<NumberDrag>().value;
@@ -75,6 +81,8 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (canvas != null && !canvas.interactable) return;
+
         if (eventData.pointerDrag != null)
         {
             highlight.SetActive(true);
@@ -83,6 +91,8 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (canvas != null && !canvas.interactable) return;
+
         if (eventData.pointerDrag != null)
         {
             highlight.SetActive(false);

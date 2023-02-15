@@ -243,6 +243,19 @@ public class InterfaceManager : MonoBehaviour
         GameManagement.LoadStartMenu();
     }
 
+    public void QuitApplication()
+    {
+        EventManager.Instance.EventGo("DATA", "Death");
+        EventManager.Instance.EventGo("DATA", "Save");
+        StartCoroutine(WaitToClose());
+    }
+
+    IEnumerator WaitToClose()
+    {
+        yield return new WaitForEndOfFrame();
+        GameManagement.QuitGame();
+    }
+
     public void ScalesButton()
     {
         if (scalesText.text == "yes")

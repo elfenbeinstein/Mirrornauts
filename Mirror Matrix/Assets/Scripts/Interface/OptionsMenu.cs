@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] GameObject warningObj;
+    [SerializeField] GameObject closeWarnObj;
 
     [SerializeField]
     private AudioMixer _mixer;
@@ -26,6 +27,12 @@ public class OptionsMenu : MonoBehaviour
     {
         if (warningObj.activeInHierarchy == true) { warningObj.SetActive(false); }
         else { warningObj.SetActive(true); }
+    }
+
+    public void ToggleQuitWarning()
+    {
+        if (closeWarnObj.activeInHierarchy == true) { closeWarnObj.SetActive(false); }
+        else { closeWarnObj.SetActive(true); }
     }
     public void SetLevelSFX(float sliderValue) // called from menu slider
     {
