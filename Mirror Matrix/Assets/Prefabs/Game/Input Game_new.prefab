@@ -11523,6 +11523,7 @@ GameObject:
   - component: {fileID: 7749659573348703738}
   - component: {fileID: 3013306281474929743}
   - component: {fileID: 651985793834219187}
+  - component: {fileID: 931380879478675977}
   m_Layer: 5
   m_Name: Input Game_new
   m_TagString: Untagged
@@ -11703,6 +11704,39 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &931380879478675977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749659573348703736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3251e8e06cc274aaf97aaab59d0378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calcObjects:
+  - {fileID: 501643220139764103}
+  - {fileID: 5880840069341961001}
+  - {fileID: 5113132501163456528}
+  valueFields:
+  - {fileID: 7749659573708951670}
+  - {fileID: 7749659573538963616}
+  - {fileID: 7749659574162932100}
+  - {fileID: 7749659574173510763}
+  - {fileID: 7749659574049743941}
+  - {fileID: 7749659573637133586}
+  - {fileID: 6620809394405312612}
+  - {fileID: 6415526388779500640}
+  - {fileID: 5353415378317314143}
+  - {fileID: 343046037138214658}
+  - {fileID: 3383966700334476314}
+  - {fileID: 8957721959637801933}
+  - {fileID: 1277443751572647048}
+  - {fileID: 5347139884972901576}
+  - {fileID: 1905596037038056801}
+  - {fileID: 2401175363005799848}
 --- !u!1 &7749659573356158231
 GameObject:
   m_ObjectHideFlags: 0

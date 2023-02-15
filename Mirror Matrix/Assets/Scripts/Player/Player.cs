@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxEnergy;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
     private PlayerStats _playerStats;
-    [SerializeField] private InterfaceManager interfaceManager;
+    [SerializeField] private DisplayLastCalculation displayLastCalc;
 
     void Start()
     {
@@ -99,6 +99,6 @@ public class Player : MonoBehaviour
         _spaceshipBehaviour.ExplosionAnimation();
 
         // set display back to last calc:
-        interfaceManager.SetToLastCalculation();
+        displayLastCalc.DisplayCalc();
     }
 }

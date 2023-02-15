@@ -16680,6 +16680,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7749659573933843100, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
   m_PrefabInstance: {fileID: 861915911}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &861915915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 931380879478675977, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
+  m_PrefabInstance: {fileID: 861915911}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3251e8e06cc274aaf97aaab59d0378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &872170638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1586516748109109737, guid: e453d9a90fd03974597ae99424c62a18, type: 3}
@@ -31884,6 +31895,10 @@ PrefabInstance:
       propertyPath: costDrehFMinusWurzelZwei
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2408256095781233295, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: displayLastCalc
+      value: 
+      objectReference: {fileID: 861915915}
     - target: {fileID: 2408256095781233295, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: interfaceManager
       value: 

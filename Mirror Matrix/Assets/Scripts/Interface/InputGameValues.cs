@@ -374,39 +374,4 @@ public class InputGameValues : MonoBehaviour
     {
         _spaceshipBehaviour.ResetRotation();
     }
-    
-    public void SetToLastCalculation(CalculationType t, float[] startVector, float[] calcVector)
-    {
-        foreach (TMPro.TextMeshProUGUI field in vectorXs)
-        {
-            field.text = startVector[0].ToString("F2");
-        }
-        foreach (TMPro.TextMeshProUGUI field in vectorYs)
-        {
-            field.text = startVector[1].ToString("F2");
-        }
-        switch (t)
-        {
-            case CalculationType.Addition:
-                addX.text = calcVector[0].ToString("F2");
-                addY.text = calcVector[1].ToString("F2");
-                break;
-            case CalculationType.MatrixMultiplicationF:
-                mFreeX1R.text = calcVector[0].ToString("F2");
-                mFreeX2R.text = calcVector[1].ToString("F2");
-                mFreeY1R.text = calcVector[2].ToString("F2");
-                mFreeY2R.text = calcVector[3].ToString("F2");
-                break;
-            case CalculationType.MatrixMultiplicationR:
-                matrixX1R.text = calcVector[0].ToString("F2");
-                matrixX2R.text = calcVector[1].ToString("F2");
-                matrixY1R.text = calcVector[2].ToString("F2");
-                matrixY2R.text = calcVector[3].ToString("F2");
-                break;
-            case CalculationType.ScalarMultiplication:
-                break;
-            default:
-                break;
-        }
-    }
 }
