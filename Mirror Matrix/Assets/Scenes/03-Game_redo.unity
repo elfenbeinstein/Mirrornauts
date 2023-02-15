@@ -29850,7 +29850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2001952707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29889,18 +29889,18 @@ MonoBehaviour:
   story1: "Autopilot besch\xE4digt\u2026 manuelle Kursberechnung n\xF6tig.\r\nGefahrenzonen
     auf dem Sensor erkannt.\r\n\nSiehe [HILFE] f\xFCr mehr Informationen\u2026\nBitte
     Ausweichman\xF6ver beginnen!\r\n"
-  tstory1: ERROR-05837
+  tstory1: ACHTUNG
   story2: "Sparsamer Umgang der Energiereserven geraten.\nBisher zur\xFCckgelegte
     Distanz:\n10%"
-  tstory2: ERROR-9902
+  tstory2: ACHTUNG
   story3: "Rechenzentrum \xFCberhitzt\u2026 Gradienten k\xF6nnen nicht mehr vorberechnet
     werden.\r\nDirekte Eingabe freigeschaltet.\r"
-  tstory3: ERROR-177
+  tstory3: ACHTUNG
   death: "Kritischer Schaden! Zerst\xF6rung unmittelbar.\n\nMission fehlgeschlagen..."
   tdeath: ERROR-64207
   win: "Gefahrenzone verlassen\u2026 Kontakt zu Erde aufgebaut.\r\nBitte folgenden
     Code an Homebase \xFCbermitteln.\r"
-  twin: ERROR-NULL
+  twin: "GL\xDCCKWUNSCH"
   energy: "Energiereserven zu niedrig f\xFCr diesen Sprung."
   tenergy: ERROR-71
   calculation: Der Bordcomputer kann den Kurs nur in Spiegelmatrizen und Drehmatrizen
