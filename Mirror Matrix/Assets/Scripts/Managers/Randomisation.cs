@@ -16,6 +16,8 @@ public class Randomisation : MonoBehaviour
     [SerializeField] private float randomDispersion = 0.4f;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
 
+    [SerializeField] private InputGameValues gameValues;
+
     //[SerializeField] private float testAngle;
 
 
@@ -53,6 +55,7 @@ public class Randomisation : MonoBehaviour
             float[] vector = new float[] { spaceshipStartPositions[random].x + Random.Range(-randomDispersion, randomDispersion), spaceshipStartPositions[random].y + Random.Range(-randomDispersion, randomDispersion) };
             _spaceshipBehaviour.MoveSpaceship(vector);
             _spaceshipBehaviour.DrawStartLine();
+            gameValues.WriteNewSpaceshipPos(vector[0], vector[1]);
         }
     }
 }

@@ -324,4 +324,30 @@ public class InputGameButtons : MonoBehaviour
             EventManager.Instance.EventGo("ENERGY", "EnergyCost");
         }
     }
+
+    public void SetToLastCalc(CalculationType t)
+    {
+        switch (t)
+        {
+            case CalculationType.Addition:
+                addition.SetActive(true);
+                multiplicationFree.SetActive(false);
+                multiplicationRad.SetActive(false);
+                break;
+            case CalculationType.MatrixMultiplicationF:
+                addition.SetActive(false);
+                multiplicationFree.SetActive(true);
+                multiplicationRad.SetActive(false);
+                break;
+            case CalculationType.MatrixMultiplicationR:
+                addition.SetActive(false);
+                multiplicationFree.SetActive(false);
+                multiplicationRad.SetActive(true);
+                break;
+            case CalculationType.ScalarMultiplication:
+                break;
+            default:
+                break;
+        }
+    }
 }

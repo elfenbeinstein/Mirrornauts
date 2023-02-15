@@ -46,6 +46,22 @@ public class InterfaceManager : MonoBehaviour
     private bool additionValue;
     private bool calculationSuccessful;
     private CalculationType calcType;
+
+    public struct LastCalc
+    {
+        public CalculationType calc;
+        public float[] startV;
+        public float[] calcV;
+
+        public LastCalc(CalculationType type, float[] start, float[] calculationV)
+        {
+            calc = type;
+            startV = start;
+            calcV = calculationV;
+        }
+    }
+
+    private LastCalc lastCalc = new LastCalc(CalculationType.Addition, new float[] {0,0 }, new float[] { 0, 0 });
     
     void Start()
     {
@@ -204,6 +220,8 @@ public class InterfaceManager : MonoBehaviour
             spaceshipTopResult = _maths.Addition(spaceshipTop, addV, additionValue);
             spaceshipRightResult = _maths.Addition(spaceshipRight, addV, additionValue);
             calculationSuccessful = true;
+
+            lastCalc = new LastCalc(calcType, startV, addV);
         }
         else if (calcType == CalculationType.MatrixMultiplicationF || calcType == CalculationType.MatrixMultiplicationR)
         {
@@ -211,6 +229,7 @@ public class InterfaceManager : MonoBehaviour
             spaceshipTopResult = _maths.Multiplication(spaceshipTop, matrix);
             spaceshipRightResult = _maths.Multiplication(spaceshipRight, matrix);
             calculationSuccessful = true;
+            lastCalc = new LastCalc(calcType, startV, matrix);
         }
         else if (calcType == CalculationType.ScalarMultiplication)
         {
@@ -218,12 +237,20 @@ public class InterfaceManager : MonoBehaviour
             spaceshipTopResult = _maths.ScalarMultiplication(spaceshipTop, scalar);
             spaceshipRightResult = _maths.ScalarMultiplication(spaceshipRight, scalar);
             calculationSuccessful = true;
+            lastCalc = new LastCalc(calcType, startV, new float[] { scalar });
         }
         else
         {
             Debug.Log("error calculation");
             calculationSuccessful = false;
         }
+    }
+
+
+    public void SetToLastCalculation()
+    {
+        _buttons.SetToLastCalc(lastCalc.calc);
+        _inputG.SetToLastCalculation(lastCalc.calc, lastCalc.startV, lastCalc.calcV);
     }
 
     public bool GameIsReady()

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxEnergy;
     [SerializeField] private SpaceshipBehaviour _spaceshipBehaviour;
     private PlayerStats _playerStats;
-
+    [SerializeField] private InterfaceManager interfaceManager;
 
     void Start()
     {
@@ -97,5 +97,8 @@ public class Player : MonoBehaviour
         EventManager.Instance.EventGo("ERROR", "Death", 3);
         //play explosion animation
         _spaceshipBehaviour.ExplosionAnimation();
+
+        // set display back to last calc:
+        interfaceManager.SetToLastCalculation();
     }
 }

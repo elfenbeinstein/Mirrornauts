@@ -37,6 +37,7 @@ public class ErrorMsg : MonoBehaviour
     [SerializeField] GameObject deathButton;
     [SerializeField] GameObject certificateButton;
     [SerializeField] GameObject closeButton;
+    [SerializeField] GameObject toggleDeathButton;
 
     [SerializeField] private float waitForDestroy = 1.5f;
 
@@ -75,6 +76,7 @@ public class ErrorMsg : MonoBehaviour
         title.text = terrors[0];
         description.text = errors[0];
         messageObject.SetActive(true);
+        if (toggleDeathButton != null) toggleDeathButton.SetActive(false);
     }
 
     private void OnDestroy()
@@ -119,6 +121,22 @@ public class ErrorMsg : MonoBehaviour
         messageObject.SetActive(true);
         deathButton.SetActive(true);
         closeButton.SetActive(false);
+
+        if (toggleDeathButton != null) toggleDeathButton.SetActive(true);
+    }
+
+    public void ToggleDeath()
+    {
+        if (messageObject.activeInHierarchy)
+        {
+            messageObject.SetActive(false);
+            deathButton.SetActive(false);
+        }
+        else
+        {
+            messageObject.SetActive(true);
+            deathButton.SetActive(true);
+        }
     }
 
     public void CloseError()

@@ -11690,6 +11690,7 @@ MonoBehaviour:
   - {x: -3, y: -3, z: 0}
   randomDispersion: 0
   _spaceshipBehaviour: {fileID: 0}
+  gameValues: {fileID: 7749659573348703716}
 --- !u!225 &651985793834219187
 CanvasGroup:
   m_ObjectHideFlags: 0
