@@ -31,6 +31,8 @@ public class SpaceshipBehaviour : MonoBehaviour
     private Maths _maths;
 
     [SerializeField] private GameObject warningText;
+    [SerializeField] private Animator anim;
+    float[] result;
 
     private void Start()
     {
@@ -117,12 +119,6 @@ public class SpaceshipBehaviour : MonoBehaviour
             float scaleY = Vector3.Distance(topPos, shipPos);
             float scaleX = _maths.CalculateScaleX(rightPos, topPos);
             spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
-
-            /*
-            Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
-            Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
-            Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
-            */
         }
 
         // line renderer update:
@@ -134,48 +130,23 @@ public class SpaceshipBehaviour : MonoBehaviour
         endV.SetPosition(1, position);
     }
 
-    public void UpdateSpaceshipG(float[] vectorResult, float[] newTop, float[] newRight)
+    public void UpdateSpaceshipG(float[] vectorResult)
+    {
+        result = vectorResult;
+        anim.SetTrigger("spaceshipBlink");
+    }
+
+    public void MoveAfterAnim()
     {
         // move spaceship
-        rb.MovePosition(new Vector2(vectorResult[0], vectorResult[1]));
-        endPosition = new Vector3(vectorResult[0], vectorResult[1], 0);
+        rb.MovePosition(new Vector2(result[0], result[1]));
+        endPosition = new Vector3(result[0], result[1], 0);
         watchForEnd = true;
-
-        if (scales)
-        {
-            // rotate based on new position
-            topPos = new Vector3(newTop[0], newTop[1], 0);
-            Vector3 shipPos = new Vector3(vectorResult[0], vectorResult[1], 0);
-            float rotation = _maths.CalculateRotation(topPos, shipPos);
-            spaceship.transform.eulerAngles = new Vector3(0, 0, rotation);
-
-            // scale based on calculation
-            rightPos = new Vector3(newRight[0], newRight[1], 0);
-            float scaleY = Vector3.Distance(topPos, shipPos);
-            float scaleX = _maths.CalculateScaleX(rightPos, topPos);
-            spaceship.transform.localScale = new Vector3(scaleX, scaleY, 1);
-
-            /*
-            Debug.Log($"new spaceshipPosition = {spaceship.transform.position.x}, {spaceship.transform.position.y}");
-            Debug.Log($"new topPos should be = {topPos.x}, {topPos.y} with scaleY = {scaleY}");
-            Debug.Log($"Right Pos should be: {rightPos.x}, {rightPos.y} with scaleX = {scaleX}");
-            */
-        }
 
         // line renderer update:
         endVObject.SetActive(true);
-        var position = new Vector3(vectorResult[0], vectorResult[1], 0);
+        var position = new Vector3(result[0], result[1], 0);
         endV.SetPosition(1, position);
-    }
-
-    [ContextMenu("test position values")]
-    public void TestPositions()
-    {
-        float[] topPos = ShipTopCoordinates();
-        float[] rightPos = ShipRightCoordinates();
-
-        Debug.Log($"top pos = {topPos[0]}, {topPos[1]}");
-        Debug.Log($"right pos = {rightPos[0]}, {rightPos[1]}");
     }
 
     public float[] ShipTopCoordinates()
@@ -218,11 +189,6 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     public void ResetSpaceshipFromBorder()
     {
-        /*
-        float[] value = new float[] { 0, 0 };
-        MoveSpaceship(value);
-        */
-
         // activate warning text
         if (warningText != null) warningText.SetActive(true);
     }
@@ -243,18 +209,4 @@ public class SpaceshipBehaviour : MonoBehaviour
         //Plays Explosion on Death
         explosion.SetActive(true);
     }
-
-    /* -- obsolete, first version without spaceship object
-public void UpdateDisplayFreeFlow(float[] startVector, float[] endVector)
-{
-    // using line renderer:
-    startVObject.SetActive(true);
-    endVObject.SetActive(true);
-
-    var position = new Vector3(startVector[0] * scaleMultiplier, startVector[1] * scaleMultiplier, 0);
-    startV.SetPosition(1, position);
-
-    position = new Vector3(endVector[0] * scaleMultiplier, endVector[1] * scaleMultiplier, 0);
-    endV.SetPosition(1, position);
-}*/
-    }
+}

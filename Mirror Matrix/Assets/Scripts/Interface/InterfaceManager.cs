@@ -114,7 +114,7 @@ public class InterfaceManager : MonoBehaviour
             else
             {
                 _inputG.WriteNewSpaceshipPos(resultV[0], resultV[1]);
-                _spaceshipBehaviour.UpdateSpaceshipG(resultV, spaceshipTopResult, spaceshipRightResult);
+                _spaceshipBehaviour.UpdateSpaceshipG(resultV);
                 _inputG.ClearMatrix();
             }
         }
