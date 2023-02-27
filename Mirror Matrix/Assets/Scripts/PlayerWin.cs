@@ -17,6 +17,7 @@ public class PlayerWin : MonoBehaviour
 
     [SerializeField] GameObject[] disableVisuals;
     [SerializeField] private GameObject winBG;
+    [SerializeField] private Border_Behaviour border;
     
     private void Start()
     {
@@ -59,6 +60,7 @@ public class PlayerWin : MonoBehaviour
         EventManager.Instance.EventGo("ERROR", "Win", 4);
 
         certificate.SetUpValues();
+        border.win = true;
 
         //Turns off al BG visuals
         foreach (GameObject obj in disableVisuals) { obj.SetActive(false); }

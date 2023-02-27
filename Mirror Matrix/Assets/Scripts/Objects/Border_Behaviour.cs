@@ -13,6 +13,7 @@ public class Border_Behaviour : MonoBehaviour
     [Tooltip("If isBorder is true the object is an object the player must not touch. " +
         "If it's false it is the playing field the spaceship must not leave.")]
     [SerializeField] private bool isBorder;
+    public bool win;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,7 +29,7 @@ public class Border_Behaviour : MonoBehaviour
         // if it leaves the playing field
         if (!isBorder)
         {
-            EventManager.Instance.EventGo("PLAYER", "LeftField");
+            if (!win) EventManager.Instance.EventGo("PLAYER", "LeftField");
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Certificate : MonoBehaviour
@@ -24,6 +25,7 @@ public class Certificate : MonoBehaviour
 
     //public float testTime;
     public string defaultText;
+    private Animator anim;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class Certificate : MonoBehaviour
         //enterName.SetActive(false);
         //display.SetActive(false);
         defaultText = nameInput.text;
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void LoadMenu()
@@ -90,10 +93,30 @@ public class Certificate : MonoBehaviour
         enterName.SetActive(true);
     }
 
+    public void SaveNameButton()
+    {
+        //check if input leerzeichen
+        bool validInput = false;
+
+        for (int i = 0; i < nameInput.text.Length; i++)
+        {
+            if (char.IsLetter(nameInput.text[i])) validInput = true;
+        }
+
+        //animation falsch
+        if (validInput)
+        {
+            SaveName();
+        }
+        else
+        {
+            EventManager.Instance.EventGo("AUDIO", "PlayError");
+            anim.Play("certificate_Shake");
+        }
+    }
+
     public void SaveName()
     {
-        if (nameInput.text == "" || nameInput.text == defaultText) return;
-
         EventManager.Instance.EventGo("DATA", "Name", nameInput.text);
 
         display.SetActive(true);
