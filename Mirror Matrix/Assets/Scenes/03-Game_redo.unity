@@ -16979,7 +16979,7 @@ PrefabInstance:
       objectReference: {fileID: 587066955}
     - target: {fileID: 7749659573348703738, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: startGameAt
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7749659573348703738, guid: 5589fe1110472a04887659cac8e7e0c4, type: 3}
       propertyPath: spawners.Array.data[0]
