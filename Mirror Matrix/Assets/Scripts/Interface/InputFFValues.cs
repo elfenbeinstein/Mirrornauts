@@ -64,6 +64,12 @@ public class InputFFValues : MonoBehaviour
         resultX.text = "";
         resultY.text = "";
         additionValue = true;
+
+        x1Value = true;
+        x2Value = true;
+        y1Value = true;
+        y2Value = true;
+
         _maths = GetComponent<Maths>();
 
         if (warningText != null) warningText.SetActive(false);
@@ -133,6 +139,25 @@ public class InputFFValues : MonoBehaviour
 
         resultX.text = "";
         resultY.text = "";
+
+        additionValue = true;
+        x1Value = true;
+        x2Value = true;
+        y1Value = true;
+        y2Value = true;
+
+        #region Text Fields
+        vectorAddx.text = "";
+        vectorAddy.text = "";
+        matrixX1F.text = "";
+        matrixX2F.text = "";
+        matrixY1F.text = "";
+        matrixY2F.text = "";
+        matrixX1R.text = "";
+        matrixX2R.text = "";
+        matrixY1R.text = "";
+        matrixY2R.text = "";
+        #endregion
 
         float[] vector = new float[] { 0, 0 };
         _spaceshipBehaviour.MoveSpaceship(vector);

@@ -36,7 +36,11 @@ public class InputFFButtons : MonoBehaviour
     [SerializeField] private GameObject y2Minus;
 
     private InputFFValues _inputFFValues;
-
+    [SerializeField] private List<GameObject> resetObjects;
+    [SerializeField] private List<bool> resetBools;
+    [SerializeField] private List<TextMeshProUGUI> resetTexts;
+    [SerializeField] private List<string> texts;
+ 
     private void Start()
     {
         _inputFFValues = GetComponent<InputFFValues>();
@@ -60,6 +64,18 @@ public class InputFFButtons : MonoBehaviour
 
         dropdown = dropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
         if (dropdown == null) Debug.Log(gameObject + "can't find dropdown");
+
+        resetBools = new List<bool>();
+        texts = new List<string>();
+
+        for (int i = 0; i < resetObjects.Count; i++)
+        {
+            resetBools.Add(resetObjects[i].activeInHierarchy);
+        }
+        for (int i = 0; i < resetTexts.Count; i++)
+        {
+            texts.Add(resetTexts[i].text);
+        }
     }
 
     // called from menu
@@ -191,6 +207,18 @@ public class InputFFButtons : MonoBehaviour
         {
             y2Minus.SetActive(true);
             _inputFFValues.y2Value = false;
+        }
+    }
+
+    public void ResetAllValues()
+    {
+        for (int i = 0; i < resetObjects.Count; i++)
+        {
+            resetObjects[i].SetActive(resetBools[i]);
+        }
+        for (int i = 0; i < resetTexts.Count; i++)
+        {
+            resetTexts[i].text = texts[i];
         }
     }
 }
