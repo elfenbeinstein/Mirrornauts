@@ -19,6 +19,8 @@ public class ObjectBehaviour : MonoBehaviour
     [SerializeField] private float offset;
     [SerializeField] private Transform parentNumber;
     [SerializeField] private Transform icon;
+    private SpriteRenderer iconSprite;
+    [SerializeField] [Range(0, 1)] private float iconAlpha;
 
     [SerializeField] private GameObject _filling;
     [SerializeField] private GameObject _frame;
@@ -76,6 +78,14 @@ public class ObjectBehaviour : MonoBehaviour
 
             isCounting = true;
             isLifting = false;
+
+            if (!isHazard)
+            {
+                iconSprite = icon.GetComponentInChildren<SpriteRenderer>();
+                Color color = iconSprite.color;
+                color.a = iconAlpha;
+                iconSprite.color = color;
+            }
         }
 
         if (_turnManager.randomAngle != 0)
@@ -136,6 +146,13 @@ public class ObjectBehaviour : MonoBehaviour
 
                 isCounting = false;
                 isLifting = true;
+                if (!isHazard)
+                {
+                    if (iconSprite == null) iconSprite = icon.GetComponentInChildren<SpriteRenderer>();
+                    Color color = iconSprite.color;
+                    color.a = 1;
+                    iconSprite.color = color;
+                }
 
                 if (touched)
                 {

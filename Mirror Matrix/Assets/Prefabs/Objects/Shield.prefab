@@ -483,6 +483,7 @@ MonoBehaviour:
   offset: 0.4
   parentNumber: {fileID: 6083405299970228879}
   icon: {fileID: 7135737194875002658}
+  iconAlpha: 0.24
   _filling: {fileID: 194431929642987870}
   _frame: {fileID: 8963551784792428423}
   parent: {fileID: 6083405301662348681}
