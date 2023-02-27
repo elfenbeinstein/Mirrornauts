@@ -14,6 +14,9 @@ public class PlayerWin : MonoBehaviour
 
     [SerializeField] private int story2;
     [SerializeField] private int story3;
+
+    [SerializeField] GameObject[] disableVisuals;
+    [SerializeField] private GameObject winBG;
     
     private void Start()
     {
@@ -56,5 +59,10 @@ public class PlayerWin : MonoBehaviour
         EventManager.Instance.EventGo("ERROR", "Win", 4);
 
         certificate.SetUpValues();
+
+        //Turns off al BG visuals
+        foreach (GameObject obj in disableVisuals) { obj.SetActive(false); }
+
+        winBG.SetActive(true);
     }
 }
