@@ -89,6 +89,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 
     public void MoveSpaceship(float[] vector)
     {
+        if (warningText != null) warningText.SetActive(false);
         spaceship.transform.position = new Vector3(vector[0], vector[1], 0);
     }
 
