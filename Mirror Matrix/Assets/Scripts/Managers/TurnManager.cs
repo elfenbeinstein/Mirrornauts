@@ -8,6 +8,7 @@ using UnityEngine;
 /// 2) holds reference to all active spawns
 /// 3) checks if active spawns are touching player and then sends message if so
 /// </summary>
+
 public class TurnManager : MonoBehaviour
 {
     public int turnCounter;
@@ -60,17 +61,14 @@ public class TurnManager : MonoBehaviour
                 else
                     EventManager.Instance.EventGo("ERROR", "Error", 7);
                 EventManager.Instance.EventGo("AUDIO", "PlayError");
-                //GameManagement._audioManager._sfxSounds.PlayError();
                 return;
             }
-            
 
             // make sure player has enough energy
             if (_playerStats.energyNeeded > _playerStats.energy)
             {
                 EventManager.Instance.EventGo("ERROR", "Error", 5);
                 EventManager.Instance.EventGo("AUDIO", "PlayError");
-                //GameManagement._audioManager._sfxSounds.PlayError();
                 return;
             }
         }
@@ -84,13 +82,9 @@ public class TurnManager : MonoBehaviour
 
         // Send Event next Turn to all spawners etc:
         EventManager.Instance.EventGo("TURN", "NextTurn", turnCounter);
-        // Listeners should be: spawner
-        // spawner: adds new spawns to list spawnsToAdd
-
-        // wait for interface manager to update spawns
-
         EventManager.Instance.EventGo("AUDIO", "PlayGo");
-        //GameManagement._audioManager._sfxSounds.PlayGo();
+
+        // wait for interface manager (to move spaceship) until update spawns
     }
 
     public void Spawn()
@@ -102,7 +96,6 @@ public class TurnManager : MonoBehaviour
 
     public void UpdateSpawns()
     {
-        //int x = 0;
         // update hazards + collectibles
         foreach (ObjectBehaviour spawn in activeSpawns)
         {
@@ -129,7 +122,7 @@ public class TurnManager : MonoBehaviour
             }
         }
 
-        bool sndHzd = false; // send hazard message;
+        bool sndHzd = false; // send hazard message
 
         bool collectsShield = false;
 
@@ -155,7 +148,7 @@ public class TurnManager : MonoBehaviour
             }
         }
 
-        // removes the énergy cost text underneath the slider
+        // removes the energy cost text underneath the slider
         EventManager.Instance.EventGo("ENERGY", "RemoveCost");
         _playerStats.NextTurn();
     }

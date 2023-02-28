@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles all SFX in the game
+/// Called via Event Listener
+/// eventID is AUDIO, eventName depends on the SFX to be played
+/// </summary>
+
 public class SFXSounds : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;

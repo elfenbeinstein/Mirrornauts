@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Border Behaviour handles borders and playing field
-/// If player touches border --> damage and reset
+/// If player touches border -->  // obsolete
 /// If player leaves playing field alltogether --> damage and reset
 /// </summary>
 

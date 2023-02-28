@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// displays certificate at game win or in menu (if already won)
+/// saves name entered by player
+/// creates semi-random Code
+/// </summary>
+
 public class Certificate : MonoBehaviour
 {
     [SerializeField] private List<CanvasGroup> canvasGroups;
@@ -23,16 +29,10 @@ public class Certificate : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI gameTimeField;
     [SerializeField] private TMPro.TextMeshProUGUI trainingTimeField;
 
-    //public float testTime;
-    public string defaultText;
     private Animator anim;
 
     void Start()
     {
-        //bg.SetActive(false);
-        //enterName.SetActive(false);
-        //display.SetActive(false);
-        defaultText = nameInput.text;
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -44,7 +44,7 @@ public class Certificate : MonoBehaviour
 
     public void SetUpValues()
     {
-        // overwrite certificate
+        // write in game data into certificate
         certificateData.dashsUsed = inGameData.dashsUsed;
         certificateData.deathAmount = inGameData.deathAmount;
         certificateData.energyUsed = inGameData.energyUsed;
@@ -119,19 +119,11 @@ public class Certificate : MonoBehaviour
     {
         EventManager.Instance.EventGo("DATA", "Name", nameInput.text);
 
-        display.SetActive(true);
-
-        // set all text fields:
+        DisplayValues();
+        // set name field by hand in case data hasn't saved yet
         nameField.text = nameInput.text;
-        deathEnergyField.text = $"brauchte {certificateData.deathAmount} Versuche, {certificateData.energyUsed} Energie,";
-        shieldDashField.text = $"und benutzte {certificateData.dashsUsed} Mal Sprint und {certificateData.shieldsUsed} Mal Schild.";
-        codeField.text = certificateData.code;
-        System.TimeSpan time = System.TimeSpan.FromSeconds(certificateData.winTime);
-        gameTimeField.text = $"Spielzeit: " + time.ToString(@"hh\:mm\:ss");
-        time = System.TimeSpan.FromSeconds(certificateData.trainingTime);
-        trainingTimeField.text = $"Trainingszeit: " + time.ToString(@"hh\:mm\:ss");
 
-        enterName.SetActive(false);
+        EventManager.Instance.EventGo("DATA", "Save");
     }
 
     public void DisplayValues()
@@ -154,19 +146,8 @@ public class Certificate : MonoBehaviour
     public void SetUpInMenu()
     {
         bg.SetActive(true);
-        display.SetActive(true);
 
-        // set all text fields:
-        nameField.text = certificateData._name;
-        deathEnergyField.text = $"brauchte {certificateData.deathAmount} Versuche, {certificateData.energyUsed} Energie,";
-        shieldDashField.text = $"und benutzte {certificateData.dashsUsed} Mal Sprint und {certificateData.shieldsUsed} Mal Schild.";
-        codeField.text = certificateData.code;
-        System.TimeSpan time = System.TimeSpan.FromSeconds(certificateData.winTime);
-        gameTimeField.text = $"Spielzeit: " + time.ToString(@"hh\:mm\:ss");
-        time = System.TimeSpan.FromSeconds(certificateData.trainingTime);
-        trainingTimeField.text = $"Trainingszeit: " + time.ToString(@"hh\:mm\:ss");
-
-        enterName.SetActive(false);
+        DisplayValues();
     }
 
     public void SetInactiveInMenu()
@@ -175,14 +156,4 @@ public class Certificate : MonoBehaviour
         bg.SetActive(false);
         enterName.SetActive(false);
     }
-
-    /*
-    [ContextMenu("test zeit")]
-    public void TestHours()
-    {
-        System.TimeSpan time = System.TimeSpan.FromSeconds(testTime);
-        string str = time.ToString(@"hh\:mm\:ss");
-        gameTimeField.text = "Spielzeit: " + str;
-    }
-    */
 }

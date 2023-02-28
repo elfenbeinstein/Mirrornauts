@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Handles Player Hit
-/// Handles Player Out of bounds (when spaceship leaves the playing field
-/// Handles Player Health (still needs work)
+/// Handles Player Out of bounds (when spaceship leaves the playing field)
+/// Handles Player Health (no longer needed because one hit = death)
 /// </summary>
 
 public class Player : MonoBehaviour
@@ -53,16 +53,11 @@ public class Player : MonoBehaviour
 
     public void PlayerHitBorder()
     {
-        /*
-        Debug.Log("spaceship touched border");
-        DamageTaken(1);
-        */
+        // no longer needed
     }
 
     public void PlayerOutOfBounds()
     {
-        Debug.Log("spaceship out of bounds");
-
         if (GameManagement.gameMode)
         {
             PlayerDeath();
@@ -87,8 +82,6 @@ public class Player : MonoBehaviour
 
     private void PlayerDeath()
     {
-        //Debug.Log("player out of health");
-
         // count death
         EventManager.Instance.EventGo("DATA", "Death");
         // play audio

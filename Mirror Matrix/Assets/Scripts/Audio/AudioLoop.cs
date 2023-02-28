@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// handles the loop sound(s) in the game
+/// currently only the sfx when the mouse coordinates are presented
+/// called via sfx script
+/// </summary>
+
 public class AudioLoop : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;

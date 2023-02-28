@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Functionality of start screen and main menu
+/// --> displays credits, options, certificate and buttons to go to the training or game scenes (choose O)
+/// </summary>
+
 public class StartScreen : MonoBehaviour
 {
     [SerializeField] private GameObject startO;

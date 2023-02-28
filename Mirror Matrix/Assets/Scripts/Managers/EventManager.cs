@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Event System in the game
+/// Event IDs: TURN, ENERGY, AUDIO, etc.
+/// </summary>
+
 public class EventManager
 {
     private static EventManager instance;
@@ -41,10 +46,5 @@ public class EventManager
         if (eventListener.ContainsKey(eventID))
             for (int i = eventListener[eventID].Count - 1; i >= 0; i--)
                 eventListener[eventID][i](eventName, param);
-        // eventID: TURN --> NextTurn
-        // eventID: PLAYER --> HitBorder, LeftField, HitObject, HitHazard
-        // eventID: ENERGY --> AddEnergy, RemoveEnergy
-
-        //Debug.Log(string.Format("Event{0} fired: {1}, {2}", eventID, eventName, param == null ? "" : param.ToString()));
     }
 }

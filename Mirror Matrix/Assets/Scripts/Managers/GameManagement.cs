@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Game Manager Script -- Singleton
-/// 
-/// holds reference to maths script for every other script
+/// Game Manager Script -- Don't destroy on load
+/// Loads Scenes holds public available bool which gameMode it is
 /// </summary>
 public class GameManagement : MonoBehaviour
 {
@@ -30,12 +29,14 @@ public class GameManagement : MonoBehaviour
     {
         SceneManager.LoadScene(2);
         EventManager.Instance.EventGo("DATA", "CountGame", true);
+        gameMode = true;
     }
 
     public static void StartTrainingMode()
     {
         SceneManager.LoadScene(1);
         EventManager.Instance.EventGo("DATA", "CountTrain", true);
+        gameMode = false;
     }
 
     public static void LoadStartMenu()

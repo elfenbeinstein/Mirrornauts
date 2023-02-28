@@ -27,25 +27,6 @@ public class Spawner : MonoBehaviour
     [SerializeField] private TurnManager _turnManager;
     [SerializeField] private Transform parentClone;
 
-    private void Start()
-    {
-        //EventManager.Instance.AddEventListener("TURN", TurnListener);
-    }
-
-    private void OnDestroy()
-    {
-        //EventManager.Instance.RemoveEventListener("TURN", TurnListener);
-    }
-
-    /*
-    private void TurnListener(string eventName, object param)
-    {
-        if (eventName == "NextTurn")
-            Spawn((int)param);
-    }
-    */
-
-
     public void Spawn(int currentRound)
     {
         if (_turnManager == null)
@@ -54,7 +35,6 @@ public class Spawner : MonoBehaviour
             Debug.LogWarning($"{gameObject} is missing reference to the TurnManager script");
         }
 
-        // bool spawned = false;
         for (int i = 0; i < spawnUnits.Length; i++)
         {
             // check if a new spawn needs to be made

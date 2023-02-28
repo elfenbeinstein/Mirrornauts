@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// sits on the don't destroy on load game manager
+/// at start of a game session, gets saved data from player prefs and writes into certificate data objs
+/// on save - writes data into player prefs
+/// </summary>
+
 public class SaveData : MonoBehaviour
 {
     [SerializeField] CertificateData inGameData;
     [SerializeField] CertificateData certificateData;
 
-    // strings für player prefs in game values:
+    // strings for player prefs in game values:
     [Space]
     [SerializeField] string deathAmount;
     [SerializeField] string dashsUsed;
@@ -17,7 +23,7 @@ public class SaveData : MonoBehaviour
     [SerializeField] string trainingTime;
     [SerializeField] string winTime;
     
-    // strings für player prefs certificate values
+    // strings for player prefs certificate values
     [Space]
     [SerializeField] string deathAmountC;
     [SerializeField] string dashsUsedC;

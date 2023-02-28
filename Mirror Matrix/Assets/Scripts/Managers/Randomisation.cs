@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Randomises hazards and spaceship position at the start of the game
+/// hazards --> random rotation by 90 degree steps, all hazards are rotated by the same angle
+/// spaceship --> random quadrant of start position + variance from that position
+/// </summary>
+
 public class Randomisation : MonoBehaviour
 {
     private TurnManager _turnManager;
@@ -43,9 +49,6 @@ public class Randomisation : MonoBehaviour
             spawnParent.Rotate(new Vector3(0, 0, angles[random]));
 
             _turnManager.randomAngle = -1 * angles[random];
-
-            //spawnParent.Rotate(new Vector3(0, 0, testAngle));
-            //_turnManager.randomAngle = -1 * testAngle;
         }
         
         if (randomiseSpaceship && spaceshipStartPositions.Count != 0)

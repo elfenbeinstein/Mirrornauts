@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// on player death --> displays last calculation so player can see their mistakes
+/// </summary>
+
 public class DisplayLastCalculation : MonoBehaviour
 {
     [SerializeField] List<GameObject> calcObjects;

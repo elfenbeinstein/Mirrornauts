@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Holds Reference To Which Round is the Win Round
+/// Then Sends out Messages that Game is won (to set up certificate etc)
+/// Then turns off all visuals and sets new bg visuals
+/// </summary>
+
 public class PlayerWin : MonoBehaviour
 {
     [SerializeField] private int winRound = 100;

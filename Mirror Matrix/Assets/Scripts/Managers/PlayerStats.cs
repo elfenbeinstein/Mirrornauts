@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// References to whether shied is active and dash is available
+/// Reference to how much a type of calculation costs
+/// </summary>
+
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private TMPro.TextMeshProUGUI shieldText;

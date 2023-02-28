@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// behaviour of every spawned object (sits on the hazard prefab)
+/// behaviour of every spawned object (sits on the hazard and collectible prefabs)
 /// can be used for collectible and hazard (check bool isHazard)
 /// </summary>
 
@@ -39,7 +39,7 @@ public class ObjectBehaviour : MonoBehaviour
 
     [HideInInspector] public bool isTouching;
     private bool touched;
-    
+
     public void SetUpNewSpawn(int _round, int _countdown, int _liftoff, Vector3 _position, Quaternion _rotation, TurnManager _script)
     {
         if (circleLifting != null) circleLifting.SetActive(false);
@@ -124,7 +124,6 @@ public class ObjectBehaviour : MonoBehaviour
         #endregion
 
         // set number to top right corner
-        //countdownRenderer.gameObject.transform.localPosition = new Vector3(xPosition, yPosition, 0);
         parentNumber.localPosition = new Vector3(xPosition, yPosition, 0);
 
         // rotate number by turn manager random angle (is already set to - value in randomisation)
@@ -212,6 +211,5 @@ public class ObjectBehaviour : MonoBehaviour
     {
         isTouching = false;
         touched = false;
-        //Debug.Log("ship left " + gameObject);
     }
 }
