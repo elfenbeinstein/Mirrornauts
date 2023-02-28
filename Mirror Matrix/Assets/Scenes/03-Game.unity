@@ -48000,6 +48000,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1842644516965951218, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
+      propertyPath: costDrehfuenfSechstel
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842644516965951218, guid: 1bea486d273182e4ca9beea264f98cab, type: 3}
       propertyPath: "costDrehf\xFCnfSechstel"
       value: 12
       objectReference: {fileID: 0}
