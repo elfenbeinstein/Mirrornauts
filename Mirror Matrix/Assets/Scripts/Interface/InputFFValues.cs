@@ -4,11 +4,12 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// Collects Values in Free Flow Mode
+/// Collects Values in Training Mode
 /// 
 /// adjusts spaceship while changing values in the start vector fields
 /// 
 /// </summary>
+
 public enum CalculationType
 {
     Addition,
@@ -128,8 +129,6 @@ public class InputFFValues : MonoBehaviour
     public void ResetSpaceship()
     {
         ResetRotation();
-
-        // resert position to 0,0
 
         startVx.text = "0";
         startVy.text = "0";

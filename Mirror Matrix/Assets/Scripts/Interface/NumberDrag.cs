@@ -10,6 +10,12 @@ public enum ValueTypes
     Wurzel3
 }
 
+/// <summary>
+/// Sits On Number Fields that can be Dragged Into the Calculation
+/// Holds Reference for their Value
+/// Handles Dragging Motion and Snapping Back Into Place
+/// </summary>
+
 public class NumberDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public float value;

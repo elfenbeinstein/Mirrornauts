@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Displays all Story and Error Messages
+/// </summary>
+
 public class ErrorMsg : MonoBehaviour
 {
     //0

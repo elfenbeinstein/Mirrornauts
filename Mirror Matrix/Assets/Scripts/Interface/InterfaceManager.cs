@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
 using TMPro;
-//using System.Globalization;
 
 /// <summary>
 /// central hub for managing all inputs and calculating the next rounds
@@ -61,7 +59,6 @@ public class InterfaceManager : MonoBehaviour
 
         _maths = GetComponent<Maths>();
 
-        //_turnManager = GetComponent<TurnManager>();
         if (freeFlowMode)
         {
             _inputFF = GetComponent<InputFFValues>();
@@ -74,10 +71,8 @@ public class InterfaceManager : MonoBehaviour
             _inputG = GetComponent<InputGameValues>();
             _inputG.SetSpaceshipScript(_spaceshipBehaviour);
             _buttons = GetComponent<InputGameButtons>();
-            //update turncounter?
         }
 
-        //scalesText.text = "yes";
         _spaceshipBehaviour.SetScaling(false);
 
         if (freeFlowMode)
@@ -194,12 +189,6 @@ public class InterfaceManager : MonoBehaviour
     public void Calculate()
     {
         calculationSuccessful = false;
-
-        /*
-        Debug.Log($"spaceship pos = {startV[0]}, {startV[1]}");
-        Debug.Log($"spaceship top pos = {spaceshipTop[0]}, {spaceshipTop[1]}");
-        Debug.Log($"spaceship right pos = {spaceshipRight[0]}, {spaceshipRight[1]}");
-        */
 
         if (calcType == CalculationType.Addition)
         {

@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.12156863}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.12156863}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.2784314}
     m_PressedColor: {r: 0.49803925, g: 0.5411765, b: 0.6509804, a: 0.12156863}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.12156863}
     m_DisabledColor: {r: 0.49803925, g: 0.5411765, b: 0.6509804, a: 0.12156863}
@@ -10903,6 +10903,10 @@ MonoBehaviour:
   x2Minus: {fileID: 5154588132302636503}
   y1Minus: {fileID: 5154588132225659326}
   y2Minus: {fileID: 5154588133706376288}
+  resetObjects: []
+  resetBools: 
+  resetTexts: []
+  texts: []
 --- !u!1 &5154588133158813172
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Gets the mouse position and translates it into coordinates when holding Ctrl
+/// It gets displayed next to mouse
+/// </summary>
+
 public class MousePosition : MonoBehaviour
 {
-    /// <summary>
-    /// Gets the mouse position and translates it into coordinates when holding Ctrl
-    /// It gets displayed next to mouse
-    /// </summary>
-    /// 
     [SerializeField] Vector2 maxCoordinats;
     [SerializeField] Vector2 textBoxOffset;
     [SerializeField] GameObject mouseCoord;

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Adds and Removes Energy
+/// Displays Current Amount on slider
+/// plays remove & add "animations"
+/// </summary>
+
 public class EnergySlider : MonoBehaviour
 {
     private Slider _slider;
@@ -136,20 +142,7 @@ public class EnergySlider : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            sliding = true;
-            amount = Random.Range(-25, 26);
-            if (amount + _playerStats.energy > _playerStats.maxEnergy) amount = _playerStats.maxEnergy - _playerStats.energy;
-            time = 0;
-            _playerStats.energy += amount;
-            anim.SetBool("Move", true);
-        }
-
-
-
-
-        // elfenbeinstein: REMOVE FOR BUILD
+        /*
 # if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -163,6 +156,17 @@ public class EnergySlider : MonoBehaviour
             if (_playerStats.energy < 0) _playerStats.energy = 0;
             UpdateSliderDirectly();
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            sliding = true;
+            amount = Random.Range(-25, 26);
+            if (amount + _playerStats.energy > _playerStats.maxEnergy) amount = _playerStats.maxEnergy - _playerStats.energy;
+            time = 0;
+            _playerStats.energy += amount;
+            anim.SetBool("Move", true);
+        }
 #endif
+        */
     }
 }

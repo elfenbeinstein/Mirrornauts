@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// does all important calculations for the Spaceship Movement
 /// </summary>
+
 public class Maths: MonoBehaviour
 {
 
@@ -21,7 +22,6 @@ public class Maths: MonoBehaviour
             vectorResult = new float[] { (startV[0] - addV[0]), (startV[1] - addV[1]) };
         }
 
-        //Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
         return vectorResult;
     }
 
@@ -34,7 +34,6 @@ public class Maths: MonoBehaviour
 
         vectorResult = new float[] { x, y };
 
-        //Debug.Log("result is " + vectorResult[0] + ", " + vectorResult[1]);
         return vectorResult;
     }
 
@@ -91,7 +90,6 @@ public class Maths: MonoBehaviour
         {
             distance = Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
         }
-        //Debug.Log($"distance is {distance}");
 
         return distance;
     }
@@ -125,14 +123,6 @@ public class Maths: MonoBehaviour
         }
         else
         {
-            /*
-            angle = normPos.y / Mathf.Sqrt((normPos.x * normPos.x) + (normPos.y * normPos.y));
-            angle = Mathf.Asin(angle);
-
-            angle = ConvertFromRadian(angle);
-
-            angle -= 90;*/
-
             angle = normPos.x / normPos.y;
             angle = Mathf.Abs(angle);
 
@@ -160,7 +150,6 @@ public class Maths: MonoBehaviour
             }
         }
 
-        //Debug.Log($"angle is {angle}");
         return angle;
     }
 
@@ -173,22 +162,5 @@ public class Maths: MonoBehaviour
         if (s < 0) s *= -1;
 
         return s;
-    }
-
-    // FOR TESTING:
-    public float SinusCalc(float value)
-    {
-        float result = Mathf.Sin(value * Mathf.PI);
-        if (result < -1) result = 0;
-        if (result > 1) result = 0;
-        return result;
-    }
-
-    public float CosinusCalc(float value)
-    {
-        float result = Mathf.Cos(value * Mathf.PI);
-        if (result < -1) result = 0;
-        if (result > 1) result = 0;
-        return result;
     }
 }
