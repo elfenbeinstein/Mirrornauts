@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// All Button Behaviour During Game Mode
+/// --> Dash, +- Buttons, Menu, Help, Clear All etc
+/// </summary>
+
 public class InputGameButtons : MonoBehaviour
 {
     private InputGameValues _inputGameValues;
@@ -56,7 +61,7 @@ public class InputGameButtons : MonoBehaviour
 
     private void Update()
     {
-        // elfenbeinstein: DELETE for final build
+        /*
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -66,7 +71,9 @@ public class InputGameButtons : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S)) EventManager.Instance.EventGo("TURN", "Shield");
 #endif
+        */
     }
+
     private void OnDestroy()
     {
         EventManager.Instance.RemoveEventListener("DASH", DashListener);
@@ -146,8 +153,6 @@ public class InputGameButtons : MonoBehaviour
 
     void DeactivateDash()
     {
-        // setze den Button auf inaktiv
-        //dashButton.interactable = false;
         // slider aktivieren
         dashCooldown.gameObject.SetActive(true);
         // stelle slider ein auf int
@@ -156,8 +161,6 @@ public class InputGameButtons : MonoBehaviour
 
     void ActivateDash()
     {
-        // setze Button auf inaktiv
-        //dashButton.interactable = true;
         // deactivate den Slider
         dashCooldown.gameObject.SetActive(false);
     }
@@ -271,37 +274,6 @@ public class InputGameButtons : MonoBehaviour
             EventManager.Instance.EventGo("ENERGY", "EnergyCost");
         }
     }
-        
-
-    /*
-    public void AddX()
-    {
-        if (addXMinus.activeInHierarchy)
-        {
-            addXMinus.SetActive(false);
-            _inputGameValues.addXValue = true;
-        }
-        else
-        {
-            addXMinus.SetActive(true);
-            _inputGameValues.addXValue = false;
-        }
-    }
-
-    public void AddY()
-    {
-        if (addYMinus.activeInHierarchy)
-        {
-            addYMinus.SetActive(false);
-            _inputGameValues.addYValue = true;
-        }
-        else
-        {
-            addYMinus.SetActive(true);
-            _inputGameValues.addYValue = false;
-        }
-    }
-    */
 
     public void AddButton()
     {

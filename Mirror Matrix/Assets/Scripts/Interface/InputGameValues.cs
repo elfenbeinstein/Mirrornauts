@@ -9,6 +9,12 @@ public enum MatrixType
     Falsch
 }
 
+/// <summary>
+/// Collects All Values In Training Mode
+/// Writes New Spaceship Position
+/// Game Ready Checks --> All Values Set, Energy Calcs etc.
+/// </summary>
+
 public class InputGameValues : MonoBehaviour
 {
     private SpaceshipBehaviour _spaceshipBehaviour;

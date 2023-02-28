@@ -14,6 +14,11 @@ public enum SlotType
     AddY
 }
 
+/// <summary>
+/// Holds Calculation Slots + Sits On Calculation Elements
+/// Once Number is Dragged and Dropped Onto It --> Takes Value Into Calculation
+/// </summary>
+
 public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private InputGameValues _inputGameValues;
@@ -66,16 +71,11 @@ public class NumberSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
             float value = eventData.pointerDrag.GetComponent<NumberDrag>().value;
             string text = eventData.pointerDrag.GetComponent<NumberDrag>().text.text;
 
-            // check if value is possible with remaining energy level
-            // if not --> error message to player - not enough energy left
-            // if yes --> set value
-
             _inputGameValues.SetSlot(value, type, text);
 
             highlight.SetActive(false);
 
             EventManager.Instance.EventGo("AUDIO", "PlayDrop");
-            //GameManagement._audioManager._sfxSounds.PlayDrop();
         }
     }
 

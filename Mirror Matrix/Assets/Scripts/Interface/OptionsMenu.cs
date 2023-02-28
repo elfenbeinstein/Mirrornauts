@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/// <summary>
+/// In-Game Menu
+/// </summary>
+
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] GameObject warningObj;
@@ -15,7 +19,7 @@ public class OptionsMenu : MonoBehaviour
     private Slider sliderSFX;
     [SerializeField]
     private Slider sliderMusic;
-    // Start is called before the first frame update
+
     void Start()
     {
         sliderSFX.value = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
