@@ -18,18 +18,18 @@ public class PlayerStats : MonoBehaviour
     private int turnCounter = 0;
 
     [Space]
-    [Header("Kosten für Drehmatrix Radianten")]
+    [Header("Kosten f?r Drehmatrix Radianten")]
     public int costDrehSechstel = 2;
     public int costDrehViertel = 3;
     public int costDrehDrittel = 4;
     public int costDrehHalbe = 6;
     public int costDrehzweiDrittel = 8;
     public int costDrehdreiViertel = 9;
-    public int costDrehfünfSechstel = 10;
+    public int costDrehfuenfSechstel = 10;
     public int costDrehEins = 12;
 
     [Space]
-    [Header("Kosten für Drehmatrix Zahlenwert")]
+    [Header("Kosten fuer Drehmatrix Zahlenwert")]
     public int costDrehFEins = 0;
     public int costDrehFWurzelDrei = 2;
     public int costDrehFWurzelZwei = 3;

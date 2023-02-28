@@ -320,7 +320,7 @@ public class InputGameValues : MonoBehaviour
                     else if (matrixX1R.text == "3/4" || matrixX1R.text == "-3/4")
                         cost = _playerStats.costDrehdreiViertel;
                     else if (matrixX1R.text == "5/6" || matrixX1R.text == "-5/6")
-                        cost = _playerStats.costDrehfünfSechstel;
+                        cost = _playerStats.costDrehfuenfSechstel;
                     else if (matrixX1R.text == "1" || matrixX1R.text == "-1")
                         cost = _playerStats.costDrehEins;
                 }
